@@ -115,7 +115,7 @@ def document_text(inbox, path):
         if ext == ".pdf":
             import pdfplumber
             with pdfplumber.open(io.BytesIO(data)) as pdf:
-                text = "\n".join(page.extract_text() or "" for page in pdf.pages)
+                text = "\n".join(page.extract_text(use_text_flow=True) or "" for page in pdf.pages)
             if not text.strip():
                 return "", "scanned or image-only PDF, no text layer"
             return text, None

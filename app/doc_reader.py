@@ -81,7 +81,7 @@ def read_pdf(path):
     parts = []
     with pdfplumber.open(path) as pdf:
         for page in pdf.pages:
-            parts.append(page.extract_text() or "")
+            parts.append(page.extract_text(use_text_flow=True) or "")
             for table in page.extract_tables() or []:
                 parts.extend(_row_to_line(row) for row in table)
     text = "\n".join(p for p in parts if p)

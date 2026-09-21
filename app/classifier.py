@@ -26,12 +26,14 @@ Classify EACH email below into exactly one category:
 - BL_COMPARISON: the sender wants the team to check, verify, review or confirm
   a draft Bill of Lading (BL) against a Shipping Instruction (SI). This still
   counts even if the attachments are missing or the wording is informal.
-- SI_REQUEST: the sender wants a NEW Shipping Instruction prepared, issued or
-  submitted. They are not asking to check an existing draft BL.
+- SI_REQUEST: the sender provides the details for a NEW Shipping Instruction, or
+  asks the team to prepare/issue a new one. They are not asking to check an
+  existing draft BL.
 - INVOICE_QUERY: questions about invoices, charges, payments, freight costs
   or billing.
 - GENERAL: operational updates or information with no document check needed,
-  e.g. vessel schedules, delays, cut-off reminders, thank-you notes.
+  e.g. vessel schedules, delays, cut-off reminders, thank-you notes. Reminders or
+  chasers asking for SIs to be submitted (without providing SI details) are GENERAL.
 - SPAM: unsolicited marketing, phishing, scams, or messages unrelated to this
   team's shipping work, even if they mention shipping words.
 

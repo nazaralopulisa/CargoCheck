@@ -616,7 +616,7 @@
     "defect_fields": []
   },
   "email_086": {
-    "category": "SI_REQUEST",
+    "category": "GENERAL",
     "status": "OK",
     "review_reason": null,
     "has_defect": false,
@@ -637,7 +637,7 @@
     "defect_fields": []
   },
   "email_089": {
-    "category": "SI_REQUEST",
+    "category": "GENERAL",
     "status": "OK",
     "review_reason": null,
     "has_defect": false,
@@ -2544,7 +2544,6 @@
     "review_reason": null,
     "has_defect": true,
     "defect_fields": [
-      "notify_party",
       "container_count",
       "gross_weight_kg"
     ]

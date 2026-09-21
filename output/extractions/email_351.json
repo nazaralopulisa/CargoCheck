@@ -18,7 +18,7 @@
     "fields": {
       "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
       "consignee": "KTP CO., LTD",
-      "notify_party": "KTP BLDG., LTD",
+      "notify_party": "KTP CO., LTD",
       "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA",
       "port_of_discharge": "ASHDOD, ISRAEL",
       "container_count": 16,

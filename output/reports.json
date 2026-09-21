@@ -1629,9 +1629,9 @@
   "email_086": {
     "email_id": "email_086",
     "status": "NOT_CHECKED",
-    "detail": "Classified as SI_REQUEST; no comparison needed.",
+    "detail": "Classified as GENERAL; no comparison needed.",
     "fields": [],
-    "classification_reason": "Sender requests action on pending shipping instructions"
+    "classification_reason": "Reminder to action pending items without providing SI details."
   },
   "email_087": {
     "email_id": "email_087",
@@ -1650,9 +1650,9 @@
   "email_089": {
     "email_id": "email_089",
     "status": "NOT_CHECKED",
-    "detail": "Classified as SI_REQUEST; no comparison needed.",
+    "detail": "Classified as GENERAL; no comparison needed.",
     "fields": [],
-    "classification_reason": "Sender reminds to submit new Shipping Instructions"
+    "classification_reason": "Reminder to submit SIs without providing SI details."
   },
   "email_090": {
     "email_id": "email_090",
@@ -5677,7 +5677,7 @@
   "email_351": {
     "email_id": "email_351",
     "status": "MISMATCH",
-    "detail": "3 field(s) differ.",
+    "detail": "2 field(s) differ.",
     "fields": [
       {
         "field": "shipper",
@@ -5694,8 +5694,8 @@
       {
         "field": "notify_party",
         "si": "KTP CO., LTD",
-        "bl": "KTP BLDG., LTD",
-        "result": "MISMATCH"
+        "bl": "KTP CO., LTD",
+        "result": "MATCH"
       },
       {
         "field": "port_of_loading",

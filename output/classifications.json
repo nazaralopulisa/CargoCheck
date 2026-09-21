@@ -594,13 +594,6 @@
     "reason": "Sender queries about THC/local charge inclusion in invoice",
     "needs_review": false
   },
-  "email_086": {
-    "email_id": "email_086",
-    "category": "SI_REQUEST",
-    "confidence": "high",
-    "reason": "Sender requests action on pending shipping instructions",
-    "needs_review": false
-  },
   "email_087": {
     "email_id": "email_087",
     "category": "INVOICE_QUERY",
@@ -613,13 +606,6 @@
     "category": "BL_COMPARISON",
     "confidence": "high",
     "reason": "Sender asks to check and verify a draft Bill of Lading",
-    "needs_review": false
-  },
-  "email_089": {
-    "email_id": "email_089",
-    "category": "SI_REQUEST",
-    "confidence": "high",
-    "reason": "Sender reminds to submit new Shipping Instructions",
     "needs_review": false
   },
   "email_090": {
@@ -3637,6 +3623,20 @@
     "category": "BL_COMPARISON",
     "confidence": "high",
     "reason": "Sender requests comparison of SI and draft BL.",
+    "needs_review": false
+  },
+  "email_086": {
+    "email_id": "email_086",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Reminder to action pending items without providing SI details.",
+    "needs_review": false
+  },
+  "email_089": {
+    "email_id": "email_089",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Reminder to submit SIs without providing SI details.",
     "needs_review": false
   }
 }

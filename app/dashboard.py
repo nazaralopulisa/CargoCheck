@@ -598,12 +598,9 @@ def landing(results):
     <p class="cc-landing-sub">CargoCheck reads the shipping inbox, compares every draft Bill of Lading
       with its Shipping Instruction, and flags what doesn't match. People only look at what
       actually needs them.</p>
-    <ol class="cc-landing-steps">
-      <li><b>{total}</b><span>emails <em>sorted</em> into five types</span></li>
-      <li><b>{checks}</b><span>draft BLs <em>compared</em>, field by field</span></li>
-      <li><b>{people}</b><span>unclear cases sent to <em>a person</em></span></li>
-    </ol>
-    <a class="cc-scrollcue" href="#todays-inbox">See today's overview <span aria-hidden="true">↓</span></a>
+    <div style="margin-top: 2rem;">
+      <a class="cc-scrollcue" href="#todays-inbox">See today's overview <span aria-hidden="true">↓</span></a>
+    </div>
   </div>
   <div class="cc-landing-art" aria-hidden="true">
     <div class="cc-paper si"><p class="t">Shipping Instruction</p>

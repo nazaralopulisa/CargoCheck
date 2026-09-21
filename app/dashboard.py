@@ -1069,7 +1069,7 @@ def page_scores():
     if len(log) > 1:
         chart = log.reset_index().rename(columns={"index": "run"})
         chart["run"] += 1
-        st.line_chart(chart, x="run", y="final", height=260)
+        st.line_chart(chart, x="Run", y="Accuracy", height=260)
     st.dataframe(log.rename(columns={
         "time": "When", "final": "Final score", "class_f1": "Sorting F1",
         "defect_f1": "Mismatch F1", "e2e": "Caught end to end",

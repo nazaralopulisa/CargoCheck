@@ -3,7 +3,7 @@
   "si": {
     "doc_type_detected": "SI",
     "fields": {
-      "shipper": "APRIL FINE PAPER TRADING",
+      "shipper": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
       "consignee": "AL GURG STATIONERY LLC",
       "notify_party": "AL GURG STATIONERY LLC",
       "port_of_loading": "NHAVA SHEVA, INDIA (INNSA)",
@@ -14,23 +14,9 @@
     "source_file": "attachments/email_511_SI.txt"
   },
   "bl": null,
-  "other_documents": [
-    {
-      "doc_type_detected": "OTHER",
-      "fields": {
-        "shipper": null,
-        "consignee": null,
-        "notify_party": null,
-        "port_of_loading": null,
-        "port_of_discharge": null,
-        "container_count": null,
-        "gross_weight_kg": null
-      },
-      "source_file": "attachments/email_511_BL.pdf"
-    }
-  ],
+  "other_documents": [],
   "extraction_issues": [
-    "attachments/email_511_BL.pdf was detected as OTHER, not a usable SI/BL",
+    "Could not read attachments/email_511_BL.pdf: No /Root object! - Is this really a PDF?",
     "No BL found"
   ],
   "method": "llm",

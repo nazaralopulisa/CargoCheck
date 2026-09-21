@@ -1,38 +1,33 @@
 {
   "email_id": "email_354",
-  "si": null,
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING | ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+      "consignee": "HABRAS INTERNATIONAL LIMITED",
+      "notify_party": "HABRAS INTERNATIONAL LIMITED",
+      "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA",
+      "port_of_discharge": "VALPARAISO, CHILE",
+      "container_count": 1,
+      "gross_weight_kg": 20603
+    },
+    "source_file": "attachments/email_354_SI.xlsx"
+  },
   "bl": {
     "doc_type_detected": "BL",
     "fields": {
-      "shipper": null,
-      "consignee": null,
-      "notify_party": null,
-      "port_of_loading": null,
-      "port_of_discharge": null,
-      "container_count": null,
-      "gross_weight_kg": null
+      "shipper": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+      "consignee": "HABRAS INTERNATIONAL LIMITED",
+      "notify_party": "NAGAPPA EXPORTS",
+      "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA",
+      "port_of_discharge": "VALPARAISO, CHILE",
+      "container_count": 1,
+      "gross_weight_kg": 22603
     },
     "source_file": "attachments/email_354_BL.docx"
   },
-  "other_documents": [
-    {
-      "doc_type_detected": "OTHER",
-      "fields": {
-        "shipper": null,
-        "consignee": null,
-        "notify_party": null,
-        "port_of_loading": null,
-        "port_of_discharge": null,
-        "container_count": null,
-        "gross_weight_kg": null
-      },
-      "source_file": "attachments/email_354_SI.xlsx"
-    }
-  ],
-  "extraction_issues": [
-    "attachments/email_354_SI.xlsx was detected as OTHER, not a usable SI/BL",
-    "No SI found"
-  ],
+  "other_documents": [],
+  "extraction_issues": [],
   "method": "llm",
   "needs_llm": false
 }

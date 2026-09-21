@@ -8,26 +8,30 @@
       "notify_party": "KPP-ANTALIS (SINGAPORE) PTE. LTD.",
       "port_of_loading": "NHAVA SHEVA, INDIA",
       "port_of_discharge": "CONAKRY, GUINEA",
-      "container_count": 10,
-      "gross_weight_kg": null
+      "container_count": "10 x 20'FCL",
+      "gross_weight_kg": "N/A"
     },
-    "source_file": "attachments/email_516_SI.txt"
+    "source_file": "attachments/email_516_SI.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "bl": {
     "doc_type_detected": "BL",
     "fields": {
-      "shipper": "APRIL FINE PAPER TRADING",
+      "shipper": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
       "consignee": "KPP-ANTALIS (SINGAPORE) PTE. LTD.",
       "notify_party": "KPP-ANTALIS (SINGAPORE) PTE. LTD.",
       "port_of_loading": "NHAVA SHEVA, INDIA (INNSA)",
       "port_of_discharge": "CONAKRY, GUINEA (GNCKY)",
-      "container_count": 10,
-      "gross_weight_kg": 235550
+      "container_count": "10 x 20'FCL",
+      "gross_weight_kg": "235,550 KG"
     },
-    "source_file": "attachments/email_516_BL.txt"
+    "source_file": "attachments/email_516_BL.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "other_documents": [],
   "extraction_issues": [],
-  "method": "llm",
+  "method": "rules",
   "needs_llm": false
 }

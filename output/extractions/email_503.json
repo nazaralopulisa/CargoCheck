@@ -8,31 +8,35 @@
       "notify_party": "INTERNATIONAL FOREST PRODUCTS LLC",
       "port_of_loading": "NHAVA SHEVA, INDIA (INNSA)",
       "port_of_discharge": "HOCHIMINH CITY, VIETNAM (VNSGN)",
-      "container_count": 1,
-      "gross_weight_kg": 21772
+      "container_count": "1 x 20'FCL",
+      "gross_weight_kg": "21,772 KG"
     },
-    "source_file": "attachments/email_503_SI.txt"
+    "source_file": "attachments/email_503_SI.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "bl": null,
   "other_documents": [
     {
       "doc_type_detected": "OTHER",
       "fields": {
-        "shipper": null,
-        "consignee": null,
+        "shipper": "APRIL FAR EAST (M) SDN BHD",
+        "consignee": "INTERNATIONAL FOREST PRODUCTS LLC",
         "notify_party": null,
         "port_of_loading": null,
         "port_of_discharge": null,
         "container_count": null,
         "gross_weight_kg": null
       },
-      "source_file": "attachments/email_503_BL.txt"
+      "source_file": "attachments/email_503_BL.txt",
+      "method": "rules",
+      "type_from_title": true
     }
   ],
   "extraction_issues": [
     "attachments/email_503_BL.txt was detected as OTHER, not a usable SI/BL",
     "No BL found"
   ],
-  "method": "llm",
+  "method": "rules",
   "needs_llm": false
 }

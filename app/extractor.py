@@ -19,9 +19,11 @@ or "OTHER" (anything else, e.g. an invoice).
 Then extract these 7 fields, matching by meaning, not by exact label
 (e.g. "POD", "Discharge Port" and "Port of Discharge" are the same field):
 
-- shipper: company name only, no address
-- consignee: company name only, no address
-- notify_party: company name only, no address
+- shipper: the full company name, no address. If the name continues on the next
+  line (e.g. "ON BEHALF OF ..." or "(MIDDLE EAST) FZE"), include that part.
+  Stop at the first address part (street, P.O. box, city, phone).
+- consignee: same rule as shipper
+- notify_party: same rule as shipper
 - port_of_loading: as written, including any code in brackets
 - port_of_discharge: as written, including any code in brackets
 - container_count: total number of containers as an integer

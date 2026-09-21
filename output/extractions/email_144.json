@@ -3,15 +3,17 @@
   "si": {
     "doc_type_detected": "SI",
     "fields": {
-      "shipper": "APRIL FINE PAPER TRADING",
+      "shipper": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
       "consignee": "NAGAPPA EXPORTS",
       "notify_party": "NAGAPPA EXPORTS",
       "port_of_loading": "NHAVA SHEVA, INDIA (INNSA)",
       "port_of_discharge": "MERSIN, TURKEY (TRMER)",
-      "container_count": 12,
-      "gross_weight_kg": 264180
+      "container_count": "12 x 40'HC",
+      "gross_weight_kg": "264,180 KG"
     },
-    "source_file": "attachments/email_144_SI.txt"
+    "source_file": "attachments/email_144_SI.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "bl": {
     "doc_type_detected": "BL",
@@ -21,13 +23,15 @@
       "notify_party": "NAGAPPA EXPORTS",
       "port_of_loading": "NHAVA SHEVA, INDIA (INNSA)",
       "port_of_discharge": "MERSIN, TURKEY (TRMER)",
-      "container_count": 11,
-      "gross_weight_kg": 264180
+      "container_count": "11 x 40'HC",
+      "gross_weight_kg": "264,180 KG"
     },
-    "source_file": "attachments/email_144_BL.txt"
+    "source_file": "attachments/email_144_BL.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "other_documents": [],
   "extraction_issues": [],
-  "method": "llm",
+  "method": "rules",
   "needs_llm": false
 }

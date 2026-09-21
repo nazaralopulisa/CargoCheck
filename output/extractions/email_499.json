@@ -1,37 +1,37 @@
 {
   "email_id": "email_499",
-  "si": {
-    "doc_type_detected": "SI",
+  "si": null,
+  "bl": {
+    "doc_type_detected": "BL",
     "fields": {
-      "shipper": null,
-      "consignee": null,
-      "notify_party": null,
-      "port_of_loading": null,
-      "port_of_discharge": null,
-      "container_count": null,
-      "gross_weight_kg": null
+      "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+      "consignee": "TOPKOPY MIDDLE EAST FZE",
+      "notify_party": "TOPKOPY MIDDLE EAST FZE",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA",
+      "port_of_discharge": "HOCHIMINH CITY, VIETNAM",
+      "container_count": 2,
+      "gross_weight_kg": 40326
     },
-    "source_file": "attachments/email_499_BL.pdf"
+    "source_file": "attachments/email_499_SI.pdf"
   },
-  "bl": null,
   "other_documents": [
     {
-      "doc_type_detected": "OTHER",
+      "doc_type_detected": "BL",
       "fields": {
-        "shipper": null,
-        "consignee": null,
-        "notify_party": null,
-        "port_of_loading": null,
-        "port_of_discharge": null,
-        "container_count": null,
-        "gross_weight_kg": null
+        "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+        "consignee": "TOPKOPY MIDDLE EAST FZE",
+        "notify_party": "TOPKOPY MIDDLE EAST FZE",
+        "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA",
+        "port_of_discharge": "HOCHIMINH CITY, VIETNAM",
+        "container_count": 2,
+        "gross_weight_kg": 41326
       },
-      "source_file": "attachments/email_499_SI.pdf"
+      "source_file": "attachments/email_499_BL.pdf"
     }
   ],
   "extraction_issues": [
-    "attachments/email_499_SI.pdf was detected as OTHER, not a usable SI/BL",
-    "No BL found"
+    "attachments/email_499_BL.pdf was detected as BL, not a usable SI/BL",
+    "No SI found"
   ],
   "method": "llm",
   "needs_llm": false

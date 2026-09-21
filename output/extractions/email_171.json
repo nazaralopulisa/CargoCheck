@@ -1,40 +1,37 @@
 {
   "email_id": "email_171",
   "si": null,
-  "bl": null,
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "PACIFIC OFFICE (M) SDN BHD",
+      "notify_party": "ROXCEL TRADING GMBH",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA",
+      "port_of_discharge": "HOUSTON, US",
+      "container_count": 6,
+      "gross_weight_kg": 141918
+    },
+    "source_file": "attachments/email_171_SI.xlsx"
+  },
   "other_documents": [
     {
-      "doc_type_detected": "OTHER",
+      "doc_type_detected": "BL",
       "fields": {
-        "shipper": null,
-        "consignee": null,
-        "notify_party": null,
-        "port_of_loading": null,
-        "port_of_discharge": null,
-        "container_count": null,
-        "gross_weight_kg": null
-      },
-      "source_file": "attachments/email_171_SI.xlsx"
-    },
-    {
-      "doc_type_detected": "OTHER",
-      "fields": {
-        "shipper": null,
-        "consignee": null,
-        "notify_party": null,
-        "port_of_loading": null,
-        "port_of_discharge": null,
-        "container_count": null,
-        "gross_weight_kg": null
+        "shipper": "APRIL FAR EAST (M) SDN BHD",
+        "consignee": "PACIFIC OFFICE (M) SDN BHD",
+        "notify_party": "ROXCEL TRADING GMBH",
+        "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA",
+        "port_of_discharge": "HOUSTON, US",
+        "container_count": 6,
+        "gross_weight_kg": 141918
       },
       "source_file": "attachments/email_171_BL.xlsx"
     }
   ],
   "extraction_issues": [
-    "attachments/email_171_SI.xlsx was detected as OTHER, not a usable SI/BL",
-    "attachments/email_171_BL.xlsx was detected as OTHER, not a usable SI/BL",
-    "No SI found",
-    "No BL found"
+    "attachments/email_171_BL.xlsx was detected as BL, not a usable SI/BL",
+    "No SI found"
   ],
   "method": "llm",
   "needs_llm": false

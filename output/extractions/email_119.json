@@ -8,10 +8,12 @@
       "notify_party": "CLIFFORD PAPER INC",
       "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
       "port_of_discharge": "SAVANNAH, US (USSAV)",
-      "container_count": 15,
-      "gross_weight_kg": 322590
+      "container_count": "15 x 40'HC",
+      "gross_weight_kg": "322,590 KG"
     },
-    "source_file": "attachments/email_119_SI.txt"
+    "source_file": "attachments/email_119_SI.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "bl": {
     "doc_type_detected": "BL",
@@ -21,13 +23,15 @@
       "notify_party": "CLIFFORD PAPER INC",
       "port_of_loading": "SINGAPORE, SINGAPORE (MYPKG)",
       "port_of_discharge": "SAVANNAH, US (USSAV)",
-      "container_count": 15,
-      "gross_weight_kg": 322590
+      "container_count": "15 x 40'HC",
+      "gross_weight_kg": "322,590 KG"
     },
-    "source_file": "attachments/email_119_BL.txt"
+    "source_file": "attachments/email_119_BL.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "other_documents": [],
   "extraction_issues": [],
-  "method": "llm",
+  "method": "rules",
   "needs_llm": false
 }

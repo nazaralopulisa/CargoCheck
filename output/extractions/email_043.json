@@ -8,10 +8,12 @@
       "notify_party": "PACIFIC OFFICE (M) SDN BHD",
       "port_of_loading": "NHAVA SHEVA, INDIA (INNSA)",
       "port_of_discharge": "KLAIPEDA, LITHUANIA (LTKLJ)",
-      "container_count": 3,
-      "gross_weight_kg": 68649
+      "container_count": "3 x 20'GP",
+      "gross_weight_kg": "68,649 KG"
     },
-    "source_file": "attachments/email_043_SI.txt"
+    "source_file": "attachments/email_043_SI.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "bl": {
     "doc_type_detected": "BL",
@@ -21,13 +23,15 @@
       "notify_party": "PACIFIC OFFICE (M) SDN BHD",
       "port_of_loading": "NHAVA SHEVA, INDIA (INNSA)",
       "port_of_discharge": "KLAIPEDA, LITHUANIA (LTKLJ)",
-      "container_count": 5,
-      "gross_weight_kg": 68649
+      "container_count": "5 x 20'GP",
+      "gross_weight_kg": "68,649 KG"
     },
-    "source_file": "attachments/email_043_BL.txt"
+    "source_file": "attachments/email_043_BL.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "other_documents": [],
   "extraction_issues": [],
-  "method": "llm",
+  "method": "rules",
   "needs_llm": false
 }

@@ -1,40 +1,37 @@
 {
   "email_id": "email_243",
   "si": null,
-  "bl": null,
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+      "consignee": "SAFQA LIMITED",
+      "notify_party": "SAFQA LIMITED",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA",
+      "port_of_discharge": "HOUSTON, US",
+      "container_count": 5,
+      "gross_weight_kg": 100445
+    },
+    "source_file": "attachments/email_243_SI.xlsx"
+  },
   "other_documents": [
     {
-      "doc_type_detected": "OTHER",
+      "doc_type_detected": "BL",
       "fields": {
-        "shipper": null,
-        "consignee": null,
-        "notify_party": null,
-        "port_of_loading": null,
-        "port_of_discharge": null,
-        "container_count": null,
-        "gross_weight_kg": null
-      },
-      "source_file": "attachments/email_243_SI.xlsx"
-    },
-    {
-      "doc_type_detected": "OTHER",
-      "fields": {
-        "shipper": null,
-        "consignee": null,
-        "notify_party": null,
-        "port_of_loading": null,
-        "port_of_discharge": null,
-        "container_count": null,
-        "gross_weight_kg": null
+        "shipper": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+        "consignee": "SAFQA LIMITED",
+        "notify_party": "SAFQA LIMITED",
+        "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA",
+        "port_of_discharge": "MOMBASA, KENYA",
+        "container_count": 5,
+        "gross_weight_kg": 100445
       },
       "source_file": "attachments/email_243_BL.xlsx"
     }
   ],
   "extraction_issues": [
-    "attachments/email_243_SI.xlsx was detected as OTHER, not a usable SI/BL",
-    "attachments/email_243_BL.xlsx was detected as OTHER, not a usable SI/BL",
-    "No SI found",
-    "No BL found"
+    "attachments/email_243_BL.xlsx was detected as BL, not a usable SI/BL",
+    "No SI found"
   ],
   "method": "llm",
   "needs_llm": false

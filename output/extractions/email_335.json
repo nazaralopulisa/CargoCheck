@@ -8,10 +8,12 @@
       "notify_party": "ROXCEL TRADING GMBH",
       "port_of_loading": "SINGAPORE (SGSIN)",
       "port_of_discharge": "VALPARAISO, CHILE (CLVAP)",
-      "container_count": 5,
-      "gross_weight_kg": 109765
+      "container_count": "5 x 20'FCL",
+      "gross_weight_kg": "109,765 KG"
     },
-    "source_file": "attachments/email_335_SI.txt"
+    "source_file": "attachments/email_335_SI.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "bl": {
     "doc_type_detected": "BL",
@@ -21,13 +23,15 @@
       "notify_party": "ROXCEL TRADING GMBH",
       "port_of_loading": "SINGAPORE (SGSIN)",
       "port_of_discharge": "VALPARAISO, CHILE (CLVAP)",
-      "container_count": 5,
-      "gross_weight_kg": 109765
+      "container_count": "5 x 20'FCL",
+      "gross_weight_kg": "109,765 KG"
     },
-    "source_file": "attachments/email_335_BL.txt"
+    "source_file": "attachments/email_335_BL.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "other_documents": [],
   "extraction_issues": [],
-  "method": "llm",
+  "method": "rules",
   "needs_llm": false
 }

@@ -1,18 +1,18 @@
 {
   "stage1": {
-    "accuracy": 0.9884615384615385,
-    "macro_f1": 0.9899696580123042,
+    "accuracy": 0.9961538461538462,
+    "macro_f1": 0.9950228679042239,
     "rule_pct": null,
     "per": {
       "BL_COMPARISON": {
         "tp": 220,
-        "fp": 4,
+        "fp": 0,
         "fn": 0
       },
       "SI_REQUEST": {
-        "tp": 121,
+        "tp": 125,
         "fp": 2,
-        "fn": 4
+        "fn": 0
       },
       "INVOICE_QUERY": {
         "tp": 75,
@@ -38,8 +38,7 @@
         "INVOICE_QUERY": 75
       },
       "SI_REQUEST": {
-        "SI_REQUEST": 121,
-        "BL_COMPARISON": 4
+        "SI_REQUEST": 125
       },
       "GENERAL": {
         "GENERAL": 58,
@@ -51,19 +50,19 @@
     }
   },
   "stage3": {
-    "defect_precision": 0.9032258064516129,
-    "defect_recall": 0.6086956521739131,
-    "defect_f1": 0.7272727272727272,
-    "field_f1": 0.6306306306306306,
-    "exact_match_rate": 0.84,
+    "defect_precision": 1.0,
+    "defect_recall": 0.6521739130434783,
+    "defect_f1": 0.7894736842105263,
+    "field_f1": 0.7027027027027027,
+    "exact_match_rate": 0.87,
     "doc_total": 200
   },
   "reliability": {
-    "escalation_recall": 0.75,
-    "escalation_precision": 0.1111111111111111,
-    "escalation_f1": 0.19354838709677416,
+    "escalation_recall": 0.7,
+    "escalation_precision": 0.42424242424242425,
+    "escalation_f1": 0.5283018867924527,
     "gold_review": 20,
-    "pred_review": 135,
+    "pred_review": 33,
     "per_reason": {
       "wrong_doc_type": {
         "total": 5,
@@ -75,24 +74,24 @@
       },
       "unreadable": {
         "total": 5,
-        "caught": 5
+        "caught": 2
       },
       "missing_value": {
         "total": 5,
-        "caught": 0
+        "caught": 2
       }
     }
   },
   "end_to_end": {
-    "success": 17,
+    "success": 20,
     "total": 46,
-    "rate": 0.3695652173913043
+    "rate": 0.43478260869565216
   },
   "weights": {
     "stage1": 0.3,
     "stage3": 0.2,
     "end_to_end": 0.5
   },
-  "final_score": 0.6272280515538888,
+  "final_score": 0.6737929015611985,
   "n_emails": 520
 }

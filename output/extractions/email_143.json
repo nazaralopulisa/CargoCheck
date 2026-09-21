@@ -8,10 +8,12 @@
       "notify_party": "SAFQA LIMITED",
       "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA (CNSHA)",
       "port_of_discharge": "GDANSK, POLAND (PLGDN)",
-      "container_count": 2,
-      "gross_weight_kg": 42486
+      "container_count": "2 x 20'FCL",
+      "gross_weight_kg": "42,486 KG"
     },
-    "source_file": "attachments/email_143_SI.txt"
+    "source_file": "attachments/email_143_SI.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "bl": {
     "doc_type_detected": "BL",
@@ -21,13 +23,15 @@
       "notify_party": "SAFQA LIMITED",
       "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA (CNSHA)",
       "port_of_discharge": "GDANSK, POLAND (PLGDN)",
-      "container_count": 2,
-      "gross_weight_kg": 42486
+      "container_count": "2 x 20'FCL",
+      "gross_weight_kg": "42,486 KG"
     },
-    "source_file": "attachments/email_143_BL.txt"
+    "source_file": "attachments/email_143_BL.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "other_documents": [],
   "extraction_issues": [],
-  "method": "llm",
+  "method": "rules",
   "needs_llm": false
 }

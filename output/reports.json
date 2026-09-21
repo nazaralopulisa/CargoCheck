@@ -58,9 +58,8 @@
   },
   "email_003": {
     "email_id": "email_003",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "The sender is asking for a draft BL to be sent for checking."
   },
@@ -124,9 +123,8 @@
   },
   "email_006": {
     "email_id": "email_006",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "The sender is requesting the draft BL to be sent for checking."
   },
@@ -252,14 +250,14 @@
       },
       {
         "field": "container_count",
-        "si": 3,
-        "bl": 3,
+        "si": "3 x 40'HC",
+        "bl": "3 x 40'HC",
         "result": "MATCH"
       },
       {
         "field": "gross_weight_kg",
-        "si": 67311,
-        "bl": 67311,
+        "si": "67,311 KG",
+        "bl": "67,311 KG",
         "result": "MATCH"
       }
     ],
@@ -281,9 +279,8 @@
   },
   "email_016": {
     "email_id": "email_016",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "The sender requests the draft BL to be sent for checking."
   },
@@ -296,9 +293,8 @@
   },
   "email_018": {
     "email_id": "email_018",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "The sender asks to send the draft BL for checking as soon as possible."
   },
@@ -595,9 +591,8 @@
   },
   "email_036": {
     "email_id": "email_036",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender asks for the draft BL to be sent for checking."
   },
@@ -610,9 +605,8 @@
   },
   "email_038": {
     "email_id": "email_038",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests the draft BL for document checking."
   },
@@ -724,14 +718,14 @@
       },
       {
         "field": "container_count",
-        "si": 3,
-        "bl": 5,
+        "si": "3 x 20'GP",
+        "bl": "5 x 20'GP",
         "result": "MISMATCH"
       },
       {
         "field": "gross_weight_kg",
-        "si": 68649,
-        "bl": 68649,
+        "si": "68,649 KG",
+        "bl": "68,649 KG",
         "result": "MATCH"
       }
     ],
@@ -739,14 +733,14 @@
   },
   "email_044": {
     "email_id": "email_044",
-    "status": "MISMATCH",
-    "detail": "1 field(s) differ.",
+    "status": "OK",
+    "detail": "No mismatch detected.",
     "fields": [
       {
         "field": "shipper",
         "si": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
-        "bl": "APRIL FINE PAPER TRADING",
-        "result": "MISMATCH"
+        "bl": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "result": "MATCH"
       },
       {
         "field": "consignee",
@@ -774,14 +768,14 @@
       },
       {
         "field": "container_count",
-        "si": 2,
-        "bl": 2,
+        "si": "2 x 40'HC",
+        "bl": "2 x 40'HC",
         "result": "MATCH"
       },
       {
         "field": "gross_weight_kg",
-        "si": 47192,
-        "bl": 47192,
+        "si": "47,192 KG",
+        "bl": "47,192 KG",
         "result": "MATCH"
       }
     ],
@@ -831,14 +825,14 @@
       },
       {
         "field": "container_count",
-        "si": 12,
-        "bl": 12,
+        "si": "12 x 20'FCL",
+        "bl": "12 x 20'FCL",
         "result": "MATCH"
       },
       {
         "field": "gross_weight_kg",
-        "si": 257340,
-        "bl": 257340,
+        "si": "257,340 KG",
+        "bl": "257,340 KG",
         "result": "MATCH"
       }
     ],
@@ -846,9 +840,8 @@
   },
   "email_047": {
     "email_id": "email_047",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests draft BL for checking"
   },
@@ -861,17 +854,15 @@
   },
   "email_049": {
     "email_id": "email_049",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests draft BL for checking"
   },
   "email_050": {
     "email_id": "email_050",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests draft BL for checking"
   },
@@ -991,10 +982,52 @@
   },
   "email_055": {
     "email_id": "email_055",
-    "status": "NEEDS_REVIEW",
-    "reason": "wrong_doc_type",
-    "detail": "Extractor flagged: wrong_doc_type",
-    "fields": [],
+    "status": "OK",
+    "detail": "No mismatch detected.",
+    "fields": [
+      {
+        "field": "shipper",
+        "si": "APRIL FINE PAPER TRADING | ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "bl": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "result": "MATCH"
+      },
+      {
+        "field": "consignee",
+        "si": "AL GURG STATIONERY LLC",
+        "bl": "AL GURG STATIONERY LLC",
+        "result": "MATCH"
+      },
+      {
+        "field": "notify_party",
+        "si": "AL GURG STATIONERY LLC",
+        "bl": "AL GURG STATIONERY LLC",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_loading",
+        "si": "SINGAPORE",
+        "bl": "SINGAPORE",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_discharge",
+        "si": "KARACHI, PAKISTAN",
+        "bl": "KARACHI, PAKISTAN",
+        "result": "MATCH"
+      },
+      {
+        "field": "container_count",
+        "si": 12,
+        "bl": 12,
+        "result": "MATCH"
+      },
+      {
+        "field": "gross_weight_kg",
+        "si": 243588,
+        "bl": 243588,
+        "result": "MATCH"
+      }
+    ],
     "classification_reason": "The sender attaches the SI and draft BL and requests checking and confirmation."
   },
   "email_056": {
@@ -1061,8 +1094,8 @@
     "fields": [
       {
         "field": "shipper",
-        "si": "APRIL FINE PAPER TRADING",
-        "bl": "APRIL FINE PAPER TRADING",
+        "si": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "bl": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
         "result": "MATCH"
       },
       {
@@ -1121,9 +1154,8 @@
   },
   "email_061": {
     "email_id": "email_061",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests draft BL for checking"
   },
@@ -1136,9 +1168,8 @@
   },
   "email_063": {
     "email_id": "email_063",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests draft BL for checking"
   },
@@ -1149,8 +1180,8 @@
     "fields": [
       {
         "field": "shipper",
-        "si": "APRIL FINE PAPER TRADING",
-        "bl": "APRIL FINE PAPER TRADING",
+        "si": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "bl": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
         "result": "MATCH"
       },
       {
@@ -1179,14 +1210,14 @@
       },
       {
         "field": "container_count",
-        "si": 5,
-        "bl": 5,
+        "si": "5 x 20'GP",
+        "bl": "5 x 20'GP",
         "result": "MATCH"
       },
       {
         "field": "gross_weight_kg",
-        "si": 103800,
-        "bl": 103800,
+        "si": "103,800 KG",
+        "bl": "103,800 KG",
         "result": "MATCH"
       }
     ],
@@ -1244,9 +1275,8 @@
   },
   "email_066": {
     "email_id": "email_066",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests draft BL for checking"
   },
@@ -1264,8 +1294,8 @@
     "fields": [
       {
         "field": "shipper",
-        "si": "APRIL FINE PAPER TRADING",
-        "bl": "APRIL FINE PAPER TRADING",
+        "si": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "bl": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
         "result": "MATCH"
       },
       {
@@ -1408,9 +1438,8 @@
   },
   "email_077": {
     "email_id": "email_077",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "The sender asks for the draft BL to be sent for checking."
   },
@@ -1430,17 +1459,15 @@
   },
   "email_080": {
     "email_id": "email_080",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "The sender requests the draft BL to be sent over for verification and checking."
   },
   "email_081": {
     "email_id": "email_081",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests draft BL for checking"
   },
@@ -1531,9 +1558,8 @@
   },
   "email_088": {
     "email_id": "email_088",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender asks to check and verify a draft Bill of Lading"
   },
@@ -1551,8 +1577,8 @@
     "fields": [
       {
         "field": "shipper",
-        "si": "APRIL FINE PAPER TRADING",
-        "bl": "APRIL FINE PAPER TRADING",
+        "si": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "bl": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
         "result": "MATCH"
       },
       {
@@ -1601,8 +1627,8 @@
     "fields": [
       {
         "field": "shipper",
-        "si": "APRIL FINE PAPER TRADING",
-        "bl": "APRIL FINE PAPER TRADING",
+        "si": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "bl": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
         "result": "MATCH"
       },
       {
@@ -1646,9 +1672,8 @@
   },
   "email_092": {
     "email_id": "email_092",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender asks to send draft BL for checking"
   },
@@ -1668,22 +1693,21 @@
   },
   "email_095": {
     "email_id": "email_095",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender asks to send draft BL for checking"
   },
   "email_096": {
     "email_id": "email_096",
-    "status": "MISMATCH",
-    "detail": "1 field(s) differ.",
+    "status": "OK",
+    "detail": "No mismatch detected.",
     "fields": [
       {
         "field": "shipper",
         "si": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
-        "bl": "APRIL FINE PAPER TRADING",
-        "result": "MISMATCH"
+        "bl": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "result": "MATCH"
       },
       {
         "field": "consignee",
@@ -1748,9 +1772,8 @@
   },
   "email_100": {
     "email_id": "email_100",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender asks to send draft BL for checking"
   },
@@ -1784,9 +1807,8 @@
   },
   "email_105": {
     "email_id": "email_105",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender asks to send draft BL for checking"
   },
@@ -1814,9 +1836,8 @@
   },
   "email_109": {
     "email_id": "email_109",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender asks to send draft BL for checking"
   },
@@ -1864,14 +1885,14 @@
       },
       {
         "field": "container_count",
-        "si": 4,
-        "bl": 3,
+        "si": "4 x 20'GP",
+        "bl": "3 x 20'GP",
         "result": "MISMATCH"
       },
       {
         "field": "gross_weight_kg",
-        "si": 91524,
-        "bl": 91524,
+        "si": "91,524 KG",
+        "bl": "91,524 KG",
         "result": "MATCH"
       }
     ],
@@ -1936,9 +1957,8 @@
   },
   "email_114": {
     "email_id": "email_114",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Requesting assistance to send draft BL for checking"
   },
@@ -1970,8 +1990,8 @@
     "fields": [
       {
         "field": "shipper",
-        "si": "APRIL FINE PAPER TRADING",
-        "bl": "APRIL FINE PAPER TRADING",
+        "si": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "bl": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
         "result": "MATCH"
       },
       {
@@ -2000,14 +2020,14 @@
       },
       {
         "field": "container_count",
-        "si": 3,
-        "bl": 3,
+        "si": "3 x 40'HC",
+        "bl": "3 x 40'HC",
         "result": "MATCH"
       },
       {
         "field": "gross_weight_kg",
-        "si": 67668,
-        "bl": 67668,
+        "si": "67,668 KG",
+        "bl": "67,668 KG",
         "result": "MATCH"
       }
     ],
@@ -2050,14 +2070,14 @@
       },
       {
         "field": "container_count",
-        "si": 15,
-        "bl": 15,
+        "si": "15 x 40'HC",
+        "bl": "15 x 40'HC",
         "result": "MATCH"
       },
       {
         "field": "gross_weight_kg",
-        "si": 322590,
-        "bl": 322590,
+        "si": "322,590 KG",
+        "bl": "322,590 KG",
         "result": "MATCH"
       }
     ],
@@ -2107,14 +2127,14 @@
       },
       {
         "field": "container_count",
-        "si": 1,
-        "bl": 1,
+        "si": "1 x 20'GP",
+        "bl": "1 x 20'GP",
         "result": "MATCH"
       },
       {
         "field": "gross_weight_kg",
-        "si": 20842,
-        "bl": 21342,
+        "si": "20,842 KG",
+        "bl": "21,342 KG",
         "result": "MISMATCH"
       }
     ],
@@ -2169,8 +2189,8 @@
     "fields": [
       {
         "field": "shipper",
-        "si": "APRIL FINE PAPER TRADING",
-        "bl": "APRIL FINE PAPER TRADING",
+        "si": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "bl": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
         "result": "MATCH"
       },
       {
@@ -2219,8 +2239,8 @@
     "fields": [
       {
         "field": "shipper",
-        "si": "APRIL FINE PAPER TRADING",
-        "bl": "APRIL FINE PAPER TRADING",
+        "si": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "bl": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
         "result": "MATCH"
       },
       {
@@ -2313,14 +2333,14 @@
       },
       {
         "field": "container_count",
-        "si": 1,
-        "bl": 1,
+        "si": "1 x 40'HC",
+        "bl": "1 x 40'HC",
         "result": "MATCH"
       },
       {
         "field": "gross_weight_kg",
-        "si": 20262,
-        "bl": 20262,
+        "si": "20,262 KG",
+        "bl": "20,262 KG",
         "result": "MATCH"
       }
     ],
@@ -2333,8 +2353,8 @@
     "fields": [
       {
         "field": "shipper",
-        "si": "APRIL FINE PAPER TRADING",
-        "bl": "APRIL FINE PAPER TRADING",
+        "si": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "bl": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
         "result": "MATCH"
       },
       {
@@ -2392,9 +2412,8 @@
   },
   "email_136": {
     "email_id": "email_136",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to send draft BL for checking"
   },
@@ -2428,9 +2447,8 @@
   },
   "email_141": {
     "email_id": "email_141",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to send draft BL for checking"
   },
@@ -2478,14 +2496,14 @@
       },
       {
         "field": "container_count",
-        "si": 2,
-        "bl": 2,
+        "si": "2 x 20'FCL",
+        "bl": "2 x 20'FCL",
         "result": "MATCH"
       },
       {
         "field": "gross_weight_kg",
-        "si": 42486,
-        "bl": 42486,
+        "si": "42,486 KG",
+        "bl": "42,486 KG",
         "result": "MATCH"
       }
     ],
@@ -2494,13 +2512,13 @@
   "email_144": {
     "email_id": "email_144",
     "status": "MISMATCH",
-    "detail": "3 field(s) differ.",
+    "detail": "2 field(s) differ.",
     "fields": [
       {
         "field": "shipper",
-        "si": "APRIL FINE PAPER TRADING",
+        "si": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
         "bl": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
-        "result": "MISMATCH"
+        "result": "MATCH"
       },
       {
         "field": "consignee",
@@ -2528,14 +2546,14 @@
       },
       {
         "field": "container_count",
-        "si": 12,
-        "bl": 11,
+        "si": "12 x 40'HC",
+        "bl": "11 x 40'HC",
         "result": "MISMATCH"
       },
       {
         "field": "gross_weight_kg",
-        "si": 264180,
-        "bl": 264180,
+        "si": "264,180 KG",
+        "bl": "264,180 KG",
         "result": "MATCH"
       }
     ],
@@ -2548,8 +2566,8 @@
     "fields": [
       {
         "field": "shipper",
-        "si": "APRIL FINE PAPER TRADING",
-        "bl": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+        "si": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "bl": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE ON BEHALF OF VITAL SOLUTIONS PTE LTD",
         "result": "MISMATCH"
       },
       {
@@ -2578,14 +2596,14 @@
       },
       {
         "field": "container_count",
-        "si": 15,
-        "bl": 15,
+        "si": "15 x 20'FCL",
+        "bl": "15 x 20'FCL",
         "result": "MATCH"
       },
       {
         "field": "gross_weight_kg",
-        "si": 313380,
-        "bl": 313380,
+        "si": "313,380 KG",
+        "bl": "313,380 KG",
         "result": "MATCH"
       }
     ],
@@ -2678,9 +2696,8 @@
   },
   "email_152": {
     "email_id": "email_152",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to send draft BL for checking"
   },
@@ -2721,9 +2738,8 @@
   },
   "email_158": {
     "email_id": "email_158",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to send draft BL for checking"
   },
@@ -2744,9 +2760,8 @@
   },
   "email_161": {
     "email_id": "email_161",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to send draft BL for checking"
   },
@@ -2822,14 +2837,14 @@
       },
       {
         "field": "container_count",
-        "si": 3,
-        "bl": 3,
+        "si": "3 x 20'GP",
+        "bl": "3 x 20'GP",
         "result": "MATCH"
       },
       {
         "field": "gross_weight_kg",
-        "si": 62664,
-        "bl": 62664,
+        "si": "62,664 KG",
+        "bl": "62,664 KG",
         "result": "MATCH"
       }
     ],
@@ -2980,9 +2995,8 @@
   },
   "email_176": {
     "email_id": "email_176",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Request to send draft BL for checking"
   },
@@ -3030,14 +3044,14 @@
       },
       {
         "field": "container_count",
-        "si": 6,
-        "bl": 7,
+        "si": "6 x 20'GP",
+        "bl": "7 x 20'GP",
         "result": "MISMATCH"
       },
       {
         "field": "gross_weight_kg",
-        "si": 132516,
-        "bl": 132516,
+        "si": "132,516 KG",
+        "bl": "132,516 KG",
         "result": "MATCH"
       }
     ],
@@ -3101,14 +3115,14 @@
       },
       {
         "field": "container_count",
-        "si": 5,
-        "bl": 6,
+        "si": "5 x 40'HC",
+        "bl": "6 x 40'HC",
         "result": "MISMATCH"
       },
       {
         "field": "gross_weight_kg",
-        "si": 100240,
-        "bl": 100240,
+        "si": "100,240 KG",
+        "bl": "100,240 KG",
         "result": "MATCH"
       }
     ],
@@ -3137,17 +3151,15 @@
   },
   "email_186": {
     "email_id": "email_186",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to send draft BL for checking"
   },
   "email_187": {
     "email_id": "email_187",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to send draft BL for checking"
   },
@@ -3160,17 +3172,15 @@
   },
   "email_189": {
     "email_id": "email_189",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to send draft BL for checking"
   },
   "email_190": {
     "email_id": "email_190",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to send draft BL for checking"
   },
@@ -3204,9 +3214,8 @@
   },
   "email_195": {
     "email_id": "email_195",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to send draft BL for checking"
   },
@@ -3254,14 +3263,14 @@
       },
       {
         "field": "container_count",
-        "si": 1,
-        "bl": 1,
+        "si": "1 x 20'GP",
+        "bl": "1 x 20'GP",
         "result": "MATCH"
       },
       {
         "field": "gross_weight_kg",
-        "si": 20065,
-        "bl": 20065,
+        "si": "20,065 KG",
+        "bl": "20,065 KG",
         "result": "MATCH"
       }
     ],
@@ -3319,9 +3328,8 @@
   },
   "email_199": {
     "email_id": "email_199",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to send draft BL for checking"
   },
@@ -3376,9 +3384,8 @@
   },
   "email_207": {
     "email_id": "email_207",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to send draft BL for checking"
   },
@@ -3399,9 +3406,8 @@
   },
   "email_210": {
     "email_id": "email_210",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to send draft BL for checking"
   },
@@ -3470,9 +3476,8 @@
   },
   "email_220": {
     "email_id": "email_220",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests draft BL for checking"
   },
@@ -3492,9 +3497,8 @@
   },
   "email_223": {
     "email_id": "email_223",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests draft BL for checking"
   },
@@ -3621,9 +3625,8 @@
   },
   "email_229": {
     "email_id": "email_229",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests draft BL for checking"
   },
@@ -3721,9 +3724,8 @@
   },
   "email_237": {
     "email_id": "email_237",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender asks to send draft BL for checking"
   },
@@ -3771,14 +3773,14 @@
       },
       {
         "field": "container_count",
-        "si": 6,
-        "bl": 6,
+        "si": "6 x 20'GP",
+        "bl": "6 x 20'GP",
         "result": "MATCH"
       },
       {
         "field": "gross_weight_kg",
-        "si": 126594,
-        "bl": 126594,
+        "si": "126,594 KG",
+        "bl": "126,594 KG",
         "result": "MATCH"
       }
     ],
@@ -3800,9 +3802,8 @@
   },
   "email_242": {
     "email_id": "email_242",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender asks to send draft BL for checking"
   },
@@ -3837,9 +3838,8 @@
   },
   "email_247": {
     "email_id": "email_247",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender asks to send draft BL for checking"
   },
@@ -3902,9 +3902,8 @@
   },
   "email_250": {
     "email_id": "email_250",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender asks to send draft BL for checking"
   },
@@ -3950,8 +3949,8 @@
     "fields": [
       {
         "field": "shipper",
-        "si": "APRIL FINE PAPER TRADING",
-        "bl": "APRIL FAR EAST (M) SDN BHD",
+        "si": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "bl": "APRIL FAR EAST (M) SDN BHD ON BEHALF OF VITAL SOLUTIONS PTE LTD",
         "result": "MISMATCH"
       },
       {
@@ -4009,9 +4008,8 @@
   },
   "email_259": {
     "email_id": "email_259",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender asks to send draft BL for checking"
   },
@@ -4024,9 +4022,8 @@
   },
   "email_261": {
     "email_id": "email_261",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to check draft BL against SI"
   },
@@ -4039,25 +4036,22 @@
   },
   "email_263": {
     "email_id": "email_263",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to check draft BL against SI"
   },
   "email_264": {
     "email_id": "email_264",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NOT_CHECKED",
+    "detail": "Classified as SI_REQUEST; no comparison needed.",
     "fields": [],
-    "classification_reason": "Sender provides SI and requests draft BL verification"
+    "classification_reason": "Rule: no attachments, and the body contains shipping instruction details (5 of 5 SI fields), so this is a new SI."
   },
   "email_265": {
     "email_id": "email_265",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to check draft BL against SI"
   },
@@ -4141,9 +4135,8 @@
   },
   "email_271": {
     "email_id": "email_271",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to check draft BL against SI"
   },
@@ -4228,11 +4221,10 @@
   },
   "email_277": {
     "email_id": "email_277",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NOT_CHECKED",
+    "detail": "Classified as SI_REQUEST; no comparison needed.",
     "fields": [],
-    "classification_reason": "Sender provides SI and requests draft BL verification"
+    "classification_reason": "Rule: no attachments, and the body contains shipping instruction details (5 of 5 SI fields), so this is a new SI."
   },
   "email_278": {
     "email_id": "email_278",
@@ -4243,11 +4235,10 @@
   },
   "email_279": {
     "email_id": "email_279",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NOT_CHECKED",
+    "detail": "Classified as SI_REQUEST; no comparison needed.",
     "fields": [],
-    "classification_reason": "Sender provides SI and requests draft BL verification"
+    "classification_reason": "Rule: no attachments, and the body contains shipping instruction details (5 of 5 SI fields), so this is a new SI."
   },
   "email_280": {
     "email_id": "email_280",
@@ -4258,27 +4249,24 @@
   },
   "email_281": {
     "email_id": "email_281",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to check draft BL against SI"
   },
   "email_282": {
     "email_id": "email_282",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to check draft BL against SI"
   },
   "email_283": {
     "email_id": "email_283",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NOT_CHECKED",
+    "detail": "Classified as SI_REQUEST; no comparison needed.",
     "fields": [],
-    "classification_reason": "Sender provides SI and requests draft BL verification"
+    "classification_reason": "Rule: no attachments, and the body contains shipping instruction details (5 of 5 SI fields), so this is a new SI."
   },
   "email_284": {
     "email_id": "email_284",
@@ -4310,9 +4298,8 @@
   },
   "email_288": {
     "email_id": "email_288",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Request to check draft BL against SI"
   },
@@ -4340,9 +4327,8 @@
   },
   "email_292": {
     "email_id": "email_292",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Request to check draft BL for SI"
   },
@@ -4404,14 +4390,14 @@
       },
       {
         "field": "container_count",
-        "si": 1,
-        "bl": 1,
+        "si": "1 x 20'FCL",
+        "bl": "1 x 20'FCL",
         "result": "MATCH"
       },
       {
         "field": "gross_weight_kg",
-        "si": 21401,
-        "bl": 21401,
+        "si": "21,401 KG",
+        "bl": "21,401 KG",
         "result": "MATCH"
       }
     ],
@@ -4433,25 +4419,65 @@
   },
   "email_299": {
     "email_id": "email_299",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Request to check draft BL"
   },
   "email_300": {
     "email_id": "email_300",
-    "status": "NEEDS_REVIEW",
-    "reason": "wrong_doc_type",
-    "detail": "Extractor flagged: wrong_doc_type",
-    "fields": [],
+    "status": "MISMATCH",
+    "detail": "2 field(s) differ.",
+    "fields": [
+      {
+        "field": "shipper",
+        "si": "APRIL FAR EAST (M) SDN BHD",
+        "bl": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+        "result": "MISMATCH"
+      },
+      {
+        "field": "consignee",
+        "si": "SAFQA LIMITED",
+        "bl": "SAFQA LIMITED",
+        "result": "MATCH"
+      },
+      {
+        "field": "notify_party",
+        "si": "UAB NOVAKOPA",
+        "bl": "NAGAPPA EXPORTS",
+        "result": "MISMATCH"
+      },
+      {
+        "field": "port_of_loading",
+        "si": "NANTONG, CHINA",
+        "bl": "NANTONG, CHINA",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_discharge",
+        "si": "VALPARAISO, CHILE",
+        "bl": "VALPARAISO, CHILE",
+        "result": "MATCH"
+      },
+      {
+        "field": "container_count",
+        "si": 12,
+        "bl": 12,
+        "result": "MATCH"
+      },
+      {
+        "field": "gross_weight_kg",
+        "si": 243168,
+        "bl": 243168,
+        "result": "MATCH"
+      }
+    ],
     "classification_reason": "Attached SI and draft BL for confirmation and verification"
   },
   "email_301": {
     "email_id": "email_301",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Request to check draft BL"
   },
@@ -4479,9 +4505,8 @@
   },
   "email_305": {
     "email_id": "email_305",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Request to check draft BL"
   },
@@ -4499,8 +4524,8 @@
     "fields": [
       {
         "field": "shipper",
-        "si": "APRIL FINE PAPER TRADING",
-        "bl": "APRIL FINE PAPER TRADING",
+        "si": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "bl": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
         "result": "MATCH"
       },
       {
@@ -4529,14 +4554,14 @@
       },
       {
         "field": "container_count",
-        "si": 1,
-        "bl": 1,
+        "si": "1 x 40'HC",
+        "bl": "1 x 40'HC",
         "result": "MATCH"
       },
       {
         "field": "gross_weight_kg",
-        "si": 23869,
-        "bl": 23869,
+        "si": "23,869 KG",
+        "bl": "23,869 KG",
         "result": "MATCH"
       }
     ],
@@ -4551,9 +4576,8 @@
   },
   "email_309": {
     "email_id": "email_309",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Request to check draft BL"
   },
@@ -4659,17 +4683,15 @@
   },
   "email_318": {
     "email_id": "email_318",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Asking to send draft BL for checking"
   },
   "email_319": {
     "email_id": "email_319",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Asking to send draft BL for checking"
   },
@@ -4682,9 +4704,8 @@
   },
   "email_321": {
     "email_id": "email_321",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Asking to send draft BL for checking"
   },
@@ -4761,9 +4782,8 @@
   },
   "email_326": {
     "email_id": "email_326",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Asking to send draft BL for checking"
   },
@@ -4903,14 +4923,14 @@
       },
       {
         "field": "container_count",
-        "si": 5,
-        "bl": 5,
+        "si": "5 x 20'FCL",
+        "bl": "5 x 20'FCL",
         "result": "MATCH"
       },
       {
         "field": "gross_weight_kg",
-        "si": 109765,
-        "bl": 109765,
+        "si": "109,765 KG",
+        "bl": "109,765 KG",
         "result": "MATCH"
       }
     ],
@@ -4925,9 +4945,8 @@
   },
   "email_337": {
     "email_id": "email_337",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Explicitly asks to check and verify draft BL against SI"
   },
@@ -4954,9 +4973,8 @@
   },
   "email_341": {
     "email_id": "email_341",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Explicitly asks to send draft BL for checking"
   },
@@ -4967,8 +4985,8 @@
     "fields": [
       {
         "field": "shipper",
-        "si": "APRIL FINE PAPER TRADING",
-        "bl": "APRIL FINE PAPER TRADING",
+        "si": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "bl": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
         "result": "MATCH"
       },
       {
@@ -5012,9 +5030,8 @@
   },
   "email_343": {
     "email_id": "email_343",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Requests to send draft BL for checking"
   },
@@ -5048,14 +5065,14 @@
   },
   "email_348": {
     "email_id": "email_348",
-    "status": "MISMATCH",
-    "detail": "1 field(s) differ.",
+    "status": "OK",
+    "detail": "No mismatch detected.",
     "fields": [
       {
         "field": "shipper",
-        "si": "APRIL FINE PAPER TRADING",
+        "si": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
         "bl": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
-        "result": "MISMATCH"
+        "result": "MATCH"
       },
       {
         "field": "consignee",
@@ -5083,14 +5100,14 @@
       },
       {
         "field": "container_count",
-        "si": 15,
-        "bl": 15,
+        "si": "15 x 20'FCL",
+        "bl": "15 x 20'FCL",
         "result": "MATCH"
       },
       {
         "field": "gross_weight_kg",
-        "si": 334845,
-        "bl": 334845,
+        "si": "334,845 KG",
+        "bl": "334,845 KG",
         "result": "MATCH"
       }
     ],
@@ -5148,9 +5165,8 @@
   },
   "email_350": {
     "email_id": "email_350",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Requests to send draft BL for checking"
   },
@@ -5178,10 +5194,52 @@
   },
   "email_354": {
     "email_id": "email_354",
-    "status": "NEEDS_REVIEW",
-    "reason": "wrong_doc_type",
-    "detail": "Extractor flagged: wrong_doc_type",
-    "fields": [],
+    "status": "MISMATCH",
+    "detail": "2 field(s) differ.",
+    "fields": [
+      {
+        "field": "shipper",
+        "si": "APRIL FINE PAPER TRADING | ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "bl": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "result": "MATCH"
+      },
+      {
+        "field": "consignee",
+        "si": "HABRAS INTERNATIONAL LIMITED",
+        "bl": "HABRAS INTERNATIONAL LIMITED",
+        "result": "MATCH"
+      },
+      {
+        "field": "notify_party",
+        "si": "HABRAS INTERNATIONAL LIMITED",
+        "bl": "NAGAPPA EXPORTS",
+        "result": "MISMATCH"
+      },
+      {
+        "field": "port_of_loading",
+        "si": "RUGAO/NANTONG/SHANGHAI, CHINA",
+        "bl": "RUGAO/NANTONG/SHANGHAI, CHINA",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_discharge",
+        "si": "VALPARAISO, CHILE",
+        "bl": "VALPARAISO, CHILE",
+        "result": "MATCH"
+      },
+      {
+        "field": "container_count",
+        "si": 1,
+        "bl": 1,
+        "result": "MATCH"
+      },
+      {
+        "field": "gross_weight_kg",
+        "si": 20603,
+        "bl": 22603,
+        "result": "MISMATCH"
+      }
+    ],
     "classification_reason": "Requests to check SI and draft BL details and confirm"
   },
   "email_355": {
@@ -5297,8 +5355,8 @@
     "fields": [
       {
         "field": "shipper",
-        "si": "APRIL FINE PAPER TRADING",
-        "bl": "APRIL FINE PAPER TRADING",
+        "si": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "bl": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
         "result": "MATCH"
       },
       {
@@ -5361,8 +5419,8 @@
     "fields": [
       {
         "field": "shipper",
-        "si": "APRIL FINE PAPER TRADING",
-        "bl": "APRIL FINE PAPER TRADING",
+        "si": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "bl": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
         "result": "MATCH"
       },
       {
@@ -5604,14 +5662,14 @@
       },
       {
         "field": "container_count",
-        "si": 12,
-        "bl": 12,
+        "si": "12 x 20'FCL",
+        "bl": "12 x 20'FCL",
         "result": "MATCH"
       },
       {
         "field": "gross_weight_kg",
-        "si": 272232,
-        "bl": 272232,
+        "si": "272,232 KG",
+        "bl": "272,232 KG",
         "result": "MATCH"
       }
     ],
@@ -5626,9 +5684,8 @@
   },
   "email_381": {
     "email_id": "email_381",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Request to send draft BL for checking"
   },
@@ -5691,17 +5748,15 @@
   },
   "email_384": {
     "email_id": "email_384",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Request to send draft BL for checking"
   },
   "email_385": {
     "email_id": "email_385",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Request to send draft BL for checking"
   },
@@ -5747,8 +5802,8 @@
     "fields": [
       {
         "field": "shipper",
-        "si": "APRIL FINE PAPER TRADING",
-        "bl": "APRIL FINE PAPER TRADING",
+        "si": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "bl": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
         "result": "MATCH"
       },
       {
@@ -5834,10 +5889,52 @@
   },
   "email_398": {
     "email_id": "email_398",
-    "status": "NEEDS_REVIEW",
-    "reason": "wrong_doc_type",
-    "detail": "Extractor flagged: wrong_doc_type",
-    "fields": [],
+    "status": "OK",
+    "detail": "No mismatch detected.",
+    "fields": [
+      {
+        "field": "shipper",
+        "si": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+        "bl": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+        "result": "MATCH"
+      },
+      {
+        "field": "consignee",
+        "si": "EAST BRIGHT FZ-LLC",
+        "bl": "EAST BRIGHT FZ-LLC",
+        "result": "MATCH"
+      },
+      {
+        "field": "notify_party",
+        "si": "EAST BRIGHT FZ-LLC",
+        "bl": "EAST BRIGHT FZ-LLC",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_loading",
+        "si": "PORT KLANG (WESTPORT), MALAYSIA",
+        "bl": "PORT KLANG (WESTPORT), MALAYSIA",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_discharge",
+        "si": "PYEONGTAEK, SOUTH KOREA",
+        "bl": "PYEONGTAEK, SOUTH KOREA",
+        "result": "MATCH"
+      },
+      {
+        "field": "container_count",
+        "si": 3,
+        "bl": 3,
+        "result": "MATCH"
+      },
+      {
+        "field": "gross_weight_kg",
+        "si": 63954,
+        "bl": 63954,
+        "result": "MATCH"
+      }
+    ],
     "classification_reason": "Requests checking and confirmation of draft BL against SI"
   },
   "email_399": {
@@ -5856,9 +5953,8 @@
   },
   "email_401": {
     "email_id": "email_401",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Requests sending draft BL for checking"
   },
@@ -5890,8 +5986,8 @@
     "fields": [
       {
         "field": "shipper",
-        "si": "APRIL FINE PAPER TRADING",
-        "bl": "APRIL FINE PAPER TRADING",
+        "si": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "bl": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
         "result": "MATCH"
       },
       {
@@ -5985,14 +6081,14 @@
       },
       {
         "field": "container_count",
-        "si": 10,
-        "bl": 10,
+        "si": "10 x 40'HC",
+        "bl": "10 x 40'HC",
         "result": "MATCH"
       },
       {
         "field": "gross_weight_kg",
-        "si": 223290,
-        "bl": 223290,
+        "si": "223,290 KG",
+        "bl": "223,290 KG",
         "result": "MATCH"
       }
     ],
@@ -6200,9 +6296,8 @@
   },
   "email_419": {
     "email_id": "email_419",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Request to send draft BL for checking"
   },
@@ -6215,9 +6310,8 @@
   },
   "email_421": {
     "email_id": "email_421",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Request to send draft BL for checking"
   },
@@ -6230,17 +6324,15 @@
   },
   "email_423": {
     "email_id": "email_423",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Request to send draft BL for checking"
   },
   "email_424": {
     "email_id": "email_424",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Request to send draft BL for checking"
   },
@@ -6258,8 +6350,8 @@
     "fields": [
       {
         "field": "shipper",
-        "si": "APRIL FINE PAPER TRADING",
-        "bl": "APRIL FINE PAPER TRADING",
+        "si": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "bl": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
         "result": "MATCH"
       },
       {
@@ -6315,8 +6407,8 @@
     "fields": [
       {
         "field": "shipper",
-        "si": "APRIL FINE PAPER TRADING",
-        "bl": "APRIL FINE PAPER TRADING",
+        "si": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "bl": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
         "result": "MATCH"
       },
       {
@@ -6381,9 +6473,8 @@
   },
   "email_432": {
     "email_id": "email_432",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Request to send draft BL for checking"
   },
@@ -6412,9 +6503,8 @@
   },
   "email_436": {
     "email_id": "email_436",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to send draft BL for checking"
   },
@@ -6441,9 +6531,8 @@
   },
   "email_440": {
     "email_id": "email_440",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to send draft BL for checking"
   },
@@ -6456,9 +6545,8 @@
   },
   "email_442": {
     "email_id": "email_442",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to send draft BL for checking"
   },
@@ -6471,9 +6559,8 @@
   },
   "email_444": {
     "email_id": "email_444",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to send draft BL for checking"
   },
@@ -6486,25 +6573,22 @@
   },
   "email_446": {
     "email_id": "email_446",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to send draft BL for checking"
   },
   "email_447": {
     "email_id": "email_447",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to send draft BL for checking"
   },
   "email_448": {
     "email_id": "email_448",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to send draft BL for checking"
   },
@@ -6524,9 +6608,8 @@
   },
   "email_451": {
     "email_id": "email_451",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to send draft BL for checking"
   },
@@ -6589,9 +6672,8 @@
   },
   "email_454": {
     "email_id": "email_454",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to send draft BL for checking"
   },
@@ -6604,9 +6686,8 @@
   },
   "email_456": {
     "email_id": "email_456",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to send draft BL for checking"
   },
@@ -6626,9 +6707,8 @@
   },
   "email_459": {
     "email_id": "email_459",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to send draft BL for checking"
   },
@@ -6648,10 +6728,52 @@
   },
   "email_462": {
     "email_id": "email_462",
-    "status": "NEEDS_REVIEW",
-    "reason": "wrong_doc_type",
-    "detail": "Extractor flagged: wrong_doc_type",
-    "fields": [],
+    "status": "OK",
+    "detail": "No mismatch detected.",
+    "fields": [
+      {
+        "field": "shipper",
+        "si": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+        "bl": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+        "result": "MATCH"
+      },
+      {
+        "field": "consignee",
+        "si": "3S PAPER PRODUCTS SDN BHD",
+        "bl": "3S PAPER PRODUCTS SDN BHD",
+        "result": "MATCH"
+      },
+      {
+        "field": "notify_party",
+        "si": "ORIENT LINKS CO (LLC)",
+        "bl": "ORIENT LINKS CO (LLC)",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_loading",
+        "si": "BUATAN, INDONESIA",
+        "bl": "BUATAN, INDONESIA",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_discharge",
+        "si": "CONAKRY, GUINEA",
+        "bl": "CONAKRY, GUINEA",
+        "result": "MATCH"
+      },
+      {
+        "field": "container_count",
+        "si": 5,
+        "bl": 5,
+        "result": "MATCH"
+      },
+      {
+        "field": "gross_weight_kg",
+        "si": 116055,
+        "bl": 116055,
+        "result": "MATCH"
+      }
+    ],
     "classification_reason": "Sender requests verification that BL matches SI before release"
   },
   "email_463": {
@@ -6670,9 +6792,8 @@
   },
   "email_465": {
     "email_id": "email_465",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Request to send draft BL for checking"
   },
@@ -6727,14 +6848,14 @@
       },
       {
         "field": "container_count",
-        "si": 1,
-        "bl": 3,
+        "si": "1 x 40'HC",
+        "bl": "3 x 40'HC",
         "result": "MISMATCH"
       },
       {
         "field": "gross_weight_kg",
-        "si": 20456,
-        "bl": 20456,
+        "si": "20,456 KG",
+        "bl": "20,456 KG",
         "result": "MATCH"
       }
     ],
@@ -6834,9 +6955,8 @@
   },
   "email_476": {
     "email_id": "email_476",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Request to send draft BL for checking"
   },
@@ -6906,9 +7026,8 @@
   },
   "email_480": {
     "email_id": "email_480",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Request to send draft BL for checking"
   },
@@ -6922,9 +7041,8 @@
   },
   "email_482": {
     "email_id": "email_482",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Request to send draft BL for checking"
   },
@@ -6994,9 +7112,8 @@
   },
   "email_486": {
     "email_id": "email_486",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to send draft BL for checking"
   },
@@ -7087,9 +7204,8 @@
   },
   "email_493": {
     "email_id": "email_493",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Sender requests to send draft BL for checking"
   },
@@ -7145,18 +7261,59 @@
   },
   "email_495": {
     "email_id": "email_495",
-    "status": "NEEDS_REVIEW",
-    "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "status": "NO_DOCUMENTS",
+    "detail": "Request for a draft BL. No documents attached yet, so there is nothing to compare.",
     "fields": [],
     "classification_reason": "Request to send draft BL for checking"
   },
   "email_496": {
     "email_id": "email_496",
-    "status": "NEEDS_REVIEW",
-    "reason": "wrong_doc_type",
-    "detail": "Extractor flagged: wrong_doc_type",
-    "fields": [],
+    "status": "OK",
+    "detail": "No mismatch detected.",
+    "fields": [
+      {
+        "field": "shipper",
+        "si": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+        "bl": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+        "result": "MATCH"
+      },
+      {
+        "field": "consignee",
+        "si": "3S PAPER PRODUCTS SDN BHD",
+        "bl": "3S PAPER PRODUCTS SDN BHD",
+        "result": "MATCH"
+      },
+      {
+        "field": "notify_party",
+        "si": "3S PAPER PRODUCTS SDN BHD",
+        "bl": "3S PAPER PRODUCTS SDN BHD",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_loading",
+        "si": "NANTONG, CHINA",
+        "bl": "NANTONG, CHINA",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_discharge",
+        "si": "PYEONGTAEK, SOUTH KOREA",
+        "bl": "PYEONGTAEK, SOUTH KOREA",
+        "result": "MATCH"
+      },
+      {
+        "field": "container_count",
+        "si": 15,
+        "bl": 15,
+        "result": "MATCH"
+      },
+      {
+        "field": "gross_weight_kg",
+        "si": 328665,
+        "bl": 328665,
+        "result": "MATCH"
+      }
+    ],
     "classification_reason": "Sender attaches SI and draft BL for checking and confirmation"
   },
   "email_497": {
@@ -7173,8 +7330,8 @@
     "fields": [
       {
         "field": "shipper",
-        "si": "APRIL FINE PAPER TRADING",
-        "bl": "APRIL FINE PAPER TRADING",
+        "si": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "bl": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
         "result": "MATCH"
       },
       {
@@ -7275,7 +7432,7 @@
     "email_id": "email_506",
     "status": "NEEDS_REVIEW",
     "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "detail": "The sender says documents are attached (\"attachments\") but the email has no attachments.",
     "fields": [],
     "classification_reason": "Request to compare SI and draft BL for confirmation despite missing attachments"
   },
@@ -7291,7 +7448,7 @@
     "email_id": "email_508",
     "status": "NEEDS_REVIEW",
     "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "detail": "The sender says documents are attached (\"attachments\") but the email has no attachments.",
     "fields": [],
     "classification_reason": "Request to compare SI and draft BL for confirmation despite missing attachments"
   },
@@ -7307,60 +7464,186 @@
     "email_id": "email_510",
     "status": "NEEDS_REVIEW",
     "reason": "missing_attachment",
-    "detail": "Extractor flagged: missing_attachment",
+    "detail": "The sender says documents are attached (\"attachments\") but the email has no attachments.",
     "fields": [],
     "classification_reason": "Request to compare SI and draft BL for confirmation despite missing attachments"
   },
   "email_511": {
     "email_id": "email_511",
     "status": "NEEDS_REVIEW",
-    "reason": "wrong_doc_type",
-    "detail": "Extractor flagged: wrong_doc_type",
+    "reason": "unreadable",
+    "detail": "Extractor flagged: unreadable",
     "fields": [],
     "classification_reason": "Sender requests checking of attached SI and draft BL."
   },
   "email_512": {
     "email_id": "email_512",
-    "status": "NEEDS_REVIEW",
-    "reason": "wrong_doc_type",
-    "detail": "Extractor flagged: wrong_doc_type",
-    "fields": [],
+    "status": "OK",
+    "detail": "No mismatch detected.",
+    "fields": [
+      {
+        "field": "shipper",
+        "si": "APRIL FAR EAST (M) SDN BHD",
+        "bl": "APRIL FAR EAST (M) SDN BHD",
+        "result": "MATCH"
+      },
+      {
+        "field": "consignee",
+        "si": "AL GURG STATIONERY LLC",
+        "bl": "AL GURG STATIONERY LLC",
+        "result": "MATCH"
+      },
+      {
+        "field": "notify_party",
+        "si": "AL GURG STATIONERY LLC",
+        "bl": "AL GURG STATIONERY LLC",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_loading",
+        "si": "NHAVA SHEVA INDIA",
+        "bl": "NHAVA SHEVA, INDIA",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_discharge",
+        "si": "TUTICORIN INDIA",
+        "bl": "TUTICORIN, INDIA",
+        "result": "MATCH"
+      },
+      {
+        "field": "container_count",
+        "si": 6,
+        "bl": 6,
+        "result": "MATCH"
+      },
+      {
+        "field": "gross_weight_kg",
+        "si": 128544,
+        "bl": 128544,
+        "result": "MATCH"
+      }
+    ],
     "classification_reason": "Sender requests checking of attached SI and draft BL."
   },
   "email_513": {
     "email_id": "email_513",
-    "status": "NEEDS_REVIEW",
-    "reason": "wrong_doc_type",
-    "detail": "Extractor flagged: wrong_doc_type",
-    "fields": [],
-    "classification_reason": "Sender requests checking of attached SI and draft BL."
-  },
-  "email_514": {
-    "email_id": "email_514",
-    "status": "NEEDS_REVIEW",
-    "reason": "wrong_doc_type",
-    "detail": "Extractor flagged: wrong_doc_type",
-    "fields": [],
-    "classification_reason": "Sender requests checking of attached SI and draft BL."
-  },
-  "email_515": {
-    "email_id": "email_515",
-    "status": "NEEDS_REVIEW",
-    "reason": "wrong_doc_type",
-    "detail": "Extractor flagged: wrong_doc_type",
-    "fields": [],
-    "classification_reason": "Sender requests checking of attached SI and draft BL."
-  },
-  "email_516": {
-    "email_id": "email_516",
     "status": "MISMATCH",
-    "detail": "2 field(s) differ. Also could not read: gross_weight_kg",
+    "detail": "1 field(s) differ.",
     "fields": [
       {
         "field": "shipper",
         "si": "APRIL FINE PAPER TRADING",
         "bl": "APRIL FINE PAPER TRADING",
         "result": "MATCH"
+      },
+      {
+        "field": "consignee",
+        "si": "KPP-ANTALIS (SINGAPORE) PTE LTD",
+        "bl": "KPP-ANTALIS (SINGAPORE) PTE LTD",
+        "result": "MATCH"
+      },
+      {
+        "field": "notify_party",
+        "si": "EAST BRIGHTFZ-LLC",
+        "bl": "EAST BRIGHT FZ-LLC",
+        "result": "MISMATCH"
+      },
+      {
+        "field": "port_of_loading",
+        "si": "NHAVA SHEVA, INDIA",
+        "bl": "NHAVA SHEVA INDIA",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_discharge",
+        "si": "VALPARAISO, CHILE",
+        "bl": "VALPARAISO CHILE",
+        "result": "MATCH"
+      },
+      {
+        "field": "container_count",
+        "si": 10,
+        "bl": 10,
+        "result": "MATCH"
+      },
+      {
+        "field": "gross_weight_kg",
+        "si": 237750,
+        "bl": 237750,
+        "result": "MATCH"
+      }
+    ],
+    "classification_reason": "Sender requests checking of attached SI and draft BL."
+  },
+  "email_514": {
+    "email_id": "email_514",
+    "status": "OK",
+    "detail": "No mismatch detected.",
+    "fields": [
+      {
+        "field": "shipper",
+        "si": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+        "bl": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+        "result": "MATCH"
+      },
+      {
+        "field": "consignee",
+        "si": "EAST BRIGHT FZ-LLC",
+        "bl": "EAST BRIGHT FZ-LLC",
+        "result": "MATCH"
+      },
+      {
+        "field": "notify_party",
+        "si": "EAST BRIGHT FZ-LLC",
+        "bl": "EAST BRIGHT FZ-LLC",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_loading",
+        "si": "NANTONG, CHINA",
+        "bl": "NANTONG, CHINA",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_discharge",
+        "si": "GDANSK, POLAND",
+        "bl": "GDANSK, POLAND",
+        "result": "MATCH"
+      },
+      {
+        "field": "container_count",
+        "si": 1,
+        "bl": 1,
+        "result": "MATCH"
+      },
+      {
+        "field": "gross_weight_kg",
+        "si": 22825,
+        "bl": 22825,
+        "result": "MATCH"
+      }
+    ],
+    "classification_reason": "Sender requests checking of attached SI and draft BL."
+  },
+  "email_515": {
+    "email_id": "email_515",
+    "status": "NEEDS_REVIEW",
+    "reason": "unreadable",
+    "detail": "Extractor flagged: unreadable",
+    "fields": [],
+    "classification_reason": "Sender requests checking of attached SI and draft BL."
+  },
+  "email_516": {
+    "email_id": "email_516",
+    "status": "MISMATCH",
+    "detail": "1 field(s) differ. Also could not read: gross_weight_kg",
+    "fields": [
+      {
+        "field": "shipper",
+        "si": "APRIL FINE PAPER TRADING",
+        "bl": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "result": "MISMATCH"
       },
       {
         "field": "consignee",
@@ -7378,24 +7661,24 @@
         "field": "port_of_loading",
         "si": "NHAVA SHEVA, INDIA",
         "bl": "NHAVA SHEVA, INDIA (INNSA)",
-        "result": "MISMATCH"
+        "result": "MATCH"
       },
       {
         "field": "port_of_discharge",
         "si": "CONAKRY, GUINEA",
         "bl": "CONAKRY, GUINEA (GNCKY)",
-        "result": "MISMATCH"
+        "result": "MATCH"
       },
       {
         "field": "container_count",
-        "si": 10,
-        "bl": 10,
+        "si": "10 x 20'FCL",
+        "bl": "10 x 20'FCL",
         "result": "MATCH"
       },
       {
         "field": "gross_weight_kg",
-        "si": null,
-        "bl": 235550,
+        "si": "N/A",
+        "bl": "235,550 KG",
         "result": "MISSING"
       }
     ],
@@ -7403,8 +7686,8 @@
   },
   "email_517": {
     "email_id": "email_517",
-    "status": "MISMATCH",
-    "detail": "1 field(s) differ. Also could not read: port_of_discharge",
+    "status": "NEEDS_REVIEW",
+    "detail": "Value not found for: port_of_loading, port_of_discharge",
     "fields": [
       {
         "field": "shipper",
@@ -7428,7 +7711,7 @@
         "field": "port_of_loading",
         "si": "____MT",
         "bl": "SINGAPORE (SGSIN)",
-        "result": "MISMATCH"
+        "result": "MISSING"
       },
       {
         "field": "port_of_discharge",
@@ -7449,6 +7732,7 @@
         "result": "MATCH"
       }
     ],
+    "reason": "missing_value",
     "classification_reason": "Sender requests comparison of SI and draft BL."
   },
   "email_518": {
@@ -7459,8 +7743,8 @@
       {
         "field": "shipper",
         "si": "APRIL FINE PAPER TRADING",
-        "bl": "APRIL FINE PAPER TRADING",
-        "result": "MATCH"
+        "bl": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "result": "MISMATCH"
       },
       {
         "field": "consignee",
@@ -7478,7 +7762,7 @@
         "field": "port_of_loading",
         "si": "NANTONG, CHINA",
         "bl": "NANTONG, CHINA (CNNTG)",
-        "result": "MISMATCH"
+        "result": "MATCH"
       },
       {
         "field": "port_of_discharge",
@@ -7503,8 +7787,8 @@
   },
   "email_519": {
     "email_id": "email_519",
-    "status": "MISMATCH",
-    "detail": "2 field(s) differ. Also could not read: shipper, container_count",
+    "status": "NEEDS_REVIEW",
+    "detail": "Value not found for: shipper, container_count",
     "fields": [
       {
         "field": "shipper",
@@ -7528,13 +7812,13 @@
         "field": "port_of_loading",
         "si": "BUATAN, INDONESIA",
         "bl": "BUATAN, INDONESIA (IDBUA)",
-        "result": "MISMATCH"
+        "result": "MATCH"
       },
       {
         "field": "port_of_discharge",
         "si": "BUSAN, SOUTH KOREA",
         "bl": "BUSAN, SOUTH KOREA (KRPUS)",
-        "result": "MISMATCH"
+        "result": "MATCH"
       },
       {
         "field": "container_count",
@@ -7549,18 +7833,19 @@
         "result": "MATCH"
       }
     ],
+    "reason": "missing_value",
     "classification_reason": "Sender requests comparison of SI and draft BL."
   },
   "email_520": {
     "email_id": "email_520",
     "status": "MISMATCH",
-    "detail": "2 field(s) differ. Also could not read: consignee",
+    "detail": "1 field(s) differ. Also could not read: consignee",
     "fields": [
       {
         "field": "shipper",
         "si": "APRIL FINE PAPER TRADING",
-        "bl": "APRIL FINE PAPER TRADING",
-        "result": "MATCH"
+        "bl": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "result": "MISMATCH"
       },
       {
         "field": "consignee",
@@ -7578,13 +7863,13 @@
         "field": "port_of_loading",
         "si": "SINGAPORE",
         "bl": "SINGAPORE (SGSIN)",
-        "result": "MISMATCH"
+        "result": "MATCH"
       },
       {
         "field": "port_of_discharge",
         "si": "PYEONGTAEK, SOUTH KOREA",
         "bl": "PYEONGTAEK, SOUTH KOREA (KRPTK)",
-        "result": "MISMATCH"
+        "result": "MATCH"
       },
       {
         "field": "container_count",

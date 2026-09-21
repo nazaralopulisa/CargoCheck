@@ -8,10 +8,12 @@
       "notify_party": "CLIFFORD PAPER INC",
       "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA (CNSHA)",
       "port_of_discharge": "APAPA, NIGERIA (NGAPP)",
-      "container_count": 4,
-      "gross_weight_kg": 91524
+      "container_count": "4 x 20'GP",
+      "gross_weight_kg": "91,524 KG"
     },
-    "source_file": "attachments/email_111_SI.txt"
+    "source_file": "attachments/email_111_SI.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "bl": {
     "doc_type_detected": "BL",
@@ -21,13 +23,15 @@
       "notify_party": "CLIFFORD PAPER INC",
       "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA (CNSHA)",
       "port_of_discharge": "APAPA, NIGERIA (NGAPP)",
-      "container_count": 3,
-      "gross_weight_kg": 91524
+      "container_count": "3 x 20'GP",
+      "gross_weight_kg": "91,524 KG"
     },
-    "source_file": "attachments/email_111_BL.txt"
+    "source_file": "attachments/email_111_BL.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "other_documents": [],
   "extraction_issues": [],
-  "method": "llm",
+  "method": "rules",
   "needs_llm": false
 }

@@ -8,10 +8,12 @@
       "notify_party": "CLIFFORD PAPER INC",
       "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA (CNSHA)",
       "port_of_discharge": "SAVANNAH, US (USSAV)",
-      "container_count": 1,
-      "gross_weight_kg": 20065
+      "container_count": "1 x 20'GP",
+      "gross_weight_kg": "20,065 KG"
     },
-    "source_file": "attachments/email_197_SI.txt"
+    "source_file": "attachments/email_197_SI.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "bl": {
     "doc_type_detected": "BL",
@@ -21,13 +23,15 @@
       "notify_party": "CLIFFORD PAPER INC",
       "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA (CNSHA)",
       "port_of_discharge": "SAVANNAH, US (USSAV)",
-      "container_count": 1,
-      "gross_weight_kg": 20065
+      "container_count": "1 x 20'GP",
+      "gross_weight_kg": "20,065 KG"
     },
-    "source_file": "attachments/email_197_BL.txt"
+    "source_file": "attachments/email_197_BL.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "other_documents": [],
   "extraction_issues": [],
-  "method": "llm",
+  "method": "rules",
   "needs_llm": false
 }

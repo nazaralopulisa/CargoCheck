@@ -3,7 +3,7 @@
   "si": {
     "doc_type_detected": "SI",
     "fields": {
-      "shipper": "APRIL FINE PAPER TRADING",
+      "shipper": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
       "consignee": "PACIFIC OFFICE (M) SDN BHD",
       "notify_party": "PACIFIC OFFICE (M) SDN BHD",
       "port_of_loading": "BUATAN, INDONESIA (IDBUA)",
@@ -16,7 +16,7 @@
   "bl": {
     "doc_type_detected": "BL",
     "fields": {
-      "shipper": "APRIL FINE PAPER TRADING",
+      "shipper": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
       "consignee": "PACIFIC OFFICE (M) SDN BHD",
       "notify_party": "PACIFIC OFFICE (M) SDN BHD",
       "port_of_loading": "BUATAN, INDONESIA (IDBUA)",

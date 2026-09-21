@@ -1,38 +1,33 @@
 {
   "email_id": "email_462",
-  "si": null,
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+      "consignee": "3S PAPER PRODUCTS SDN BHD",
+      "notify_party": "ORIENT LINKS CO (LLC)",
+      "port_of_loading": "BUATAN, INDONESIA",
+      "port_of_discharge": "CONAKRY, GUINEA",
+      "container_count": 5,
+      "gross_weight_kg": 116055
+    },
+    "source_file": "attachments/email_462_SI.xlsx"
+  },
   "bl": {
     "doc_type_detected": "BL",
     "fields": {
-      "shipper": null,
-      "consignee": null,
-      "notify_party": null,
-      "port_of_loading": null,
-      "port_of_discharge": null,
-      "container_count": null,
-      "gross_weight_kg": null
+      "shipper": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+      "consignee": "3S PAPER PRODUCTS SDN BHD",
+      "notify_party": "ORIENT LINKS CO (LLC)",
+      "port_of_loading": "BUATAN, INDONESIA",
+      "port_of_discharge": "CONAKRY, GUINEA",
+      "container_count": 5,
+      "gross_weight_kg": 116055
     },
     "source_file": "attachments/email_462_BL.docx"
   },
-  "other_documents": [
-    {
-      "doc_type_detected": "OTHER",
-      "fields": {
-        "shipper": null,
-        "consignee": null,
-        "notify_party": null,
-        "port_of_loading": null,
-        "port_of_discharge": null,
-        "container_count": null,
-        "gross_weight_kg": null
-      },
-      "source_file": "attachments/email_462_SI.xlsx"
-    }
-  ],
-  "extraction_issues": [
-    "attachments/email_462_SI.xlsx was detected as OTHER, not a usable SI/BL",
-    "No SI found"
-  ],
+  "other_documents": [],
+  "extraction_issues": [],
   "method": "llm",
   "needs_llm": false
 }

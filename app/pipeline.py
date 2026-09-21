@@ -17,6 +17,11 @@ Usage (from the CargoCheck folder):
     python app/pipeline.py --skip-extraction --submit       # classification-only baseline
     python app/pipeline.py --only email_009                 # one email, for debugging
 
+Comparison emails with NO attachments are never extracted. Instead:
+    - SI details written in the body            -> reclassified as SI_REQUEST
+    - body says documents are attached, but none -> NEEDS_REVIEW (missing_attachment)
+    - just asking for a draft BL                 -> OK, nothing to compare yet
+
 Extraction results are cached in output/extractions/, so reruns only do emails
 not yet extracted, or rule results still waiting for the LLM. Every scored run
 is logged to output/score_log.csv with your note.
@@ -40,7 +45,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+import re  # noqa: E402
+
 from comparer import compare_email, format_report  # noqa: E402
+from doc_reader import SmartInbox  # noqa: E402
 from rule_extractor import extract_email as rule_extract_email, is_confident  # noqa: E402
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -153,6 +161,58 @@ def run_extraction(inbox, email, rules_only, attempts=3):
     result["llm_error"] = error          # keep the rules result, visibly marked
     save_extraction(eid, result)
     return result
+
+
+# --- Step 1b: comparison emails that have no attachments ---------------------
+
+BANNER = re.compile(r"^\s*WARNING:.*?originated outside.*?(\n\s*\n|$)", re.I | re.S)
+QUOTED_REPLY = re.compile(r"\n\s*(_{5,}|-{5,}\s*Original Message|From:\s.*\n\s*Sent:)", re.I)
+CLAIMS_ATTACHMENT = re.compile(r"\b(attach\w*|enclos\w*|please find|pfa|herewith)\b", re.I)
+SI_LABELS = [r"\bPOL\b|port of loading", r"\bPOD\b|port of discharge",
+             r"\bshipper\b", r"\bconsignee\b", r"notify party"]
+
+
+def new_message_text(email):
+    """The sender's own words: security banner removed, quoted older replies cut off."""
+    body = BANNER.sub("", email.get("body", ""), count=1)
+    return QUOTED_REPLY.split(body, maxsplit=1)[0]
+
+
+def has_attachments(email):
+    return bool(email.get("attachments"))
+
+
+def refine_category(email, category):
+    """Fix a known pattern the classifier gets wrong: shipping instructions typed
+    into the email body (no attachments) are a new SI, not a BL check."""
+    if category != "BL_COMPARISON" or has_attachments(email):
+        return category, None
+    text = new_message_text(email)
+    hits = sum(bool(re.search(p, text, re.I)) for p in SI_LABELS)
+    if hits >= 3:
+        return "SI_REQUEST", (f"Rule: no attachments, and the body contains shipping "
+                              f"instruction details ({hits} of 5 SI fields), so this is a new SI.")
+    return category, None
+
+
+def no_attachment_result(email_id, email):
+    """Comparison email with nothing attached: escalate only if the sender says
+    something was attached; otherwise it's a request for a draft BL."""
+    text = new_message_text(email)
+    claim = CLAIMS_ATTACHMENT.search(text)
+    if claim:
+        entry = {"category": "BL_COMPARISON", "status": "NEEDS_REVIEW",
+                 "review_reason": "missing_attachment", "has_defect": False, "defect_fields": []}
+        report = {"email_id": email_id, "status": "NEEDS_REVIEW", "reason": "missing_attachment",
+                  "detail": f'The sender says documents are attached ("{claim.group(0)}") '
+                            f"but the email has no attachments.", "fields": []}
+    else:
+        entry = {"category": "BL_COMPARISON", "status": "OK",
+                 "review_reason": None, "has_defect": False, "defect_fields": []}
+        report = {"email_id": email_id, "status": "NO_DOCUMENTS",
+                  "detail": "Request for a draft BL. No documents attached yet, so there is "
+                            "nothing to compare.", "fields": []}
+    return entry, report
 
 
 # --- Step 2: translate extractor output into comparer input -----------------
@@ -289,7 +349,7 @@ def main():
 
     classifications = json.loads(CLASSIFICATIONS_FILE.read_text())
 
-    inbox = Inbox(DATA_DIR)
+    inbox = SmartInbox(Inbox(DATA_DIR), DATA_DIR)  # reads PDF, Word, Excel and scans too
     emails = {e["email_id"]: e for e in inbox}
     if args.only:
         emails = {args.only: emails[args.only]}
@@ -299,12 +359,22 @@ def main():
         print(f"WARNING: {len(missing_class)} emails have no classification, "
               f"treated as GENERAL: {missing_class[:10]}")
 
+    categories, rule_notes = {}, {}
+    for eid, email in emails.items():
+        original = classifications.get(eid, {}).get("category") or "GENERAL"
+        categories[eid], note = refine_category(email, original)
+        if note:
+            rule_notes[eid] = note
+    if rule_notes:
+        print(f"Reclassified by rule: {len(rule_notes)} emails -> {sorted(rule_notes)}")
+
     def category_of(eid):
-        return classifications.get(eid, {}).get("category") or "GENERAL"
+        return categories[eid]
 
     # Extract BL_COMPARISON emails that are not cached yet
     extractions = {}
-    to_compare = [eid for eid in emails if category_of(eid) == "BL_COMPARISON"]
+    to_compare = [eid for eid in emails
+                  if category_of(eid) == "BL_COMPARISON" and has_attachments(emails[eid])]
 
     if not args.skip_extraction:
         todo = []
@@ -338,7 +408,9 @@ def main():
     for eid in sorted(emails):
         category = category_of(eid)
 
-        if category == "BL_COMPARISON" and args.skip_extraction:
+        if category == "BL_COMPARISON" and not has_attachments(emails[eid]):
+            entry, report = no_attachment_result(eid, emails[eid])
+        elif category == "BL_COMPARISON" and args.skip_extraction:
             entry, report = compare_email({"email_id": eid, "category": "GENERAL"})
             entry["category"] = "BL_COMPARISON"
         elif category == "BL_COMPARISON" and "processing_error" in extractions.get(eid, {}):
@@ -352,7 +424,8 @@ def main():
         else:
             entry, report = compare_email({"email_id": eid, "category": category})
 
-        report["classification_reason"] = classifications.get(eid, {}).get("reason")
+        report["classification_reason"] = (rule_notes.get(eid)
+                                           or classifications.get(eid, {}).get("reason"))
         submission[eid] = entry
         reports[eid] = report
 

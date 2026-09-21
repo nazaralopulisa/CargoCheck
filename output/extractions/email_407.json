@@ -1,40 +1,37 @@
 {
   "email_id": "email_407",
   "si": null,
-  "bl": null,
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+      "consignee": "NAGAPPA EXPORTS",
+      "notify_party": "NAGAPPA EXPORTS",
+      "port_of_loading": "NHAVA SHEVA, INDIA",
+      "port_of_discharge": "YANGON, MYANMAR",
+      "container_count": 12,
+      "gross_weight_kg": 285720
+    },
+    "source_file": "attachments/email_407_SI.pdf"
+  },
   "other_documents": [
     {
-      "doc_type_detected": "OTHER",
+      "doc_type_detected": "BL",
       "fields": {
-        "shipper": null,
-        "consignee": null,
-        "notify_party": null,
-        "port_of_loading": null,
-        "port_of_discharge": null,
-        "container_count": null,
-        "gross_weight_kg": null
-      },
-      "source_file": "attachments/email_407_SI.pdf"
-    },
-    {
-      "doc_type_detected": "OTHER",
-      "fields": {
-        "shipper": null,
-        "consignee": null,
-        "notify_party": null,
-        "port_of_loading": null,
-        "port_of_discharge": null,
-        "container_count": null,
-        "gross_weight_kg": null
+        "shipper": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "consignee": "NAGAPPA EXPORTS",
+        "notify_party": "NAGAPPA EXPORTS",
+        "port_of_loading": "NHAVA SHEVA, INDIA",
+        "port_of_discharge": "YANGON, MYANMAR",
+        "container_count": 12,
+        "gross_weight_kg": 285720
       },
       "source_file": "attachments/email_407_BL.pdf"
     }
   ],
   "extraction_issues": [
-    "attachments/email_407_SI.pdf was detected as OTHER, not a usable SI/BL",
-    "attachments/email_407_BL.pdf was detected as OTHER, not a usable SI/BL",
-    "No SI found",
-    "No BL found"
+    "attachments/email_407_BL.pdf was detected as BL, not a usable SI/BL",
+    "No SI found"
   ],
   "method": "llm",
   "needs_llm": false

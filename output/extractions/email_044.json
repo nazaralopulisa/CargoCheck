@@ -8,26 +8,30 @@
       "notify_party": "SAFQA LIMITED",
       "port_of_loading": "BUATAN, INDONESIA (IDBUA)",
       "port_of_discharge": "APAPA, NIGERIA (NGAPP)",
-      "container_count": 2,
-      "gross_weight_kg": 47192
+      "container_count": "2 x 40'HC",
+      "gross_weight_kg": "47,192 KG"
     },
-    "source_file": "attachments/email_044_SI.txt"
+    "source_file": "attachments/email_044_SI.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "bl": {
     "doc_type_detected": "BL",
     "fields": {
-      "shipper": "APRIL FINE PAPER TRADING",
+      "shipper": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
       "consignee": "SAFQA LIMITED",
       "notify_party": "SAFQA LIMITED",
       "port_of_loading": "BUATAN, INDONESIA (IDBUA)",
       "port_of_discharge": "APAPA, NIGERIA (NGAPP)",
-      "container_count": 2,
-      "gross_weight_kg": 47192
+      "container_count": "2 x 40'HC",
+      "gross_weight_kg": "47,192 KG"
     },
-    "source_file": "attachments/email_044_BL.txt"
+    "source_file": "attachments/email_044_BL.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "other_documents": [],
   "extraction_issues": [],
-  "method": "llm",
+  "method": "rules",
   "needs_llm": false
 }

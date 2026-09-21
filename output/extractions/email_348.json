@@ -3,15 +3,17 @@
   "si": {
     "doc_type_detected": "SI",
     "fields": {
-      "shipper": "APRIL FINE PAPER TRADING",
+      "shipper": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
       "consignee": "ORIENT LINKS CO (LLC)",
       "notify_party": "INTERNATIONAL FOREST PRODUCTS LLC",
       "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA (CNSHA)",
       "port_of_discharge": "JEBEL ALI, UAE (AEJEA)",
-      "container_count": 15,
-      "gross_weight_kg": 334845
+      "container_count": "15 x 20'FCL",
+      "gross_weight_kg": "334,845 KG"
     },
-    "source_file": "attachments/email_348_SI.txt"
+    "source_file": "attachments/email_348_SI.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "bl": {
     "doc_type_detected": "BL",
@@ -21,13 +23,15 @@
       "notify_party": "INTERNATIONAL FOREST PRODUCTS LLC",
       "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA (CNSHA)",
       "port_of_discharge": "JEBEL ALI, UAE (AEJEA)",
-      "container_count": 15,
-      "gross_weight_kg": 334845
+      "container_count": "15 x 20'FCL",
+      "gross_weight_kg": "334,845 KG"
     },
-    "source_file": "attachments/email_348_BL.txt"
+    "source_file": "attachments/email_348_BL.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "other_documents": [],
   "extraction_issues": [],
-  "method": "llm",
+  "method": "rules",
   "needs_llm": false
 }

@@ -8,10 +8,12 @@
       "notify_party": "ROXCEL TRADING GMBH",
       "port_of_loading": "NANTONG, CHINA (CNNTG)",
       "port_of_discharge": "HOUSTON, US (USHOU)",
-      "container_count": 12,
-      "gross_weight_kg": 272232
+      "container_count": "12 x 20'FCL",
+      "gross_weight_kg": "272,232 KG"
     },
-    "source_file": "attachments/email_379_SI.txt"
+    "source_file": "attachments/email_379_SI.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "bl": {
     "doc_type_detected": "BL",
@@ -21,13 +23,15 @@
       "notify_party": "ROXCEL TRADING GMBH",
       "port_of_loading": "NANTONG, CHINA (CNNTG)",
       "port_of_discharge": "HOUSTON, US (USHOU)",
-      "container_count": 12,
-      "gross_weight_kg": 272232
+      "container_count": "12 x 20'FCL",
+      "gross_weight_kg": "272,232 KG"
     },
-    "source_file": "attachments/email_379_BL.txt"
+    "source_file": "attachments/email_379_BL.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "other_documents": [],
   "extraction_issues": [],
-  "method": "llm",
+  "method": "rules",
   "needs_llm": false
 }

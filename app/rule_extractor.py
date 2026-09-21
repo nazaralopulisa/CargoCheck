@@ -17,6 +17,10 @@ Traps handled on purpose (found by surveying the real attachments):
     so they are NOT labels and don't cut a consignee value short
   - longest label wins: "Notify Party/Intermediate Consignee" is notify_party,
     not consignee
+  - labels with extra non-English text still count: "Gross Weight毛重(KGS):"
+  - company names that continue on the next line are joined consistently:
+    "APRIL FINE PAPER TRADING" + "ON BEHALF OF VITAL SOLUTIONS PTE LTD; 77 ROBINSON..."
+    -> "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD"
 """
 
 import io
@@ -59,7 +63,10 @@ OTHER_LABELS = [
 
 _ALL = [(f, p) for f, pats in FIELD_LABELS.items() for p in pats] + [(None, p) for p in OTHER_LABELS]
 _ALL.sort(key=lambda fp: len(fp[1]), reverse=True)          # longest label first
-LABEL_RE = re.compile(r"(?<![A-Za-z])(" + "|".join(p for _, p in _ALL) + r")\s*:", re.I)
+# After the label we allow extra non-English text and a unit in brackets before
+# the colon, e.g. "Gross Weight毛重(KGS):". Only the English label is captured.
+LABEL_RE = re.compile(r"(?<![A-Za-z])(" + "|".join(p for _, p in _ALL) + r")"
+                      r"(?:\s*[^\x00-\x7F]+)?(?:\s*\([^)]*\))?\s*:", re.I)
 _COMPILED = [(f, re.compile(p + r"$", re.I)) for f, p in _ALL]
 
 # Document titles. "Bill of Lading No." is a LABEL, not a title, so it's excluded.
@@ -156,6 +163,39 @@ def first_piece(value):
     return None
 
 
+PARTY_FIELDS = {"shipper", "consignee", "notify_party"}
+NAME_CONTINUATION = re.compile(r"^(ON BEHALF OF|FOR AND ON BEHALF|C/O|A/C|\()", re.I)
+COMPANY_SUFFIX = re.compile(
+    r"\b(LTD|LIMITED|PTE|SDN BHD|BHD|FZE|FZCO|FZ-LLC|LLC|INC|CORP|GMBH|CO)\b", re.I)
+
+
+def party_name(value):
+    """Company name, including a second line when it continues the name.
+
+    Values look like:  NAME            (first line)
+                         CONTINUATION; ADDRESS; ADDRESS   (indented next line)
+    or the same thing flattened onto one line with wide gaps between the parts.
+    The continuation is kept only if it reads like part of a name
+    ("ON BEHALF OF ...", "(MIDDLE EAST) FZE"), never an address.
+    """
+    pieces = []
+    for line in value.splitlines():
+        for chunk in re.split(r"\s{2,}", line.strip()):
+            if chunk.strip(" ;,"):
+                pieces.append(chunk.strip())
+    if not pieces:
+        return None
+
+    name = pieces[0].split(";")[0].strip(" ;,")
+    if ";" in pieces[0] or len(pieces) < 2:
+        return name or None                 # name ended at ";" or there is nothing after it
+
+    nxt = pieces[1].split(";")[0].strip(" ;,")
+    looks_like_name = NAME_CONTINUATION.match(nxt) or (
+        COMPANY_SUFFIX.search(nxt) and not re.search(r"\d", nxt))
+    return f"{name} {nxt}" if looks_like_name else name
+
+
 def extract_fields(text):
     matches = list(LABEL_RE.finditer(text))
     fields = {f: None for f in FIELDS}
@@ -164,7 +204,8 @@ def extract_fields(text):
         if field is None or fields[field] is not None:       # first occurrence wins
             continue
         end = matches[i + 1].start() if i + 1 < len(matches) else len(text)
-        fields[field] = first_piece(text[m.end():end])
+        raw = text[m.end():end]
+        fields[field] = party_name(raw) if field in PARTY_FIELDS else first_piece(raw)
     return fields
 
 
@@ -323,6 +364,32 @@ Freight: PREPAID
                 r6["si"] is not None and r6["bl"] is not None)]
     r4 = extract_email(inbox, {"email_id": "e4", "attachments": []})
     checks += [("no attachments -> not confident", not is_confident(r4))]
+
+    # real layouts found in the data (email_044-style SI/BL, flattened text, Chinese label)
+    bl044 = """BILL OF LADING (DRAFT)
+Shipper/Exporter: APRIL FINE PAPER TRADING
+  ON BEHALF OF VITAL SOLUTIONS PTE LTD; 77 ROBINSON ROAD, #21-01; SINGAPORE 068896
+CONSIGNEE: SAFQA LIMITED
+  P.O. BOX 99423-80100; TONONOKA ROAD; MOMBASA, KENYA; PIN NO.: P051376597X
+Notify Party: SAFQA LIMITED
+Gross Weight毛重(KGS): 47,192 KG
+Ocean Vessel: INDO SUKSES 65 V.51NW1
+"""
+    f044 = extract_fields(bl044)
+    flat044 = extract_fields(" ".join(bl044.split("\n")).replace("TRADING ", "TRADING   ", 1))
+    me = extract_fields("Shipper: APRIL FINE PAPER TRADING\n  (MIDDLE EAST) FZE; #813, 4 EA, DUBAI\nFreight: X")
+    kr = extract_fields("Consignee: MOORIM SP CO., LTD\n  656, GANGNAM-DAERO, GANGNAM-GU; SEOUL\nFreight: X")
+    checks += [
+        ("name continued on next line is joined",
+         f044["shipper"] == "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD"),
+        ("same name when flattened onto one line",
+         flat044["shipper"] == "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD"),
+        ("'(MIDDLE EAST) FZE' continuation joined",
+         me["shipper"] == "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE"),
+        ("P.O. BOX address not joined", f044["consignee"] == "SAFQA LIMITED"),
+        ("street address not joined", kr["consignee"] == "MOORIM SP CO., LTD"),
+        ("label with Chinese text still read", f044["gross_weight_kg"] == "47,192 KG"),
+    ]
 
     for name, ok in checks:
         print(f"{'PASS' if ok else 'FAIL'}  {name}")

@@ -2,3 +2,4 @@ time,final,class_f1,defect_f1,e2e,escalation_recall,note
 2026-09-21 13:37,0.0959,0.320,0.000,0/46,0.000,"43 emails done, rest placeholder"
 2026-09-21 14:21,0.6297,0.990,0.740,17/46,0.750,"rule-based extraction, no LLM"
 2026-09-21 14:35,0.6272,0.990,0.727,17/46,0.750,
+2026-09-21 15:22,0.6738,0.995,0.789,20/46,0.700,name continuation + non-English labels + PDF/Word/Excel + no-attachment rules

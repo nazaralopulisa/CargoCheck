@@ -3,31 +3,35 @@
   "si": {
     "doc_type_detected": "SI",
     "fields": {
-      "shipper": "APRIL FINE PAPER TRADING",
+      "shipper": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
       "consignee": "ORIENT LINKS CO (LLC)",
       "notify_party": "ORIENT LINKS CO (LLC)",
       "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA (CNSHA)",
       "port_of_discharge": "CONAKRY, GUINEA (GNCKY)",
-      "container_count": 5,
-      "gross_weight_kg": 103800
+      "container_count": "5 x 20'GP",
+      "gross_weight_kg": "103,800 KG"
     },
-    "source_file": "attachments/email_064_SI.txt"
+    "source_file": "attachments/email_064_SI.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "bl": {
     "doc_type_detected": "BL",
     "fields": {
-      "shipper": "APRIL FINE PAPER TRADING",
+      "shipper": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
       "consignee": "ORIENT LINKS CO (LLC)",
       "notify_party": "ORIENT LINKS CO (LLC)",
       "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA (CNSHA)",
       "port_of_discharge": "CONAKRY, GUINEA (GNCKY)",
-      "container_count": 5,
-      "gross_weight_kg": 103800
+      "container_count": "5 x 20'GP",
+      "gross_weight_kg": "103,800 KG"
     },
-    "source_file": "attachments/email_064_BL.txt"
+    "source_file": "attachments/email_064_BL.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "other_documents": [],
   "extraction_issues": [],
-  "method": "llm",
+  "method": "rules",
   "needs_llm": false
 }

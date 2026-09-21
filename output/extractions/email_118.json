@@ -3,31 +3,35 @@
   "si": {
     "doc_type_detected": "SI",
     "fields": {
-      "shipper": "APRIL FINE PAPER TRADING",
+      "shipper": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
       "consignee": "EAST BRIGHT FZ-LLC",
       "notify_party": "EAST BRIGHT FZ-LLC",
       "port_of_loading": "BUATAN, INDONESIA (IDBUA)",
       "port_of_discharge": "LONG BEACH, US (USLGB)",
-      "container_count": 3,
-      "gross_weight_kg": 67668
+      "container_count": "3 x 40'HC",
+      "gross_weight_kg": "67,668 KG"
     },
-    "source_file": "attachments/email_118_SI.txt"
+    "source_file": "attachments/email_118_SI.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "bl": {
     "doc_type_detected": "BL",
     "fields": {
-      "shipper": "APRIL FINE PAPER TRADING",
+      "shipper": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
       "consignee": "EAST BRIGHT FZ-LLC",
       "notify_party": "EAST BRIGHT FZ-LLC",
       "port_of_loading": "BUATAN, INDONESIA (IDBUA)",
       "port_of_discharge": "LONG BEACH, US (USLGB)",
-      "container_count": 3,
-      "gross_weight_kg": 67668
+      "container_count": "3 x 40'HC",
+      "gross_weight_kg": "67,668 KG"
     },
-    "source_file": "attachments/email_118_BL.txt"
+    "source_file": "attachments/email_118_BL.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "other_documents": [],
   "extraction_issues": [],
-  "method": "llm",
+  "method": "rules",
   "needs_llm": false
 }

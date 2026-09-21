@@ -8,10 +8,12 @@
       "notify_party": "3S PAPER PRODUCTS SDN BHD",
       "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
       "port_of_discharge": "CALLAO, PERU (PECLL)",
-      "container_count": 6,
-      "gross_weight_kg": 132516
+      "container_count": "6 x 20'GP",
+      "gross_weight_kg": "132,516 KG"
     },
-    "source_file": "attachments/email_178_SI.txt"
+    "source_file": "attachments/email_178_SI.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "bl": {
     "doc_type_detected": "BL",
@@ -21,13 +23,15 @@
       "notify_party": "3S PAPER PRODUCTS SDN BHD",
       "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
       "port_of_discharge": "CALLAO, PERU (PECLL)",
-      "container_count": 7,
-      "gross_weight_kg": 132516
+      "container_count": "7 x 20'GP",
+      "gross_weight_kg": "132,516 KG"
     },
-    "source_file": "attachments/email_178_BL.txt"
+    "source_file": "attachments/email_178_BL.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "other_documents": [],
   "extraction_issues": [],
-  "method": "llm",
+  "method": "rules",
   "needs_llm": false
 }

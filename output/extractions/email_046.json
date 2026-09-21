@@ -8,10 +8,12 @@
       "notify_party": "TOPKOPY MIDDLE EAST FZE",
       "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
       "port_of_discharge": "SAVANNAH, US (USSAV)",
-      "container_count": 12,
-      "gross_weight_kg": 257340
+      "container_count": "12 x 20'FCL",
+      "gross_weight_kg": "257,340 KG"
     },
-    "source_file": "attachments/email_046_SI.txt"
+    "source_file": "attachments/email_046_SI.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "bl": {
     "doc_type_detected": "BL",
@@ -21,13 +23,15 @@
       "notify_party": "MOORIM SP CO., LTD",
       "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
       "port_of_discharge": "SAVANNAH, US (USSAV)",
-      "container_count": 12,
-      "gross_weight_kg": 257340
+      "container_count": "12 x 20'FCL",
+      "gross_weight_kg": "257,340 KG"
     },
-    "source_file": "attachments/email_046_BL.txt"
+    "source_file": "attachments/email_046_BL.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "other_documents": [],
   "extraction_issues": [],
-  "method": "llm",
+  "method": "rules",
   "needs_llm": false
 }

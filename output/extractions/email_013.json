@@ -8,10 +8,12 @@
       "notify_party": "ROXCEL TRADING GMBH",
       "port_of_loading": "SINGAPORE (SGSIN)",
       "port_of_discharge": "MOMBASA, KENYA (KEMBA)",
-      "container_count": 3,
-      "gross_weight_kg": 67311
+      "container_count": "3 x 40'HC",
+      "gross_weight_kg": "67,311 KG"
     },
-    "source_file": "attachments/email_013_SI.txt"
+    "source_file": "attachments/email_013_SI.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "bl": {
     "doc_type_detected": "BL",
@@ -21,13 +23,15 @@
       "notify_party": "ROXCEL TRADING GMBH",
       "port_of_loading": "SINGAPORE (SGSIN)",
       "port_of_discharge": "TUTICORIN, INDIA (KEMBA)",
-      "container_count": 3,
-      "gross_weight_kg": 67311
+      "container_count": "3 x 40'HC",
+      "gross_weight_kg": "67,311 KG"
     },
-    "source_file": "attachments/email_013_BL.txt"
+    "source_file": "attachments/email_013_BL.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "other_documents": [],
   "extraction_issues": [],
-  "method": "llm",
+  "method": "rules",
   "needs_llm": false
 }

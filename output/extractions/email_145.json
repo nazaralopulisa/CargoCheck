@@ -3,31 +3,35 @@
   "si": {
     "doc_type_detected": "SI",
     "fields": {
-      "shipper": "APRIL FINE PAPER TRADING",
+      "shipper": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
       "consignee": "PACIFIC OFFICE (M) SDN BHD",
       "notify_party": "PACIFIC OFFICE (M) SDN BHD",
       "port_of_loading": "NANTONG, CHINA (CNNTG)",
       "port_of_discharge": "BUSAN, SOUTH KOREA (KRPUS)",
-      "container_count": 15,
-      "gross_weight_kg": 313380
+      "container_count": "15 x 20'FCL",
+      "gross_weight_kg": "313,380 KG"
     },
-    "source_file": "attachments/email_145_SI.txt"
+    "source_file": "attachments/email_145_SI.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "bl": {
     "doc_type_detected": "BL",
     "fields": {
-      "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+      "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE ON BEHALF OF VITAL SOLUTIONS PTE LTD",
       "consignee": "PACIFIC OFFICE (M) SDN BHD",
       "notify_party": "PACIFIC OFFICE (M) SDN BHD",
       "port_of_loading": "NANTONG, CHINA (CNNTG)",
       "port_of_discharge": "BUSAN, SOUTH KOREA (KRPUS)",
-      "container_count": 15,
-      "gross_weight_kg": 313380
+      "container_count": "15 x 20'FCL",
+      "gross_weight_kg": "313,380 KG"
     },
-    "source_file": "attachments/email_145_BL.txt"
+    "source_file": "attachments/email_145_BL.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "other_documents": [],
   "extraction_issues": [],
-  "method": "llm",
+  "method": "rules",
   "needs_llm": false
 }

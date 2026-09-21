@@ -8,10 +8,12 @@
       "notify_party": "KTP CO., LTD",
       "port_of_loading": "NANTONG, CHINA (CNNTG)",
       "port_of_discharge": "APAPA, NIGERIA (NGAPP)",
-      "container_count": 5,
-      "gross_weight_kg": 100240
+      "container_count": "5 x 40'HC",
+      "gross_weight_kg": "100,240 KG"
     },
-    "source_file": "attachments/email_182_SI.txt"
+    "source_file": "attachments/email_182_SI.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "bl": {
     "doc_type_detected": "BL",
@@ -21,13 +23,15 @@
       "notify_party": "KTP CO., LTD",
       "port_of_loading": "NANTONG, CHINA (CNNTG)",
       "port_of_discharge": "BALTIMORE, US (NGAPP)",
-      "container_count": 6,
-      "gross_weight_kg": 100240
+      "container_count": "6 x 40'HC",
+      "gross_weight_kg": "100,240 KG"
     },
-    "source_file": "attachments/email_182_BL.txt"
+    "source_file": "attachments/email_182_BL.txt",
+    "method": "rules",
+    "type_from_title": true
   },
   "other_documents": [],
   "extraction_issues": [],
-  "method": "llm",
+  "method": "rules",
   "needs_llm": false
 }

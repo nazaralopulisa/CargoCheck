@@ -3,7 +3,7 @@
   "si": {
     "doc_type_detected": "SI",
     "fields": {
-      "shipper": "APRIL FINE PAPER TRADING",
+      "shipper": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
       "consignee": "HABRAS INTERNATIONAL LIMITED",
       "notify_party": "HABRAS INTERNATIONAL LIMITED",
       "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
@@ -18,7 +18,7 @@
   "bl": {
     "doc_type_detected": "BL",
     "fields": {
-      "shipper": "APRIL FINE PAPER TRADING",
+      "shipper": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
       "consignee": "HABRAS INTERNATIONAL LIMITED",
       "notify_party": "HABRAS INTERNATIONAL LIMITED",
       "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",

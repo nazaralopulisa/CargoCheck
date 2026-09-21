@@ -630,7 +630,7 @@ def section(title):
 
 def page_overview(results):
     landing(results)
-    page_heading("Overview", 'What the inbox is <em>telling</em> you <span class="hl">today</span>')
+    page_heading("Overview", 'Inbox <span class="hl"><em>insights</em> </span>')
 
     processed = [r for r in results.values() if r["status"] != "PENDING"]
     checks = [r for r in processed if r["data"].get("category") == "BL_COMPARISON"]
@@ -646,19 +646,6 @@ def page_overview(results):
     methods = pd.Series([read_by(r) for r in compared], dtype="object").value_counts()
     rules_share = methods.get("Rules (no AI)", 0) / max(len(compared), 1)
 
-    # time-saved estimate: the inputs sit under the cards, their values are read here first
-    per_check = st.session_state.get("per_check", MINUTES_PER_CHECK)
-    per_sort = st.session_state.get("per_sort", MINUTES_PER_SORT)
-    hours = (len(compared) * per_check + len(processed) * per_sort) / 60
-
-    with st.expander(f"Time saved: ~{hours:.0f}h of manual checking · how it's estimated"):
-        st.caption(f"{len(compared)} SI/BL comparisons plus sorting {len(processed)} emails, "
-                   "at the times below. Change them to match your team.")
-        c1, c2 = st.columns(2)
-        c1.number_input("Minutes to compare one SI and BL by hand", 1.0, 60.0,
-                        MINUTES_PER_CHECK, 0.5, key="per_check")
-        c2.number_input("Minutes to read and sort one email", 0.1, 10.0,
-                        MINUTES_PER_SORT, 0.1, key="per_sort")
 
     # 1. hero: which fields go wrong most often
     section("What goes wrong most often")
@@ -1054,17 +1041,11 @@ def page_scores():
         st.write("No scores yet. Run `python app/pipeline.py --submit` to score a submission.")
         return
     log = pd.read_csv(SCORE_LOG)
-    latest = log.iloc[-1]
-    st.markdown(
-        f'<p class="cc-lede">Latest score {latest["final"]:.4f} out of 1, on {latest["time"]}'
-        f'{": " + str(latest["note"]) if pd.notna(latest["note"]) and latest["note"] else ""}. '
-        'The score is 30% email sorting, 20% mismatch detection and 50% mismatches caught '
-        'end to end.</p>', unsafe_allow_html=True)
     if len(log) > 1:
         chart = log.reset_index().rename(columns={"index": "run"})
         chart["run"] += 1
         st.line_chart(chart, x="run", y="final", height=260)
-    st.dataframe(log.rename(columns={
+    st.dataframe(log.sort_values(by="time", ascending=False).rename(columns={
         "time": "When", "final": "Final score", "class_f1": "Sorting F1",
         "defect_f1": "Mismatch F1", "e2e": "Caught end to end",
         "escalation_recall": "Escalated correctly", "note": "What changed"}),

@@ -1,11 +1,8 @@
 import json
-import os
 import sys
-
-from dotenv import load_dotenv
-from google import genai
-from google.genai import types
 from pathlib import Path
+
+from llm import ask_llm_json
 
 # Find the data folder relative to this file: app/extractor.py -> CargoCheck/data/...
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -13,10 +10,6 @@ DATA_DIR = BASE_DIR / "data" / "sdoc-hackathon-bundle"
 sys.path.insert(0, str(DATA_DIR))
 
 from loader import Inbox  # type: ignore
-
-load_dotenv()
-client = genai.Client()
-MODEL = os.getenv("GEMINI_MODEL")
 
 PROMPT = """You are extracting data from a shipping document.
 
@@ -46,16 +39,8 @@ Document:
 
 
 def extract_document(text):
-    """Send one document's text to Gemini and get the 7 fields back as a dict."""
-    response = client.models.generate_content(
-        model=MODEL,
-        contents=PROMPT + text,
-        config=types.GenerateContentConfig(
-            response_mime_type="application/json",  # pure JSON, no ``` fences
-            temperature=0,                           # same input -> same output
-        ),
-    )
-    return json.loads(response.text)
+    """Send one document's text to the LLM and get the 7 fields back as a dict."""
+    return ask_llm_json(PROMPT + text)
 
 
 def extract_email(inbox, email):
@@ -110,5 +95,5 @@ def extract_email(inbox, email):
 if __name__ == "__main__":
     # Quick test: run on one email. Change the id to try others.
     inbox = Inbox(str(DATA_DIR))
-    email = next(e for e in inbox if e["email_id"] == "email_009")
+    email = next(e for e in inbox if e["email_id"] == "email_001")
     print(json.dumps(extract_email(inbox, email), indent=2))

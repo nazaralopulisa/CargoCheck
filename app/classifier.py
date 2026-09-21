@@ -1,13 +1,10 @@
 import json
-import os
 import sys
 import time
 from collections import Counter
 from pathlib import Path
 
-from dotenv import load_dotenv
-from google import genai
-from google.genai import types
+from llm import ask_llm_json
 
 # Find the data folder relative to this file: app/classifier.py -> CargoCheck/data/...
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -18,13 +15,9 @@ sys.path.insert(0, str(DATA_DIR))
 
 from loader import Inbox  # type: ignore
 
-load_dotenv()
-client = genai.Client()
-MODEL = os.getenv("GEMINI_MODEL")
-
 CATEGORIES = ["BL_COMPARISON", "SI_REQUEST", "INVOICE_QUERY", "GENERAL", "SPAM"]
-BATCH_SIZE = 10          # emails per request: fewer requests = less quota used
-PAUSE_BETWEEN_CALLS = 6  # seconds, to stay under the per-minute limit
+BATCH_SIZE = 25          # emails per request: fewer requests = faster and cheaper
+PAUSE_BETWEEN_CALLS = 2  # seconds, to avoid throttling
 
 PROMPT = """You are sorting emails in a shipping operations inbox.
 
@@ -72,15 +65,7 @@ def format_email(email):
 def classify_batch(emails):
     """Classify several emails in ONE request. Returns {email_id: result}."""
     text = "\n".join(format_email(e) for e in emails)
-    response = client.models.generate_content(
-        model=MODEL,
-        contents=PROMPT + text,
-        config=types.GenerateContentConfig(
-            response_mime_type="application/json",
-            temperature=0,
-        ),
-    )
-    data = json.loads(response.text)
+    data = ask_llm_json(PROMPT + text, max_tokens=8000)
 
     results = {}
     for r in data.get("results", []):
@@ -134,13 +119,8 @@ if __name__ == "__main__":
                     print(f"  (not returned, will retry next run: {missing})")
                 break
             except Exception as e:
-                message = str(e)
-                print(f"Batch {ids[0]}..{ids[-1]} failed (attempt {attempt + 1}): {message[:300]}")
-                if "per day" in message.lower() or "perday" in message.lower():
-                    print("\nDaily quota used up. Progress is saved; rerun after the quota resets.")
-                    save(results)
-                    sys.exit(1)
-                time.sleep(20 * (attempt + 1))
+                print(f"Batch {ids[0]}..{ids[-1]} failed (attempt {attempt + 1}): {str(e)[:300]}")
+                time.sleep(15 * (attempt + 1))
 
         save(results)  # save after every batch, so nothing is lost if you stop early
         time.sleep(PAUSE_BETWEEN_CALLS)

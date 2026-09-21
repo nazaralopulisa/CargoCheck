@@ -418,5 +418,3225 @@
     "confidence": "high",
     "reason": "The sender requests the draft BL to be sent over for verification and checking.",
     "needs_review": false
+  },
+  "email_041": {
+    "email_id": "email_041",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Sender requests confirmation of detention charges before releasing payment",
+    "needs_review": false
+  },
+  "email_042": {
+    "email_id": "email_042",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instruction and requests draft Bill of Lading",
+    "needs_review": false
+  },
+  "email_043": {
+    "email_id": "email_043",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender attaches SI and draft BL and asks to check details and confirm",
+    "needs_review": false
+  },
+  "email_044": {
+    "email_id": "email_044",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender attaches SI and draft BL and asks to check details and confirm",
+    "needs_review": false
+  },
+  "email_045": {
+    "email_id": "email_045",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Sender requests confirmation of detention charges before releasing payment",
+    "needs_review": false
+  },
+  "email_046": {
+    "email_id": "email_046",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender attaches SI and draft BL and asks to verify BL matches SI",
+    "needs_review": false
+  },
+  "email_047": {
+    "email_id": "email_047",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests draft BL for checking",
+    "needs_review": false
+  },
+  "email_048": {
+    "email_id": "email_048",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Sender mentions detention charges and requests confirmation before payment release",
+    "needs_review": false
+  },
+  "email_049": {
+    "email_id": "email_049",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests draft BL for checking",
+    "needs_review": false
+  },
+  "email_050": {
+    "email_id": "email_050",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests draft BL for checking",
+    "needs_review": false
+  },
+  "email_061": {
+    "email_id": "email_061",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests draft BL for checking",
+    "needs_review": false
+  },
+  "email_062": {
+    "email_id": "email_062",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Sender queries about THC/local charge inclusion in invoice",
+    "needs_review": false
+  },
+  "email_063": {
+    "email_id": "email_063",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests draft BL for checking",
+    "needs_review": false
+  },
+  "email_064": {
+    "email_id": "email_064",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender attaches SI and draft BL and asks to verify BL matches SI",
+    "needs_review": false
+  },
+  "email_065": {
+    "email_id": "email_065",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender attaches SI and draft BL and asks to check details and confirm",
+    "needs_review": false
+  },
+  "email_066": {
+    "email_id": "email_066",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests draft BL for checking",
+    "needs_review": false
+  },
+  "email_067": {
+    "email_id": "email_067",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instruction and requests draft Bill of Lading",
+    "needs_review": false
+  },
+  "email_068": {
+    "email_id": "email_068",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender attaches SI and draft BL and asks to verify BL matches SI",
+    "needs_review": false
+  },
+  "email_069": {
+    "email_id": "email_069",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Sender reports missing GR for invoice and requests to proceed with billing",
+    "needs_review": false
+  },
+  "email_070": {
+    "email_id": "email_070",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Operational update about vessel berthing schedule",
+    "needs_review": false
+  },
+  "email_081": {
+    "email_id": "email_081",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests draft BL for checking",
+    "needs_review": false
+  },
+  "email_082": {
+    "email_id": "email_082",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender attaches SI and draft BL and asks to check against SI",
+    "needs_review": false
+  },
+  "email_083": {
+    "email_id": "email_083",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Operational reminder about vessel berthing",
+    "needs_review": false
+  },
+  "email_084": {
+    "email_id": "email_084",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instruction and requests draft Bill of Lading",
+    "needs_review": false
+  },
+  "email_085": {
+    "email_id": "email_085",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Sender queries about THC/local charge inclusion in invoice",
+    "needs_review": false
+  },
+  "email_086": {
+    "email_id": "email_086",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender requests action on pending shipping instructions",
+    "needs_review": false
+  },
+  "email_087": {
+    "email_id": "email_087",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Sender reports missing GR for an invoice and requests action",
+    "needs_review": false
+  },
+  "email_088": {
+    "email_id": "email_088",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender asks to check and verify a draft Bill of Lading",
+    "needs_review": false
+  },
+  "email_089": {
+    "email_id": "email_089",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender reminds to submit new Shipping Instructions",
+    "needs_review": false
+  },
+  "email_090": {
+    "email_id": "email_090",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender attaches SI and BL and asks for verification",
+    "needs_review": false
+  },
+  "email_091": {
+    "email_id": "email_091",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to check draft BL against SI",
+    "needs_review": false
+  },
+  "email_092": {
+    "email_id": "email_092",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender asks to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_093": {
+    "email_id": "email_093",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides a new Shipping Instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_094": {
+    "email_id": "email_094",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides a new Shipping Instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_095": {
+    "email_id": "email_095",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender asks to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_096": {
+    "email_id": "email_096",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender attaches SI and BL and asks for confirmation",
+    "needs_review": false
+  },
+  "email_097": {
+    "email_id": "email_097",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender attaches SI and BL and asks for confirmation",
+    "needs_review": false
+  },
+  "email_098": {
+    "email_id": "email_098",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Automated notification of process completion with no action required",
+    "needs_review": false
+  },
+  "email_099": {
+    "email_id": "email_099",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Sender queries about invoice charge breakdown",
+    "needs_review": false
+  },
+  "email_100": {
+    "email_id": "email_100",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender asks to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_101": {
+    "email_id": "email_101",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides a new Shipping Instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_102": {
+    "email_id": "email_102",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Sender reports missing GR for an invoice and requests action",
+    "needs_review": false
+  },
+  "email_103": {
+    "email_id": "email_103",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides a new Shipping Instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_104": {
+    "email_id": "email_104",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Sender queries about invoice charge breakdown",
+    "needs_review": false
+  },
+  "email_105": {
+    "email_id": "email_105",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender asks to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_106": {
+    "email_id": "email_106",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides a new Shipping Instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_107": {
+    "email_id": "email_107",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender attaches SI and BL and asks for verification",
+    "needs_review": false
+  },
+  "email_108": {
+    "email_id": "email_108",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Sender requests to cancel an invoice and reverse PGI",
+    "needs_review": false
+  },
+  "email_109": {
+    "email_id": "email_109",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender asks to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_110": {
+    "email_id": "email_110",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides a new Shipping Instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_111": {
+    "email_id": "email_111",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests confirmation that BL matches SI",
+    "needs_review": false
+  },
+  "email_112": {
+    "email_id": "email_112",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Asking about inclusion of THC/local charges on invoice",
+    "needs_review": false
+  },
+  "email_113": {
+    "email_id": "email_113",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to check and confirm draft BL against SI",
+    "needs_review": false
+  },
+  "email_114": {
+    "email_id": "email_114",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Requesting assistance to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_115": {
+    "email_id": "email_115",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Notifying about missing GR for invoice and requesting action",
+    "needs_review": false
+  },
+  "email_116": {
+    "email_id": "email_116",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Unsolicited scam about Bitcoin investment and package fee",
+    "needs_review": false
+  },
+  "email_117": {
+    "email_id": "email_117",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Automated notification of process completion, no action required",
+    "needs_review": false
+  },
+  "email_118": {
+    "email_id": "email_118",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Requesting to check draft BL against SI and report discrepancies",
+    "needs_review": false
+  },
+  "email_119": {
+    "email_id": "email_119",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Requesting to check draft BL against SI and report discrepancies",
+    "needs_review": false
+  },
+  "email_120": {
+    "email_id": "email_120",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Providing shipping instruction and requesting draft BL",
+    "needs_review": false
+  },
+  "email_121": {
+    "email_id": "email_121",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Requesting to check draft BL against SI and report discrepancies",
+    "needs_review": false
+  },
+  "email_122": {
+    "email_id": "email_122",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Providing shipping instruction and requesting draft BL",
+    "needs_review": false
+  },
+  "email_123": {
+    "email_id": "email_123",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Unsolicited scam about prize claim",
+    "needs_review": false
+  },
+  "email_124": {
+    "email_id": "email_124",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Providing shipping instruction and requesting draft BL",
+    "needs_review": false
+  },
+  "email_125": {
+    "email_id": "email_125",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Providing shipping instruction and requesting draft BL",
+    "needs_review": false
+  },
+  "email_126": {
+    "email_id": "email_126",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Operational update about outstanding BL items to action",
+    "needs_review": false
+  },
+  "email_127": {
+    "email_id": "email_127",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Providing shipping instruction and requesting draft BL",
+    "needs_review": false
+  },
+  "email_128": {
+    "email_id": "email_128",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests confirmation that BL matches SI",
+    "needs_review": false
+  },
+  "email_129": {
+    "email_id": "email_129",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to check and confirm draft BL against SI",
+    "needs_review": false
+  },
+  "email_130": {
+    "email_id": "email_130",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Providing shipping instruction and requesting draft BL",
+    "needs_review": false
+  },
+  "email_131": {
+    "email_id": "email_131",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Providing shipping instruction and requesting draft BL",
+    "needs_review": false
+  },
+  "email_132": {
+    "email_id": "email_132",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests confirmation that BL matches SI",
+    "needs_review": false
+  },
+  "email_133": {
+    "email_id": "email_133",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests confirmation that BL matches SI",
+    "needs_review": false
+  },
+  "email_134": {
+    "email_id": "email_134",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Unsolicited scam about logistics software discount and package fee",
+    "needs_review": false
+  },
+  "email_135": {
+    "email_id": "email_135",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Providing shipping instruction and requesting draft BL",
+    "needs_review": false
+  },
+  "email_136": {
+    "email_id": "email_136",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_137": {
+    "email_id": "email_137",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_138": {
+    "email_id": "email_138",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_139": {
+    "email_id": "email_139",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Sender queries about THC/local charge inclusion in invoice",
+    "needs_review": false
+  },
+  "email_140": {
+    "email_id": "email_140",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Unsolicited phishing message with account verification link",
+    "needs_review": false
+  },
+  "email_141": {
+    "email_id": "email_141",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_142": {
+    "email_id": "email_142",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Operational update about office resumption",
+    "needs_review": false
+  },
+  "email_143": {
+    "email_id": "email_143",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to check draft BL against SI",
+    "needs_review": false
+  },
+  "email_144": {
+    "email_id": "email_144",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender provides SI and BL for confirmation",
+    "needs_review": false
+  },
+  "email_145": {
+    "email_id": "email_145",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to check draft BL against SI",
+    "needs_review": false
+  },
+  "email_146": {
+    "email_id": "email_146",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to check draft BL against SI",
+    "needs_review": false
+  },
+  "email_147": {
+    "email_id": "email_147",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Operational update about outstanding BL items",
+    "needs_review": false
+  },
+  "email_148": {
+    "email_id": "email_148",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_149": {
+    "email_id": "email_149",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_150": {
+    "email_id": "email_150",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Unsolicited marketing offer for logistics automation",
+    "needs_review": false
+  },
+  "email_151": {
+    "email_id": "email_151",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_152": {
+    "email_id": "email_152",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_153": {
+    "email_id": "email_153",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Operational update about berthing report",
+    "needs_review": false
+  },
+  "email_154": {
+    "email_id": "email_154",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_155": {
+    "email_id": "email_155",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Sender queries about THC/local charge inclusion in invoice",
+    "needs_review": false
+  },
+  "email_156": {
+    "email_id": "email_156",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Unsolicited phishing message with account verification link",
+    "needs_review": false
+  },
+  "email_157": {
+    "email_id": "email_157",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_158": {
+    "email_id": "email_158",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_159": {
+    "email_id": "email_159",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Operational update about outstanding BL items",
+    "needs_review": false
+  },
+  "email_160": {
+    "email_id": "email_160",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to check draft BL against SI",
+    "needs_review": false
+  },
+  "email_161": {
+    "email_id": "email_161",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_162": {
+    "email_id": "email_162",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instructions and requests draft BL",
+    "needs_review": false
+  },
+  "email_163": {
+    "email_id": "email_163",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instructions and requests draft BL",
+    "needs_review": false
+  },
+  "email_164": {
+    "email_id": "email_164",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instructions and requests draft BL",
+    "needs_review": false
+  },
+  "email_165": {
+    "email_id": "email_165",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Request to confirm charges before payment release",
+    "needs_review": false
+  },
+  "email_166": {
+    "email_id": "email_166",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instructions and requests draft BL",
+    "needs_review": false
+  },
+  "email_167": {
+    "email_id": "email_167",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender attaches SI and draft BL for confirmation",
+    "needs_review": false
+  },
+  "email_168": {
+    "email_id": "email_168",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instructions and requests draft BL",
+    "needs_review": false
+  },
+  "email_169": {
+    "email_id": "email_169",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Request to post GR for billing",
+    "needs_review": false
+  },
+  "email_170": {
+    "email_id": "email_170",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Request to post GR for billing",
+    "needs_review": false
+  },
+  "email_171": {
+    "email_id": "email_171",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender attaches SI and draft BL for confirmation",
+    "needs_review": false
+  },
+  "email_172": {
+    "email_id": "email_172",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instructions and requests draft BL",
+    "needs_review": false
+  },
+  "email_173": {
+    "email_id": "email_173",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Operational update about outstanding BL",
+    "needs_review": false
+  },
+  "email_174": {
+    "email_id": "email_174",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender attaches SI and draft BL for verification",
+    "needs_review": false
+  },
+  "email_175": {
+    "email_id": "email_175",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to check draft BL against SI",
+    "needs_review": false
+  },
+  "email_176": {
+    "email_id": "email_176",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Request to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_177": {
+    "email_id": "email_177",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instructions and requests draft BL",
+    "needs_review": false
+  },
+  "email_178": {
+    "email_id": "email_178",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender attaches SI and draft BL for confirmation",
+    "needs_review": false
+  },
+  "email_179": {
+    "email_id": "email_179",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Request to post GR for billing",
+    "needs_review": false
+  },
+  "email_180": {
+    "email_id": "email_180",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Unsolicited marketing offer unrelated to shipping work",
+    "needs_review": false
+  },
+  "email_181": {
+    "email_id": "email_181",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instructions and requests draft BL",
+    "needs_review": false
+  },
+  "email_182": {
+    "email_id": "email_182",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender attaches SI and draft BL for confirmation",
+    "needs_review": false
+  },
+  "email_183": {
+    "email_id": "email_183",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instructions and requests draft BL",
+    "needs_review": false
+  },
+  "email_184": {
+    "email_id": "email_184",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Unsolicited phishing/scamming message",
+    "needs_review": false
+  },
+  "email_185": {
+    "email_id": "email_185",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Operational update about loading completion",
+    "needs_review": false
+  },
+  "email_186": {
+    "email_id": "email_186",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_187": {
+    "email_id": "email_187",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_188": {
+    "email_id": "email_188",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Unsolicited marketing message about logistics automation suite",
+    "needs_review": false
+  },
+  "email_189": {
+    "email_id": "email_189",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_190": {
+    "email_id": "email_190",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_191": {
+    "email_id": "email_191",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Request to cancel invoice and reverse PGI",
+    "needs_review": false
+  },
+  "email_192": {
+    "email_id": "email_192",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_193": {
+    "email_id": "email_193",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_194": {
+    "email_id": "email_194",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Automated notification about billing process completion",
+    "needs_review": false
+  },
+  "email_195": {
+    "email_id": "email_195",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_196": {
+    "email_id": "email_196",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_197": {
+    "email_id": "email_197",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests verification of BL against SI",
+    "needs_review": false
+  },
+  "email_198": {
+    "email_id": "email_198",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to check draft BL against SI",
+    "needs_review": false
+  },
+  "email_199": {
+    "email_id": "email_199",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_200": {
+    "email_id": "email_200",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Reminder about pending BL actions",
+    "needs_review": false
+  },
+  "email_201": {
+    "email_id": "email_201",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_202": {
+    "email_id": "email_202",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_203": {
+    "email_id": "email_203",
+    "confidence": "medium",
+    "category": "INVOICE_QUERY",
+    "reason": "Request to post GR for billing purpose",
+    "needs_review": false
+  },
+  "email_204": {
+    "email_id": "email_204",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Phishing attempt with gift card scam",
+    "needs_review": false
+  },
+  "email_205": {
+    "email_id": "email_205",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_206": {
+    "email_id": "email_206",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Phishing attempt with account suspension scam",
+    "needs_review": false
+  },
+  "email_207": {
+    "email_id": "email_207",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_208": {
+    "email_id": "email_208",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to check and confirm draft BL against SI",
+    "needs_review": false
+  },
+  "email_209": {
+    "email_id": "email_209",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_210": {
+    "email_id": "email_210",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_211": {
+    "email_id": "email_211",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Sender requests GR for invoice to proceed with billing",
+    "needs_review": false
+  },
+  "email_212": {
+    "email_id": "email_212",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Sender queries invoice breakdown for THC/local charges",
+    "needs_review": false
+  },
+  "email_213": {
+    "email_id": "email_213",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Operational update about vessel berthing schedule",
+    "needs_review": false
+  },
+  "email_214": {
+    "email_id": "email_214",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instructions and requests draft BL",
+    "needs_review": false
+  },
+  "email_215": {
+    "email_id": "email_215",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Unsolicited scam about Bitcoin investment and fake prize",
+    "needs_review": false
+  },
+  "email_216": {
+    "email_id": "email_216",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Sender requests GR for invoice to proceed with billing",
+    "needs_review": false
+  },
+  "email_217": {
+    "email_id": "email_217",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instructions and requests draft BL",
+    "needs_review": false
+  },
+  "email_218": {
+    "email_id": "email_218",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Operational update about loading completion and documents follow-up",
+    "needs_review": false
+  },
+  "email_219": {
+    "email_id": "email_219",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Automated notification of successful billing process completion",
+    "needs_review": false
+  },
+  "email_220": {
+    "email_id": "email_220",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests draft BL for checking",
+    "needs_review": false
+  },
+  "email_221": {
+    "email_id": "email_221",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instructions and requests draft BL",
+    "needs_review": false
+  },
+  "email_222": {
+    "email_id": "email_222",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Unsolicited marketing for logistics automation suite",
+    "needs_review": false
+  },
+  "email_223": {
+    "email_id": "email_223",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests draft BL for checking",
+    "needs_review": false
+  },
+  "email_224": {
+    "email_id": "email_224",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Sender requests confirmation of D&D/detention charges before payment release",
+    "needs_review": false
+  },
+  "email_225": {
+    "email_id": "email_225",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender attaches SI and draft BL for checking and confirmation",
+    "needs_review": false
+  },
+  "email_226": {
+    "email_id": "email_226",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Unsolicited scam involving fake bank officer and investment proposal",
+    "needs_review": false
+  },
+  "email_227": {
+    "email_id": "email_227",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender attaches SI and draft BL for checking and confirmation",
+    "needs_review": false
+  },
+  "email_228": {
+    "email_id": "email_228",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instructions and requests draft BL",
+    "needs_review": false
+  },
+  "email_229": {
+    "email_id": "email_229",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests draft BL for checking",
+    "needs_review": false
+  },
+  "email_230": {
+    "email_id": "email_230",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Operational reminder to submit SI & AED for pending shipments",
+    "needs_review": false
+  },
+  "email_231": {
+    "email_id": "email_231",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Unsolicited phishing attempt for account update and prize claim",
+    "needs_review": false
+  },
+  "email_232": {
+    "email_id": "email_232",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Automated notification of successful billing process completion",
+    "needs_review": false
+  },
+  "email_233": {
+    "email_id": "email_233",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instructions and requests draft BL",
+    "needs_review": false
+  },
+  "email_234": {
+    "email_id": "email_234",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Operational reminder to submit SI & AED for pending shipments",
+    "needs_review": false
+  },
+  "email_235": {
+    "email_id": "email_235",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender attaches SI and draft BL for checking and confirmation",
+    "needs_review": false
+  },
+  "email_236": {
+    "email_id": "email_236",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Sender requests to cancel an invoice and reverse PGI",
+    "needs_review": false
+  },
+  "email_237": {
+    "email_id": "email_237",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender asks to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_238": {
+    "email_id": "email_238",
+    "category": "GENERAL",
+    "confidence": "medium",
+    "reason": "RPA bot reminder to action pending BL items",
+    "needs_review": false
+  },
+  "email_239": {
+    "email_id": "email_239",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests verification that BL matches SI",
+    "needs_review": false
+  },
+  "email_240": {
+    "email_id": "email_240",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_241": {
+    "email_id": "email_241",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Operational update about vessel berthing",
+    "needs_review": false
+  },
+  "email_242": {
+    "email_id": "email_242",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender asks to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_243": {
+    "email_id": "email_243",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests verification that BL matches SI",
+    "needs_review": false
+  },
+  "email_244": {
+    "email_id": "email_244",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_245": {
+    "email_id": "email_245",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_246": {
+    "email_id": "email_246",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_247": {
+    "email_id": "email_247",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender asks to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_248": {
+    "email_id": "email_248",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Unsolicited phishing message about email storage",
+    "needs_review": false
+  },
+  "email_249": {
+    "email_id": "email_249",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to check and confirm draft BL against SI",
+    "needs_review": false
+  },
+  "email_250": {
+    "email_id": "email_250",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender asks to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_251": {
+    "email_id": "email_251",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_252": {
+    "email_id": "email_252",
+    "category": "GENERAL",
+    "confidence": "medium",
+    "reason": "Automated notification about billing process completion",
+    "needs_review": false
+  },
+  "email_253": {
+    "email_id": "email_253",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Unsolicited phishing message about account suspension",
+    "needs_review": false
+  },
+  "email_254": {
+    "email_id": "email_254",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Unsolicited phishing message about email storage",
+    "needs_review": false
+  },
+  "email_255": {
+    "email_id": "email_255",
+    "category": "GENERAL",
+    "confidence": "medium",
+    "reason": "Operational update about outstanding BL items",
+    "needs_review": false
+  },
+  "email_256": {
+    "email_id": "email_256",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests verification that BL matches SI",
+    "needs_review": false
+  },
+  "email_257": {
+    "email_id": "email_257",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_258": {
+    "email_id": "email_258",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Operational update about loading completion",
+    "needs_review": false
+  },
+  "email_259": {
+    "email_id": "email_259",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender asks to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_260": {
+    "email_id": "email_260",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_261": {
+    "email_id": "email_261",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to check draft BL against SI",
+    "needs_review": false
+  },
+  "email_262": {
+    "email_id": "email_262",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Sender reports missing GR for invoice and requests action",
+    "needs_review": false
+  },
+  "email_263": {
+    "email_id": "email_263",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to check draft BL against SI",
+    "needs_review": false
+  },
+  "email_264": {
+    "email_id": "email_264",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender provides SI and requests draft BL verification",
+    "needs_review": false
+  },
+  "email_265": {
+    "email_id": "email_265",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to check draft BL against SI",
+    "needs_review": false
+  },
+  "email_266": {
+    "email_id": "email_266",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Operational reminder to submit SI and AED for pending shipments",
+    "needs_review": false
+  },
+  "email_267": {
+    "email_id": "email_267",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Unsolicited phishing message offering a prize",
+    "needs_review": false
+  },
+  "email_268": {
+    "email_id": "email_268",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Sender requests confirmation of charges before payment release",
+    "needs_review": false
+  },
+  "email_269": {
+    "email_id": "email_269",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Sender requests to cancel invoice and reverse PGI",
+    "needs_review": false
+  },
+  "email_270": {
+    "email_id": "email_270",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender provides SI and draft BL for verification",
+    "needs_review": false
+  },
+  "email_271": {
+    "email_id": "email_271",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to check draft BL against SI",
+    "needs_review": false
+  },
+  "email_272": {
+    "email_id": "email_272",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Sender reports missing GR for invoice and requests action",
+    "needs_review": false
+  },
+  "email_273": {
+    "email_id": "email_273",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender provides SI and draft BL for verification",
+    "needs_review": false
+  },
+  "email_274": {
+    "email_id": "email_274",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Sender requests to cancel invoice and reverse PGI",
+    "needs_review": false
+  },
+  "email_275": {
+    "email_id": "email_275",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender provides SI and draft BL for verification",
+    "needs_review": false
+  },
+  "email_276": {
+    "email_id": "email_276",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender requests a new Shipping Instruction to be prepared",
+    "needs_review": false
+  },
+  "email_277": {
+    "email_id": "email_277",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender provides SI and requests draft BL verification",
+    "needs_review": false
+  },
+  "email_278": {
+    "email_id": "email_278",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender requests a new Shipping Instruction to be prepared",
+    "needs_review": false
+  },
+  "email_279": {
+    "email_id": "email_279",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender provides SI and requests draft BL verification",
+    "needs_review": false
+  },
+  "email_280": {
+    "email_id": "email_280",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Sender requests to cancel invoice and reverse PGI",
+    "needs_review": false
+  },
+  "email_281": {
+    "email_id": "email_281",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to check draft BL against SI",
+    "needs_review": false
+  },
+  "email_282": {
+    "email_id": "email_282",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to check draft BL against SI",
+    "needs_review": false
+  },
+  "email_283": {
+    "email_id": "email_283",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender provides SI and requests draft BL verification",
+    "needs_review": false
+  },
+  "email_284": {
+    "email_id": "email_284",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Sender reports missing GR for invoice and requests action",
+    "needs_review": false
+  },
+  "email_285": {
+    "email_id": "email_285",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Sender reports missing GR for invoice and requests action",
+    "needs_review": false
+  },
+  "email_286": {
+    "email_id": "email_286",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Asking about invoice breakdown and inclusion of THC/local charge",
+    "needs_review": false
+  },
+  "email_287": {
+    "email_id": "email_287",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Asking about invoice breakdown and inclusion of THC/local charge",
+    "needs_review": false
+  },
+  "email_288": {
+    "email_id": "email_288",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Request to check draft BL against SI",
+    "needs_review": false
+  },
+  "email_289": {
+    "email_id": "email_289",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Providing shipping instruction and requesting draft BL",
+    "needs_review": false
+  },
+  "email_290": {
+    "email_id": "email_290",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Providing shipping instruction and requesting draft BL",
+    "needs_review": false
+  },
+  "email_291": {
+    "email_id": "email_291",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Attached SI and draft BL for checking and confirmation",
+    "needs_review": false
+  },
+  "email_292": {
+    "email_id": "email_292",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Request to check draft BL for SI",
+    "needs_review": false
+  },
+  "email_293": {
+    "email_id": "email_293",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Providing shipping instruction and requesting draft BL",
+    "needs_review": false
+  },
+  "email_294": {
+    "email_id": "email_294",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Operational update about outstanding BL",
+    "needs_review": false
+  },
+  "email_295": {
+    "email_id": "email_295",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Providing shipping instruction and requesting draft BL",
+    "needs_review": false
+  },
+  "email_296": {
+    "email_id": "email_296",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Attached SI and draft BL for checking and confirmation",
+    "needs_review": false
+  },
+  "email_297": {
+    "email_id": "email_297",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Automated notification about completed billing process",
+    "needs_review": false
+  },
+  "email_298": {
+    "email_id": "email_298",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Request to cancel invoice and reverse PGI",
+    "needs_review": false
+  },
+  "email_299": {
+    "email_id": "email_299",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Request to check draft BL",
+    "needs_review": false
+  },
+  "email_300": {
+    "email_id": "email_300",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Attached SI and draft BL for confirmation and verification",
+    "needs_review": false
+  },
+  "email_301": {
+    "email_id": "email_301",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Request to check draft BL",
+    "needs_review": false
+  },
+  "email_302": {
+    "email_id": "email_302",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Attached SI and draft BL for confirmation and verification",
+    "needs_review": false
+  },
+  "email_303": {
+    "email_id": "email_303",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Request to post GR for billing",
+    "needs_review": false
+  },
+  "email_304": {
+    "email_id": "email_304",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Request to post GR for billing",
+    "needs_review": false
+  },
+  "email_305": {
+    "email_id": "email_305",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Request to check draft BL",
+    "needs_review": false
+  },
+  "email_306": {
+    "email_id": "email_306",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Providing shipping instruction and requesting draft BL",
+    "needs_review": false
+  },
+  "email_307": {
+    "email_id": "email_307",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Attached SI and draft BL for confirmation and verification",
+    "needs_review": false
+  },
+  "email_308": {
+    "email_id": "email_308",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Providing shipping instruction and requesting draft BL",
+    "needs_review": false
+  },
+  "email_309": {
+    "email_id": "email_309",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Request to check draft BL",
+    "needs_review": false
+  },
+  "email_310": {
+    "email_id": "email_310",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Providing shipping instruction and requesting draft BL",
+    "needs_review": false
+  },
+  "email_311": {
+    "email_id": "email_311",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender is providing shipping instructions and asking for draft BL",
+    "needs_review": false
+  },
+  "email_312": {
+    "email_id": "email_312",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Explicitly asks to check draft BL against SI",
+    "needs_review": false
+  },
+  "email_313": {
+    "email_id": "email_313",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Explicitly asks to check draft BL against SI",
+    "needs_review": false
+  },
+  "email_314": {
+    "email_id": "email_314",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Asking about missing GR for invoice and billing process",
+    "needs_review": false
+  },
+  "email_315": {
+    "email_id": "email_315",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Unsolicited phishing message offering fake prize",
+    "needs_review": false
+  },
+  "email_316": {
+    "email_id": "email_316",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Query about invoice breakdown and THC charges",
+    "needs_review": false
+  },
+  "email_317": {
+    "email_id": "email_317",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Providing shipping instructions and asking for draft BL",
+    "needs_review": false
+  },
+  "email_318": {
+    "email_id": "email_318",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Asking to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_319": {
+    "email_id": "email_319",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Asking to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_320": {
+    "email_id": "email_320",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Providing shipping instructions and asking for draft BL",
+    "needs_review": false
+  },
+  "email_321": {
+    "email_id": "email_321",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Asking to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_322": {
+    "email_id": "email_322",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Providing shipping instructions and asking for draft BL",
+    "needs_review": false
+  },
+  "email_323": {
+    "email_id": "email_323",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Automated notification about process completion",
+    "needs_review": false
+  },
+  "email_324": {
+    "email_id": "email_324",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Explicitly asks to check draft BL against SI",
+    "needs_review": false
+  },
+  "email_325": {
+    "email_id": "email_325",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Operational update about loading completion",
+    "needs_review": false
+  },
+  "email_326": {
+    "email_id": "email_326",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Asking to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_327": {
+    "email_id": "email_327",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Providing shipping instructions and asking for draft BL",
+    "needs_review": false
+  },
+  "email_328": {
+    "email_id": "email_328",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Operational update about loading completion",
+    "needs_review": false
+  },
+  "email_329": {
+    "email_id": "email_329",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Unsolicited phishing message about parcel delivery",
+    "needs_review": false
+  },
+  "email_330": {
+    "email_id": "email_330",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Operational reminder about SI submission",
+    "needs_review": false
+  },
+  "email_331": {
+    "email_id": "email_331",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Request to confirm charges before payment release",
+    "needs_review": false
+  },
+  "email_332": {
+    "email_id": "email_332",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Operational reminder about outstanding BL",
+    "needs_review": false
+  },
+  "email_333": {
+    "email_id": "email_333",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Operational greeting and notification",
+    "needs_review": false
+  },
+  "email_334": {
+    "email_id": "email_334",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Explicitly asks to check draft BL against SI",
+    "needs_review": false
+  },
+  "email_335": {
+    "email_id": "email_335",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Explicitly asks to check draft BL against SI",
+    "needs_review": false
+  },
+  "email_336": {
+    "email_id": "email_336",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender is providing shipping instructions and asking for draft Bill of Lading",
+    "needs_review": false
+  },
+  "email_337": {
+    "email_id": "email_337",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Explicitly asks to check and verify draft BL against SI",
+    "needs_review": false
+  },
+  "email_338": {
+    "email_id": "email_338",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender is providing shipping instructions and asking for draft Bill of Lading",
+    "needs_review": false
+  },
+  "email_339": {
+    "email_id": "email_339",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender is providing shipping instructions and asking for draft Bill of Lading",
+    "needs_review": false
+  },
+  "email_340": {
+    "email_id": "email_340",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Automated notification about process completion with no action required",
+    "needs_review": false
+  },
+  "email_341": {
+    "email_id": "email_341",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Explicitly asks to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_342": {
+    "email_id": "email_342",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Asks to check draft BL against SI and report discrepancies",
+    "needs_review": false
+  },
+  "email_343": {
+    "email_id": "email_343",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Requests to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_344": {
+    "email_id": "email_344",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender is providing shipping instructions and asking for draft Bill of Lading",
+    "needs_review": false
+  },
+  "email_345": {
+    "email_id": "email_345",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Unsolicited scam message requesting bank details",
+    "needs_review": false
+  },
+  "email_346": {
+    "email_id": "email_346",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Operational update about loading completion",
+    "needs_review": false
+  },
+  "email_347": {
+    "email_id": "email_347",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Reminder about operational update",
+    "needs_review": false
+  },
+  "email_348": {
+    "email_id": "email_348",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Asks to check draft BL against SI and report discrepancies",
+    "needs_review": false
+  },
+  "email_349": {
+    "email_id": "email_349",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Requests to check SI and draft BL details and confirm",
+    "needs_review": false
+  },
+  "email_350": {
+    "email_id": "email_350",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Requests to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_351": {
+    "email_id": "email_351",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Requests to check SI and draft BL details and confirm",
+    "needs_review": false
+  },
+  "email_352": {
+    "email_id": "email_352",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender is providing shipping instructions and asking for draft Bill of Lading",
+    "needs_review": false
+  },
+  "email_353": {
+    "email_id": "email_353",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender is providing shipping instructions and asking for draft Bill of Lading",
+    "needs_review": false
+  },
+  "email_354": {
+    "email_id": "email_354",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Requests to check SI and draft BL details and confirm",
+    "needs_review": false
+  },
+  "email_355": {
+    "email_id": "email_355",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Requests confirmation of charges before payment release",
+    "needs_review": false
+  },
+  "email_356": {
+    "email_id": "email_356",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Operational update about vessel berthing",
+    "needs_review": false
+  },
+  "email_357": {
+    "email_id": "email_357",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender is providing shipping instructions and asking for draft Bill of Lading",
+    "needs_review": false
+  },
+  "email_358": {
+    "email_id": "email_358",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender is providing shipping instructions and asking for draft Bill of Lading",
+    "needs_review": false
+  },
+  "email_359": {
+    "email_id": "email_359",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender is providing shipping instructions and asking for draft Bill of Lading",
+    "needs_review": false
+  },
+  "email_360": {
+    "email_id": "email_360",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender is providing shipping instructions and asking for draft Bill of Lading",
+    "needs_review": false
+  },
+  "email_361": {
+    "email_id": "email_361",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to check draft BL against SI",
+    "needs_review": false
+  },
+  "email_362": {
+    "email_id": "email_362",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides new shipping instruction details and requests draft BL",
+    "needs_review": false
+  },
+  "email_363": {
+    "email_id": "email_363",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Unsolicited scam offering Bitcoin investment",
+    "needs_review": false
+  },
+  "email_364": {
+    "email_id": "email_364",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests confirmation that BL matches SI",
+    "needs_review": false
+  },
+  "email_365": {
+    "email_id": "email_365",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Phishing message offering fake prize",
+    "needs_review": false
+  },
+  "email_366": {
+    "email_id": "email_366",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Operational update about outstanding BL items",
+    "needs_review": false
+  },
+  "email_367": {
+    "email_id": "email_367",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests confirmation that BL matches SI",
+    "needs_review": false
+  },
+  "email_368": {
+    "email_id": "email_368",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides new shipping instruction details and requests draft BL",
+    "needs_review": false
+  },
+  "email_369": {
+    "email_id": "email_369",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Request to confirm detention/detention charges before payment",
+    "needs_review": false
+  },
+  "email_370": {
+    "email_id": "email_370",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides new shipping instruction details and requests draft BL",
+    "needs_review": false
+  },
+  "email_371": {
+    "email_id": "email_371",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides new shipping instruction details and requests draft BL",
+    "needs_review": false
+  },
+  "email_372": {
+    "email_id": "email_372",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Request to confirm detention/detention charges before payment",
+    "needs_review": false
+  },
+  "email_373": {
+    "email_id": "email_373",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Request to confirm detention/detention charges before payment",
+    "needs_review": false
+  },
+  "email_374": {
+    "email_id": "email_374",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Request to confirm detention/detention charges before payment",
+    "needs_review": false
+  },
+  "email_375": {
+    "email_id": "email_375",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Query about invoice breakdown and charge inclusion",
+    "needs_review": false
+  },
+  "email_376": {
+    "email_id": "email_376",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides new shipping instruction details and requests draft BL",
+    "needs_review": false
+  },
+  "email_377": {
+    "email_id": "email_377",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests confirmation that BL matches SI",
+    "needs_review": false
+  },
+  "email_378": {
+    "email_id": "email_378",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests confirmation that BL matches SI",
+    "needs_review": false
+  },
+  "email_379": {
+    "email_id": "email_379",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to check draft BL against SI",
+    "needs_review": false
+  },
+  "email_380": {
+    "email_id": "email_380",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides new shipping instruction details and requests draft BL",
+    "needs_review": false
+  },
+  "email_381": {
+    "email_id": "email_381",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Request to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_382": {
+    "email_id": "email_382",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Unsolicited scam message about email storage",
+    "needs_review": false
+  },
+  "email_383": {
+    "email_id": "email_383",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests confirmation that BL matches SI",
+    "needs_review": false
+  },
+  "email_384": {
+    "email_id": "email_384",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Request to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_385": {
+    "email_id": "email_385",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Request to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_386": {
+    "email_id": "email_386",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Sender requests GR for invoice to proceed with billing",
+    "needs_review": false
+  },
+  "email_387": {
+    "email_id": "email_387",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Phishing attempt requesting payment for customs fee",
+    "needs_review": false
+  },
+  "email_388": {
+    "email_id": "email_388",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instructions and requests draft BL",
+    "needs_review": false
+  },
+  "email_389": {
+    "email_id": "email_389",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Requests confirmation of detention charges before payment release",
+    "needs_review": false
+  },
+  "email_390": {
+    "email_id": "email_390",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Unsolicited scam requesting bank details for supposed business",
+    "needs_review": false
+  },
+  "email_391": {
+    "email_id": "email_391",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Requests verification that BL matches SI before release",
+    "needs_review": false
+  },
+  "email_392": {
+    "email_id": "email_392",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Phishing attempt about email storage limit",
+    "needs_review": false
+  },
+  "email_393": {
+    "email_id": "email_393",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instructions and requests draft BL",
+    "needs_review": false
+  },
+  "email_394": {
+    "email_id": "email_394",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Automated notification of completed billing process, no action needed",
+    "needs_review": false
+  },
+  "email_395": {
+    "email_id": "email_395",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Unsolicited scam offering Bitcoin investment returns",
+    "needs_review": false
+  },
+  "email_396": {
+    "email_id": "email_396",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Automated notification of completed billing process, no action needed",
+    "needs_review": false
+  },
+  "email_397": {
+    "email_id": "email_397",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instructions and requests draft BL",
+    "needs_review": false
+  },
+  "email_398": {
+    "email_id": "email_398",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Requests checking and confirmation of draft BL against SI",
+    "needs_review": false
+  },
+  "email_399": {
+    "email_id": "email_399",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Automated notification of completed billing process, no action needed",
+    "needs_review": false
+  },
+  "email_400": {
+    "email_id": "email_400",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instructions and requests draft BL",
+    "needs_review": false
+  },
+  "email_401": {
+    "email_id": "email_401",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Requests sending draft BL for checking",
+    "needs_review": false
+  },
+  "email_402": {
+    "email_id": "email_402",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Queries whether THC/local charge is included in invoice",
+    "needs_review": false
+  },
+  "email_403": {
+    "email_id": "email_403",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Requests cancellation and reversal of invoice due to booking amendment",
+    "needs_review": false
+  },
+  "email_404": {
+    "email_id": "email_404",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Phishing attempt about undelivered messages and customs fee",
+    "needs_review": false
+  },
+  "email_405": {
+    "email_id": "email_405",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Requests checking and confirmation of draft BL against SI",
+    "needs_review": false
+  },
+  "email_406": {
+    "email_id": "email_406",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Requests cancellation and reversal of invoice due to booking amendment",
+    "needs_review": false
+  },
+  "email_407": {
+    "email_id": "email_407",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Requests checking and confirmation of draft BL against SI",
+    "needs_review": false
+  },
+  "email_408": {
+    "email_id": "email_408",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Requests checking and confirmation of draft BL against SI",
+    "needs_review": false
+  },
+  "email_409": {
+    "email_id": "email_409",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Requests checking draft BL against SI for PO discrepancies",
+    "needs_review": false
+  },
+  "email_410": {
+    "email_id": "email_410",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Requests checking and confirmation of draft BL against SI",
+    "needs_review": false
+  },
+  "email_411": {
+    "email_id": "email_411",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender asks to check and confirm draft BL against SI",
+    "needs_review": false
+  },
+  "email_412": {
+    "email_id": "email_412",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Request to post GR for invoice to proceed with billing",
+    "needs_review": false
+  },
+  "email_413": {
+    "email_id": "email_413",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Provides new shipping instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_414": {
+    "email_id": "email_414",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Operational update with berthing report",
+    "needs_review": false
+  },
+  "email_415": {
+    "email_id": "email_415",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Time off notification and operational update",
+    "needs_review": false
+  },
+  "email_416": {
+    "email_id": "email_416",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Attached SI and draft BL for verification and confirmation",
+    "needs_review": false
+  },
+  "email_417": {
+    "email_id": "email_417",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Unsolicited scam requesting bank details for fake proposal",
+    "needs_review": false
+  },
+  "email_418": {
+    "email_id": "email_418",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Operational update with berthing report",
+    "needs_review": false
+  },
+  "email_419": {
+    "email_id": "email_419",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Request to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_420": {
+    "email_id": "email_420",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Query about THC/local charge inclusion in invoice",
+    "needs_review": false
+  },
+  "email_421": {
+    "email_id": "email_421",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Request to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_422": {
+    "email_id": "email_422",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Request to post GR for invoice to proceed with billing",
+    "needs_review": false
+  },
+  "email_423": {
+    "email_id": "email_423",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Request to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_424": {
+    "email_id": "email_424",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Request to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_425": {
+    "email_id": "email_425",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Request to cancel invoice and reverse PGI",
+    "needs_review": false
+  },
+  "email_426": {
+    "email_id": "email_426",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Attached SI and draft BL for verification",
+    "needs_review": false
+  },
+  "email_427": {
+    "email_id": "email_427",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Provides new shipping instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_428": {
+    "email_id": "email_428",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Request to check draft BL against SI for PO",
+    "needs_review": false
+  },
+  "email_429": {
+    "email_id": "email_429",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Provides new shipping instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_430": {
+    "email_id": "email_430",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Provides new shipping instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_431": {
+    "email_id": "email_431",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Reminder to submit SI & AED for pending shipments",
+    "needs_review": false
+  },
+  "email_432": {
+    "email_id": "email_432",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Request to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_433": {
+    "email_id": "email_433",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Provides new shipping instruction and requests draft BL",
+    "needs_review": false
+  },
+  "email_434": {
+    "email_id": "email_434",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Attached SI and draft BL for verification and confirmation",
+    "needs_review": false
+  },
+  "email_435": {
+    "email_id": "email_435",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Attached SI and draft BL for verification before release",
+    "needs_review": false
+  },
+  "email_436": {
+    "email_id": "email_436",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_437": {
+    "email_id": "email_437",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instructions and requests draft BL",
+    "needs_review": false
+  },
+  "email_438": {
+    "email_id": "email_438",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instructions and requests draft BL",
+    "needs_review": false
+  },
+  "email_439": {
+    "email_id": "email_439",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Request to confirm D&D/detention charges before payment release",
+    "needs_review": false
+  },
+  "email_440": {
+    "email_id": "email_440",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_441": {
+    "email_id": "email_441",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Automated notification about billing process completion",
+    "needs_review": false
+  },
+  "email_442": {
+    "email_id": "email_442",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_443": {
+    "email_id": "email_443",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instructions and requests draft BL",
+    "needs_review": false
+  },
+  "email_444": {
+    "email_id": "email_444",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_445": {
+    "email_id": "email_445",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Automated notification about vessel berthing",
+    "needs_review": false
+  },
+  "email_446": {
+    "email_id": "email_446",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_447": {
+    "email_id": "email_447",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_448": {
+    "email_id": "email_448",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_449": {
+    "email_id": "email_449",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Unsolicited scam about Bitcoin investment and parcel delivery",
+    "needs_review": false
+  },
+  "email_450": {
+    "email_id": "email_450",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Phishing attempt pretending to be account verification",
+    "needs_review": false
+  },
+  "email_451": {
+    "email_id": "email_451",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_452": {
+    "email_id": "email_452",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Notification about missing GR for invoice and request to arrange posting",
+    "needs_review": false
+  },
+  "email_453": {
+    "email_id": "email_453",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Request to check draft BL against SI and report discrepancies",
+    "needs_review": false
+  },
+  "email_454": {
+    "email_id": "email_454",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_455": {
+    "email_id": "email_455",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Phishing attempt pretending to be bank officer with investment proposal",
+    "needs_review": false
+  },
+  "email_456": {
+    "email_id": "email_456",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_457": {
+    "email_id": "email_457",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Unsolicited scam about winning an iPhone",
+    "needs_review": false
+  },
+  "email_458": {
+    "email_id": "email_458",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Request to confirm D&D/detention charges before payment release",
+    "needs_review": false
+  },
+  "email_459": {
+    "email_id": "email_459",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_460": {
+    "email_id": "email_460",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Reminder to submit SI and AED for pending shipments",
+    "needs_review": false
+  },
+  "email_461": {
+    "email_id": "email_461",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Sender is asking about invoice breakdown and charges",
+    "needs_review": false
+  },
+  "email_462": {
+    "email_id": "email_462",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests verification that BL matches SI before release",
+    "needs_review": false
+  },
+  "email_463": {
+    "email_id": "email_463",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Automated notification of process completion with no action required",
+    "needs_review": false
+  },
+  "email_464": {
+    "email_id": "email_464",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Operational update about vessel berthing schedule",
+    "needs_review": false
+  },
+  "email_465": {
+    "email_id": "email_465",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Request to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_466": {
+    "email_id": "email_466",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instructions and requests draft BL",
+    "needs_review": false
+  },
+  "email_467": {
+    "email_id": "email_467",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instructions and requests draft BL",
+    "needs_review": false
+  },
+  "email_468": {
+    "email_id": "email_468",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Request to check draft BL against SI and report discrepancies",
+    "needs_review": false
+  },
+  "email_469": {
+    "email_id": "email_469",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instructions and requests draft BL",
+    "needs_review": false
+  },
+  "email_470": {
+    "email_id": "email_470",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Unsolicited marketing email offering a gift card and discount",
+    "needs_review": false
+  },
+  "email_471": {
+    "email_id": "email_471",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Request to confirm D&D/detention charges before payment release",
+    "needs_review": false
+  },
+  "email_472": {
+    "email_id": "email_472",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Request to cancel invoice and reverse PGI due to booking amendment",
+    "needs_review": false
+  },
+  "email_473": {
+    "email_id": "email_473",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Request to confirm D&D/detention charges before payment release",
+    "needs_review": false
+  },
+  "email_474": {
+    "email_id": "email_474",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests verification that BL matches SI before release",
+    "needs_review": false
+  },
+  "email_475": {
+    "email_id": "email_475",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instructions and requests draft BL",
+    "needs_review": false
+  },
+  "email_476": {
+    "email_id": "email_476",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Request to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_477": {
+    "email_id": "email_477",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instructions and requests draft BL",
+    "needs_review": false
+  },
+  "email_478": {
+    "email_id": "email_478",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instructions and requests draft BL",
+    "needs_review": false
+  },
+  "email_479": {
+    "email_id": "email_479",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests verification that BL matches SI before release",
+    "needs_review": false
+  },
+  "email_480": {
+    "email_id": "email_480",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Request to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_481": {
+    "email_id": "email_481",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests confirmation of SI and draft BL details",
+    "needs_review": false
+  },
+  "email_482": {
+    "email_id": "email_482",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Request to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_483": {
+    "email_id": "email_483",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests confirmation of SI and draft BL details",
+    "needs_review": false
+  },
+  "email_484": {
+    "email_id": "email_484",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instructions and requests draft BL",
+    "needs_review": false
+  },
+  "email_485": {
+    "email_id": "email_485",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instructions and requests draft BL",
+    "needs_review": false
+  },
+  "email_486": {
+    "email_id": "email_486",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_487": {
+    "email_id": "email_487",
+    "category": "SI_REQUEST",
+    "confidence": "high",
+    "reason": "Sender provides shipping instruction details and requests draft BL",
+    "needs_review": false
+  },
+  "email_488": {
+    "email_id": "email_488",
+    "category": "GENERAL",
+    "confidence": "high",
+    "reason": "Operational update about outstanding BL items to action",
+    "needs_review": false
+  },
+  "email_489": {
+    "email_id": "email_489",
+    "category": "SPAM",
+    "confidence": "high",
+    "reason": "Unsolicited phishing message offering a free iPhone",
+    "needs_review": false
+  },
+  "email_490": {
+    "email_id": "email_490",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Query about missing GR for invoice processing",
+    "needs_review": false
+  },
+  "email_491": {
+    "email_id": "email_491",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Request to check draft BL against SI and report discrepancies",
+    "needs_review": false
+  },
+  "email_492": {
+    "email_id": "email_492",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Query about inclusion of THC/local charge in invoice",
+    "needs_review": false
+  },
+  "email_493": {
+    "email_id": "email_493",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_494": {
+    "email_id": "email_494",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender attaches SI and draft BL for checking and confirmation",
+    "needs_review": false
+  },
+  "email_495": {
+    "email_id": "email_495",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Request to send draft BL for checking",
+    "needs_review": false
+  },
+  "email_496": {
+    "email_id": "email_496",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender attaches SI and draft BL for checking and confirmation",
+    "needs_review": false
+  },
+  "email_497": {
+    "email_id": "email_497",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Query about THC/local charge inclusion in invoice",
+    "needs_review": false
+  },
+  "email_498": {
+    "email_id": "email_498",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender attaches SI and draft BL for checking and confirmation",
+    "needs_review": false
+  },
+  "email_499": {
+    "email_id": "email_499",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Request to check draft BL against SI and report discrepancies",
+    "needs_review": false
+  },
+  "email_500": {
+    "email_id": "email_500",
+    "category": "INVOICE_QUERY",
+    "confidence": "high",
+    "reason": "Request to cancel invoice and reverse PGI",
+    "needs_review": false
+  },
+  "email_501": {
+    "email_id": "email_501",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender attaches SI and Commercial Invoice, requests BL confirmation",
+    "needs_review": false
+  },
+  "email_502": {
+    "email_id": "email_502",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender attaches SI and Packing List, requests BL confirmation",
+    "needs_review": false
+  },
+  "email_503": {
+    "email_id": "email_503",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender attaches SI and Certificate of Origin, requests BL confirmation",
+    "needs_review": false
+  },
+  "email_504": {
+    "email_id": "email_504",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender attaches SI and Packing List, requests BL confirmation",
+    "needs_review": false
+  },
+  "email_505": {
+    "email_id": "email_505",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender attaches SI and Certificate of Origin, requests BL confirmation",
+    "needs_review": false
+  },
+  "email_506": {
+    "email_id": "email_506",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Request to compare SI and draft BL for confirmation despite missing attachments",
+    "needs_review": false
+  },
+  "email_507": {
+    "email_id": "email_507",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Request to compare SI and draft BL for confirmation with missing draft BL",
+    "needs_review": false
+  },
+  "email_508": {
+    "email_id": "email_508",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Request to compare SI and draft BL for confirmation despite missing attachments",
+    "needs_review": false
+  },
+  "email_509": {
+    "email_id": "email_509",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Request to compare SI and draft BL for confirmation with missing draft BL",
+    "needs_review": false
+  },
+  "email_510": {
+    "email_id": "email_510",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Request to compare SI and draft BL for confirmation despite missing attachments",
+    "needs_review": false
+  },
+  "email_511": {
+    "email_id": "email_511",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests checking of attached SI and draft BL.",
+    "needs_review": false
+  },
+  "email_512": {
+    "email_id": "email_512",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests checking of attached SI and draft BL.",
+    "needs_review": false
+  },
+  "email_513": {
+    "email_id": "email_513",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests checking of attached SI and draft BL.",
+    "needs_review": false
+  },
+  "email_514": {
+    "email_id": "email_514",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests checking of attached SI and draft BL.",
+    "needs_review": false
+  },
+  "email_515": {
+    "email_id": "email_515",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests checking of attached SI and draft BL.",
+    "needs_review": false
+  },
+  "email_516": {
+    "email_id": "email_516",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests comparison of SI and draft BL.",
+    "needs_review": false
+  },
+  "email_517": {
+    "email_id": "email_517",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests comparison of SI and draft BL.",
+    "needs_review": false
+  },
+  "email_518": {
+    "email_id": "email_518",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests comparison of SI and draft BL.",
+    "needs_review": false
+  },
+  "email_519": {
+    "email_id": "email_519",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests comparison of SI and draft BL.",
+    "needs_review": false
+  },
+  "email_520": {
+    "email_id": "email_520",
+    "category": "BL_COMPARISON",
+    "confidence": "high",
+    "reason": "Sender requests comparison of SI and draft BL.",
+    "needs_review": false
   }
 }

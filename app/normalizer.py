@@ -58,15 +58,17 @@ def normalize_party(value):
 # UN/LOCODE: 2-letter country + 3-character place, e.g. (MYPKG), (TRMER)
 LOCODE = re.compile(r"\(([A-Z]{2}[A-Z0-9]{3})\)")
 
+# Five-letter words that look like port codes but aren't
+NOT_CODES = {"NORTH", "SOUTH", "WHARF", "INNER", "OUTER"}
 
 def normalize_port(value):
-    """Prefer the port code if there is one; otherwise use the cleaned name."""
+    """Return (code, name). The comparer uses codes only if both sides have one."""
     if is_missing(value):
         return None
-    match = LOCODE.search(str(value).upper())
-    if match:
-        return match.group(1)            # "MYPKG"
-    return clean_text(value)             # fallback: compare names
+    text = str(value).upper()
+    codes = [c for c in LOCODE.findall(text) if c not in NOT_CODES]
+    name = clean_text(re.sub(r"\([^)]*\)", " ", text))   # name without anything in brackets
+    return (codes[-1] if codes else None, name)
 
 
 # --- Step 4: container count ------------------------------------------------
@@ -77,6 +79,8 @@ def normalize_container_count(value):
         return None
     if isinstance(value, int):
         return value
+    if isinstance(value, float) and value.is_integer():
+        return int(value)
     text = str(value).upper()
 
     # "2 x 20GP", "(1) X 40'HC" - add up every "N x" group

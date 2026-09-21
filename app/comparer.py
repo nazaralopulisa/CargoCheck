@@ -35,6 +35,12 @@ def values_match(field, si_value, bl_value):
     """Compare two already-normalized values."""
     if field == "gross_weight_kg":
         return abs(si_value - bl_value) <= WEIGHT_TOLERANCE_KG
+    if field in ("port_of_loading", "port_of_discharge"):
+        si_code, si_name = si_value
+        bl_code, bl_name = bl_value
+        if si_code and bl_code:
+            return si_code == bl_code     # both have codes: trust the codes
+        return si_name == bl_name         # otherwise compare names
     return si_value == bl_value
 
 

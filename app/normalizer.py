@@ -64,17 +64,52 @@ def normalize_party(value):
 # UN/LOCODE: 2-letter country + 3-character place, e.g. (MYPKG), (TRMER)
 LOCODE = re.compile(r"\(([A-Z]{2}[A-Z0-9]{3})\)")
 
+
 # Five-letter words that look like port codes but aren't
 NOT_CODES = {"NORTH", "SOUTH", "WHARF", "INNER", "OUTER"}
+# Words that don't identify a port on their own
+GENERIC_PORT_WORDS = {"PORT", "OF", "THE", "CITY", "HARBOUR", "HARBOR", "TERMINAL"}
+
+
+def city_words(text):
+    """The words that name the city, without the country.
+
+    'PORT KLANG (WESTPORT), MALAYSIA' -> {'KLANG', 'WESTPORT'}
+    'TUTICORIN, INDIA'                -> {'TUTICORIN'}
+    'NHAVA SHEVA INDIA'               -> {'NHAVA', 'SHEVA', 'INDIA'}  (no comma: keep all)
+    """
+    parts = [p for p in text.split(",") if p.strip()]
+    if len(parts) >= 2:
+        parts = parts[:-1]                   # last comma part is the country
+    words = set(clean_text(" ".join(parts)).split())
+    return frozenset(words - GENERIC_PORT_WORDS)
+
 
 def normalize_port(value):
-    """Return (code, name). The comparer uses codes only if both sides have one."""
+    """Return (code, city_words). The comparer needs BOTH to agree.
+
+    The data contains traps where the city changes but the code in brackets
+    stays the same, e.g. 'MOMBASA, KENYA (KEMBA)' vs 'TUTICORIN, INDIA (KEMBA)',
+    so the code alone can't be trusted.
+    """
     if is_missing(value):
         return None
     text = str(value).upper()
     codes = [c for c in LOCODE.findall(text) if c not in NOT_CODES]
-    name = clean_text(re.sub(r"\([^)]*\)", " ", text))   # name without anything in brackets
-    return (codes[-1] if codes else None, name)
+    for c in codes:
+        text = text.replace(f"({c})", " ")   # drop the code, keep other brackets like (WESTPORT)
+    return (codes[-1] if codes else None, city_words(text))
+
+
+def ports_match(si_port, bl_port):
+    """Codes must agree (when both have one) AND the city names must overlap."""
+    si_code, si_city = si_port
+    bl_code, bl_city = bl_port
+    if si_code and bl_code and si_code != bl_code:
+        return False
+    if si_city and bl_city:
+        return bool(si_city & bl_city)
+    return bool(si_code and bl_code)         # no usable name on one side: fall back to codes
 
 
 # --- Step 4: container count ------------------------------------------------
@@ -85,8 +120,6 @@ def normalize_container_count(value):
         return None
     if isinstance(value, int):
         return value
-    if isinstance(value, float) and value.is_integer():
-        return int(value)
     text = str(value).upper()
 
     # "2 x 20GP", "(1) X 40'HC" - add up every "N x" group
@@ -191,7 +224,9 @@ if __name__ == "__main__":
         (normalize_container_count, "2 x 20GP + 1 x 40HC", 3),
         (normalize_container_count, "ONE (1) X 40'HC", 1),
         (normalize_party, "Pacific Office (M) Sdn. Bhd.", "PACIFIC OFFICE M SDN BHD"),
-        (normalize_port, "Westport, Port Klang (MYPKG)", "MYPKG"),
+        (normalize_port, "TUTICORIN, INDIA (KEMBA)", ("KEMBA", frozenset({"TUTICORIN"}))),
+        (normalize_port, "NANTONG, CHINA", (None, frozenset({"NANTONG"}))),
+        (normalize_port, "____MT", None),
         (normalize_weight, "TBA", None),
     ]
     for func, raw, expected in tests:

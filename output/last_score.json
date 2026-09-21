@@ -51,18 +51,18 @@
   },
   "stage3": {
     "defect_precision": 1.0,
-    "defect_recall": 0.8913043478260869,
-    "defect_f1": 0.9425287356321839,
-    "field_f1": 0.8682170542635659,
-    "exact_match_rate": 0.92,
+    "defect_recall": 1.0,
+    "defect_f1": 1.0,
+    "field_f1": 0.993103448275862,
+    "exact_match_rate": 0.995,
     "doc_total": 200
   },
   "reliability": {
-    "escalation_recall": 0.7,
+    "escalation_recall": 1.0,
     "escalation_precision": 1.0,
-    "escalation_f1": 0.8235294117647058,
+    "escalation_f1": 1.0,
     "gold_review": 20,
-    "pred_review": 14,
+    "pred_review": 20,
     "per_reason": {
       "wrong_doc_type": {
         "total": 5,
@@ -74,24 +74,24 @@
       },
       "unreadable": {
         "total": 5,
-        "caught": 2
+        "caught": 5
       },
       "missing_value": {
         "total": 5,
-        "caught": 2
+        "caught": 5
       }
     }
   },
   "end_to_end": {
-    "success": 30,
+    "success": 45,
     "total": 46,
-    "rate": 0.6521739130434783
+    "rate": 0.9782608695652174
   },
   "weights": {
     "stage1": 0.3,
     "stage3": 0.2,
     "end_to_end": 0.5
   },
-  "final_score": 0.813099564019443,
+  "final_score": 0.9876372951538759,
   "n_emails": 520
 }

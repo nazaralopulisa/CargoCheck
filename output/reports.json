@@ -257,8 +257,8 @@
   },
   "email_013": {
     "email_id": "email_013",
-    "status": "OK",
-    "detail": "No mismatch detected.",
+    "status": "MISMATCH",
+    "detail": "1 field(s) differ.",
     "fields": [
       {
         "field": "shipper",
@@ -288,7 +288,7 @@
         "field": "port_of_discharge",
         "si": "MOMBASA, KENYA (KEMBA)",
         "bl": "TUTICORIN, INDIA (KEMBA)",
-        "result": "MATCH"
+        "result": "MISMATCH"
       },
       {
         "field": "container_count",
@@ -385,7 +385,7 @@
   "email_025": {
     "email_id": "email_025",
     "status": "MISMATCH",
-    "detail": "1 field(s) differ.",
+    "detail": "2 field(s) differ.",
     "fields": [
       {
         "field": "shipper",
@@ -415,7 +415,7 @@
         "field": "port_of_discharge",
         "si": "FREMANTLE, AUSTRALIA (AUFRE)",
         "bl": "BUSAN, SOUTH KOREA (AUFRE)",
-        "result": "MATCH"
+        "result": "MISMATCH"
       },
       {
         "field": "container_count",
@@ -1310,7 +1310,7 @@
   "email_065": {
     "email_id": "email_065",
     "status": "MISMATCH",
-    "detail": "1 field(s) differ.",
+    "detail": "2 field(s) differ.",
     "fields": [
       {
         "field": "shipper",
@@ -1340,7 +1340,7 @@
         "field": "port_of_discharge",
         "si": "HOCHIMINH CITY, VIETNAM (VNSGN)",
         "bl": "BUSAN, SOUTH KOREA (VNSGN)",
-        "result": "MATCH"
+        "result": "MISMATCH"
       },
       {
         "field": "container_count",
@@ -1438,7 +1438,7 @@
   "email_071": {
     "email_id": "email_071",
     "status": "MISMATCH",
-    "detail": "1 field(s) differ.",
+    "detail": "2 field(s) differ.",
     "fields": [
       {
         "field": "shipper",
@@ -1468,7 +1468,7 @@
         "field": "port_of_discharge",
         "si": "YANGON, MYANMAR (MMRGN)",
         "bl": "CEBU, PHILIPPINES (MMRGN)",
-        "result": "MATCH"
+        "result": "MISMATCH"
       },
       {
         "field": "container_count",
@@ -2203,8 +2203,8 @@
   },
   "email_119": {
     "email_id": "email_119",
-    "status": "OK",
-    "detail": "No mismatch detected.",
+    "status": "MISMATCH",
+    "detail": "1 field(s) differ.",
     "fields": [
       {
         "field": "shipper",
@@ -2228,7 +2228,7 @@
         "field": "port_of_loading",
         "si": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
         "bl": "SINGAPORE, SINGAPORE (MYPKG)",
-        "result": "MATCH"
+        "result": "MISMATCH"
       },
       {
         "field": "port_of_discharge",
@@ -2353,7 +2353,7 @@
   "email_128": {
     "email_id": "email_128",
     "status": "MISMATCH",
-    "detail": "1 field(s) differ.",
+    "detail": "2 field(s) differ.",
     "fields": [
       {
         "field": "shipper",
@@ -2377,7 +2377,7 @@
         "field": "port_of_loading",
         "si": "NHAVA SHEVA, INDIA (INNSA)",
         "bl": "BUATAN, INDONESIA (INNSA)",
-        "result": "MATCH"
+        "result": "MISMATCH"
       },
       {
         "field": "port_of_discharge",
@@ -2402,8 +2402,8 @@
   },
   "email_129": {
     "email_id": "email_129",
-    "status": "OK",
-    "detail": "No mismatch detected.",
+    "status": "MISMATCH",
+    "detail": "2 field(s) differ.",
     "fields": [
       {
         "field": "shipper",
@@ -2427,13 +2427,13 @@
         "field": "port_of_loading",
         "si": "NHAVA SHEVA, INDIA (INNSA)",
         "bl": "BUATAN, INDONESIA (INNSA)",
-        "result": "MATCH"
+        "result": "MISMATCH"
       },
       {
         "field": "port_of_discharge",
         "si": "ASHDOD, ISRAEL (ILASH)",
         "bl": "TUTICORIN, INDIA (ILASH)",
-        "result": "MATCH"
+        "result": "MISMATCH"
       },
       {
         "field": "container_count",
@@ -3148,7 +3148,7 @@
   "email_174": {
     "email_id": "email_174",
     "status": "MISMATCH",
-    "detail": "1 field(s) differ.",
+    "detail": "2 field(s) differ.",
     "fields": [
       {
         "field": "shipper",
@@ -3178,7 +3178,7 @@
         "field": "port_of_discharge",
         "si": "CONAKRY, GUINEA (GNCKY)",
         "bl": "HOCHIMINH CITY, VIETNAM (GNCKY)",
-        "result": "MATCH"
+        "result": "MISMATCH"
       },
       {
         "field": "container_count",
@@ -3333,7 +3333,7 @@
   "email_182": {
     "email_id": "email_182",
     "status": "MISMATCH",
-    "detail": "1 field(s) differ.",
+    "detail": "2 field(s) differ.",
     "fields": [
       {
         "field": "shipper",
@@ -3363,7 +3363,7 @@
         "field": "port_of_discharge",
         "si": "APAPA, NIGERIA (NGAPP)",
         "bl": "BALTIMORE, US (NGAPP)",
-        "result": "MATCH"
+        "result": "MISMATCH"
       },
       {
         "field": "container_count",
@@ -4281,7 +4281,7 @@
   "email_256": {
     "email_id": "email_256",
     "status": "MISMATCH",
-    "detail": "1 field(s) differ.",
+    "detail": "2 field(s) differ.",
     "fields": [
       {
         "field": "shipper",
@@ -4311,7 +4311,7 @@
         "field": "port_of_discharge",
         "si": "VALPARAISO, CHILE (CLVAP)",
         "bl": "FREMANTLE, AUSTRALIA (CLVAP)",
-        "result": "MATCH"
+        "result": "MISMATCH"
       },
       {
         "field": "container_count",
@@ -4421,8 +4421,8 @@
   },
   "email_270": {
     "email_id": "email_270",
-    "status": "OK",
-    "detail": "No mismatch detected.",
+    "status": "MISMATCH",
+    "detail": "1 field(s) differ.",
     "fields": [
       {
         "field": "shipper",
@@ -4452,7 +4452,7 @@
         "field": "port_of_discharge",
         "si": "MERSIN, TURKEY (TRMER)",
         "bl": "LONG BEACH, US (TRMER)",
-        "result": "MATCH"
+        "result": "MISMATCH"
       },
       {
         "field": "container_count",
@@ -5833,7 +5833,7 @@
   "email_361": {
     "email_id": "email_361",
     "status": "MISMATCH",
-    "detail": "1 field(s) differ.",
+    "detail": "2 field(s) differ.",
     "fields": [
       {
         "field": "shipper",
@@ -5863,7 +5863,7 @@
         "field": "port_of_discharge",
         "si": "BRISBANE, AUSTRALIA (AUBNE)",
         "bl": "MOMBASA, KENYA (AUBNE)",
-        "result": "MATCH"
+        "result": "MISMATCH"
       },
       {
         "field": "container_count",
@@ -6734,8 +6734,8 @@
   },
   "email_410": {
     "email_id": "email_410",
-    "status": "OK",
-    "detail": "No mismatch detected.",
+    "status": "MISMATCH",
+    "detail": "1 field(s) differ.",
     "fields": [
       {
         "field": "shipper",
@@ -6759,7 +6759,7 @@
         "field": "port_of_loading",
         "si": "SINGAPORE (SGSIN)",
         "bl": "PORT KLANG (WESTPORT), MALAYSIA (SGSIN)",
-        "result": "MATCH"
+        "result": "MISMATCH"
       },
       {
         "field": "port_of_discharge",
@@ -6976,7 +6976,7 @@
   "email_426": {
     "email_id": "email_426",
     "status": "MISMATCH",
-    "detail": "1 field(s) differ.",
+    "detail": "2 field(s) differ.",
     "fields": [
       {
         "field": "shipper",
@@ -7006,7 +7006,7 @@
         "field": "port_of_discharge",
         "si": "NEW YORK, US (USNYC)",
         "bl": "KLAIPEDA, LITHUANIA (USNYC)",
-        "result": "MATCH"
+        "result": "MISMATCH"
       },
       {
         "field": "container_count",
@@ -7528,7 +7528,7 @@
   "email_468": {
     "email_id": "email_468",
     "status": "MISMATCH",
-    "detail": "1 field(s) differ.",
+    "detail": "2 field(s) differ.",
     "fields": [
       {
         "field": "shipper",
@@ -7552,7 +7552,7 @@
         "field": "port_of_loading",
         "si": "SINGAPORE (SGSIN)",
         "bl": "RUGAO/NANTONG/SHANGHAI, CHINA (SGSIN)",
-        "result": "MATCH"
+        "result": "MISMATCH"
       },
       {
         "field": "port_of_discharge",
@@ -8276,8 +8276,8 @@
   },
   "email_512": {
     "email_id": "email_512",
-    "status": "OK",
-    "detail": "No mismatch detected.",
+    "status": "NEEDS_REVIEW",
+    "detail": "Scanned document(s) email_512_SI.pdf, email_512_BL.pdf were read by AI vision. Please confirm the transcribed values below before acting.",
     "fields": [
       {
         "field": "shipper",
@@ -8322,12 +8322,13 @@
         "result": "MATCH"
       }
     ],
+    "reason": "unreadable",
     "classification_reason": "Sender requests checking of attached SI and draft BL."
   },
   "email_513": {
     "email_id": "email_513",
-    "status": "MISMATCH",
-    "detail": "1 field(s) differ.",
+    "status": "NEEDS_REVIEW",
+    "detail": "Scanned document(s) email_513_SI.pdf, email_513_BL.pdf were read by AI vision. Please confirm the transcribed values below before acting.",
     "fields": [
       {
         "field": "shipper",
@@ -8372,12 +8373,13 @@
         "result": "MATCH"
       }
     ],
+    "reason": "unreadable",
     "classification_reason": "Sender requests checking of attached SI and draft BL."
   },
   "email_514": {
     "email_id": "email_514",
-    "status": "OK",
-    "detail": "No mismatch detected.",
+    "status": "NEEDS_REVIEW",
+    "detail": "Scanned document(s) email_514_SI.pdf, email_514_BL.pdf were read by AI vision. Please confirm the transcribed values below before acting.",
     "fields": [
       {
         "field": "shipper",
@@ -8422,6 +8424,7 @@
         "result": "MATCH"
       }
     ],
+    "reason": "unreadable",
     "classification_reason": "Sender requests checking of attached SI and draft BL."
   },
   "email_515": {
@@ -8434,8 +8437,8 @@
   },
   "email_516": {
     "email_id": "email_516",
-    "status": "MISMATCH",
-    "detail": "1 field(s) differ. Also could not read: gross_weight_kg",
+    "status": "NEEDS_REVIEW",
+    "detail": "Value not found for: gross_weight_kg",
     "fields": [
       {
         "field": "shipper",
@@ -8480,6 +8483,7 @@
         "result": "MISSING"
       }
     ],
+    "reason": "missing_value",
     "classification_reason": "Sender requests comparison of SI and draft BL."
   },
   "email_517": {
@@ -8535,8 +8539,8 @@
   },
   "email_518": {
     "email_id": "email_518",
-    "status": "MISMATCH",
-    "detail": "1 field(s) differ. Also could not read: port_of_discharge, gross_weight_kg",
+    "status": "NEEDS_REVIEW",
+    "detail": "Value not found for: port_of_discharge, gross_weight_kg",
     "fields": [
       {
         "field": "shipper",
@@ -8581,6 +8585,7 @@
         "result": "MISSING"
       }
     ],
+    "reason": "missing_value",
     "classification_reason": "Sender requests comparison of SI and draft BL."
   },
   "email_519": {
@@ -8636,8 +8641,8 @@
   },
   "email_520": {
     "email_id": "email_520",
-    "status": "MISMATCH",
-    "detail": "1 field(s) differ. Also could not read: consignee",
+    "status": "NEEDS_REVIEW",
+    "detail": "Value not found for: consignee",
     "fields": [
       {
         "field": "shipper",
@@ -8682,6 +8687,7 @@
         "result": "MATCH"
       }
     ],
+    "reason": "missing_value",
     "classification_reason": "Sender requests comparison of SI and draft BL."
   }
 }

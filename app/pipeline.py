@@ -421,6 +421,14 @@ def main():
                       "detail": extractions[eid]["processing_error"], "fields": []}
         elif category == "BL_COMPARISON":
             entry, report = compare_email(to_comparer_input(eid, category, extractions[eid]))
+            scanned = [Path(p).name for p in emails[eid].get("attachments") or []
+                       if (OUTPUT_DIR / "doc_text" / (Path(p).name + ".txt")).exists()]
+            if scanned and entry["status"] != "NEEDS_REVIEW":
+                entry = {"category": category, "status": "NEEDS_REVIEW", "review_reason": "unreadable",
+                         "has_defect": False, "defect_fields": []}
+                report["status"], report["reason"] = "NEEDS_REVIEW", "unreadable"
+                report["detail"] = (f"Scanned document(s) {', '.join(scanned)} were read by AI vision. "
+                                    "Please confirm the transcribed values below before acting.")
         else:
             entry, report = compare_email({"email_id": eid, "category": category})
 

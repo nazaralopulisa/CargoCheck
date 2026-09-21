@@ -88,10 +88,12 @@
   },
   "email_013": {
     "category": "BL_COMPARISON",
-    "status": "OK",
+    "status": "MISMATCH",
     "review_reason": null,
-    "has_defect": false,
-    "defect_fields": []
+    "has_defect": true,
+    "defect_fields": [
+      "port_of_discharge"
+    ]
   },
   "email_014": {
     "category": "SI_REQUEST",
@@ -176,6 +178,7 @@
     "review_reason": null,
     "has_defect": true,
     "defect_fields": [
+      "port_of_discharge",
       "container_count"
     ]
   },
@@ -465,7 +468,8 @@
     "review_reason": null,
     "has_defect": true,
     "defect_fields": [
-      "notify_party"
+      "notify_party",
+      "port_of_discharge"
     ]
   },
   "email_066": {
@@ -509,6 +513,7 @@
     "review_reason": null,
     "has_defect": true,
     "defect_fields": [
+      "port_of_discharge",
       "container_count"
     ]
   },
@@ -853,10 +858,12 @@
   },
   "email_119": {
     "category": "BL_COMPARISON",
-    "status": "OK",
+    "status": "MISMATCH",
     "review_reason": null,
-    "has_defect": false,
-    "defect_fields": []
+    "has_defect": true,
+    "defect_fields": [
+      "port_of_loading"
+    ]
   },
   "email_120": {
     "category": "SI_REQUEST",
@@ -922,15 +929,19 @@
     "review_reason": null,
     "has_defect": true,
     "defect_fields": [
+      "port_of_loading",
       "gross_weight_kg"
     ]
   },
   "email_129": {
     "category": "BL_COMPARISON",
-    "status": "OK",
+    "status": "MISMATCH",
     "review_reason": null,
-    "has_defect": false,
-    "defect_fields": []
+    "has_defect": true,
+    "defect_fields": [
+      "port_of_loading",
+      "port_of_discharge"
+    ]
   },
   "email_130": {
     "category": "SI_REQUEST",
@@ -1253,7 +1264,8 @@
     "review_reason": null,
     "has_defect": true,
     "defect_fields": [
-      "notify_party"
+      "notify_party",
+      "port_of_discharge"
     ]
   },
   "email_175": {
@@ -1313,6 +1325,7 @@
     "review_reason": null,
     "has_defect": true,
     "defect_fields": [
+      "port_of_discharge",
       "container_count"
     ]
   },
@@ -1838,7 +1851,8 @@
     "review_reason": null,
     "has_defect": true,
     "defect_fields": [
-      "shipper"
+      "shipper",
+      "port_of_discharge"
     ]
   },
   "email_257": {
@@ -1934,10 +1948,12 @@
   },
   "email_270": {
     "category": "BL_COMPARISON",
-    "status": "OK",
+    "status": "MISMATCH",
     "review_reason": null,
-    "has_defect": false,
-    "defect_fields": []
+    "has_defect": true,
+    "defect_fields": [
+      "port_of_discharge"
+    ]
   },
   "email_271": {
     "category": "BL_COMPARISON",
@@ -2605,6 +2621,7 @@
     "review_reason": null,
     "has_defect": true,
     "defect_fields": [
+      "port_of_discharge",
       "gross_weight_kg"
     ]
   },
@@ -2948,10 +2965,12 @@
   },
   "email_410": {
     "category": "BL_COMPARISON",
-    "status": "OK",
+    "status": "MISMATCH",
     "review_reason": null,
-    "has_defect": false,
-    "defect_fields": []
+    "has_defect": true,
+    "defect_fields": [
+      "port_of_loading"
+    ]
   },
   "email_411": {
     "category": "BL_COMPARISON",
@@ -3066,6 +3085,7 @@
     "review_reason": null,
     "has_defect": true,
     "defect_fields": [
+      "port_of_discharge",
       "container_count"
     ]
   },
@@ -3366,6 +3386,7 @@
     "review_reason": null,
     "has_defect": true,
     "defect_fields": [
+      "port_of_loading",
       "container_count"
     ]
   },
@@ -3676,24 +3697,22 @@
   },
   "email_512": {
     "category": "BL_COMPARISON",
-    "status": "OK",
-    "review_reason": null,
+    "status": "NEEDS_REVIEW",
+    "review_reason": "unreadable",
     "has_defect": false,
     "defect_fields": []
   },
   "email_513": {
     "category": "BL_COMPARISON",
-    "status": "MISMATCH",
-    "review_reason": null,
-    "has_defect": true,
-    "defect_fields": [
-      "notify_party"
-    ]
+    "status": "NEEDS_REVIEW",
+    "review_reason": "unreadable",
+    "has_defect": false,
+    "defect_fields": []
   },
   "email_514": {
     "category": "BL_COMPARISON",
-    "status": "OK",
-    "review_reason": null,
+    "status": "NEEDS_REVIEW",
+    "review_reason": "unreadable",
     "has_defect": false,
     "defect_fields": []
   },
@@ -3706,12 +3725,10 @@
   },
   "email_516": {
     "category": "BL_COMPARISON",
-    "status": "MISMATCH",
-    "review_reason": null,
-    "has_defect": true,
-    "defect_fields": [
-      "shipper"
-    ]
+    "status": "NEEDS_REVIEW",
+    "review_reason": "missing_value",
+    "has_defect": false,
+    "defect_fields": []
   },
   "email_517": {
     "category": "BL_COMPARISON",
@@ -3722,12 +3739,10 @@
   },
   "email_518": {
     "category": "BL_COMPARISON",
-    "status": "MISMATCH",
-    "review_reason": null,
-    "has_defect": true,
-    "defect_fields": [
-      "shipper"
-    ]
+    "status": "NEEDS_REVIEW",
+    "review_reason": "missing_value",
+    "has_defect": false,
+    "defect_fields": []
   },
   "email_519": {
     "category": "BL_COMPARISON",
@@ -3738,11 +3753,9 @@
   },
   "email_520": {
     "category": "BL_COMPARISON",
-    "status": "MISMATCH",
-    "review_reason": null,
-    "has_defect": true,
-    "defect_fields": [
-      "shipper"
-    ]
+    "status": "NEEDS_REVIEW",
+    "review_reason": "missing_value",
+    "has_defect": false,
+    "defect_fields": []
   }
 }

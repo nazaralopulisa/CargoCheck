@@ -16,7 +16,7 @@ Output:
     report - a human-readable result with SI and BL values side by side
 """
 
-from normalizer import NORMALIZERS, normalize_fields
+from normalizer import NORMALIZERS, normalize_fields, ports_match
 
 FIELDS = list(NORMALIZERS)          # the 7 field names, in a fixed order
 REVIEW_REASONS = {"wrong_doc_type", "missing_attachment", "unreadable", "missing_value"}
@@ -26,7 +26,7 @@ WEIGHT_TOLERANCE_KG = 0.5           # ignore tiny rounding differences
 #   True  -> MISMATCH (we found a real defect, so report it)
 #   False -> NEEDS_REVIEW (we can't check everything, so ask a human)
 # Try both against the scorer and keep whichever is more accurate.
-MISMATCH_BEATS_MISSING = True
+MISMATCH_BEATS_MISSING = False
 
 
 # --- Step 1: compare one field ----------------------------------------------
@@ -36,11 +36,7 @@ def values_match(field, si_value, bl_value):
     if field == "gross_weight_kg":
         return abs(si_value - bl_value) <= WEIGHT_TOLERANCE_KG
     if field in ("port_of_loading", "port_of_discharge"):
-        si_code, si_name = si_value
-        bl_code, bl_name = bl_value
-        if si_code and bl_code:
-            return si_code == bl_code     # both have codes: trust the codes
-        return si_name == bl_name         # otherwise compare names
+        return ports_match(si_value, bl_value)
     return si_value == bl_value
 
 

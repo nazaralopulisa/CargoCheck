@@ -25,6 +25,9 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
+from dotenv import load_dotenv
+load_dotenv()
+
 from comparer import compare_email, format_report
 
 BASE_DIR = Path(__file__).resolve().parent.parent   # app/make_submission.py -> CargoCheck/

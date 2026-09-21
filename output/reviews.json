@@ -34,5 +34,19 @@
       "port_of_discharge": "MOMBASA, KENYA (KEMBA)"
     },
     "reviewed_at": "2026-09-21 18:29"
+  },
+  "email_504": {
+    "decision": "corrected",
+    "note": "",
+    "bl": {
+      "shipper": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+      "consignee": "PACIFIC OFFICE (M) SDN BHD",
+      "notify_party": "PACIFIC OFFICE (M) SDN BHD",
+      "port_of_loading": "BUATAN, INDONESIA (IDBUA)",
+      "port_of_discharge": "ASHDOD, ISRAEL (ILASH)",
+      "container_count": "10",
+      "gross_weight_kg": "221170"
+    },
+    "reviewed_at": "2026-09-21 18:33"
   }
 }

@@ -18,7 +18,13 @@ def is_missing(value):
     """True if the extractor gave us nothing usable."""
     if value is None:
         return True
-    return str(value).strip().upper() in MISSING_WORDS
+    text = str(value).strip().upper()
+    if text in MISSING_WORDS:
+        return True
+    # Blank form fields like "____" or "____MT": underscores with almost nothing else
+    if "_" in text and len(re.sub(r"[^A-Z0-9]", "", text)) <= 3:
+        return True
+    return False
 
 
 def clean_text(value):

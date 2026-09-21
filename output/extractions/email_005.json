@@ -1,8 +1,7 @@
 {
   "email_id": "email_005",
-  "si": null,
-  "bl": {
-    "doc_type_detected": "BL",
+  "si": {
+    "doc_type_detected": "SI",
     "fields": {
       "shipper": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
       "consignee": "BALL & DOGGETT AUSTRALIA PTY LTD",
@@ -14,25 +13,21 @@
     },
     "source_file": "attachments/email_005_SI.xlsx"
   },
-  "other_documents": [
-    {
-      "doc_type_detected": "BL",
-      "fields": {
-        "shipper": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
-        "consignee": "BALL & DOGGETT AUSTRALIA PTY LTD",
-        "notify_party": "BALL & DOGGETT AUSTRALIA PTY LTD",
-        "port_of_loading": "SINGAPORE",
-        "port_of_discharge": "KOPER, SLOVENIA",
-        "container_count": 15,
-        "gross_weight_kg": 341715
-      },
-      "source_file": "attachments/email_005_BL.xlsx"
-    }
-  ],
-  "extraction_issues": [
-    "attachments/email_005_BL.xlsx was detected as BL, not a usable SI/BL",
-    "No SI found"
-  ],
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+      "consignee": "BALL & DOGGETT AUSTRALIA PTY LTD",
+      "notify_party": "BALL & DOGGETT AUSTRALIA PTY LTD",
+      "port_of_loading": "SINGAPORE",
+      "port_of_discharge": "KOPER, SLOVENIA",
+      "container_count": 15,
+      "gross_weight_kg": 341715
+    },
+    "source_file": "attachments/email_005_BL.xlsx"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
   "method": "llm",
   "needs_llm": false
 }

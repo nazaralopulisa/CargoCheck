@@ -1,8 +1,7 @@
 {
   "email_id": "email_313",
-  "si": null,
-  "bl": {
-    "doc_type_detected": "BL",
+  "si": {
+    "doc_type_detected": "SI",
     "fields": {
       "shipper": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
       "consignee": "KPP-ANTALIS (SINGAPORE) PTE. LTD.",
@@ -14,25 +13,21 @@
     },
     "source_file": "attachments/email_313_SI.pdf"
   },
-  "other_documents": [
-    {
-      "doc_type_detected": "BL",
-      "fields": {
-        "shipper": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
-        "consignee": "KPP-ANTALIS (SINGAPORE) PTE. LTD.",
-        "notify_party": "KPP-ANTALIS (SINGAPORE) PTE. LTD.",
-        "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA",
-        "port_of_discharge": "HOCHIMINH CITY, VIETNAM",
-        "container_count": 4,
-        "gross_weight_kg": 117770
-      },
-      "source_file": "attachments/email_313_BL.pdf"
-    }
-  ],
-  "extraction_issues": [
-    "attachments/email_313_BL.pdf was detected as BL, not a usable SI/BL",
-    "No SI found"
-  ],
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+      "consignee": "KPP-ANTALIS (SINGAPORE) PTE. LTD.",
+      "notify_party": "KPP-ANTALIS (SINGAPORE) PTE. LTD.",
+      "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA",
+      "port_of_discharge": "HOCHIMINH CITY, VIETNAM",
+      "container_count": 4,
+      "gross_weight_kg": 117770
+    },
+    "source_file": "attachments/email_313_BL.pdf"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
   "method": "llm",
   "needs_llm": false
 }

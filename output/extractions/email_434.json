@@ -1,8 +1,7 @@
 {
   "email_id": "email_434",
-  "si": null,
-  "bl": {
-    "doc_type_detected": "BL",
+  "si": {
+    "doc_type_detected": "SI",
     "fields": {
       "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
       "consignee": "TOPKOPY MIDDLE EAST FZE",
@@ -14,25 +13,21 @@
     },
     "source_file": "attachments/email_434_SI.pdf"
   },
-  "other_documents": [
-    {
-      "doc_type_detected": "BL",
-      "fields": {
-        "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
-        "consignee": "TOPKOPY MIDDLE EAST FZE",
-        "notify_party": "TOPKOPY MIDDLE EAST FZE",
-        "port_of_loading": "NHAVA SHEVA, INDIA",
-        "port_of_discharge": "CEBU, PHILIPPINES",
-        "container_count": 12,
-        "gross_weight_kg": 261480
-      },
-      "source_file": "attachments/email_434_BL.pdf"
-    }
-  ],
-  "extraction_issues": [
-    "attachments/email_434_BL.pdf was detected as BL, not a usable SI/BL",
-    "No SI found"
-  ],
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+      "consignee": "TOPKOPY MIDDLE EAST FZE",
+      "notify_party": "TOPKOPY MIDDLE EAST FZE",
+      "port_of_loading": "NHAVA SHEVA, INDIA",
+      "port_of_discharge": "CEBU, PHILIPPINES",
+      "container_count": 12,
+      "gross_weight_kg": 261480
+    },
+    "source_file": "attachments/email_434_BL.pdf"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
   "method": "llm",
   "needs_llm": false
 }

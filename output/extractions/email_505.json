@@ -8,35 +8,31 @@
       "notify_party": "EAST BRIGHT FZ-LLC",
       "port_of_loading": "NANTONG, CHINA (CNNTG)",
       "port_of_discharge": "CEBU, PHILIPPINES (PHCEB)",
-      "container_count": "12 x 40'HC",
-      "gross_weight_kg": "265,560 KG"
+      "container_count": 12,
+      "gross_weight_kg": 265560
     },
-    "source_file": "attachments/email_505_SI.txt",
-    "method": "rules",
-    "type_from_title": true
+    "source_file": "attachments/email_505_SI.txt"
   },
   "bl": null,
   "other_documents": [
     {
       "doc_type_detected": "OTHER",
       "fields": {
-        "shipper": "APRIL FINE PAPER TRADING",
-        "consignee": "EAST BRIGHT FZ-LLC",
+        "shipper": null,
+        "consignee": null,
         "notify_party": null,
         "port_of_loading": null,
         "port_of_discharge": null,
         "container_count": null,
         "gross_weight_kg": null
       },
-      "source_file": "attachments/email_505_BL.txt",
-      "method": "rules",
-      "type_from_title": true
+      "source_file": "attachments/email_505_BL.txt"
     }
   ],
   "extraction_issues": [
     "attachments/email_505_BL.txt was detected as OTHER, not a usable SI/BL",
     "No BL found"
   ],
-  "method": "rules",
+  "method": "llm",
   "needs_llm": false
 }

@@ -1,8 +1,7 @@
 {
   "email_id": "email_351",
-  "si": null,
-  "bl": {
-    "doc_type_detected": "BL",
+  "si": {
+    "doc_type_detected": "SI",
     "fields": {
       "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
       "consignee": "KTP CO., LTD",
@@ -14,25 +13,21 @@
     },
     "source_file": "attachments/email_351_SI.pdf"
   },
-  "other_documents": [
-    {
-      "doc_type_detected": "BL",
-      "fields": {
-        "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
-        "consignee": "KTP CO., LTD",
-        "notify_party": "KTP CO., LTD",
-        "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA",
-        "port_of_discharge": "ASHDOD, ISRAEL",
-        "container_count": 16,
-        "gross_weight_kg": 360415
-      },
-      "source_file": "attachments/email_351_BL.pdf"
-    }
-  ],
-  "extraction_issues": [
-    "attachments/email_351_BL.pdf was detected as BL, not a usable SI/BL",
-    "No SI found"
-  ],
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+      "consignee": "KTP CO., LTD",
+      "notify_party": "KTP BLDG., LTD",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA",
+      "port_of_discharge": "ASHDOD, ISRAEL",
+      "container_count": 16,
+      "gross_weight_kg": 360415
+    },
+    "source_file": "attachments/email_351_BL.pdf"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
   "method": "llm",
   "needs_llm": false
 }

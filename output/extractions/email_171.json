@@ -1,8 +1,7 @@
 {
   "email_id": "email_171",
-  "si": null,
-  "bl": {
-    "doc_type_detected": "BL",
+  "si": {
+    "doc_type_detected": "SI",
     "fields": {
       "shipper": "APRIL FAR EAST (M) SDN BHD",
       "consignee": "PACIFIC OFFICE (M) SDN BHD",
@@ -14,25 +13,21 @@
     },
     "source_file": "attachments/email_171_SI.xlsx"
   },
-  "other_documents": [
-    {
-      "doc_type_detected": "BL",
-      "fields": {
-        "shipper": "APRIL FAR EAST (M) SDN BHD",
-        "consignee": "PACIFIC OFFICE (M) SDN BHD",
-        "notify_party": "ROXCEL TRADING GMBH",
-        "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA",
-        "port_of_discharge": "HOUSTON, US",
-        "container_count": 6,
-        "gross_weight_kg": 141918
-      },
-      "source_file": "attachments/email_171_BL.xlsx"
-    }
-  ],
-  "extraction_issues": [
-    "attachments/email_171_BL.xlsx was detected as BL, not a usable SI/BL",
-    "No SI found"
-  ],
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "PACIFIC OFFICE (M) SDN BHD",
+      "notify_party": "ROXCEL TRADING GMBH",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA",
+      "port_of_discharge": "HOUSTON, US",
+      "container_count": 6,
+      "gross_weight_kg": 141918
+    },
+    "source_file": "attachments/email_171_BL.xlsx"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
   "method": "llm",
   "needs_llm": false
 }

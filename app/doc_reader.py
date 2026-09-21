@@ -27,6 +27,7 @@ import json
 import os
 import re
 import sys
+import threading
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -37,6 +38,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 CACHE_DIR = BASE_DIR / "output" / "doc_text"
 MIN_TEXT_CHARS = 40      # fewer letters/digits than this on a PDF = treat as a scan
 MAX_VISION_PAGES = 5
+
+# pypdfium2 (used to turn scanned PDF pages into images) is NOT thread-safe:
+# two threads rendering at once can crash Python ("trace trap"). The pipeline
+# extracts several emails in parallel, so rendering is done one at a time.
+_PDFIUM_LOCK = threading.Lock()
 
 VISION_PROMPT = """These images are pages of a scanned shipping document.
 Transcribe ALL the text exactly as written.
@@ -92,12 +98,16 @@ def _render_pdf_pages(path):
     import pypdfium2 as pdfium
 
     images = []
-    pdf = pdfium.PdfDocument(str(path))
-    for i in range(min(len(pdf), MAX_VISION_PAGES)):
-        pil = pdf[i].render(scale=2).to_pil()
-        buf = io.BytesIO()
-        pil.convert("RGB").save(buf, format="PNG")
-        images.append(buf.getvalue())
+    with _PDFIUM_LOCK:
+        pdf = pdfium.PdfDocument(str(path))
+        try:
+            for i in range(min(len(pdf), MAX_VISION_PAGES)):
+                pil = pdf[i].render(scale=2).to_pil()
+                buf = io.BytesIO()
+                pil.convert("RGB").save(buf, format="PNG")
+                images.append(buf.getvalue())
+        finally:
+            pdf.close()
     return images
 
 
@@ -105,7 +115,8 @@ def read_docx(path):
     import docx
 
     document = docx.Document(str(path))
-    lines = [p.text for p in document.paragraphs if p.text.strip()]
+    lines = [p.text for s in document.sections for p in s.header.paragraphs if p.text.strip()]
+    lines += [p.text for p in document.paragraphs if p.text.strip()]
     for table in document.tables:
         for row in table.rows:
             lines.append(_row_to_line(cell.text for cell in row.cells))
@@ -118,6 +129,7 @@ def read_xlsx(path):
     workbook = openpyxl.load_workbook(str(path), data_only=True, read_only=True)
     lines = []
     for sheet in workbook.worksheets:
+        lines.append(sheet.title)          # the tab name often holds the title
         for row in sheet.iter_rows(values_only=True):
             line = _row_to_line(row)
             if line:

@@ -1,8 +1,7 @@
 {
   "email_id": "email_059",
-  "si": null,
-  "bl": {
-    "doc_type_detected": "BL",
+  "si": {
+    "doc_type_detected": "SI",
     "fields": {
       "shipper": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
       "consignee": "BALL & DOGGETT AUSTRALIA PTY LTD",
@@ -14,25 +13,21 @@
     },
     "source_file": "attachments/email_059_SI.pdf"
   },
-  "other_documents": [
-    {
-      "doc_type_detected": "BL",
-      "fields": {
-        "shipper": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
-        "consignee": "BALL & DOGGETT AUSTRALIA PTY LTD",
-        "notify_party": "PACIFIC OFFICE (M) SDN BHD",
-        "port_of_loading": "BUATAN, INDONESIA",
-        "port_of_discharge": "FREMANTLE, AUSTRALIA",
-        "container_count": 6,
-        "gross_weight_kg": 131322
-      },
-      "source_file": "attachments/email_059_BL.pdf"
-    }
-  ],
-  "extraction_issues": [
-    "attachments/email_059_BL.pdf was detected as BL, not a usable SI/BL",
-    "No SI found"
-  ],
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+      "consignee": "BALL & DOGGETT AUSTRALIA PTY LTD",
+      "notify_party": "PACIFIC OFFICE (M) SDN BHD",
+      "port_of_loading": "BUATAN, INDONESIA",
+      "port_of_discharge": "FREMANTLE, AUSTRALIA",
+      "container_count": 6,
+      "gross_weight_kg": 131322
+    },
+    "source_file": "attachments/email_059_BL.pdf"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
   "method": "llm",
   "needs_llm": false
 }

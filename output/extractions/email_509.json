@@ -8,18 +8,16 @@
       "notify_party": "INTERNATIONAL FOREST PRODUCTS LLC",
       "port_of_loading": "BUATAN, INDONESIA (IDBUA)",
       "port_of_discharge": "CALLAO, PERU (PECLL)",
-      "container_count": "6 x 20'FCL",
-      "gross_weight_kg": "123,060 KG"
+      "container_count": 6,
+      "gross_weight_kg": 123060
     },
-    "source_file": "attachments/email_509_SI.txt",
-    "method": "rules",
-    "type_from_title": true
+    "source_file": "attachments/email_509_SI.txt"
   },
   "bl": null,
   "other_documents": [],
   "extraction_issues": [
     "No BL found"
   ],
-  "method": "rules",
+  "method": "llm",
   "needs_llm": false
 }

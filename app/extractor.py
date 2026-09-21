@@ -14,7 +14,11 @@ from loader import Inbox  # type: ignore
 PROMPT = """You are extracting data from a shipping document.
 
 First, identify the document type: "SI" (Shipping Instruction), "BL" (Bill of Lading),
-or "OTHER" (anything else, e.g. an invoice).
+or "OTHER" (anything else, e.g. an invoice, packing list or certificate).
+- Use the document's title if it has one.
+- If there is no clear title, use the filename hint (names ending in _SI or _BL).
+- A document containing shipper, consignee, ports, containers and weight is an SI or
+  BL, not OTHER. Only answer OTHER if it is clearly a different kind of document.
 
 Then extract these 7 fields, matching by meaning, not by exact label
 (e.g. "POD", "Discharge Port" and "Port of Discharge" are the same field):
@@ -71,9 +75,9 @@ def extract_email(inbox, email):
             result["extraction_issues"].append(f"{path} is empty or unreadable")
             continue
 
-        doc = extract_document(text)
+        doc = extract_document(f"Filename: {Path(path).name}\n\n{text}")
+        doc_type = str(doc.get("doc_type_detected", "")).upper().strip()
         doc["source_file"] = path
-        doc_type = doc.get("doc_type_detected")
 
         # Trust what the document actually is, not what the filename says
         if doc_type == "SI" and result["si"] is None:

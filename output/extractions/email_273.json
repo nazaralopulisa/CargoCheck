@@ -1,8 +1,7 @@
 {
   "email_id": "email_273",
-  "si": null,
-  "bl": {
-    "doc_type_detected": "BL",
+  "si": {
+    "doc_type_detected": "SI",
     "fields": {
       "shipper": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
       "consignee": "KPP-ANTALIS (SINGAPORE) PTE. LTD.",
@@ -14,25 +13,21 @@
     },
     "source_file": "attachments/email_273_SI.pdf"
   },
-  "other_documents": [
-    {
-      "doc_type_detected": "BL",
-      "fields": {
-        "shipper": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
-        "consignee": "KPP-ANTALIS (SINGAPORE) PTE. LTD.",
-        "notify_party": "INTERNATIONAL FOREST PRODUCTS LLC",
-        "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA",
-        "port_of_discharge": "CONAKRY, GUINEA",
-        "container_count": 2,
-        "gross_weight_kg": 41604
-      },
-      "source_file": "attachments/email_273_BL.pdf"
-    }
-  ],
-  "extraction_issues": [
-    "attachments/email_273_BL.pdf was detected as BL, not a usable SI/BL",
-    "No SI found"
-  ],
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+      "consignee": "KPP-ANTALIS (SINGAPORE) PTE. LTD.",
+      "notify_party": "INTERNATIONAL FOREST PRODUCTS LLC",
+      "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA",
+      "port_of_discharge": "CONAKRY, GUINEA",
+      "container_count": 2,
+      "gross_weight_kg": 41604
+    },
+    "source_file": "attachments/email_273_BL.pdf"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
   "method": "llm",
   "needs_llm": false
 }

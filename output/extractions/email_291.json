@@ -1,8 +1,7 @@
 {
   "email_id": "email_291",
-  "si": null,
-  "bl": {
-    "doc_type_detected": "BL",
+  "si": {
+    "doc_type_detected": "SI",
     "fields": {
       "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
       "consignee": "INTERNATIONAL FOREST PRODUCTS LLC",
@@ -14,25 +13,21 @@
     },
     "source_file": "attachments/email_291_SI.xlsx"
   },
-  "other_documents": [
-    {
-      "doc_type_detected": "BL",
-      "fields": {
-        "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
-        "consignee": "TOPKOPY MIDDLE EAST FZE",
-        "notify_party": "INTERNATIONAL FOREST PRODUCTS LLC",
-        "port_of_loading": "NANTONG, CHINA",
-        "port_of_discharge": "SAVANNAH, US",
-        "container_count": 3,
-        "gross_weight_kg": 21745
-      },
-      "source_file": "attachments/email_291_BL.docx"
-    }
-  ],
-  "extraction_issues": [
-    "attachments/email_291_BL.docx was detected as BL, not a usable SI/BL",
-    "No SI found"
-  ],
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+      "consignee": "TOPKOPY MIDDLE EAST FZE",
+      "notify_party": "INTERNATIONAL FOREST PRODUCTS LLC",
+      "port_of_loading": "NANTONG, CHINA",
+      "port_of_discharge": "SAVANNAH, US",
+      "container_count": 3,
+      "gross_weight_kg": 21745
+    },
+    "source_file": "attachments/email_291_BL.docx"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
   "method": "llm",
   "needs_llm": false
 }

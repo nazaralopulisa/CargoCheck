@@ -74,8 +74,12 @@ TITLE_PATTERNS = [
     ("SI", re.compile(r"SHIPPING\s+INSTRUCTIONS?", re.I)),
     ("BL", re.compile(r"BILL\s+OF\s+LADING(?!\s*(?:NO\b|NO\.|NUMBER|#))", re.I)),
     ("BL", re.compile(r"SEA\s*WAYBILL", re.I)),
-    ("OTHER", re.compile(r"COMMERCIAL\s+INVOICE|\bINVOICE\b|CERTIFICATE\s+OF\s+ORIGIN|"
-                         r"PACKING\s+LIST|\bCERTIFICATE\b", re.I)),
+    # "Other" titles only count when they stand on a line of their own. A real SI
+    # often mentions "3 Original invoice, 3 Packing list" in a field, and a BL may
+    # have "Invoice No.:" - those words must not turn it into OTHER.
+    ("OTHER", re.compile(r"^[\s=*#-]*(?:COMMERCIAL\s+INVOICE|PROFORMA\s+INVOICE|INVOICE|"
+                         r"CERTIFICATE\s+OF\s+ORIGIN|PACKING\s+LIST|CERTIFICATE)"
+                         r"[\s()A-Z]{0,20}$", re.I | re.M)),
 ]
 
 
@@ -118,14 +122,17 @@ def document_text(inbox, path):
         if ext == ".docx":
             import docx
             d = docx.Document(io.BytesIO(data))
-            parts = [p.text for p in d.paragraphs]
+            parts = [p.text for s in d.sections for p in s.header.paragraphs]  # titles often live here
+            parts += [p.text for p in d.paragraphs]
             for table in d.tables:
                 parts.append(rows_to_text([c.text for c in row.cells] for row in table.rows))
             return "\n".join(parts), None
         if ext == ".xlsx":
             import openpyxl
             wb = openpyxl.load_workbook(io.BytesIO(data), data_only=True)
-            return "\n".join(rows_to_text(ws.iter_rows(values_only=True)) for ws in wb.worksheets), None
+            # the sheet name often holds the title, e.g. a tab called "SHIPPING INSTRUCTION"
+            return "\n".join(f"{ws.title}\n" + rows_to_text(ws.iter_rows(values_only=True))
+                             for ws in wb.worksheets), None
         return "", f"unsupported file type {ext}"
     except Exception as e:
         return "", f"could not open: {e}"
@@ -270,6 +277,10 @@ def is_confident(result):
     docs = [d for d in (result.get("si"), result.get("bl")) if d] + result.get("other_documents", [])
     if not docs or any("unreadable" in i for i in result.get("extraction_issues", [])):
         return False
+    # Missing SI or BL is exactly when a second opinion matters most: let the LLM check
+    # whether a document the rules called OTHER is really an SI or BL.
+    if result.get("si") is None or result.get("bl") is None:
+        return False
     if not all(d.get("type_from_title") for d in docs):
         return False
     return all(all(v is not None for v in d["fields"].values())
@@ -389,6 +400,35 @@ Ocean Vessel: INDO SUKSES 65 V.51NW1
         ("P.O. BOX address not joined", f044["consignee"] == "SAFQA LIMITED"),
         ("street address not joined", kr["consignee"] == "MOORIM SP CO., LTD"),
         ("label with Chinese text still read", f044["gross_weight_kg"] == "47,192 KG"),
+    ]
+
+    # Excel/Word layouts that were wrongly called OTHER
+    def xlsx(title, rows):
+        wb2 = openpyxl.Workbook(); ws2 = wb2.active; ws2.title = title
+        for r in rows:
+            ws2.append(r)
+        b = io.BytesIO(); wb2.save(b); return b.getvalue()
+    xrows = [["Shipper", "APRIL FAR EAST (M) SDN BHD"], ["Consignee", "MOORIM SP CO., LTD"],
+             ["Notify Party", "MOORIM SP CO., LTD"], ["Port of Loading", "PORT KLANG (MYPKG)"],
+             ["Port of Discharge", "CALLAO (PECLL)"], ["No. of Containers", "3 x 40'HC"],
+             ["Gross Weight", "22,000 KG"], ["Documents Required", "3 Original invoice, 3 Packing list"]]
+    d2 = docx.Document(); d2.sections[0].header.paragraphs[0].text = "BILL OF LADING"
+    t2 = d2.add_table(rows=0, cols=2)
+    for k, v in [["Invoice No.", "INV-1"]] + xrows:
+        c = t2.add_row().cells; c[0].text, c[1].text = k, v
+    b2 = io.BytesIO(); d2.save(b2)
+    inbox.files.update({"a/e7_SI.xlsx": xlsx("SHIPPING INSTRUCTION", xrows),
+                        "a/e7_BL.docx": b2.getvalue(),
+                        "a/e8_SI.xlsx": xlsx("Sheet1", xrows)})
+    r7 = extract_email(inbox, {"email_id": "e7", "attachments": ["a/e7_SI.xlsx", "a/e7_BL.docx"]})
+    r8 = extract_email(inbox, {"email_id": "e8", "attachments": ["a/e8_SI.xlsx", "a/e1_BL.txt"]})
+    checks += [
+        ("Excel title in sheet name -> SI", r7["si"] is not None),
+        ("Word title in page header -> BL, despite 'Invoice No.' field", r7["bl"] is not None),
+        ("'invoice' inside a field doesn't make it OTHER", not r7["other_documents"]),
+        ("no title anywhere -> filename used, LLM asked", r8["si"] is not None and not is_confident(r8)),
+        ("real invoice still OTHER", r2["other_documents"][0]["doc_type_detected"] == "OTHER"),
+        ("SI or BL missing -> never confident", not is_confident(r2)),
     ]
 
     for name, ok in checks:

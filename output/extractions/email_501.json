@@ -8,12 +8,10 @@
       "notify_party": "KPP-ANTALIS (SINGAPORE) PTE. LTD.",
       "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA (CNSHA)",
       "port_of_discharge": "HOUSTON, US (USHOU)",
-      "container_count": "5 x 40'HC",
-      "gross_weight_kg": "100,225 KG"
+      "container_count": 5,
+      "gross_weight_kg": 100225
     },
-    "source_file": "attachments/email_501_SI.txt",
-    "method": "rules",
-    "type_from_title": true
+    "source_file": "attachments/email_501_SI.txt"
   },
   "bl": null,
   "other_documents": [
@@ -28,15 +26,13 @@
         "container_count": null,
         "gross_weight_kg": null
       },
-      "source_file": "attachments/email_501_BL.txt",
-      "method": "rules",
-      "type_from_title": true
+      "source_file": "attachments/email_501_BL.txt"
     }
   ],
   "extraction_issues": [
     "attachments/email_501_BL.txt was detected as OTHER, not a usable SI/BL",
     "No BL found"
   ],
-  "method": "rules",
+  "method": "llm",
   "needs_llm": false
 }

@@ -1,8 +1,7 @@
 {
   "email_id": "email_411",
-  "si": null,
-  "bl": {
-    "doc_type_detected": "BL",
+  "si": {
+    "doc_type_detected": "SI",
     "fields": {
       "shipper": "APRIL FAR EAST (M) SDN BHD",
       "consignee": "VITAL SOLUTIONS PTE. LTD.",
@@ -14,25 +13,21 @@
     },
     "source_file": "attachments/email_411_SI.pdf"
   },
-  "other_documents": [
-    {
-      "doc_type_detected": "BL",
-      "fields": {
-        "shipper": "APRIL FAR EAST (M) SDN BHD",
-        "consignee": "VITAL SOLUTIONS PTE. LTD.",
-        "notify_party": "VITAL SOLUTIONS PTE. LTD.",
-        "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA",
-        "port_of_discharge": "NEW YORK, US",
-        "container_count": 5,
-        "gross_weight_kg": 113970
-      },
-      "source_file": "attachments/email_411_BL.pdf"
-    }
-  ],
-  "extraction_issues": [
-    "attachments/email_411_BL.pdf was detected as BL, not a usable SI/BL",
-    "No SI found"
-  ],
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "VITAL SOLUTIONS PTE. LTD.",
+      "notify_party": "VITAL SOLUTIONS PTE. LTD.",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA",
+      "port_of_discharge": "NEW YORK, US",
+      "container_count": 5,
+      "gross_weight_kg": 113970
+    },
+    "source_file": "attachments/email_411_BL.pdf"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
   "method": "llm",
   "needs_llm": false
 }

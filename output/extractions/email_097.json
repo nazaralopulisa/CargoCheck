@@ -1,8 +1,7 @@
 {
   "email_id": "email_097",
-  "si": null,
-  "bl": {
-    "doc_type_detected": "BL",
+  "si": {
+    "doc_type_detected": "SI",
     "fields": {
       "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
       "consignee": "ROXCEL TRADING GMBH",
@@ -14,25 +13,21 @@
     },
     "source_file": "attachments/email_097_SI.xlsx"
   },
-  "other_documents": [
-    {
-      "doc_type_detected": "BL",
-      "fields": {
-        "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
-        "consignee": "ROXCEL TRADING GMBH",
-        "notify_party": "NAGAPPA EXPORTS",
-        "port_of_loading": "SINGAPORE",
-        "port_of_discharge": "BRISBANE, AUSTRALIA",
-        "container_count": 11,
-        "gross_weight_kg": 215950
-      },
-      "source_file": "attachments/email_097_BL.docx"
-    }
-  ],
-  "extraction_issues": [
-    "attachments/email_097_BL.docx was detected as BL, not a usable SI/BL",
-    "No SI found"
-  ],
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+      "consignee": "ROXCEL TRADING GMBH",
+      "notify_party": "NAGAPPA EXPORTS",
+      "port_of_loading": "SINGAPORE",
+      "port_of_discharge": "BRISBANE, AUSTRALIA",
+      "container_count": 11,
+      "gross_weight_kg": 215950
+    },
+    "source_file": "attachments/email_097_BL.docx"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
   "method": "llm",
   "needs_llm": false
 }

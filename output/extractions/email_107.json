@@ -1,8 +1,7 @@
 {
   "email_id": "email_107",
-  "si": null,
-  "bl": {
-    "doc_type_detected": "BL",
+  "si": {
+    "doc_type_detected": "SI",
     "fields": {
       "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
       "consignee": "KTP CO., LTD",
@@ -14,25 +13,21 @@
     },
     "source_file": "attachments/email_107_SI.xlsx"
   },
-  "other_documents": [
-    {
-      "doc_type_detected": "BL",
-      "fields": {
-        "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
-        "consignee": "VITAL SOLUTIONS PTE. LTD.",
-        "notify_party": "KTP CO., LTD",
-        "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA",
-        "port_of_discharge": "MOMBASA, KENYA",
-        "container_count": 3,
-        "gross_weight_kg": 41124
-      },
-      "source_file": "attachments/email_107_BL.docx"
-    }
-  ],
-  "extraction_issues": [
-    "attachments/email_107_BL.docx was detected as BL, not a usable SI/BL",
-    "No SI found"
-  ],
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+      "consignee": "VITAL SOLUTIONS PTE. LTD.",
+      "notify_party": "KTP CO., LTD",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA",
+      "port_of_discharge": "MOMBASA, KENYA",
+      "container_count": 3,
+      "gross_weight_kg": 41124
+    },
+    "source_file": "attachments/email_107_BL.docx"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
   "method": "llm",
   "needs_llm": false
 }

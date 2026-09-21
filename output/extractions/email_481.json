@@ -1,8 +1,7 @@
 {
   "email_id": "email_481",
-  "si": null,
-  "bl": {
-    "doc_type_detected": "BL",
+  "si": {
+    "doc_type_detected": "SI",
     "fields": {
       "shipper": "APRIL FAR EAST (M) SDN BHD",
       "consignee": "AL GURG STATIONERY LLC",
@@ -14,25 +13,21 @@
     },
     "source_file": "attachments/email_481_SI.xlsx"
   },
-  "other_documents": [
-    {
-      "doc_type_detected": "BL",
-      "fields": {
-        "shipper": "APRIL FAR EAST (M) SDN BHD",
-        "consignee": "3S PAPER PRODUCTS SDN BHD",
-        "notify_party": "SAFQA LIMITED",
-        "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA",
-        "port_of_discharge": "VALPARAISO, CHILE",
-        "container_count": 4,
-        "gross_weight_kg": 91436
-      },
-      "source_file": "attachments/email_481_BL.xlsx"
-    }
-  ],
-  "extraction_issues": [
-    "attachments/email_481_BL.xlsx was detected as BL, not a usable SI/BL",
-    "No SI found"
-  ],
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "3S PAPER PRODUCTS SDN BHD",
+      "notify_party": "SAFQA LIMITED",
+      "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA",
+      "port_of_discharge": "VALPARAISO, CHILE",
+      "container_count": 4,
+      "gross_weight_kg": 91436
+    },
+    "source_file": "attachments/email_481_BL.xlsx"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
   "method": "llm",
   "needs_llm": false
 }

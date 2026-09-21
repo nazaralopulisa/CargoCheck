@@ -1,8 +1,7 @@
 {
   "email_id": "email_208",
-  "si": null,
-  "bl": {
-    "doc_type_detected": "BL",
+  "si": {
+    "doc_type_detected": "SI",
     "fields": {
       "shipper": "APRIL FAR EAST (M) SDN BHD",
       "consignee": "CERIEX",
@@ -14,25 +13,21 @@
     },
     "source_file": "attachments/email_208_SI.pdf"
   },
-  "other_documents": [
-    {
-      "doc_type_detected": "BL",
-      "fields": {
-        "shipper": "APRIL FAR EAST (M) SDN BHD",
-        "consignee": "CERIEX",
-        "notify_party": "CERIEX",
-        "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA",
-        "port_of_discharge": "FREMANTLE, AUSTRALIA",
-        "container_count": 6,
-        "gross_weight_kg": 143940
-      },
-      "source_file": "attachments/email_208_BL.pdf"
-    }
-  ],
-  "extraction_issues": [
-    "attachments/email_208_BL.pdf was detected as BL, not a usable SI/BL",
-    "No SI found"
-  ],
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "CERIEX",
+      "notify_party": "CERIEX",
+      "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA",
+      "port_of_discharge": "FREMANTLE, AUSTRALIA",
+      "container_count": 6,
+      "gross_weight_kg": 143940
+    },
+    "source_file": "attachments/email_208_BL.pdf"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
   "method": "llm",
   "needs_llm": false
 }

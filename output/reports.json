@@ -115,10 +115,52 @@
   },
   "email_005": {
     "email_id": "email_005",
-    "status": "NEEDS_REVIEW",
-    "reason": "wrong_doc_type",
-    "detail": "Extractor flagged: wrong_doc_type",
-    "fields": [],
+    "status": "OK",
+    "detail": "No mismatch detected.",
+    "fields": [
+      {
+        "field": "shipper",
+        "si": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+        "bl": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+        "result": "MATCH"
+      },
+      {
+        "field": "consignee",
+        "si": "BALL & DOGGETT AUSTRALIA PTY LTD",
+        "bl": "BALL & DOGGETT AUSTRALIA PTY LTD",
+        "result": "MATCH"
+      },
+      {
+        "field": "notify_party",
+        "si": "BALL & DOGGETT AUSTRALIA PTY LTD",
+        "bl": "BALL & DOGGETT AUSTRALIA PTY LTD",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_loading",
+        "si": "SINGAPORE",
+        "bl": "SINGAPORE",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_discharge",
+        "si": "KOPER, SLOVENIA",
+        "bl": "KOPER, SLOVENIA",
+        "result": "MATCH"
+      },
+      {
+        "field": "container_count",
+        "si": 15,
+        "bl": 15,
+        "result": "MATCH"
+      },
+      {
+        "field": "gross_weight_kg",
+        "si": 341715,
+        "bl": 341715,
+        "result": "MATCH"
+      }
+    ],
     "classification_reason": "The sender attached the SI and draft BL requesting verification that the BL matches the SI."
   },
   "email_006": {
@@ -1139,10 +1181,52 @@
   },
   "email_059": {
     "email_id": "email_059",
-    "status": "NEEDS_REVIEW",
-    "reason": "wrong_doc_type",
-    "detail": "Extractor flagged: wrong_doc_type",
-    "fields": [],
+    "status": "OK",
+    "detail": "No mismatch detected.",
+    "fields": [
+      {
+        "field": "shipper",
+        "si": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "bl": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "result": "MATCH"
+      },
+      {
+        "field": "consignee",
+        "si": "BALL & DOGGETT AUSTRALIA PTY LTD",
+        "bl": "BALL & DOGGETT AUSTRALIA PTY LTD",
+        "result": "MATCH"
+      },
+      {
+        "field": "notify_party",
+        "si": "PACIFIC OFFICE (M) SDN BHD",
+        "bl": "PACIFIC OFFICE (M) SDN BHD",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_loading",
+        "si": "BUATAN, INDONESIA",
+        "bl": "BUATAN, INDONESIA",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_discharge",
+        "si": "FREMANTLE, AUSTRALIA",
+        "bl": "FREMANTLE, AUSTRALIA",
+        "result": "MATCH"
+      },
+      {
+        "field": "container_count",
+        "si": 6,
+        "bl": 6,
+        "result": "MATCH"
+      },
+      {
+        "field": "gross_weight_kg",
+        "si": 131322,
+        "bl": 131322,
+        "result": "MATCH"
+      }
+    ],
     "classification_reason": "The sender explicitly requests checking the draft BL against the SI and reporting discrepancies."
   },
   "email_060": {
@@ -1750,10 +1834,52 @@
   },
   "email_097": {
     "email_id": "email_097",
-    "status": "NEEDS_REVIEW",
-    "reason": "wrong_doc_type",
-    "detail": "Extractor flagged: wrong_doc_type",
-    "fields": [],
+    "status": "MISMATCH",
+    "detail": "2 field(s) differ.",
+    "fields": [
+      {
+        "field": "shipper",
+        "si": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+        "bl": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+        "result": "MATCH"
+      },
+      {
+        "field": "consignee",
+        "si": "ROXCEL TRADING GMBH",
+        "bl": "ROXCEL TRADING GMBH",
+        "result": "MATCH"
+      },
+      {
+        "field": "notify_party",
+        "si": "NAGAPPA EXPORTS",
+        "bl": "NAGAPPA EXPORTS",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_loading",
+        "si": "SINGAPORE",
+        "bl": "SINGAPORE",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_discharge",
+        "si": "BRISBANE, AUSTRALIA",
+        "bl": "BRISBANE, AUSTRALIA",
+        "result": "MATCH"
+      },
+      {
+        "field": "container_count",
+        "si": 10,
+        "bl": 11,
+        "result": "MISMATCH"
+      },
+      {
+        "field": "gross_weight_kg",
+        "si": 216950,
+        "bl": 215950,
+        "result": "MISMATCH"
+      }
+    ],
     "classification_reason": "Sender attaches SI and BL and asks for confirmation"
   },
   "email_098": {
@@ -1821,10 +1947,52 @@
   },
   "email_107": {
     "email_id": "email_107",
-    "status": "NEEDS_REVIEW",
-    "reason": "wrong_doc_type",
-    "detail": "Extractor flagged: wrong_doc_type",
-    "fields": [],
+    "status": "MISMATCH",
+    "detail": "2 field(s) differ.",
+    "fields": [
+      {
+        "field": "shipper",
+        "si": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+        "bl": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+        "result": "MATCH"
+      },
+      {
+        "field": "consignee",
+        "si": "KTP CO., LTD",
+        "bl": "VITAL SOLUTIONS PTE. LTD.",
+        "result": "MISMATCH"
+      },
+      {
+        "field": "notify_party",
+        "si": "KTP CO., LTD",
+        "bl": "KTP CO., LTD",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_loading",
+        "si": "PORT KLANG (WESTPORT), MALAYSIA",
+        "bl": "PORT KLANG (WESTPORT), MALAYSIA",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_discharge",
+        "si": "MOMBASA, KENYA",
+        "bl": "MOMBASA, KENYA",
+        "result": "MATCH"
+      },
+      {
+        "field": "container_count",
+        "si": 2,
+        "bl": 3,
+        "result": "MISMATCH"
+      },
+      {
+        "field": "gross_weight_kg",
+        "si": 41124,
+        "bl": 41124,
+        "result": "MATCH"
+      }
+    ],
     "classification_reason": "Sender attaches SI and BL and asks for verification"
   },
   "email_108": {
@@ -2752,10 +2920,52 @@
   },
   "email_160": {
     "email_id": "email_160",
-    "status": "NEEDS_REVIEW",
-    "reason": "wrong_doc_type",
-    "detail": "Extractor flagged: wrong_doc_type",
-    "fields": [],
+    "status": "OK",
+    "detail": "No mismatch detected.",
+    "fields": [
+      {
+        "field": "shipper",
+        "si": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "bl": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "result": "MATCH"
+      },
+      {
+        "field": "consignee",
+        "si": "KTP CO., LTD",
+        "bl": "KTP CO., LTD",
+        "result": "MATCH"
+      },
+      {
+        "field": "notify_party",
+        "si": "KTP CO., LTD",
+        "bl": "KTP CO., LTD",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_loading",
+        "si": "PORT KLANG (WESTPORT), MALAYSIA",
+        "bl": "PORT KLANG (WESTPORT), MALAYSIA",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_discharge",
+        "si": "APAPA, NIGERIA",
+        "bl": "APAPA, NIGERIA",
+        "result": "MATCH"
+      },
+      {
+        "field": "container_count",
+        "si": 1,
+        "bl": 1,
+        "result": "MATCH"
+      },
+      {
+        "field": "gross_weight_kg",
+        "si": 23702,
+        "bl": 23702,
+        "result": "MATCH"
+      }
+    ],
     "classification_reason": "Sender requests to check draft BL against SI"
   },
   "email_161": {
@@ -2873,10 +3083,52 @@
   },
   "email_171": {
     "email_id": "email_171",
-    "status": "NEEDS_REVIEW",
-    "reason": "wrong_doc_type",
-    "detail": "Extractor flagged: wrong_doc_type",
-    "fields": [],
+    "status": "OK",
+    "detail": "No mismatch detected.",
+    "fields": [
+      {
+        "field": "shipper",
+        "si": "APRIL FAR EAST (M) SDN BHD",
+        "bl": "APRIL FAR EAST (M) SDN BHD",
+        "result": "MATCH"
+      },
+      {
+        "field": "consignee",
+        "si": "PACIFIC OFFICE (M) SDN BHD",
+        "bl": "PACIFIC OFFICE (M) SDN BHD",
+        "result": "MATCH"
+      },
+      {
+        "field": "notify_party",
+        "si": "ROXCEL TRADING GMBH",
+        "bl": "ROXCEL TRADING GMBH",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_loading",
+        "si": "PORT KLANG (WESTPORT), MALAYSIA",
+        "bl": "PORT KLANG (WESTPORT), MALAYSIA",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_discharge",
+        "si": "HOUSTON, US",
+        "bl": "HOUSTON, US",
+        "result": "MATCH"
+      },
+      {
+        "field": "container_count",
+        "si": 6,
+        "bl": 6,
+        "result": "MATCH"
+      },
+      {
+        "field": "gross_weight_kg",
+        "si": 141918,
+        "bl": 141918,
+        "result": "MATCH"
+      }
+    ],
     "classification_reason": "Sender attaches SI and draft BL for confirmation"
   },
   "email_172": {
@@ -3391,10 +3643,52 @@
   },
   "email_208": {
     "email_id": "email_208",
-    "status": "NEEDS_REVIEW",
-    "reason": "wrong_doc_type",
-    "detail": "Extractor flagged: wrong_doc_type",
-    "fields": [],
+    "status": "OK",
+    "detail": "No mismatch detected.",
+    "fields": [
+      {
+        "field": "shipper",
+        "si": "APRIL FAR EAST (M) SDN BHD",
+        "bl": "APRIL FAR EAST (M) SDN BHD",
+        "result": "MATCH"
+      },
+      {
+        "field": "consignee",
+        "si": "CERIEX",
+        "bl": "CERIEX",
+        "result": "MATCH"
+      },
+      {
+        "field": "notify_party",
+        "si": "CERIEX",
+        "bl": "CERIEX",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_loading",
+        "si": "RUGAO/NANTONG/SHANGHAI, CHINA",
+        "bl": "RUGAO/NANTONG/SHANGHAI, CHINA",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_discharge",
+        "si": "FREMANTLE, AUSTRALIA",
+        "bl": "FREMANTLE, AUSTRALIA",
+        "result": "MATCH"
+      },
+      {
+        "field": "container_count",
+        "si": 6,
+        "bl": 6,
+        "result": "MATCH"
+      },
+      {
+        "field": "gross_weight_kg",
+        "si": 143940,
+        "bl": 143940,
+        "result": "MATCH"
+      }
+    ],
     "classification_reason": "Sender requests to check and confirm draft BL against SI"
   },
   "email_209": {
@@ -3809,10 +4103,52 @@
   },
   "email_243": {
     "email_id": "email_243",
-    "status": "NEEDS_REVIEW",
-    "reason": "wrong_doc_type",
-    "detail": "Extractor flagged: wrong_doc_type",
-    "fields": [],
+    "status": "MISMATCH",
+    "detail": "2 field(s) differ.",
+    "fields": [
+      {
+        "field": "shipper",
+        "si": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+        "bl": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+        "result": "MATCH"
+      },
+      {
+        "field": "consignee",
+        "si": "SAFQA LIMITED",
+        "bl": "SAFQA LIMITED",
+        "result": "MATCH"
+      },
+      {
+        "field": "notify_party",
+        "si": "SAFQA LIMITED",
+        "bl": "SAFQA LIMITED",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_loading",
+        "si": "PORT KLANG (WESTPORT), MALAYSIA",
+        "bl": "RUGAO/NANTONG/SHANGHAI, CHINA",
+        "result": "MISMATCH"
+      },
+      {
+        "field": "port_of_discharge",
+        "si": "HOUSTON, US",
+        "bl": "MOMBASA, KENYA",
+        "result": "MISMATCH"
+      },
+      {
+        "field": "container_count",
+        "si": 5,
+        "bl": 5,
+        "result": "MATCH"
+      },
+      {
+        "field": "gross_weight_kg",
+        "si": 100445,
+        "bl": 100445,
+        "result": "MATCH"
+      }
+    ],
     "classification_reason": "Sender requests verification that BL matches SI"
   },
   "email_244": {
@@ -4149,10 +4485,52 @@
   },
   "email_273": {
     "email_id": "email_273",
-    "status": "NEEDS_REVIEW",
-    "reason": "wrong_doc_type",
-    "detail": "Extractor flagged: wrong_doc_type",
-    "fields": [],
+    "status": "OK",
+    "detail": "No mismatch detected.",
+    "fields": [
+      {
+        "field": "shipper",
+        "si": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+        "bl": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+        "result": "MATCH"
+      },
+      {
+        "field": "consignee",
+        "si": "KPP-ANTALIS (SINGAPORE) PTE. LTD.",
+        "bl": "KPP-ANTALIS (SINGAPORE) PTE. LTD.",
+        "result": "MATCH"
+      },
+      {
+        "field": "notify_party",
+        "si": "INTERNATIONAL FOREST PRODUCTS LLC",
+        "bl": "INTERNATIONAL FOREST PRODUCTS LLC",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_loading",
+        "si": "RUGAO/NANTONG/SHANGHAI, CHINA",
+        "bl": "RUGAO/NANTONG/SHANGHAI, CHINA",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_discharge",
+        "si": "CONAKRY, GUINEA",
+        "bl": "CONAKRY, GUINEA",
+        "result": "MATCH"
+      },
+      {
+        "field": "container_count",
+        "si": 2,
+        "bl": 2,
+        "result": "MATCH"
+      },
+      {
+        "field": "gross_weight_kg",
+        "si": 41604,
+        "bl": 41604,
+        "result": "MATCH"
+      }
+    ],
     "classification_reason": "Sender provides SI and draft BL for verification"
   },
   "email_274": {
@@ -4319,10 +4697,52 @@
   },
   "email_291": {
     "email_id": "email_291",
-    "status": "NEEDS_REVIEW",
-    "reason": "wrong_doc_type",
-    "detail": "Extractor flagged: wrong_doc_type",
-    "fields": [],
+    "status": "MISMATCH",
+    "detail": "2 field(s) differ.",
+    "fields": [
+      {
+        "field": "shipper",
+        "si": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+        "bl": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+        "result": "MATCH"
+      },
+      {
+        "field": "consignee",
+        "si": "INTERNATIONAL FOREST PRODUCTS LLC",
+        "bl": "TOPKOPY MIDDLE EAST FZE",
+        "result": "MISMATCH"
+      },
+      {
+        "field": "notify_party",
+        "si": "INTERNATIONAL FOREST PRODUCTS LLC",
+        "bl": "INTERNATIONAL FOREST PRODUCTS LLC",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_loading",
+        "si": "NANTONG, CHINA",
+        "bl": "NANTONG, CHINA",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_discharge",
+        "si": "SAVANNAH, US",
+        "bl": "SAVANNAH, US",
+        "result": "MATCH"
+      },
+      {
+        "field": "container_count",
+        "si": 1,
+        "bl": 3,
+        "result": "MISMATCH"
+      },
+      {
+        "field": "gross_weight_kg",
+        "si": 21745,
+        "bl": 21745,
+        "result": "MATCH"
+      }
+    ],
     "classification_reason": "Attached SI and draft BL for checking and confirmation"
   },
   "email_292": {
@@ -4483,10 +4903,52 @@
   },
   "email_302": {
     "email_id": "email_302",
-    "status": "NEEDS_REVIEW",
-    "reason": "wrong_doc_type",
-    "detail": "Extractor flagged: wrong_doc_type",
-    "fields": [],
+    "status": "MISMATCH",
+    "detail": "1 field(s) differ.",
+    "fields": [
+      {
+        "field": "shipper",
+        "si": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+        "bl": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+        "result": "MATCH"
+      },
+      {
+        "field": "consignee",
+        "si": "INTERNATIONAL FOREST PRODUCTS LLC",
+        "bl": "INTERNATIONAL FOREST PRODUCTS LLC",
+        "result": "MATCH"
+      },
+      {
+        "field": "notify_party",
+        "si": "KTP CO., LTD",
+        "bl": "KTP CO., LTD",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_loading",
+        "si": "RUGAO/NANTONG/SHANGHAI, CHINA",
+        "bl": "RUGAO/NANTONG/SHANGHAI, CHINA",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_discharge",
+        "si": "BRISBANE, AUSTRALIA",
+        "bl": "BRISBANE, AUSTRALIA",
+        "result": "MATCH"
+      },
+      {
+        "field": "container_count",
+        "si": 2,
+        "bl": 4,
+        "result": "MISMATCH"
+      },
+      {
+        "field": "gross_weight_kg",
+        "si": 40176,
+        "bl": 40176,
+        "result": "MATCH"
+      }
+    ],
     "classification_reason": "Attached SI and draft BL for confirmation and verification"
   },
   "email_303": {
@@ -4647,10 +5109,52 @@
   },
   "email_313": {
     "email_id": "email_313",
-    "status": "NEEDS_REVIEW",
-    "reason": "wrong_doc_type",
-    "detail": "Extractor flagged: wrong_doc_type",
-    "fields": [],
+    "status": "MISMATCH",
+    "detail": "2 field(s) differ.",
+    "fields": [
+      {
+        "field": "shipper",
+        "si": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "bl": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "result": "MATCH"
+      },
+      {
+        "field": "consignee",
+        "si": "KPP-ANTALIS (SINGAPORE) PTE. LTD.",
+        "bl": "KPP-ANTALIS (SINGAPORE) PTE. LTD.",
+        "result": "MATCH"
+      },
+      {
+        "field": "notify_party",
+        "si": "KPP-ANTALIS (SINGAPORE) PTE. LTD.",
+        "bl": "KPP-ANTALIS (SINGAPORE) PTE. LTD.",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_loading",
+        "si": "RUGAO/NANTONG/SHANGHAI, CHINA",
+        "bl": "RUGAO/NANTONG/SHANGHAI, CHINA",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_discharge",
+        "si": "HOCHIMINH CITY, VIETNAM",
+        "bl": "HOCHIMINH CITY, VIETNAM",
+        "result": "MATCH"
+      },
+      {
+        "field": "container_count",
+        "si": 5,
+        "bl": 4,
+        "result": "MISMATCH"
+      },
+      {
+        "field": "gross_weight_kg",
+        "si": 118270,
+        "bl": 117770,
+        "result": "MISMATCH"
+      }
+    ],
     "classification_reason": "Explicitly asks to check draft BL against SI"
   },
   "email_314": {
@@ -5172,10 +5676,52 @@
   },
   "email_351": {
     "email_id": "email_351",
-    "status": "NEEDS_REVIEW",
-    "reason": "wrong_doc_type",
-    "detail": "Extractor flagged: wrong_doc_type",
-    "fields": [],
+    "status": "MISMATCH",
+    "detail": "3 field(s) differ.",
+    "fields": [
+      {
+        "field": "shipper",
+        "si": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+        "bl": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+        "result": "MATCH"
+      },
+      {
+        "field": "consignee",
+        "si": "KTP CO., LTD",
+        "bl": "KTP CO., LTD",
+        "result": "MATCH"
+      },
+      {
+        "field": "notify_party",
+        "si": "KTP CO., LTD",
+        "bl": "KTP BLDG., LTD",
+        "result": "MISMATCH"
+      },
+      {
+        "field": "port_of_loading",
+        "si": "PORT KLANG (WESTPORT), MALAYSIA",
+        "bl": "PORT KLANG (WESTPORT), MALAYSIA",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_discharge",
+        "si": "ASHDOD, ISRAEL",
+        "bl": "ASHDOD, ISRAEL",
+        "result": "MATCH"
+      },
+      {
+        "field": "container_count",
+        "si": 15,
+        "bl": 16,
+        "result": "MISMATCH"
+      },
+      {
+        "field": "gross_weight_kg",
+        "si": 359415,
+        "bl": 360415,
+        "result": "MISMATCH"
+      }
+    ],
     "classification_reason": "Requests to check SI and draft BL details and confirm"
   },
   "email_352": {
@@ -6038,10 +6584,52 @@
   },
   "email_407": {
     "email_id": "email_407",
-    "status": "NEEDS_REVIEW",
-    "reason": "wrong_doc_type",
-    "detail": "Extractor flagged: wrong_doc_type",
-    "fields": [],
+    "status": "OK",
+    "detail": "No mismatch detected.",
+    "fields": [
+      {
+        "field": "shipper",
+        "si": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "bl": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+        "result": "MATCH"
+      },
+      {
+        "field": "consignee",
+        "si": "NAGAPPA EXPORTS",
+        "bl": "NAGAPPA EXPORTS",
+        "result": "MATCH"
+      },
+      {
+        "field": "notify_party",
+        "si": "NAGAPPA EXPORTS",
+        "bl": "NAGAPPA EXPORTS",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_loading",
+        "si": "NHAVA SHEVA, INDIA",
+        "bl": "NHAVA SHEVA, INDIA",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_discharge",
+        "si": "YANGON, MYANMAR",
+        "bl": "YANGON, MYANMAR",
+        "result": "MATCH"
+      },
+      {
+        "field": "container_count",
+        "si": 12,
+        "bl": 12,
+        "result": "MATCH"
+      },
+      {
+        "field": "gross_weight_kg",
+        "si": 285720,
+        "bl": 285720,
+        "result": "MATCH"
+      }
+    ],
     "classification_reason": "Requests checking and confirmation of draft BL against SI"
   },
   "email_408": {
@@ -6196,10 +6784,52 @@
   },
   "email_411": {
     "email_id": "email_411",
-    "status": "NEEDS_REVIEW",
-    "reason": "wrong_doc_type",
-    "detail": "Extractor flagged: wrong_doc_type",
-    "fields": [],
+    "status": "OK",
+    "detail": "No mismatch detected.",
+    "fields": [
+      {
+        "field": "shipper",
+        "si": "APRIL FAR EAST (M) SDN BHD",
+        "bl": "APRIL FAR EAST (M) SDN BHD",
+        "result": "MATCH"
+      },
+      {
+        "field": "consignee",
+        "si": "VITAL SOLUTIONS PTE. LTD.",
+        "bl": "VITAL SOLUTIONS PTE. LTD.",
+        "result": "MATCH"
+      },
+      {
+        "field": "notify_party",
+        "si": "VITAL SOLUTIONS PTE. LTD.",
+        "bl": "VITAL SOLUTIONS PTE. LTD.",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_loading",
+        "si": "PORT KLANG (WESTPORT), MALAYSIA",
+        "bl": "PORT KLANG (WESTPORT), MALAYSIA",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_discharge",
+        "si": "NEW YORK, US",
+        "bl": "NEW YORK, US",
+        "result": "MATCH"
+      },
+      {
+        "field": "container_count",
+        "si": 5,
+        "bl": 5,
+        "result": "MATCH"
+      },
+      {
+        "field": "gross_weight_kg",
+        "si": 113970,
+        "bl": 113970,
+        "result": "MATCH"
+      }
+    ],
     "classification_reason": "Sender asks to check and confirm draft BL against SI"
   },
   "email_412": {
@@ -6487,18 +7117,102 @@
   },
   "email_434": {
     "email_id": "email_434",
-    "status": "NEEDS_REVIEW",
-    "reason": "wrong_doc_type",
-    "detail": "Extractor flagged: wrong_doc_type",
-    "fields": [],
+    "status": "MISMATCH",
+    "detail": "1 field(s) differ.",
+    "fields": [
+      {
+        "field": "shipper",
+        "si": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+        "bl": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+        "result": "MATCH"
+      },
+      {
+        "field": "consignee",
+        "si": "TOPKOPY MIDDLE EAST FZE",
+        "bl": "TOPKOPY MIDDLE EAST FZE",
+        "result": "MATCH"
+      },
+      {
+        "field": "notify_party",
+        "si": "TOPKOPY MIDDLE EAST FZE",
+        "bl": "TOPKOPY MIDDLE EAST FZE",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_loading",
+        "si": "NHAVA SHEVA, INDIA",
+        "bl": "NHAVA SHEVA, INDIA",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_discharge",
+        "si": "BUSAN, SOUTH KOREA",
+        "bl": "CEBU, PHILIPPINES",
+        "result": "MISMATCH"
+      },
+      {
+        "field": "container_count",
+        "si": 12,
+        "bl": 12,
+        "result": "MATCH"
+      },
+      {
+        "field": "gross_weight_kg",
+        "si": 261480,
+        "bl": 261480,
+        "result": "MATCH"
+      }
+    ],
     "classification_reason": "Attached SI and draft BL for verification and confirmation"
   },
   "email_435": {
     "email_id": "email_435",
-    "status": "NEEDS_REVIEW",
-    "reason": "wrong_doc_type",
-    "detail": "Extractor flagged: wrong_doc_type",
-    "fields": [],
+    "status": "MISMATCH",
+    "detail": "1 field(s) differ.",
+    "fields": [
+      {
+        "field": "shipper",
+        "si": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+        "bl": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+        "result": "MATCH"
+      },
+      {
+        "field": "consignee",
+        "si": "AL GURG STATIONERY LLC",
+        "bl": "AL GURG STATIONERY LLC",
+        "result": "MATCH"
+      },
+      {
+        "field": "notify_party",
+        "si": "AL GURG STATIONERY LLC",
+        "bl": "AL GURG STATIONERY LLC",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_loading",
+        "si": "SINGAPORE",
+        "bl": "SINGAPORE",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_discharge",
+        "si": "AQABA, JORDAN",
+        "bl": "AQABA, JORDAN",
+        "result": "MATCH"
+      },
+      {
+        "field": "container_count",
+        "si": 10,
+        "bl": 10,
+        "result": "MATCH"
+      },
+      {
+        "field": "gross_weight_kg",
+        "si": 214270,
+        "bl": 214770,
+        "result": "MISMATCH"
+      }
+    ],
     "classification_reason": "Attached SI and draft BL for verification before release"
   },
   "email_436": {
@@ -7033,10 +7747,52 @@
   },
   "email_481": {
     "email_id": "email_481",
-    "status": "NEEDS_REVIEW",
-    "reason": "wrong_doc_type",
-    "detail": "Extractor flagged: wrong_doc_type",
-    "fields": [],
+    "status": "MISMATCH",
+    "detail": "1 field(s) differ.",
+    "fields": [
+      {
+        "field": "shipper",
+        "si": "APRIL FAR EAST (M) SDN BHD",
+        "bl": "APRIL FAR EAST (M) SDN BHD",
+        "result": "MATCH"
+      },
+      {
+        "field": "consignee",
+        "si": "AL GURG STATIONERY LLC",
+        "bl": "3S PAPER PRODUCTS SDN BHD",
+        "result": "MISMATCH"
+      },
+      {
+        "field": "notify_party",
+        "si": "SAFQA LIMITED",
+        "bl": "SAFQA LIMITED",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_loading",
+        "si": "RUGAO/NANTONG/SHANGHAI, CHINA",
+        "bl": "RUGAO/NANTONG/SHANGHAI, CHINA",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_discharge",
+        "si": "VALPARAISO, CHILE",
+        "bl": "VALPARAISO, CHILE",
+        "result": "MATCH"
+      },
+      {
+        "field": "container_count",
+        "si": 4,
+        "bl": 4,
+        "result": "MATCH"
+      },
+      {
+        "field": "gross_weight_kg",
+        "si": 91436,
+        "bl": 91436,
+        "result": "MATCH"
+      }
+    ],
     "classification_reason": "Sender requests confirmation of SI and draft BL details"
   },
   "email_482": {
@@ -7375,10 +8131,52 @@
   },
   "email_499": {
     "email_id": "email_499",
-    "status": "NEEDS_REVIEW",
-    "reason": "wrong_doc_type",
-    "detail": "Extractor flagged: wrong_doc_type",
-    "fields": [],
+    "status": "MISMATCH",
+    "detail": "1 field(s) differ.",
+    "fields": [
+      {
+        "field": "shipper",
+        "si": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+        "bl": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+        "result": "MATCH"
+      },
+      {
+        "field": "consignee",
+        "si": "TOPKOPY MIDDLE EAST FZE",
+        "bl": "TOPKOPY MIDDLE EAST FZE",
+        "result": "MATCH"
+      },
+      {
+        "field": "notify_party",
+        "si": "TOPKOPY MIDDLE EAST FZE",
+        "bl": "TOPKOPY MIDDLE EAST FZE",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_loading",
+        "si": "PORT KLANG (WESTPORT), MALAYSIA",
+        "bl": "PORT KLANG (WESTPORT), MALAYSIA",
+        "result": "MATCH"
+      },
+      {
+        "field": "port_of_discharge",
+        "si": "HOCHIMINH CITY, VIETNAM",
+        "bl": "HOCHIMINH CITY, VIETNAM",
+        "result": "MATCH"
+      },
+      {
+        "field": "container_count",
+        "si": 2,
+        "bl": 2,
+        "result": "MATCH"
+      },
+      {
+        "field": "gross_weight_kg",
+        "si": 40326,
+        "bl": 41326,
+        "result": "MISMATCH"
+      }
+    ],
     "classification_reason": "Request to check draft BL against SI and report discrepancies"
   },
   "email_500": {

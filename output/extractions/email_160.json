@@ -1,8 +1,7 @@
 {
   "email_id": "email_160",
-  "si": null,
-  "bl": {
-    "doc_type_detected": "BL",
+  "si": {
+    "doc_type_detected": "SI",
     "fields": {
       "shipper": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
       "consignee": "KTP CO., LTD",
@@ -14,25 +13,21 @@
     },
     "source_file": "attachments/email_160_SI.pdf"
   },
-  "other_documents": [
-    {
-      "doc_type_detected": "BL",
-      "fields": {
-        "shipper": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
-        "consignee": "KTP CO., LTD",
-        "notify_party": "KTP CO., LTD",
-        "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA",
-        "port_of_discharge": "APAPA, NIGERIA",
-        "container_count": 1,
-        "gross_weight_kg": 23702
-      },
-      "source_file": "attachments/email_160_BL.pdf"
-    }
-  ],
-  "extraction_issues": [
-    "attachments/email_160_BL.pdf was detected as BL, not a usable SI/BL",
-    "No SI found"
-  ],
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+      "consignee": "KTP CO., LTD",
+      "notify_party": "KTP CO., LTD",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA",
+      "port_of_discharge": "APAPA, NIGERIA",
+      "container_count": 1,
+      "gross_weight_kg": 23702
+    },
+    "source_file": "attachments/email_160_BL.pdf"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
   "method": "llm",
   "needs_llm": false
 }

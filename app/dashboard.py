@@ -45,6 +45,8 @@ from normalizer import normalize_party                                  # noqa: 
 from doc_reader import SmartInbox                                       # noqa: E402
 from export import export_rows, export_csv, export_json, filename, confidence  # noqa: E402
 from rule_extractor import extract_email as rule_extract_email, is_confident  # noqa: E402
+from uploads import (load_uploads, save_upload, delete_upload,  # noqa: E402
+                     read_upload_file, new_upload_id)
 
 CATEGORIES = ["BL_COMPARISON", "SI_REQUEST", "INVOICE_QUERY", "GENERAL", "SPAM"]
 CATEGORY_LABELS = {"BL_COMPARISON": "BL check", "SI_REQUEST": "New SI request",
@@ -383,8 +385,40 @@ def build_results():
             status = "RESOLVED"                   # a person has made the final call
         results[eid] = {"email": email, "data": data, "base": base, "entry": entry,
                         "report": report, "status": status, "review": review}
+    results.update(uploaded_results(reviews))
     return results
 
+def uploaded_results(reviews):
+    """Emails uploaded on the Check documents page, in the same shape as build_results()."""
+    out = {}
+    for eid, (email, c, extraction) in load_uploads().items():
+        category = c.get("category")
+        data = {"email_id": eid, "category": category}
+        if category == "BL_COMPARISON" and extraction:
+            data = dict(to_comparer_input(eid, category, extraction), email_id=eid)
+            data["issue_notes"] = extraction.get("extraction_issues", [])
+            data["method"] = "AI" if extraction.get("method") == "llm" else "rules"
+        data["classifier_confidence"] = c.get("confidence")
+        data["classifier_reason"] = c.get("reason")
+        data["classifier_needs_review"] = False
+        try:
+            entry, report = decide_email(eid, email, category, extraction)
+        except Exception:
+            entry, report = compare_email(dict(data))
+        base, review = data, reviews.get(eid)
+        if review:
+            data = apply_review(base, review)
+            if data.get("category") != "BL_COMPARISON":
+                entry, report = compare_email({"email_id": eid, "category": data["category"]})
+            elif review.get("si") or review.get("bl"):
+                entry, report = compare_email(dict(data, email_id=eid, category="BL_COMPARISON",
+                                                   issues=[]))
+        status = report["status"]
+        if review and status in OPEN_STATUSES:
+            status = "RESOLVED"
+        out[eid] = {"email": email, "data": data, "base": base, "entry": entry, "report": report,
+                    "status": status, "review": review, "uploaded": True}
+    return out
 
 def needs_person(r):
     data = r["data"]
@@ -394,7 +428,14 @@ def needs_person(r):
 
 def read_attachment(path):
     """Text of any attachment. PDF, Word and Excel are decoded; scans use the cached
-    vision transcription from the pipeline run."""
+    vision transcription from the pipeline run. Uploaded emails' files are read from
+    output/uploads/."""
+    if path.startswith("uploads/"):
+        try:
+            return (document_to_text(path, read_upload_file(path))
+                    or "This file has no readable text (it may be a scan).")
+        except Exception as e:
+            return f"Could not open this file: {e}"
     try:
         return SmartInbox(Inbox(DATA_DIR), DATA_DIR).read_text(path)
     except Exception as e:
@@ -717,6 +758,13 @@ def page_overview(results):
 def email_detail(r):
     email, data = r["email"], r["data"]
     st.subheader(email.get("subject") or "(no subject)")
+    if r.get("uploaded"):
+        st.caption(f"Uploaded on {email.get('uploaded_at', '')} from Check documents "
+                   f"(original ID: {email.get('original_email_id', '-')}). "
+                   "Not part of the evaluation set.")
+        if st.button("Remove from inbox", key=f"remove_{email['email_id']}"):
+            delete_upload(email["email_id"])
+            st.rerun()
     category = data.get("category")
     meta = f'{html.escape(email.get("from", ""))} &nbsp;|&nbsp; {email["email_id"]}'
     if category:
@@ -869,16 +917,64 @@ def page_inbox(results):
 
 # --- Page: Check documents (live run) -----------------------------------------
 
+def _rows_to_text(rows):
+    """Table rows -> 'label: value' lines, so label-based reading works on tables too."""
+    lines = []
+    for cells in rows:
+        cells = [str(c).strip() for c in cells if c is not None and str(c).strip()]
+        if len(cells) >= 2 and not cells[0].endswith(":"):
+            lines.append(f"{cells[0]}: {'  '.join(cells[1:])}")
+        elif cells:
+            lines.append("  ".join(cells))
+    return "\n".join(lines)
+
+
+def document_to_text(path, data):
+    """Turn an uploaded file's bytes into text: txt directly, PDF / Word / Excel decoded.
+    Returns "" for a scan (a PDF with no text layer)."""
+    import io
+    ext = Path(path).suffix.lower()
+    if ext == ".pdf":
+        import pdfplumber
+        with pdfplumber.open(io.BytesIO(data)) as pdf:
+            return "\n".join(page.extract_text() or "" for page in pdf.pages)
+    if ext == ".docx":
+        import docx
+        d = docx.Document(io.BytesIO(data))
+        parts = [p.text for p in d.paragraphs]
+        parts += [_rows_to_text([c.text for c in row.cells] for row in t.rows) for t in d.tables]
+        return "\n".join(parts)
+    if ext == ".xlsx":
+        import openpyxl
+        wb = openpyxl.load_workbook(io.BytesIO(data), data_only=True)
+        return "\n".join(_rows_to_text(ws.iter_rows(values_only=True)) for ws in wb.worksheets)
+    return data.decode("utf-8", errors="replace")
+
+
 class UploadedFiles:
-    """Lets the extractors read uploaded files the same way they read the inbox."""
+    """Lets the extractors read uploaded files the same way they read the inbox.
+    read_text() returns real text for PDF, Word and Excel too (not raw bytes), and
+    falls back to the pipeline's SmartInbox for scans, where it can use AI vision."""
     def __init__(self, files):
         self.files = files                                   # {path: bytes}
+        self._text = {}
 
     def read_bytes(self, path):
         return self.files[path]
 
     def read_text(self, path, encoding="utf-8"):
-        return self.files[path].decode(encoding, errors="replace")
+        if path not in self._text:
+            try:
+                text = document_to_text(path, self.files[path])
+            except Exception:
+                text = ""
+            if not text.strip() and Path(path).suffix.lower() != ".txt":
+                try:                                         # a scan: let SmartInbox try (AI vision)
+                    text = SmartInbox(self, DATA_DIR).read_text(path) or ""
+                except Exception:
+                    text = ""
+            self._text[path] = text
+        return self._text[path]
 
 
 def extract_documents(source, email, use_ai):
@@ -994,7 +1090,8 @@ def run_email(email, files, use_ai, chosen_type=None):
         data["issue_notes"] = extraction.get("extraction_issues", [])
     return {"classification": classification, "category": category, "data": data,
             "entry": entry, "report": report, "status": report["status"],
-            "method": method, "ai_note": ai_note, "review": None, "email": email}
+            "method": method, "ai_note": ai_note, "review": None, "email": email,
+            "extraction": extraction}
 
 
 def show_email_result(r):
@@ -1029,13 +1126,19 @@ def show_email_result(r):
                        file_name=f"{email['email_id']}_result.json", mime="application/json")
 
 
+INBOX_TAB_FOR = {"MISMATCH": "Mismatches to fix", "NEEDS_REVIEW": "Needs a person",
+                 "PROCESSING_ERROR": "Needs a person", "OK": "Clean and resolved",
+                 "RESOLVED": "Clean and resolved"}
+
+
 def upload_email_tab():
     st.markdown('<p class="cc-lede">Upload an email record (the same JSON format as the dataset) '
                 'with its attachments. It runs through the full flow: sort the email, read the '
-                'documents, compare them and decide.</p>', unsafe_allow_html=True)
+                'documents, compare them and decide. It is then added to the Inbox, kept apart '
+                'from the evaluation dataset.</p>', unsafe_allow_html=True)
     c1, c2 = st.columns(2)
     email_file = c1.file_uploader("Email (JSON)", type=["json"], key="email_up")
-    att_files = c2.file_uploader("Attachments", type=["txt", "pdf", "docx", "xlsx"],
+    att_files = c2.file_uploader("Its attachments", type=["txt", "pdf", "docx", "xlsx"],
                                  accept_multiple_files=True, key="att_up")
     use_ai = st.toggle("Use AI for anything the rules can't read", value=True, key="email_ai")
 
@@ -1072,6 +1175,13 @@ def upload_email_tab():
     else:
         with st.spinner("Sorting the email, reading the documents and comparing..."):
             r = run_email(email, files, use_ai, st.session_state.get("chosen_type"))
+        if not r.get("needs_type"):
+            # add it to the inbox; re-running the same upload updates the same entry
+            ids = st.session_state.setdefault("upload_ids", {})
+            eid = ids.get(fid) or new_upload_id(email["email_id"], set(load_emails()) | set(ids.values()))
+            ids[fid] = eid
+            save_upload(eid, email, files, r["classification"], r["extraction"])
+            r["saved_as"] = eid
         st.session_state.email_key, st.session_state.email_result = key, r
 
     if r.get("needs_type"):
@@ -1085,6 +1195,10 @@ def upload_email_tab():
             st.rerun()
         return
 
+    if r.get("saved_as"):
+        tab = INBOX_TAB_FOR.get(r["status"], "Other emails")
+        st.success(f"Added to the inbox as **{r['saved_as']}**. Find it in the Inbox under "
+                   f"\u201c{tab}\u201d.")
     show_email_result(r)
     with st.expander("Wrong email type? Re-run it as a different type"):
         pick = st.selectbox("Email type", CATEGORIES, format_func=CATEGORY_LABELS.get,

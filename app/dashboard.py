@@ -881,14 +881,8 @@ class UploadedFiles:
         return self.files[path].decode(encoding, errors="replace")
 
 
-def run_check(si_name, si_bytes, bl_name, bl_bytes, use_ai):
-    """Extract (rules first, AI if asked and needed) and compare two uploaded documents.
-    Returns the same result shape the Inbox uses, plus how the documents were read."""
-    si_path = f"upload_SI{Path(si_name).suffix.lower()}"
-    bl_path = f"upload_BL{Path(bl_name).suffix.lower()}"
-    source = UploadedFiles({si_path: si_bytes, bl_path: bl_bytes})
-    email = {"email_id": "upload", "attachments": [si_path, bl_path]}
-
+def extract_documents(source, email, use_ai):
+    """Rules first; the AI only if the rules couldn't read everything and AI is allowed."""
     extraction, method, ai_note = rule_extract_email(source, email), "rules", None
     if use_ai and not is_confident(extraction):
         try:
@@ -896,28 +890,215 @@ def run_check(si_name, si_bytes, bl_name, bl_bytes, use_ai):
             extraction, method = llm_extract_email(source, email), "AI"
         except Exception as e:
             ai_note = f"AI extraction unavailable, showing the rules result ({str(e)[:120]})"
+    return extraction, method, ai_note
 
+
+def run_check(si_name, si_bytes, bl_name, bl_bytes, use_ai):
+    """Compare two uploaded documents. Same result shape the Inbox uses."""
+    si_path = f"upload_SI{Path(si_name).suffix.lower()}"
+    bl_path = f"upload_BL{Path(bl_name).suffix.lower()}"
+    source = UploadedFiles({si_path: si_bytes, bl_path: bl_bytes})
+    email = {"email_id": "upload", "attachments": [si_path, bl_path]}
+    extraction, method, ai_note = extract_documents(source, email, use_ai)
     data = to_comparer_input("upload", "BL_COMPARISON", extraction)
     data["issue_notes"] = extraction.get("extraction_issues", [])
     entry, report = compare_email(dict(data))
     return {"data": data, "entry": entry, "report": report, "status": report["status"],
-            "method": method, "ai_note": ai_note}
+            "method": method, "ai_note": ai_note, "review": None}
 
 
-def classify_text(subject, body):
-    from classifier import classify_batch
-    email = {"email_id": "live", "from": "", "subject": subject, "body": body, "attachments": []}
-    return classify_batch([email]).get("live")
+# --- uploading a whole email ---
+
+def parse_email_json(raw):
+    """Read an uploaded email record (same format as the dataset's inbox files)."""
+    try:
+        data = json.loads(raw.decode("utf-8-sig"))
+    except Exception:
+        raise ValueError("This file isn't valid JSON. Upload an email record like the ones in the inbox folder.")
+    if isinstance(data, list) and len(data) == 1:
+        data = data[0]
+    if not isinstance(data, dict) or not ({"subject", "body"} & set(data)):
+        raise ValueError("This JSON doesn't look like an email: it needs at least a subject or a body.")
+    data = dict(data)
+    data.setdefault("email_id", "uploaded_email")
+    data.setdefault("from", "")
+    atts = data.get("attachments") or []
+    data["attachments"] = [str(a) for a in (atts if isinstance(atts, list) else [atts])]
+    return data
 
 
-def page_check():
-    page_heading("Check documents", 'Try it <em>live</em>: <span class="hl">check</span> a BL against its SI')
+def match_attachments(email, uploads):
+    """Pair the email's listed attachments with the uploaded files, by filename.
+    Listed but not uploaded = treated as missing (the flow will escalate it).
+    Uploaded but not listed = included anyway."""
+    by_name = {Path(name).name.lower(): name for name in uploads}
+    files, missing, used = {}, [], set()
+    for path in email["attachments"]:
+        name = Path(path).name.lower()
+        if name in by_name:
+            files[path] = uploads[by_name[name]]
+            used.add(name)
+        else:
+            missing.append(Path(path).name)
+    extra = [by_name[n] for n in by_name if n not in used]
+    for name in extra:
+        files[f"attachments/{name}"] = uploads[name]
+    attachments = [p for p in email["attachments"] if p in files] + [f"attachments/{n}" for n in extra]
+    return dict(email, attachments=attachments), files, missing, extra
 
+
+def classify_uploaded(email):
+    """Ask the classifier. Returns (classification, problem)."""
+    try:
+        from classifier import classify_batch
+        c = classify_batch([email]).get(email["email_id"])
+        if c and c.get("category") in CATEGORIES:
+            return c, None
+        return None, "the classifier didn't return a known email type"
+    except Exception as e:
+        return None, str(e)[:150]
+
+
+def run_email(email, files, use_ai, chosen_type=None):
+    """Full flow for one uploaded email: classify -> read -> compare -> decide."""
+    eid = email["email_id"]
+    if chosen_type:
+        classification = {"category": chosen_type, "confidence": "chosen by you",
+                          "reason": "Type chosen by a person."}
+    else:
+        classification, problem = classify_uploaded(email)
+        if not classification:
+            return {"needs_type": True, "problem": problem}
+    category = classification["category"]
+
+    source = UploadedFiles(files)
+    extraction, method, ai_note = None, None, None
+    if category == "BL_COMPARISON":
+        if email["attachments"]:
+            extraction, method, ai_note = extract_documents(source, email, use_ai)
+        else:
+            extraction = {"email_id": eid, "si": None, "bl": None, "other_documents": [],
+                          "extraction_issues": ["No attachments on this email"]}
+
+    # decide exactly as the pipeline does, so the result matches submission.json
+    try:
+        entry, report = decide_email(eid, email, category, extraction)
+    except Exception:
+        base = (to_comparer_input(eid, category, extraction) if extraction
+                else {"email_id": eid, "category": category})
+        entry, report = compare_email(dict(base, email_id=eid))
+
+    data = {"email_id": eid, "category": category}
+    if extraction:
+        data = dict(to_comparer_input(eid, category, extraction), email_id=eid)
+        data["issue_notes"] = extraction.get("extraction_issues", [])
+    return {"classification": classification, "category": category, "data": data,
+            "entry": entry, "report": report, "status": report["status"],
+            "method": method, "ai_note": ai_note, "review": None, "email": email}
+
+
+def show_email_result(r):
+    email, c = r["email"], r["classification"]
+    st.divider()
+    st.subheader(email.get("subject") or "(no subject)")
+    meta = [html.escape(email.get("from") or ""), html.escape(email["email_id"])]
+    st.markdown(f'<p class="cc-meta">{" &nbsp;|&nbsp; ".join(m for m in meta if m)}</p>',
+                unsafe_allow_html=True)
+
+    label = CATEGORY_LABELS[r["category"]]
+    st.markdown(f'<div class="cc-banner"><strong>Sorted as: {label}</strong>'
+                f'{html.escape(c.get("reason") or "")} '
+                f'<span class="cc-meta">(confidence: {html.escape(str(c.get("confidence")))})</span></div>',
+                unsafe_allow_html=True)
+
+    if r["category"] != "BL_COMPARISON":
+        st.write("This type of email only needs sorting, so there's no document check.")
+    else:
+        if r["method"]:
+            st.caption(f"Documents read by: {r['method']}")
+        if r["ai_note"]:
+            st.caption(r["ai_note"])
+        result_banner(r)
+        if r["report"].get("fields"):
+            comparison_table(r)
+        if r["status"] == "MISMATCH":
+            amendment_email_box(r, to=email.get("from", ""), subject=email.get("subject", ""))
+
+    st.download_button("Download this result (submission format)",
+                       json.dumps({email["email_id"]: r["entry"]}, indent=2),
+                       file_name=f"{email['email_id']}_result.json", mime="application/json")
+
+
+def upload_email_tab():
+    st.markdown('<p class="cc-lede">Upload an email record (the same JSON format as the dataset) '
+                'with its attachments. It runs through the full flow: sort the email, read the '
+                'documents, compare them and decide.</p>', unsafe_allow_html=True)
+    c1, c2 = st.columns(2)
+    email_file = c1.file_uploader("Email (JSON)", type=["json"], key="email_up")
+    att_files = c2.file_uploader("Attachments", type=["txt", "pdf", "docx", "xlsx"],
+                                 accept_multiple_files=True, key="att_up")
+    use_ai = st.toggle("Use AI for anything the rules can't read", value=True, key="email_ai")
+
+    # a different email file starts over
+    fid = getattr(email_file, "file_id", None) or (email_file.name if email_file else None)
+    if st.session_state.get("email_fid") != fid:
+        st.session_state.email_fid = fid
+        for k in ("email_run", "chosen_type", "email_key", "email_result"):
+            st.session_state.pop(k, None)
+    if st.button("Process this email", type="primary", disabled=not email_file, key="run_email"):
+        st.session_state.pop("chosen_type", None)
+        st.session_state.email_run = True
+    if not (email_file and st.session_state.get("email_run")):
+        return
+
+    try:
+        email = parse_email_json(email_file.getvalue())
+    except ValueError as e:
+        st.error(str(e))
+        return
+    uploads = {f.name: f.getvalue() for f in (att_files or [])}
+    email, files, missing, extra = match_attachments(email, uploads)
+    if missing:
+        st.warning("Listed in the email but not uploaded, so treated as missing: " + ", ".join(missing))
+    if extra:
+        st.caption("Uploaded but not listed in the email, included anyway: " + ", ".join(extra))
+
+    # Streamlit reruns the page on every click; only redo the (paid, slow) AI work
+    # when the files or settings actually change
+    key = (fid, tuple(sorted((n, len(b)) for n, b in uploads.items())), use_ai,
+           st.session_state.get("chosen_type"))
+    if st.session_state.get("email_key") == key:
+        r = st.session_state.email_result
+    else:
+        with st.spinner("Sorting the email, reading the documents and comparing..."):
+            r = run_email(email, files, use_ai, st.session_state.get("chosen_type"))
+        st.session_state.email_key, st.session_state.email_result = key, r
+
+    if r.get("needs_type"):
+        st.markdown('<div class="cc-banner review"><strong>A person needs to choose the email type</strong>'
+                    f'The AI classifier isn\'t available right now ({html.escape(r["problem"] or "")}). '
+                    'Pick the type below and the rest of the check will run.</div>',
+                    unsafe_allow_html=True)
+        pick = st.selectbox("Email type", CATEGORIES, format_func=CATEGORY_LABELS.get, key="pick_type")
+        if st.button("Continue with this type", key="use_type"):
+            st.session_state.chosen_type = pick
+            st.rerun()
+        return
+
+    show_email_result(r)
+    with st.expander("Wrong email type? Re-run it as a different type"):
+        pick = st.selectbox("Email type", CATEGORIES, format_func=CATEGORY_LABELS.get,
+                            index=CATEGORIES.index(r["category"]), key="override_type")
+        if st.button("Re-run with this type", key="rerun_type"):
+            st.session_state.chosen_type = pick
+            st.rerun()
+
+
+def compare_pair_tab():
     c1, c2 = st.columns(2)
     si_file = c1.file_uploader("Shipping Instruction", type=["txt", "pdf", "docx", "xlsx"], key="si_up")
     bl_file = c2.file_uploader("Draft Bill of Lading", type=["txt", "pdf", "docx", "xlsx"], key="bl_up")
-    use_ai = st.toggle("Use AI for anything the rules can't read", value=True)
-
+    use_ai = st.toggle("Use AI for anything the rules can't read", value=True, key="pair_ai")
     if st.button("Check these documents", type="primary", disabled=not (si_file and bl_file)):
         with st.spinner("Reading both documents and comparing seven fields..."):
             r = run_check(si_file.name, si_file.getvalue(), bl_file.name, bl_file.getvalue(), use_ai)
@@ -930,6 +1111,14 @@ def page_check():
         if r["status"] == "MISMATCH":
             amendment_email_box(r)
 
+
+def page_check():
+    page_heading("Check documents", 'Try it <em>live</em>: drop in an <span class="hl">email</span>')
+    tab_email, tab_pair = st.tabs(["Upload an email", "Compare an SI and a BL"])
+    with tab_email:
+        upload_email_tab()
+    with tab_pair:
+        compare_pair_tab()
 
 # --- Page: Review queue ------------------------------------------------------
 

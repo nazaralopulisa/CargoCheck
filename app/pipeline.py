@@ -249,6 +249,59 @@ def to_comparer_input(email_id, category, extraction):
     }
 
 
+# --- Step 2b: one decision per email (shared with the dashboard) --------------
+
+def categorize(emails, classifications):
+    """Classifier category per email, with the rule-based fixes applied.
+    Returns (categories, rule_notes)."""
+    categories, rule_notes = {}, {}
+    for eid, email in emails.items():
+        original = classifications.get(eid, {}).get("category") or "GENERAL"
+        categories[eid], note = refine_category(email, original)
+        if note:
+            rule_notes[eid] = note
+    return categories, rule_notes
+
+
+def scanned_files(email):
+    """Attachments that were read by AI vision (their transcription is cached)."""
+    return [Path(p).name for p in email.get("attachments") or []
+            if (OUTPUT_DIR / "doc_text" / (Path(p).name + ".txt")).exists()]
+
+
+def decide_email(eid, email, category, extraction, skip_extraction=False):
+    """The final (entry, report) for one email. The pipeline AND the dashboard both
+    call this, so what the dashboard shows always matches submission.json."""
+    if category != "BL_COMPARISON":
+        return compare_email({"email_id": eid, "category": category})
+
+    if not has_attachments(email):
+        return no_attachment_result(eid, email)
+
+    if skip_extraction:
+        entry, report = compare_email({"email_id": eid, "category": "GENERAL"})
+        entry["category"] = "BL_COMPARISON"
+        return entry, report
+
+    if extraction is None or "processing_error" in extraction:
+        detail = (extraction or {}).get("processing_error", "Not extracted yet. Rerun the pipeline.")
+        entry = {"category": category, "status": "NEEDS_REVIEW", "review_reason": "unreadable",
+                 "has_defect": False, "defect_fields": []}
+        return entry, {"email_id": eid, "status": "PROCESSING_ERROR", "detail": detail, "fields": []}
+
+    entry, report = compare_email(to_comparer_input(eid, category, extraction))
+
+    # Anything read by AI vision goes to a person, with the transcribed values as evidence.
+    scanned = scanned_files(email)
+    if scanned and entry["status"] != "NEEDS_REVIEW":
+        entry = {"category": category, "status": "NEEDS_REVIEW", "review_reason": "unreadable",
+                 "has_defect": False, "defect_fields": []}
+        report["status"], report["reason"] = "NEEDS_REVIEW", "unreadable"
+        report["detail"] = (f"Scanned document(s) {', '.join(scanned)} were read by AI vision. "
+                            "Please confirm the transcribed values below before acting.")
+    return entry, report
+
+
 # --- Step 3: check the format before sending --------------------------------
 
 def validate(submission):
@@ -359,12 +412,7 @@ def main():
         print(f"WARNING: {len(missing_class)} emails have no classification, "
               f"treated as GENERAL: {missing_class[:10]}")
 
-    categories, rule_notes = {}, {}
-    for eid, email in emails.items():
-        original = classifications.get(eid, {}).get("category") or "GENERAL"
-        categories[eid], note = refine_category(email, original)
-        if note:
-            rule_notes[eid] = note
+    categories, rule_notes = categorize(emails, classifications)
     if rule_notes:
         print(f"Reclassified by rule: {len(rule_notes)} emails -> {sorted(rule_notes)}")
 
@@ -407,30 +455,10 @@ def main():
     submission, reports, failed = {}, {}, []
     for eid in sorted(emails):
         category = category_of(eid)
-
-        if category == "BL_COMPARISON" and not has_attachments(emails[eid]):
-            entry, report = no_attachment_result(eid, emails[eid])
-        elif category == "BL_COMPARISON" and args.skip_extraction:
-            entry, report = compare_email({"email_id": eid, "category": "GENERAL"})
-            entry["category"] = "BL_COMPARISON"
-        elif category == "BL_COMPARISON" and "processing_error" in extractions.get(eid, {}):
+        entry, report = decide_email(eid, emails[eid], category, extractions.get(eid),
+                                     skip_extraction=args.skip_extraction)
+        if report["status"] == "PROCESSING_ERROR":
             failed.append(eid)
-            entry = {"category": category, "status": "NEEDS_REVIEW",
-                     "review_reason": "unreadable", "has_defect": False, "defect_fields": []}
-            report = {"email_id": eid, "status": "PROCESSING_ERROR",
-                      "detail": extractions[eid]["processing_error"], "fields": []}
-        elif category == "BL_COMPARISON":
-            entry, report = compare_email(to_comparer_input(eid, category, extractions[eid]))
-            scanned = [Path(p).name for p in emails[eid].get("attachments") or []
-                       if (OUTPUT_DIR / "doc_text" / (Path(p).name + ".txt")).exists()]
-            if scanned and entry["status"] != "NEEDS_REVIEW":
-                entry = {"category": category, "status": "NEEDS_REVIEW", "review_reason": "unreadable",
-                         "has_defect": False, "defect_fields": []}
-                report["status"], report["reason"] = "NEEDS_REVIEW", "unreadable"
-                report["detail"] = (f"Scanned document(s) {', '.join(scanned)} were read by AI vision. "
-                                    "Please confirm the transcribed values below before acting.")
-        else:
-            entry, report = compare_email({"email_id": eid, "category": category})
 
         report["classification_reason"] = (rule_notes.get(eid)
                                            or classifications.get(eid, {}).get("reason"))

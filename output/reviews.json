@@ -1,14 +1,16 @@
 {
-  "email_505": {
-    "decision": "corrected",
-    "note": "test",
-    "category": "SI_REQUEST",
-    "reviewed_at": "2026-09-21 17:03"
-  },
   "email_501": {
     "decision": "corrected",
-    "note": "testing",
-    "category": "GENERAL",
-    "reviewed_at": "2026-09-21 17:04"
+    "note": "The BL was a commercial invoice.",
+    "bl": {
+      "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+      "consignee": "KPP-ANTALIS (SINGAPORE) PTE. LTD.",
+      "notify_party": "KPP-ANTALIS (SINGAPORE) PTE. LTD.",
+      "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA (CNSHA)",
+      "port_of_discharge": "HOUSTON, US (USHOU)",
+      "container_count": "5",
+      "gross_weight_kg": "100225"
+    },
+    "reviewed_at": "2026-09-21 18:02"
   }
 }

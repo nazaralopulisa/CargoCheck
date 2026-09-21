@@ -10,8 +10,9 @@ Pages
   Scores        self-evaluation history from score_log.csv
 
 Reads what pipeline.py saved in output/ (classifications.json and one file per
-email in extractions/) plus output/reviews.json. Results are recomputed with the
-pipeline's own code every time, so the page always matches the submission.
+email in extractions/) plus output/reviews.json. Every result comes from the
+pipeline's own decide_email(), so the page matches submission.json exactly; a
+person's review is then layered on top (and never changes submission.json).
 """
 
 import html
@@ -35,14 +36,20 @@ from loader import Inbox                                                # noqa: 
 from comparer import compare_email, FIELDS                              # noqa: E402
 from reviews import load_reviews, save_review, delete_review, apply_review  # noqa: E402
 from pipeline import (to_comparer_input, CLASSIFICATIONS_FILE,          # noqa: E402
-                      EXTRACTIONS_DIR, SCORE_LOG)
+                      EXTRACTIONS_DIR, SCORE_LOG, categorize, decide_email,
+                      has_attachments)
+from doc_reader import SmartInbox                                       # noqa: E402
 from rule_extractor import extract_email as rule_extract_email, is_confident  # noqa: E402
 
 CATEGORIES = ["BL_COMPARISON", "SI_REQUEST", "INVOICE_QUERY", "GENERAL", "SPAM"]
 CATEGORY_LABELS = {"BL_COMPARISON": "BL check", "SI_REQUEST": "New SI request",
                    "INVOICE_QUERY": "Invoice query", "GENERAL": "General", "SPAM": "Spam"}
 STATUS_LABELS = {"OK": "No mismatch", "MISMATCH": "Mismatch", "NEEDS_REVIEW": "Needs review",
-                 "NOT_CHECKED": "No check needed", "PENDING": "Not processed yet"}
+                 "NOT_CHECKED": "No check needed", "PENDING": "Not processed yet",
+                 "NO_DOCUMENTS": "Draft BL requested", "PROCESSING_ERROR": "Processing failed",
+                 "RESOLVED": "Resolved by a person"}
+# Statuses that stay open until a person reviews them
+OPEN_STATUSES = {"NEEDS_REVIEW", "PROCESSING_ERROR"}
 REASON_LABELS = {"missing_attachment": "The SI or the BL is not attached.",
                  "unreadable": "A document could not be read.",
                  "wrong_doc_type": "An attachment is not an SI or a BL.",
@@ -169,9 +176,8 @@ def load_extraction(eid):
     return load_json(EXTRACTIONS_DIR / f"{eid}.json") or None
 
 
-def base_input(eid, classification, extraction):
+def base_input(eid, category, classification, extraction, rule_note=None):
     """What the AI and rules said, before any person changed anything."""
-    category = classification.get("category")
     if category == "BL_COMPARISON" and extraction and "processing_error" not in extraction:
         data = to_comparer_input(eid, category, extraction)
         data["issue_notes"] = extraction.get("extraction_issues", [])
@@ -179,45 +185,69 @@ def base_input(eid, classification, extraction):
     else:
         data = {"email_id": eid, "category": category}
     data["classifier_confidence"] = classification.get("confidence")
-    data["classifier_reason"] = classification.get("reason")
+    data["classifier_reason"] = rule_note or classification.get("reason")
     data["classifier_needs_review"] = classification.get("needs_review", False)
     return data
+
+
+def reviewed_result(eid, email, data, review, original_category, extraction, entry, report):
+    """Recompute the result after a person's review."""
+    category = data.get("category")
+    if category != "BL_COMPARISON":
+        return decide_email(eid, email, category, None)          # re-sorted: no check needed
+    if review.get("si") or review.get("bl"):
+        # the person typed values: compare exactly what they entered
+        return compare_email(dict(data, email_id=eid, category="BL_COMPARISON", issues=[]))
+    if category != original_category:
+        return decide_email(eid, email, category, extraction)    # re-sorted into a BL check
+    return entry, report                                          # confirmed as is
 
 
 def build_results():
     """For every email: the merged AI+review data, submission entry and report."""
     emails, reviews = load_emails(), load_reviews()
     classifications = load_json(CLASSIFICATIONS_FILE)
+    categories, rule_notes = categorize(emails, classifications)
     results = {}
     for eid, email in emails.items():
         c = classifications.get(eid, {})
-        extraction = load_extraction(eid)
         review = reviews.get(eid)
-        base = base_input(eid, c, extraction)
-        merged = apply_review(base, review) if review else base
-        category = merged.get("category")
-        waiting = (category == "BL_COMPARISON" and "si" not in merged and not review)
-        if not category or waiting:
-            entry, report, status = None, None, "PENDING"
-        else:
-            entry, report = compare_email(dict(merged, email_id=eid))
-            status = report["status"]
-        results[eid] = {"email": email, "data": merged, "base": base, "entry": entry,
+        extraction = load_extraction(eid)
+        category = categories[eid]
+        base = base_input(eid, category, c, extraction, rule_notes.get(eid))
+        not_extracted = (category == "BL_COMPARISON" and has_attachments(email)
+                         and extraction is None)
+        if not c.get("category") or not_extracted:
+            results[eid] = {"email": email, "data": dict(base, category=c.get("category") and category),
+                            "base": base, "entry": None, "report": None, "status": "PENDING",
+                            "review": review}
+            continue
+
+        entry, report = decide_email(eid, email, category, extraction)   # same as submission.json
+        data = base
+        if review:
+            data = apply_review(base, review)
+            entry, report = reviewed_result(eid, email, data, review, category, extraction,
+                                            entry, report)
+        status = report["status"]
+        if review and status in OPEN_STATUSES:
+            status = "RESOLVED"                   # a person has made the final call
+        results[eid] = {"email": email, "data": data, "base": base, "entry": entry,
                         "report": report, "status": status, "review": review}
     return results
 
 
 def needs_person(r):
     data = r["data"]
-    return (r["status"] == "NEEDS_REVIEW" or data.get("classifier_needs_review")
+    return (r["status"] in OPEN_STATUSES or data.get("classifier_needs_review")
             or data.get("classifier_confidence") == "low")
 
 
 def read_attachment(path):
-    if not path.lower().endswith(".txt"):
-        return None
+    """Text of any attachment. PDF, Word and Excel are decoded; scans use the cached
+    vision transcription from the pipeline run."""
     try:
-        return Inbox(DATA_DIR).read_text(path)
+        return SmartInbox(Inbox(DATA_DIR), DATA_DIR).read_text(path)
     except Exception as e:
         return f"Could not open this file: {e}"
 
@@ -257,6 +287,22 @@ def result_banner(r):
         body, kind = f"Fix before the BL is finalised: {names}.", "mismatch"
     elif r["status"] == "OK":
         title, body, kind = "No mismatch detected", "All seven fields agree.", "ok"
+    elif r["status"] == "RESOLVED":
+        rv = r["review"]
+        verb = "Confirmed" if rv.get("decision") == "confirmed" else "Corrected"
+        title, kind = "Resolved by a person", "ok"
+        body = f"{verb} on {html.escape(rv.get('reviewed_at', ''))}."
+        if rv.get("note"):
+            body += f" Note: {html.escape(rv['note'])}"
+        reason = report.get("reason") or r["entry"].get("review_reason")
+        if reason in REASON_LABELS:
+            body += f" Originally flagged because: {REASON_LABELS[reason].lower()}"
+    elif r["status"] == "NO_DOCUMENTS":
+        title, body, kind = "No documents to check yet", html.escape(report.get("detail", "")), ""
+    elif r["status"] == "PROCESSING_ERROR":
+        title, kind = "Processing failed", "review"
+        body = (html.escape(report.get("detail", "")) +
+                " Rerun <code>python app/pipeline.py</code> to retry.")
     else:
         reason = report.get("reason") or r["entry"].get("review_reason")
         title = "A person needs to check this"
@@ -312,7 +358,7 @@ def email_detail(r):
 
     if r["status"] == "PENDING":
         st.info("This email has not been processed yet. Run `python app/pipeline.py` to process it.")
-    elif category == "BL_COMPARISON":
+    elif category == "BL_COMPARISON" and r["report"]:
         result_banner(r)
         if r["report"]["fields"]:
             comparison_table(r)
@@ -340,13 +386,14 @@ def page_inbox(results):
     page_heading("Inbox", 'Every BL, <em>checked</em> against its <span class="hl">SI</span>')
     ticker([f"{len(results)} emails in", f"{len(checks)} <em>BL checks</em>",
             f"{plural(count('MISMATCH'), 'mismatch').replace('mismatchs', 'mismatches')} caught",
-            f"{count('NEEDS_REVIEW')} <em>waiting for a person</em>",
+            f"{count('NEEDS_REVIEW') + count('PROCESSING_ERROR')} <em>waiting for a person</em>",
+            f"{count('RESOLVED')} resolved by a person",
             f"{count('OK')} clean", "SI vs draft BL, field by field"])
     st.markdown(f"""
 <div class="cc-stats">
   <div class="cc-stat mismatch"><div class="num">{count('MISMATCH')}</div>
        <div class="lbl">BLs with <em>mismatches</em> to fix</div></div>
-  <div class="cc-stat review"><div class="num">{count('NEEDS_REVIEW')}</div>
+  <div class="cc-stat review"><div class="num">{count('NEEDS_REVIEW') + count('PROCESSING_ERROR')}</div>
        <div class="lbl">waiting for <em>a person</em></div></div>
   <div class="cc-stat ok"><div class="num">{count('OK')}</div>
        <div class="lbl">clean, <em>no mismatch</em></div></div>
@@ -356,15 +403,17 @@ def page_inbox(results):
     if pending:
         st.caption(f"{pending} of {len(results)} emails are not processed yet.")
 
-    show = st.pills("Show me…", ["MISMATCH", "NEEDS_REVIEW", "OK"],
+    show = st.pills("Show me…", ["MISMATCH", "NEEDS_REVIEW", "RESOLVED", "OK"],
                     selection_mode="multi", format_func={
                         "MISMATCH": "Mismatches", "NEEDS_REVIEW": "Needs a person",
-                        "OK": "Clean"}.get, key="show_me")
+                        "RESOLVED": "Resolved by a person", "OK": "Clean"}.get, key="show_me")
     with st.expander("More filters"):
         c1, c2 = st.columns(2)
         types = c1.multiselect("Type", CATEGORIES, format_func=CATEGORY_LABELS.get)
         search = c2.text_input("Search subject or email ID")
-    statuses = show
+    statuses = set(show or [])
+    if "NEEDS_REVIEW" in statuses:
+        statuses.add("PROCESSING_ERROR")
 
     rows = []
     for eid, r in results.items():
@@ -517,8 +566,9 @@ def page_review(results):
     st.markdown(
         f'<p class="cc-lede">{plural(len(open_items), "email")} '
         f'{"needs" if len(open_items) == 1 else "need"} a person to check. '
-        f'{len(done)} checked so far. Saved corrections update the report and the next '
-        'submission.</p>', unsafe_allow_html=True)
+        f'{len(done)} checked so far. A saved review updates the result everywhere in '
+        'this dashboard; the AI result stays underneath and can be restored with Undo.</p>',
+        unsafe_allow_html=True)
 
     if st.session_state.get("flash"):
         st.success(st.session_state.pop("flash"))

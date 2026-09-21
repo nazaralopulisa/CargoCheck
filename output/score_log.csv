@@ -9,3 +9,4 @@ time,final,class_f1,defect_f1,e2e,escalation_recall,note
 2026-09-21 17:10,0.9891,1.000,1.000,45/46,1.000,reminders to submit SIs are GENERAL
 2026-09-21 17:11,0.9891,1.000,1.000,45/46,1.000,reminders to submit SIs are GENERAL
 2026-09-21 17:29,1.0000,1.000,1.000,46/46,1.000,PDF: read overlapping text in stream order (use_text_flow)
+2026-09-21 18:00,1.0000,1.000,1.000,46/46,1.000,refactor: shared decide_email

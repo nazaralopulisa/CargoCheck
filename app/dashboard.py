@@ -138,6 +138,27 @@ h1, h2, h3 { color: var(--ink); letter-spacing: -0.01em; }
 @media (max-width: 900px) { .cc-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 640px) { .cc-stat .num { font-size: 2.2rem; } .cc-stat { min-height: 6rem; } }
 
+/* Sidebar navigation: page names as a simple menu instead of radio buttons */
+[data-testid="stSidebar"] [data-testid="stElementContainer"]:has([data-testid="stRadio"]),
+[data-testid="stSidebar"] [data-testid="stRadio"],
+[data-testid="stSidebar"] [data-testid="stRadio"] > div { width: 100% !important; }
+[data-testid="stSidebar"] [data-testid="stRadioGroup"] { gap: .1rem; width: 100%; }
+[data-testid="stSidebar"] [data-testid="stRadioGroup"] > div { width: 100%; }
+[data-testid="stSidebar"] [data-testid="stRadioOption"] {
+  width: 100%; padding: .5rem .75rem; border-radius: 6px; cursor: pointer;
+  transition: background .12s; }
+[data-testid="stSidebar"] [data-testid="stRadioOption"] > div > div:first-child { display: none; }
+[data-testid="stSidebar"] [data-testid="stRadioOption"] p {
+  font-size: 1.05rem; font-weight: 400; color: var(--muted); }
+[data-testid="stSidebar"] [data-testid="stRadioOption"]:hover { background: rgba(28,43,54,.05); }
+[data-testid="stSidebar"] [data-testid="stRadioOption"]:hover p { color: var(--ink); }
+[data-testid="stSidebar"] [data-testid="stRadioOption"][data-selected="true"] {
+  background: rgba(28,43,54,.08); }
+[data-testid="stSidebar"] [data-testid="stRadioOption"][data-selected="true"] p {
+  color: var(--ink); font-weight: 600; }
+[data-testid="stSidebar"] [data-testid="stRadioOption"][data-focus-visible="true"] {
+  outline: 2px solid var(--ink); outline-offset: 2px; }
+  
 [data-testid="stSidebar"] .cc-brand { font-family: 'Archivo', sans-serif; font-weight: 900;
     font-size: 1.6rem; letter-spacing: -0.02em; margin: 0; }
 [data-testid="stSidebar"] .cc-brand em { font-family: 'Instrument Serif', Georgia, serif;

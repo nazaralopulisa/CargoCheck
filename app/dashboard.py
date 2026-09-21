@@ -203,6 +203,108 @@ h1, h2, h3 { color: var(--ink); letter-spacing: -0.01em; }
   .cc-compare tr.missing { box-shadow: inset 5px 0 0 var(--review); }
   .cc-compare tr.mismatch td { background: transparent; }
 }
+/* ---- Overview: simple labelled bar lists (no legends, labels wrap) ---- */
+/* one grid per list, so every row's bar starts and ends at the same place */
+.cc-bars { list-style: none; margin: .3rem 0 .8rem; padding: 0; display: grid;
+           grid-template-columns: minmax(7rem, 34%) 1fr auto; align-items: center;
+           column-gap: .75rem; row-gap: .5rem; }
+.cc-bar-row { display: contents; }
+.cc-bar-label { font-size: .92rem; line-height: 1.25; color: var(--ink); }
+.cc-bar-track { background: rgba(28,43,54,.06); height: 1.3rem; border-radius: 3px; overflow: hidden; }
+.cc-bar-fill { display: block; height: 100%; border-radius: 3px; }
+.cc-bar-val { font-weight: 700; font-variant-numeric: tabular-nums; min-width: 2.2rem;
+              text-align: right; white-space: nowrap; }
+.cc-bar-val small { font-weight: 400; color: var(--muted); font-size: .82rem; margin-left: .25rem; }
+.cc-bars.hero { row-gap: .6rem; grid-template-columns: minmax(9rem, 22%) 1fr auto; }
+.cc-bars.hero .cc-bar-label { font-size: 1rem; font-weight: 600; }
+.cc-bars.hero .cc-bar-track { height: 1.75rem; }
+.cc-bars.hero .cc-bar-val { font-family: 'Archivo', sans-serif; font-size: 1.15rem; }
+.cc-section { margin-top: 1.1rem !important; }
+@media (max-width: 640px) {
+  .cc-bars, .cc-bars.hero { grid-template-columns: 1fr auto; row-gap: .2rem; }
+  .cc-bar-label { grid-column: 1 / -1; margin-top: .35rem; }
+}
+
+/* ---- Overview: CSS donut with a counted legend ---- */
+.cc-donut-wrap { display: flex; align-items: center; gap: 1.6rem; flex-wrap: wrap; margin: .5rem 0 1rem; }
+.cc-donut { position: relative; width: 11.5rem; aspect-ratio: 1; border-radius: 50%; flex: none; }
+.cc-donut-hole { position: absolute; inset: 21%; border-radius: 50%; background: var(--steel);
+                 display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.cc-donut-hole b { font-family: 'Archivo', sans-serif; font-weight: 900; font-size: 1.9rem;
+                   line-height: 1; letter-spacing: -0.03em; color: var(--ink); }
+.cc-donut-hole span { font-size: .82rem; color: var(--muted); margin-top: .15rem; }
+.cc-legend { list-style: none; margin: 0; padding: 0; display: grid;
+             grid-template-columns: auto 1fr auto auto; column-gap: .6rem; row-gap: .45rem;
+             align-items: center; flex: 1; min-width: 12rem; }
+.cc-legend li { display: contents; }
+.cc-legend i { width: .8rem; height: .8rem; border-radius: 2px; box-shadow: inset 0 0 0 1px rgba(28,43,54,.15); }
+.cc-legend span { font-size: .92rem; color: var(--ink); }
+.cc-legend b { font-variant-numeric: tabular-nums; text-align: right; }
+.cc-legend small { color: var(--muted); font-size: .8rem; text-align: right; min-width: 2.4rem; }
+/* ---- Landing (top of Overview) ---- */
+#todays-inbox { scroll-margin-top: 4.5rem; }
+[data-testid="stMain"], html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { [data-testid="stMain"], html { scroll-behavior: auto; } }
+.cc-landing { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+              gap: 2.5rem; align-items: center; min-height: 82vh; padding: 1rem 0 2.5rem;
+              border-bottom: 2px solid var(--ink); margin-bottom: 2.2rem; }
+.cc-landing .cc-kicker em { font-family: 'Instrument Serif', Georgia, serif; font-style: italic;
+                            text-transform: none; font-weight: 400; letter-spacing: 0; font-size: .95rem; }
+.cc-landing-title { font-family: 'Archivo', system-ui, sans-serif; font-weight: 900;
+                    font-size: clamp(2.6rem, 6.4vw, 5.4rem); line-height: .98; letter-spacing: -0.035em;
+                    color: var(--ink); margin: .2rem 0 1.1rem; padding: 0; }
+.cc-landing-title em { font-family: 'Instrument Serif', Georgia, serif; font-style: italic;
+                       font-weight: 400; letter-spacing: -0.01em; color: var(--mismatch); }
+.cc-landing-title .hl { background: linear-gradient(transparent 62%, #F9C74F 62%); padding: 0 .06em; }
+.cc-landing-sub { font-size: 1.12rem; line-height: 1.55; color: var(--muted); max-width: 46ch;
+                  margin: 0 0 1.6rem; }
+.cc-landing-steps { list-style: none; margin: 0 0 1.8rem; padding: 0; display: grid;
+                    grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; }
+.cc-landing-steps li { border-top: 2px solid var(--ink); padding-top: .5rem; }
+.cc-landing-steps b { display: block; font-family: 'Archivo', sans-serif; font-weight: 900;
+                      font-size: 2rem; line-height: 1; letter-spacing: -0.03em; }
+.cc-landing-steps span { display: block; margin-top: .3rem; font-size: .9rem; line-height: 1.3;
+                         color: var(--muted); }
+.cc-landing-steps em { font-family: 'Instrument Serif', Georgia, serif; font-size: 1.05rem; color: var(--ink); }
+.cc-scrollcue { display: inline-flex; gap: .5rem; align-items: center; padding: .7rem 1.1rem;
+                background: var(--ink); color: #fff !important; text-decoration: none !important;
+                font-weight: 600; border-radius: 3px; box-shadow: 4px 4px 0 var(--mismatch); }
+.cc-scrollcue:hover { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 var(--mismatch); }
+.cc-scrollcue span { display: inline-block; animation: cc-bob 1.6s ease-in-out infinite; }
+@keyframes cc-bob { 50% { transform: translateY(3px); } }
+@media (prefers-reduced-motion: reduce) { .cc-scrollcue span { animation: none; } }
+
+.cc-landing-art { position: relative; min-height: 24rem; }
+.cc-paper { position: absolute; width: 78%; background: #fff; border: 2px solid var(--ink);
+            box-shadow: 6px 6px 0 var(--ink); padding: 1rem 1.1rem .6rem; font-size: .9rem;
+            background-image: repeating-linear-gradient(transparent 0 2.05rem, rgba(28,43,54,.05) 2.05rem 2.1rem); }
+.cc-paper.si { top: 0; left: 0; transform: rotate(-3deg); }
+.cc-paper.bl { top: 8.2rem; right: 0; transform: rotate(2.5deg); }
+.cc-paper .t { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: .72rem;
+               letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 .5rem; }
+.cc-paper p { margin: 0; padding: .32rem 0; display: flex; justify-content: space-between; gap: 1rem;
+              font-weight: 600; font-size: .84rem; }
+.cc-paper p span { color: var(--muted); font-weight: 400; }
+.cc-paper p.bad { background: #FDF1EA; box-shadow: inset 4px 0 0 var(--mismatch);
+                  padding-left: .5rem; color: var(--mismatch); }
+.cc-stamp { position: absolute; right: -2%; top: 6.4rem; transform: rotate(9deg); z-index: 2;
+            border: 3px solid var(--mismatch); color: var(--mismatch); padding: .35rem .7rem;
+            font-family: 'Archivo', sans-serif; font-weight: 900; text-transform: uppercase;
+            letter-spacing: .08em; line-height: 1.05; text-align: center; background: rgba(255,255,255,.85); }
+.cc-stamp small { font-size: .95rem; letter-spacing: 0; }
+@media (max-width: 900px) {
+  .cc-landing { grid-template-columns: 1fr; min-height: 0; gap: 1.8rem; }
+  .cc-landing-art { min-height: 19rem; max-width: 30rem; }
+}
+@media (max-width: 640px) {
+  .cc-landing-steps { grid-template-columns: 1fr; gap: .6rem; }
+  .cc-landing-steps li { display: flex; gap: .8rem; align-items: baseline; }
+  .cc-landing-steps span { margin: 0; }
+  .cc-landing-art { min-height: 20rem; }
+  .cc-paper { width: 86%; font-size: .8rem; }
+  .cc-paper.bl { top: 7.4rem; }
+  .cc-stamp { top: 5.6rem; right: 0; font-size: .85rem; }
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -438,36 +540,96 @@ def go_to_review(eid):
     st.session_state.page = "Review queue"
     st.session_state.review_target = eid
 
+# --- Landing (top of the Overview page) --------------------------------------
+
+def landing(results):
+    """First screen: what CargoCheck does, in five seconds. Scroll down for the dashboard."""
+    total = len(results)
+    checks = sum(1 for r in results.values() if r["data"].get("category") == "BL_COMPARISON")
+    people = sum(1 for r in results.values()
+                 if r["data"].get("category") == "BL_COMPARISON" and r["status"] in OPEN_STATUSES)
+    st.markdown(f"""
+<section class="cc-landing">
+  <div class="cc-landing-text">
+    <p class="cc-kicker">For shipping documentation teams</p>
+    <h1 class="cc-landing-title">Catch the <em>wrong</em> BL before it <span class="hl">sails</span></h1>
+    <p class="cc-landing-sub">CargoCheck reads the shipping inbox, compares every draft Bill of Lading
+      with its Shipping Instruction, and flags what doesn't match. People only look at what
+      actually needs them.</p>
+    <ol class="cc-landing-steps">
+      <li><b>{total}</b><span>emails <em>sorted</em> into five types</span></li>
+      <li><b>{checks}</b><span>draft BLs <em>compared</em>, field by field</span></li>
+      <li><b>{people}</b><span>unclear cases sent to <em>a person</em></span></li>
+    </ol>
+    <a class="cc-scrollcue" href="#todays-inbox">See today's overview <span aria-hidden="true">↓</span></a>
+  </div>
+  <div class="cc-landing-art" aria-hidden="true">
+    <div class="cc-paper si"><p class="t">Shipping Instruction</p>
+      <p class="bad"><span>Containers</span>3 x 40'HC</p>
+      <p><span>Consignee</span>PACIFIC OFFICE SDN BHD</p>
+      <p><span>Port of discharge</span>MERSIN (TRMER)</p>
+      <p><span>Gross weight</span>22,000 KG</p></div>
+    <div class="cc-paper bl"><p class="t">Draft Bill of Lading</p>
+      <p class="bad"><span>Containers</span>4 x 40'HC</p>
+      <p><span>Consignee</span>PACIFIC OFFICE SDN BHD</p>
+      <p><span>Port of discharge</span>MERSIN (TRMER)</p>
+      <p><span>Gross weight</span>22,000 KG</p></div>
+    <div class="cc-stamp">Mismatch<br><small>3 ≠ 4</small></div>
+  </div>
+</section>
+<div id="todays-inbox"></div>""", unsafe_allow_html=True)
+
 
 # --- Page: Overview ----------------------------------------------------------
 
-def bar_chart(df, x, y, color, height=None):
-    """Horizontal bars, biggest first, in the dashboard's colours."""
-    return (alt.Chart(df)
-            .mark_bar(color=color, cornerRadiusEnd=2)
-            .encode(x=alt.X(f"{x}:Q", title=None, axis=alt.Axis(tickMinStep=1, grid=False)),
-                    y=alt.Y(f"{y}:N", sort="-x", title=None,
-                            axis=alt.Axis(labelLimit=260, labelFontSize=12)),
-                    tooltip=list(df.columns))
-            .properties(height=height or max(140, 34 * len(df))))
+def bar_list(rows, hero=False):
+    """Labelled horizontal bars in plain HTML: label, bar, value written at the end.
+    rows: dicts with label, value, color, and optional note (shown after the value).
+    No legend to decode, long labels wrap, and it stacks on phones."""
+    top = max((r["value"] for r in rows), default=0) or 1
+    items = "".join(
+        f'<li class="cc-bar-row"><span class="cc-bar-label">{html.escape(str(r["label"]))}</span>'
+        f'<span class="cc-bar-track"><span class="cc-bar-fill" '
+        f'style="width:{max(r["value"] / top * 100, 1.5):.1f}%;background:{r["color"]}"></span></span>'
+        f'<span class="cc-bar-val">{r["value"]}'
+        f'{" <small>" + html.escape(r["note"]) + "</small>" if r.get("note") else ""}</span></li>'
+        for r in rows)
+    st.markdown(f'<ul class="cc-bars{" hero" if hero else ""}">{items}</ul>', unsafe_allow_html=True)
 
 
-def donut(df, label, value, colors):
-    return (alt.Chart(df)
-            .mark_arc(innerRadius=62, outerRadius=110, stroke="#fff", strokeWidth=2)
-            .encode(theta=alt.Theta(f"{value}:Q"),
-                    color=alt.Color(f"{label}:N", title=None,
-                                    scale=alt.Scale(domain=list(df[label]), range=colors),
-                                    legend=alt.Legend(orient="right", labelFontSize=12)),
-                    tooltip=[label, value])
-            .properties(height=240))
+def donut_html(rows, center_value, center_label):
+    """A CSS donut (no chart library): colours are clearly different, the total sits in
+    the middle, and the legend beside it shows each count and share."""
+    total = sum(r["value"] for r in rows) or 1
+    stops, at = [], 0.0
+    for r in rows:
+        share = r["value"] / total * 100
+        stops.append(f'{r["color"]} {at:.2f}% {at + share:.2f}%')
+        at += share
+    legend = "".join(
+        f'<li><i style="background:{r["color"]}"></i><span>{html.escape(r["label"])}</span>'
+        f'<b>{r["value"]}</b><small>{r["value"] / total:.0%}</small></li>' for r in rows)
+    aria = ", ".join(f'{r["label"]} {r["value"]}' for r in rows)
+    st.markdown(f"""
+<div class="cc-donut-wrap">
+  <div class="cc-donut" role="img" aria-label="{html.escape(aria)}"
+       style="background:conic-gradient({', '.join(stops)})">
+    <div class="cc-donut-hole"><b>{center_value}</b><span>{center_label}</span></div>
+  </div>
+  <ul class="cc-legend">{legend}</ul>
+</div>""", unsafe_allow_html=True)
 
 
 def insight(text):
     st.markdown(f'<p class="cc-insight">{text}</p>', unsafe_allow_html=True)
 
 
+def section(title):
+    st.markdown(f'<p class="cc-section">{title}</p>', unsafe_allow_html=True)
+
+
 def page_overview(results):
+    landing(results)
     page_heading("Overview", 'What the inbox is <em>telling</em> you <span class="hl">today</span>')
 
     processed = [r for r in results.values() if r["status"] != "PENDING"]
@@ -484,64 +646,38 @@ def page_overview(results):
     methods = pd.Series([read_by(r) for r in compared], dtype="object").value_counts()
     rules_share = methods.get("Rules (no AI)", 0) / max(len(compared), 1)
 
-    with st.expander("How the time saved is estimated"):
-        c1, c2 = st.columns(2)
-        per_check = c1.number_input("Minutes to compare one SI and BL by hand", 1.0, 60.0,
-                                    MINUTES_PER_CHECK, 0.5)
-        per_sort = c2.number_input("Minutes to read and sort one email", 0.1, 10.0,
-                                   MINUTES_PER_SORT, 0.1)
+    # time-saved estimate: the inputs sit under the cards, their values are read here first
+    per_check = st.session_state.get("per_check", MINUTES_PER_CHECK)
+    per_sort = st.session_state.get("per_sort", MINUTES_PER_SORT)
     hours = (len(compared) * per_check + len(processed) * per_sort) / 60
 
-    st.markdown(f"""
-<div class="cc-stats">
-  <div class="cc-stat mismatch"><div class="num">{len(mismatches)}</div>
-       <div class="lbl">draft BLs with <em>errors</em> caught before finalising</div></div>
-  <div class="cc-stat review"><div class="num">{len(waiting)}</div>
-       <div class="lbl">cases waiting for <em>a person</em></div></div>
-  <div class="cc-stat ok"><div class="num">{rules_share:.0%}</div>
-       <div class="lbl">of documents read by <em>free rules</em>, no AI needed</div></div>
-  <div class="cc-stat"><div class="num">~{hours:.0f}h</div>
-       <div class="lbl">of manual checking <em>saved</em> on {len(processed)} emails</div></div>
-</div>""", unsafe_allow_html=True)
+    with st.expander(f"Time saved: ~{hours:.0f}h of manual checking · how it's estimated"):
+        st.caption(f"{len(compared)} SI/BL comparisons plus sorting {len(processed)} emails, "
+                   "at the times below. Change them to match your team.")
+        c1, c2 = st.columns(2)
+        c1.number_input("Minutes to compare one SI and BL by hand", 1.0, 60.0,
+                        MINUTES_PER_CHECK, 0.5, key="per_check")
+        c2.number_input("Minutes to read and sort one email", 0.1, 10.0,
+                        MINUTES_PER_SORT, 0.1, key="per_sort")
 
-    left, right = st.columns(2, gap="large")
+    # 1. hero: which fields go wrong most often
+    section("What goes wrong most often")
+    field_counts = pd.Series([f for r in mismatches for f in r["entry"]["defect_fields"]],
+                             dtype="object").value_counts()
+    if len(field_counts):
+        bar_list([{"label": FIELD_LABELS[f], "value": int(n), "color": PALETTE["mismatch"]}
+                  for f, n in field_counts.items()], hero=True)
+        top_field, top_n = FIELD_LABELS[field_counts.index[0]], int(field_counts.iloc[0])
+        insight(f"<b>{top_field}</b> is the most common error: wrong on {top_n} of "
+                f"{len(mismatches)} draft BLs with mismatches.")
+    else:
+        st.write("No mismatches found yet.")
 
-    # 1. which fields go wrong most often
+    left, right = st.columns([1.15, 1], gap="large")
+
+    # 2. which shippers' BLs have the most mismatches, 3. how documents were read
     with left:
-        st.markdown('<p class="cc-section">What goes wrong most often</p>', unsafe_allow_html=True)
-        field_counts = pd.Series([f for r in mismatches for f in r["entry"]["defect_fields"]],
-                                 dtype="object").value_counts()
-        if len(field_counts):
-            df = pd.DataFrame({"Field": [FIELD_LABELS[f] for f in field_counts.index],
-                               "Mismatched BLs": field_counts.values})
-            st.altair_chart(bar_chart(df, "Mismatched BLs", "Field", PALETTE["mismatch"]),
-                            width="stretch")
-            top = df.iloc[0]
-            insight(f"<b>{top['Field']}</b> is the most common error: wrong on "
-                    f"{top['Mismatched BLs']} of {len(mismatches)} draft BLs with mismatches.")
-        else:
-            st.write("No mismatches found yet.")
-
-    # 2. inbox breakdown
-    with right:
-        st.markdown('<p class="cc-section">Inbox at a glance</p>', unsafe_allow_html=True)
-        cats = pd.Series([r["data"].get("category") for r in processed],
-                         dtype="object").value_counts()
-        df = pd.DataFrame({"Type": [CATEGORY_LABELS.get(c, c) for c in cats.index],
-                           "Emails": cats.values})
-        st.altair_chart(donut(df, "Type", "Emails",
-                              [PALETTE["ink"], PALETTE["match"], PALETTE["yellow"],
-                               PALETTE["muted"], PALETTE["line"]]), width="stretch")
-        if len(df):
-            insight(f"<b>{len(checks)}</b> of {len(processed)} emails ask for a BL check; "
-                    f"the rest only needed sorting.")
-
-    left, right = st.columns(2, gap="large")
-
-    # 3. which shippers' BLs have the most mismatches
-    with left:
-        st.markdown('<p class="cc-section">Shippers with the most mismatched BLs</p>',
-                    unsafe_allow_html=True)
+        section("Shippers with the most mismatched BLs")
         names, per_shipper = {}, {}
         for r in compared:
             raw = next((row["si"] for row in r["report"].get("fields", [])
@@ -549,39 +685,44 @@ def page_overview(results):
             if not raw:
                 continue
             key = normalize_party(raw)
-            names.setdefault(key, str(raw).split(" ON BEHALF OF")[0][:40])
+            names.setdefault(key, str(raw).split(" ON BEHALF OF")[0].strip())
             total, bad = per_shipper.get(key, (0, 0))
             per_shipper[key] = (total + 1, bad + (r["status"] == "MISMATCH"))
-        rows = [{"Shipper": names[k], "Mismatched BLs": bad, "BL checks": total,
-                 "Error rate": f"{bad / total:.0%}"}
-                for k, (total, bad) in per_shipper.items() if bad]
-        if rows:
-            df = pd.DataFrame(rows).sort_values("Mismatched BLs", ascending=False).head(6)
-            st.altair_chart(bar_chart(df, "Mismatched BLs", "Shipper", PALETTE["ink"]),
-                            width="stretch")
-            top = df.iloc[0]
-            insight(f"<b>{top['Shipper']}</b> has the most mismatched BLs "
-                    f"({top['Mismatched BLs']} of {top['BL checks']} checks, {top['Error rate']}).")
+        ranked = sorted(((names[k], bad, total) for k, (total, bad) in per_shipper.items() if bad),
+                        key=lambda x: (-x[1], x[0]))[:6]
+        if ranked:
+            bar_list([{"label": name, "value": bad, "color": PALETTE["ink"],
+                       "note": f"of {total} · {bad / total:.0%}"} for name, bad, total in ranked])
+            name, bad, total = ranked[0]
+            insight(f"<b>{html.escape(name)}</b> has the most mismatched BLs "
+                    f"({bad} of {total} checks).")
         else:
             st.write("No mismatches found yet.")
 
-    # 4. how documents were read
-    with right:
-        st.markdown('<p class="cc-section">How the documents were read</p>',
-                    unsafe_allow_html=True)
+        section("How the documents were read")
         if len(methods):
-            order = ["Rules (no AI)", "AI (LLM)", "AI vision (scans)"]
-            df = pd.DataFrame({"Method": [m for m in order if m in methods],
-                               "Emails": [int(methods[m]) for m in order if m in methods]})
-            st.altair_chart(donut(df, "Method", "Emails",
-                                  [PALETTE["match"], PALETTE["ink"], PALETTE["review"]]),
-                            width="stretch")
-            insight(f"<b>{rules_share:.0%}</b> of documents were read by free, instant rules. "
-                    "The AI is only used where the rules can't cope, and scans always go "
-                    "to a person to confirm.")
+            colors = {"Rules (no AI)": PALETTE["match"], "AI (LLM)": PALETTE["ink"],
+                      "AI vision (scans)": PALETTE["review"]}
+            bar_list([{"label": m, "value": int(methods[m]), "color": colors[m]}
+                      for m in colors if m in methods])
+            insight(f"<b>{rules_share:.0%}</b> read by free, instant rules. AI only steps in "
+                    "where the rules can't, and scans always go to a person to confirm.")
         else:
             st.write("No documents read yet.")
 
+    # 4. inbox breakdown
+    with right:
+        section("Inbox at a glance")
+        cats = pd.Series([r["data"].get("category") for r in processed],
+                         dtype="object").value_counts()
+        if len(cats):
+            colors = {"BL_COMPARISON": PALETTE["ink"], "SI_REQUEST": PALETTE["match"],
+                      "INVOICE_QUERY": "#F2B33D", "GENERAL": "#8FA3B3", "SPAM": "#D9DFE3"}
+            order = [c for c in CATEGORIES if c in cats]
+            donut_html([{"label": CATEGORY_LABELS[c], "value": int(cats[c]), "color": colors[c]}
+                        for c in order], len(processed), "emails")
+            insight(f"<b>{len(checks)}</b> of {len(processed)} emails ask for a BL check; "
+                    "the rest only needed sorting.")
 
 # --- Page: Inbox -------------------------------------------------------------
 

@@ -43,6 +43,7 @@ from pipeline import (to_comparer_input, CLASSIFICATIONS_FILE,          # noqa: 
                       has_attachments, scanned_files)
 from normalizer import normalize_party                                  # noqa: E402
 from doc_reader import SmartInbox                                       # noqa: E402
+from export import export_rows, export_csv, export_json, filename, confidence  # noqa: E402
 from rule_extractor import extract_email as rule_extract_email, is_confident  # noqa: E402
 
 CATEGORIES = ["BL_COMPARISON", "SI_REQUEST", "INVOICE_QUERY", "GENERAL", "SPAM"]
@@ -794,7 +795,7 @@ def inbox_table(key, items, results):
         result = STATUS_LABELS[r["status"]]
         if r["review"] and r["status"] != "RESOLVED":
             result += " · checked by a person"
-        rows.append({"Email": eid, "Result": result,
+        rows.append({"Email": eid, "Result": result, "Confidence": confidence(r)[0],
                      "Fields to fix": ", ".join(FIELD_LABELS[f] for f in fields),
                      "Type": CATEGORY_LABELS.get(r["data"].get("category"), "Not processed"),
                      "Subject": r["email"].get("subject", "")})
@@ -834,6 +835,17 @@ def page_inbox(results):
   <div class="cc-stat"><div class="num">{others}</div>
        <div class="lbl">other emails, <em>sorted</em></div></div>
 </div>""", unsafe_allow_html=True)
+    labels = dict(status=STATUS_LABELS, category=CATEGORY_LABELS, field=FIELD_LABELS,
+                  reason=REASON_LABELS, action=REVIEW_ACTIONS)
+    rows = export_rows(results, labels)
+    action_rows = [row for row in rows if row["Action needed"] == "Yes"]
+    c1, c2, c3 = st.columns(3)
+    c1.download_button("⬇ All results (CSV, opens in Excel)", export_csv(rows),
+                       filename("csv"), "text/csv")
+    c2.download_button("⬇ All results (JSON)", export_json(rows),
+                       filename("json"), "application/json")
+    c3.download_button(f"⬇ Only what needs action ({len(action_rows)})",
+                       export_csv(action_rows), filename("csv", "action_needed"), "text/csv")
 
     search = st.text_input("Search", placeholder="Search by subject or email ID, e.g. email_004",
                            label_visibility="collapsed")
@@ -948,7 +960,8 @@ def review_form(r):
                         key=f"note_{eid}", placeholder="What did you check, and what did you change?")
 
     if st.button("Save corrections", type="primary", key=f"save_{eid}"):
-        review = {"decision": "corrected", "note": note}
+        review = {"decision": "corrected", "note": note,
+                "reviewed_by": st.session_state.get("reviewer", "")}
         if category != ai.get("category"):
             review["category"] = category
         for doc in ("si", "bl"):
@@ -958,7 +971,8 @@ def review_form(r):
         st.session_state.flash = f"Saved corrections for {eid}."
         st.rerun()
     if st.button("Confirm as is", key=f"confirm_{eid}"):
-        review = {"decision": "confirmed", "note": note}
+        review = {"decision": "confirmed", "note": note,
+            "reviewed_by": st.session_state.get("reviewer", "")}
         if category != ai.get("category"):
             review["category"] = category
         save_review(eid, review)
@@ -1057,6 +1071,7 @@ def page_scores():
 with st.sidebar:
     st.markdown('<p class="cc-brand">Cargo<em>Check</em></p>', unsafe_allow_html=True)
     st.caption("Checks draft Bills of Lading against Shipping Instructions.")
+    st.text_input("Your name", key="reviewer", placeholder="Shown on your reviews")
     st.radio("Go to", PAGES, key="page", label_visibility="collapsed")
 
 if not CLASSIFICATIONS_FILE.exists() and st.session_state.page != "Scores":

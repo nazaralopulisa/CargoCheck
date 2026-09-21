@@ -133,6 +133,18 @@ h1, h2, h3 { color: var(--ink); letter-spacing: -0.01em; }
     font-size: 1.6rem; letter-spacing: -0.02em; margin: 0; }
 [data-testid="stSidebar"] .cc-brand em { font-family: 'Instrument Serif', Georgia, serif;
     font-weight: 400; font-style: italic; }
+/* ---- "How it works" strip for first-time users ---- */
+.cc-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem;
+            margin: 0 0 .6rem; }
+.cc-step { background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--ink);
+           padding: .8rem 1rem; }
+.cc-step .n { font-family: 'Archivo', sans-serif; font-weight: 900; font-size: 1.5rem;
+              line-height: 1; color: var(--muted); }
+.cc-step strong { display: block; margin: .3rem 0 .2rem; font-size: 1.02rem; }
+.cc-step p { margin: 0; color: var(--muted); font-size: .92rem; line-height: 1.4; }
+.cc-banner ul { margin: .35rem 0 0 1.1rem; padding: 0; }
+.cc-banner .what { display: block; margin-top: .4rem; }
+@media (max-width: 760px) { .cc-steps { grid-template-columns: 1fr; } }
 /* long attachment text wraps instead of running off the screen */
 [data-testid="stText"] pre, [data-testid="stText"] { white-space: pre-wrap !important;
                                                     word-break: break-word; }
@@ -278,15 +290,31 @@ def cell(value):
 
 # --- Shared pieces -----------------------------------------------------------
 
+REVIEW_ACTIONS = {
+    "missing_attachment": "Ask the sender to resend the missing SI or draft BL.",
+    "unreadable": ("Open the attachment below, compare it with the values the system read, "
+                   "then confirm them or type in the right ones."),
+    "wrong_doc_type": ("Ask the sender for the correct document, or confirm if this "
+                       "attachment is expected."),
+    "missing_value": ("Look at the attachment below and type the missing value in, "
+                      "or confirm it really is missing."),
+}
+
+
 def result_banner(r):
+    """Says what the result means AND what the person should do next."""
     report = r["report"]
+    rows = report.get("fields") or []
     if r["status"] == "MISMATCH":
-        n = len(r["entry"]["defect_fields"])
-        names = ", ".join(FIELD_LABELS[f].lower() for f in r["entry"]["defect_fields"])
-        title = (f"{n} field differs" if n == 1 else f"{n} fields differ") + " between the SI and the draft BL"
-        body, kind = f"Fix before the BL is finalised: {names}.", "mismatch"
+        fixes = "".join(
+            f"<li><b>{FIELD_LABELS[row['field']]}</b> should be <b>{cell(row['si'])}</b> "
+            f"(the draft BL says {cell(row['bl'])})</li>"
+            for row in rows if row["result"] == "MISMATCH")
+        title, kind = "Ask for the draft BL to be amended", "mismatch"
+        body = f"The draft BL doesn't match the Shipping Instruction:<ul>{fixes}</ul>"
     elif r["status"] == "OK":
-        title, body, kind = "No mismatch detected", "All seven fields agree.", "ok"
+        title, kind = "No mismatch detected", "ok"
+        body = "The draft BL matches the Shipping Instruction on all 7 fields. It's safe to confirm."
     elif r["status"] == "RESOLVED":
         rv = r["review"]
         verb = "Confirmed" if rv.get("decision") == "confirmed" else "Corrected"
@@ -298,18 +326,26 @@ def result_banner(r):
         if reason in REASON_LABELS:
             body += f" Originally flagged because: {REASON_LABELS[reason].lower()}"
     elif r["status"] == "NO_DOCUMENTS":
-        title, body, kind = "No documents to check yet", html.escape(report.get("detail", "")), ""
+        title, kind = "Nothing to compare yet", ""
+        body = ("The sender is asking for the draft BL. Once the SI and draft BL arrive, "
+                "they can be checked here.")
     elif r["status"] == "PROCESSING_ERROR":
         title, kind = "Processing failed", "review"
         body = (html.escape(report.get("detail", "")) +
-                " Rerun <code>python app/pipeline.py</code> to retry.")
+                '<span class="what"><b>What to do:</b> rerun <code>python app/pipeline.py</code> '
+                "to retry this email.</span>")
     else:
         reason = report.get("reason") or r["entry"].get("review_reason")
-        title = "A person needs to check this"
-        body, kind = REASON_LABELS.get(reason, report.get("detail", "")), "review"
+        title, kind = "A person needs to check this", "review"
+        body = REASON_LABELS.get(reason, html.escape(report.get("detail", "")))
+        missing = [FIELD_LABELS[row["field"]].lower() for row in rows if row["result"] == "MISSING"]
+        if reason == "missing_value" and missing:
+            body += f" Missing: {', '.join(missing)}."
         notes = r["data"].get("issue_notes") or []
-        if notes:
+        if notes and reason != "missing_value":
             body += " Details: " + "; ".join(html.escape(n) for n in notes)
+        if reason in REVIEW_ACTIONS:
+            body += f'<span class="what"><b>What to do:</b> {REVIEW_ACTIONS[reason]}</span>'
     st.markdown(f'<div class="cc-banner {kind}"><strong>{title}</strong>{body}</div>',
                 unsafe_allow_html=True)
 
@@ -369,21 +405,83 @@ def email_detail(r):
         rv = r["review"]
         st.caption(f"Checked by a person on {rv.get('reviewed_at')}: {rv.get('note') or 'no note'}")
     if r["status"] != "PENDING":
-        st.button("Review this email", on_click=go_to_review, args=(email["email_id"],))
+        urgent = r["status"] in OPEN_STATUSES
+        st.button("Review this email" if urgent else "Check or correct this result",
+                  on_click=go_to_review, args=(email["email_id"],),
+                  type="primary" if urgent else "secondary", key=f"goto_{email['email_id']}")
 
     with st.expander("Email text"):
         st.text(email.get("body", ""))
     source_documents(email)
 
 
+def how_it_works():
+    """Three plain-language steps for first-time users. Can be hidden."""
+    if st.session_state.get("hide_intro"):
+        return
+    st.markdown("""
+<div class="cc-steps">
+  <div class="cc-step"><div class="n">1</div><strong>Sort every email</strong>
+    <p>Each email is sorted into BL checks, new SI requests, invoice queries, general
+    updates or spam.</p></div>
+  <div class="cc-step"><div class="n">2</div><strong>Compare the SI and draft BL</strong>
+    <p>For BL checks, 7 fields on the draft Bill of Lading are compared with the Shipping
+    Instruction, and every difference is flagged.</p></div>
+  <div class="cc-step"><div class="n">3</div><strong>Ask a person when unsure</strong>
+    <p>Missing files, unreadable scans or missing values go to the review queue, with the
+    evidence, instead of being guessed.</p></div>
+</div>""", unsafe_allow_html=True)
+    if st.button("Got it, hide this", key="hide_intro_btn"):
+        st.session_state.hide_intro = True
+        st.rerun()
+
+
+INBOX_TABS = [
+    ("needs", "Needs a person", {"NEEDS_REVIEW", "PROCESSING_ERROR", "PENDING"},
+     "Start here. The system couldn't decide these on its own."),
+    ("mismatch", "Mismatches to fix", {"MISMATCH"},
+     "The draft BL differs from the SI. Ask for the BL to be amended."),
+    ("done", "Clean and resolved", {"OK", "RESOLVED"},
+     "Nothing to do: the BL matches the SI, or a person has already decided."),
+    ("other", "Other emails", {"NOT_CHECKED", "NO_DOCUMENTS"},
+     "Sorted only: new SI requests, invoice queries, general updates, spam, and requests "
+     "for a draft BL that has not arrived yet."),
+]
+URGENCY = {"PROCESSING_ERROR": 0, "NEEDS_REVIEW": 1, "PENDING": 2, "MISMATCH": 3}
+
+
+def inbox_table(key, items, results):
+    """One tab's table. Selecting a row shows that email's details underneath."""
+    rows = []
+    for eid, r in items:
+        fields = r["entry"]["defect_fields"] if r["entry"] else []
+        result = STATUS_LABELS[r["status"]]
+        if r["review"] and r["status"] != "RESOLVED":
+            result += " · checked by a person"
+        rows.append({"Email": eid, "Result": result,
+                     "Fields to fix": ", ".join(FIELD_LABELS[f] for f in fields),
+                     "Type": CATEGORY_LABELS.get(r["data"].get("category"), "Not processed"),
+                     "Subject": r["email"].get("subject", "")})
+    table = pd.DataFrame(rows)
+    picked = st.dataframe(table, hide_index=True, width="stretch", height=320,
+                          on_select="rerun", selection_mode="single-row", key=f"table_{key}",
+                          column_config={"Subject": st.column_config.TextColumn(width="large")})
+    selected = picked.selection.rows if picked and picked.selection else []
+    if selected:
+        st.divider()
+        email_detail(results[table.iloc[selected[0]]["Email"]])
+    else:
+        st.caption("Click a row to see the email and, for BL checks, the SI and BL side by side.")
+
+
 def page_inbox(results):
     checks = [r for r in results.values() if r["data"].get("category") == "BL_COMPARISON"]
     count = lambda s: sum(r["status"] == s for r in checks)                      # noqa: E731
-    pending = sum(r["status"] == "PENDING" for r in results.values())
     others = sum(1 for r in results.values()
                  if r["data"].get("category") not in (None, "BL_COMPARISON"))
 
     page_heading("Inbox", 'Every BL, <em>checked</em> against its <span class="hl">SI</span>')
+    how_it_works()
     ticker([f"{len(results)} emails in", f"{len(checks)} <em>BL checks</em>",
             f"{plural(count('MISMATCH'), 'mismatch').replace('mismatchs', 'mismatches')} caught",
             f"{count('NEEDS_REVIEW') + count('PROCESSING_ERROR')} <em>waiting for a person</em>",
@@ -400,50 +498,25 @@ def page_inbox(results):
   <div class="cc-stat"><div class="num">{others}</div>
        <div class="lbl">other emails, <em>sorted</em></div></div>
 </div>""", unsafe_allow_html=True)
-    if pending:
-        st.caption(f"{pending} of {len(results)} emails are not processed yet.")
 
-    show = st.pills("Show me…", ["MISMATCH", "NEEDS_REVIEW", "RESOLVED", "OK"],
-                    selection_mode="multi", format_func={
-                        "MISMATCH": "Mismatches", "NEEDS_REVIEW": "Needs a person",
-                        "RESOLVED": "Resolved by a person", "OK": "Clean"}.get, key="show_me")
-    with st.expander("More filters"):
-        c1, c2 = st.columns(2)
-        types = c1.multiselect("Type", CATEGORIES, format_func=CATEGORY_LABELS.get)
-        search = c2.text_input("Search subject or email ID")
-    statuses = set(show or [])
-    if "NEEDS_REVIEW" in statuses:
-        statuses.add("PROCESSING_ERROR")
+    search = st.text_input("Search", placeholder="Search by subject or email ID, e.g. email_004",
+                           label_visibility="collapsed")
+    matching = [(eid, r) for eid, r in results.items()
+                if not search or search.lower() in (r["email"].get("subject", "") + eid).lower()]
 
-    rows = []
-    for eid, r in results.items():
-        cat = r["data"].get("category")
-        if types and cat not in types:
-            continue
-        if statuses and r["status"] not in statuses:
-            continue
-        subject = r["email"].get("subject", "")
-        if search and search.lower() not in (subject + eid).lower():
-            continue
-        fields = r["entry"]["defect_fields"] if r["entry"] else []
-        rows.append({"Email": eid, "Result": STATUS_LABELS[r["status"]],
-                     "Fields to fix": ", ".join(FIELD_LABELS[f] for f in fields),
-                     "Type": CATEGORY_LABELS.get(cat, "Not processed"),
-                     "Subject": subject})
-
-    if not rows:
-        st.write("No emails match these filters.")
-        return
-    table = pd.DataFrame(rows)
-    picked = st.dataframe(table, hide_index=True, width="stretch", height=360,
-                          on_select="rerun", selection_mode="single-row",
-                          column_config={"Subject": st.column_config.TextColumn(width="large")})
-    selected = picked.selection.rows if picked and picked.selection else []
-    if selected:
-        st.divider()
-        email_detail(results[table.iloc[selected[0]]["Email"]])
-    else:
-        st.caption("Select an email in the table to see the SI and BL side by side.")
+    groups = {key: sorted((x for x in matching if x[1]["status"] in statuses),
+                          key=lambda x: (URGENCY.get(x[1]["status"], 9), x[0]))
+              for key, _, statuses, _ in INBOX_TABS}
+    tabs = st.tabs([f"{label} ({len(groups[key])})" for key, label, _, _ in INBOX_TABS])
+    for tab, (key, label, _, hint) in zip(tabs, INBOX_TABS):
+        with tab:
+            st.caption(hint)
+            if groups[key]:
+                inbox_table(key, groups[key], results)
+            elif search:
+                st.write("No emails in this tab match your search.")
+            else:
+                st.write("Nothing here right now.")
 
 
 # --- Page: Check documents (live run) -----------------------------------------
@@ -573,26 +646,34 @@ def page_review(results):
     if st.session_state.get("flash"):
         st.success(st.session_state.pop("flash"))
 
+    # "Review this email" (from the Inbox) pins that email here. It stays pinned
+    # while the person types, because Streamlit reruns the page on every edit.
     target = st.session_state.pop("review_target", None)
+    if target:
+        st.session_state.review_pick = target
+    pinned = st.session_state.get("review_pick")
     options = list(open_items) + [e for e in done if e not in open_items]
-    if target and target not in options:
-        options.insert(0, target)
+    if pinned and pinned in results and pinned not in options:
+        options.insert(0, pinned)
     if not options:
         st.write("Nothing to review. Emails the system cannot decide on will appear here.")
         return
+    if st.session_state.get("review_pick") not in options:
+        st.session_state.review_pick = options[0]
 
     def label(eid):
         r = results[eid]
         if r["review"]:
             why = "Checked"
+        elif r["status"] == "MISMATCH":
+            why = "Mismatch, opened from the inbox"
         elif r["status"] == "NEEDS_REVIEW":
             why = REASON_LABELS.get(r["entry"].get("review_reason"), "Needs review").rstrip(".")
         else:
             why = "Unsure about the email type"
         return f"{eid}: {why}"
 
-    index = options.index(target) if target in options else 0
-    eid = st.selectbox("Email", options, index=index, format_func=label)
+    eid = st.selectbox("Email", options, format_func=label, key="review_pick")
     r = results[eid]
     st.divider()
     st.subheader(r["email"].get("subject") or "(no subject)")

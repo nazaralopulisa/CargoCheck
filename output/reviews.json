@@ -12,5 +12,27 @@
       "gross_weight_kg": "100225"
     },
     "reviewed_at": "2026-09-21 18:02"
+  },
+  "email_004": {
+    "decision": "corrected",
+    "note": "Made the 2 fields the same value",
+    "bl": {
+      "consignee": "EAST BRIGHT FZ-LLC",
+      "notify_party": "EAST BRIGHT FZ-LLC"
+    },
+    "reviewed_at": "2026-09-21 18:16"
+  },
+  "email_502": {
+    "decision": "corrected",
+    "note": "",
+    "reviewed_at": "2026-09-21 18:16"
+  },
+  "email_013": {
+    "decision": "corrected",
+    "note": "",
+    "bl": {
+      "port_of_discharge": "MOMBASA, KENYA (KEMBA)"
+    },
+    "reviewed_at": "2026-09-21 18:29"
   }
 }

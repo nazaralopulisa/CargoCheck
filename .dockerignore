@@ -1,0 +1,15 @@
+# Never put secrets or the organizers' answer key into the image
+.env
+.env.*
+server/
+**/ground_truth*
+
+# Not needed to run the dashboard
+.git
+.venv
+.vscode
+docs
+**/__pycache__
+output/reviews.json
+output/last_score.json
+*.pyc

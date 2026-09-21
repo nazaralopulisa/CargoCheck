@@ -1,0 +1,14 @@
+{
+  "email_505": {
+    "decision": "corrected",
+    "note": "test",
+    "category": "SI_REQUEST",
+    "reviewed_at": "2026-09-21 17:03"
+  },
+  "email_501": {
+    "decision": "corrected",
+    "note": "testing",
+    "category": "GENERAL",
+    "reviewed_at": "2026-09-21 17:04"
+  }
+}

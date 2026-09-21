@@ -16,7 +16,7 @@ Output:
     report - a human-readable result with SI and BL values side by side
 """
 
-from normalizer import NORMALIZERS, normalize_fields
+from app.normalizer import NORMALIZERS, normalize_fields
 
 FIELDS = list(NORMALIZERS)          # the 7 field names, in a fixed order
 REVIEW_REASONS = {"wrong_doc_type", "missing_attachment", "unreadable", "missing_value"}

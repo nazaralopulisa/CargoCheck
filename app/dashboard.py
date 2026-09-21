@@ -22,6 +22,9 @@ import re
 import sys
 from pathlib import Path
 
+from urllib.parse import quote
+
+import altair as alt
 import pandas as pd
 import streamlit as st
 
@@ -37,7 +40,8 @@ from comparer import compare_email, FIELDS                              # noqa: 
 from reviews import load_reviews, save_review, delete_review, apply_review  # noqa: E402
 from pipeline import (to_comparer_input, CLASSIFICATIONS_FILE,          # noqa: E402
                       EXTRACTIONS_DIR, SCORE_LOG, categorize, decide_email,
-                      has_attachments)
+                      has_attachments, scanned_files)
+from normalizer import normalize_party                                  # noqa: E402
 from doc_reader import SmartInbox                                       # noqa: E402
 from rule_extractor import extract_email as rule_extract_email, is_confident  # noqa: E402
 
@@ -57,7 +61,12 @@ REASON_LABELS = {"missing_attachment": "The SI or the BL is not attached.",
 FIELD_LABELS = {"shipper": "Shipper", "consignee": "Consignee", "notify_party": "Notify party",
                 "port_of_loading": "Port of loading", "port_of_discharge": "Port of discharge",
                 "container_count": "Containers", "gross_weight_kg": "Gross weight (kg)"}
-PAGES = ["Inbox", "Check documents", "Review queue", "Scores"]
+PAGES = ["Overview", "Inbox", "Check documents", "Review queue", "Scores"]
+PALETTE = {"ink": "#1C2B36", "mismatch": "#D9480F", "match": "#2B7A6B", "review": "#B7791F",
+           "muted": "#5B6B77", "line": "#D5DDE2", "yellow": "#F9C74F"}
+# Assumptions for the time-saved estimate (shown on the page, adjustable there)
+MINUTES_PER_CHECK = 5.0      # comparing one SI with one draft BL by hand
+MINUTES_PER_SORT = 0.5       # reading one email and deciding what it needs
 
 st.set_page_config(page_title="CargoCheck", page_icon="⚓", layout="wide")
 
@@ -145,6 +154,10 @@ h1, h2, h3 { color: var(--ink); letter-spacing: -0.01em; }
 .cc-banner ul { margin: .35rem 0 0 1.1rem; padding: 0; }
 .cc-banner .what { display: block; margin-top: .4rem; }
 @media (max-width: 760px) { .cc-steps { grid-template-columns: 1fr; } }
+.cc-insight { font-size: .95rem; color: var(--ink); margin: -.3rem 0 1.2rem;
+              border-left: 3px solid var(--yellow, #F9C74F); padding-left: .6rem; }
+.cc-section { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 1.05rem;
+              margin: .4rem 0 .2rem; color: var(--ink); }
 /* long attachment text wraps instead of running off the screen */
 [data-testid="stText"] pre, [data-testid="stText"] { white-space: pre-wrap !important;
                                                     word-break: break-word; }
@@ -372,9 +385,181 @@ def source_documents(email):
                 st.text(text)
 
 
+def amendment_email(r, to="", subject=""):
+    """A ready-to-send email asking for the draft BL to be amended."""
+    fixes = [row for row in (r["report"].get("fields") or []) if row["result"] == "MISMATCH"]
+    lines = [f'{i}. {FIELD_LABELS[row["field"]]}: should read "{row["si"]}" '
+             f'(the draft BL currently shows "{row["bl"]}")'
+             for i, row in enumerate(fixes, 1)]
+    subject = f"RE: {subject}" if subject else "Draft BL amendment request"
+    body = ("Dear team,\n\n"
+            "Thank you for the draft Bill of Lading. We have checked it against our Shipping "
+            "Instruction and found the following difference" + ("s" if len(lines) > 1 else "") +
+            ":\n\n" + "\n".join(lines) +
+            "\n\nKindly amend the draft BL accordingly and send the revised draft for our "
+            "confirmation.\n\nBest regards,\n[Your name]")
+    return to, subject, body
+
+
+def amendment_email_box(r, to="", subject=""):
+    """Shows the draft email with a copy button and an 'open in email app' link."""
+    to, subject, body = amendment_email(r, to, subject)
+    with st.expander("✉️  Draft the amendment email", expanded=False):
+        st.caption("Ready to send: copy it with the button in the corner of the box, "
+                   "or open it straight in your email app.")
+        st.markdown(f"**To:** {html.escape(to) or '(sender)'}  \n**Subject:** {html.escape(subject)}")
+        st.code(body, language=None, wrap_lines=True)
+        mailto = f"mailto:{quote(to)}?subject={quote(subject)}&body={quote(body)}"
+        st.link_button("Open in my email app", mailto)
+
+
 def go_to_review(eid):
     st.session_state.page = "Review queue"
     st.session_state.review_target = eid
+
+
+# --- Page: Overview ----------------------------------------------------------
+
+def bar_chart(df, x, y, color, height=None):
+    """Horizontal bars, biggest first, in the dashboard's colours."""
+    return (alt.Chart(df)
+            .mark_bar(color=color, cornerRadiusEnd=2)
+            .encode(x=alt.X(f"{x}:Q", title=None, axis=alt.Axis(tickMinStep=1, grid=False)),
+                    y=alt.Y(f"{y}:N", sort="-x", title=None,
+                            axis=alt.Axis(labelLimit=260, labelFontSize=12)),
+                    tooltip=list(df.columns))
+            .properties(height=height or max(140, 34 * len(df))))
+
+
+def donut(df, label, value, colors):
+    return (alt.Chart(df)
+            .mark_arc(innerRadius=62, outerRadius=110, stroke="#fff", strokeWidth=2)
+            .encode(theta=alt.Theta(f"{value}:Q"),
+                    color=alt.Color(f"{label}:N", title=None,
+                                    scale=alt.Scale(domain=list(df[label]), range=colors),
+                                    legend=alt.Legend(orient="right", labelFontSize=12)),
+                    tooltip=[label, value])
+            .properties(height=240))
+
+
+def insight(text):
+    st.markdown(f'<p class="cc-insight">{text}</p>', unsafe_allow_html=True)
+
+
+def page_overview(results):
+    page_heading("Overview", 'What the inbox is <em>telling</em> you <span class="hl">today</span>')
+
+    processed = [r for r in results.values() if r["status"] != "PENDING"]
+    checks = [r for r in processed if r["data"].get("category") == "BL_COMPARISON"]
+    compared = [r for r in checks if r["status"] not in ("NO_DOCUMENTS", "PROCESSING_ERROR")]
+    mismatches = [r for r in checks if r["status"] == "MISMATCH"]
+    waiting = [r for r in checks if r["status"] in OPEN_STATUSES]
+
+    # how each compared email's documents were read
+    def read_by(r):
+        if scanned_files(r["email"]):
+            return "AI vision (scans)"
+        return "AI (LLM)" if r["data"].get("method") == "AI" else "Rules (no AI)"
+    methods = pd.Series([read_by(r) for r in compared], dtype="object").value_counts()
+    rules_share = methods.get("Rules (no AI)", 0) / max(len(compared), 1)
+
+    with st.expander("How the time saved is estimated"):
+        c1, c2 = st.columns(2)
+        per_check = c1.number_input("Minutes to compare one SI and BL by hand", 1.0, 60.0,
+                                    MINUTES_PER_CHECK, 0.5)
+        per_sort = c2.number_input("Minutes to read and sort one email", 0.1, 10.0,
+                                   MINUTES_PER_SORT, 0.1)
+    hours = (len(compared) * per_check + len(processed) * per_sort) / 60
+
+    st.markdown(f"""
+<div class="cc-stats">
+  <div class="cc-stat mismatch"><div class="num">{len(mismatches)}</div>
+       <div class="lbl">draft BLs with <em>errors</em> caught before finalising</div></div>
+  <div class="cc-stat review"><div class="num">{len(waiting)}</div>
+       <div class="lbl">cases waiting for <em>a person</em></div></div>
+  <div class="cc-stat ok"><div class="num">{rules_share:.0%}</div>
+       <div class="lbl">of documents read by <em>free rules</em>, no AI needed</div></div>
+  <div class="cc-stat"><div class="num">~{hours:.0f}h</div>
+       <div class="lbl">of manual checking <em>saved</em> on {len(processed)} emails</div></div>
+</div>""", unsafe_allow_html=True)
+
+    left, right = st.columns(2, gap="large")
+
+    # 1. which fields go wrong most often
+    with left:
+        st.markdown('<p class="cc-section">What goes wrong most often</p>', unsafe_allow_html=True)
+        field_counts = pd.Series([f for r in mismatches for f in r["entry"]["defect_fields"]],
+                                 dtype="object").value_counts()
+        if len(field_counts):
+            df = pd.DataFrame({"Field": [FIELD_LABELS[f] for f in field_counts.index],
+                               "Mismatched BLs": field_counts.values})
+            st.altair_chart(bar_chart(df, "Mismatched BLs", "Field", PALETTE["mismatch"]),
+                            width="stretch")
+            top = df.iloc[0]
+            insight(f"<b>{top['Field']}</b> is the most common error: wrong on "
+                    f"{top['Mismatched BLs']} of {len(mismatches)} draft BLs with mismatches.")
+        else:
+            st.write("No mismatches found yet.")
+
+    # 2. inbox breakdown
+    with right:
+        st.markdown('<p class="cc-section">Inbox at a glance</p>', unsafe_allow_html=True)
+        cats = pd.Series([r["data"].get("category") for r in processed],
+                         dtype="object").value_counts()
+        df = pd.DataFrame({"Type": [CATEGORY_LABELS.get(c, c) for c in cats.index],
+                           "Emails": cats.values})
+        st.altair_chart(donut(df, "Type", "Emails",
+                              [PALETTE["ink"], PALETTE["match"], PALETTE["yellow"],
+                               PALETTE["muted"], PALETTE["line"]]), width="stretch")
+        if len(df):
+            insight(f"<b>{len(checks)}</b> of {len(processed)} emails ask for a BL check; "
+                    f"the rest only needed sorting.")
+
+    left, right = st.columns(2, gap="large")
+
+    # 3. which shippers' BLs have the most mismatches
+    with left:
+        st.markdown('<p class="cc-section">Shippers with the most mismatched BLs</p>',
+                    unsafe_allow_html=True)
+        names, per_shipper = {}, {}
+        for r in compared:
+            raw = next((row["si"] for row in r["report"].get("fields", [])
+                        if row["field"] == "shipper" and row["si"]), None)
+            if not raw:
+                continue
+            key = normalize_party(raw)
+            names.setdefault(key, str(raw).split(" ON BEHALF OF")[0][:40])
+            total, bad = per_shipper.get(key, (0, 0))
+            per_shipper[key] = (total + 1, bad + (r["status"] == "MISMATCH"))
+        rows = [{"Shipper": names[k], "Mismatched BLs": bad, "BL checks": total,
+                 "Error rate": f"{bad / total:.0%}"}
+                for k, (total, bad) in per_shipper.items() if bad]
+        if rows:
+            df = pd.DataFrame(rows).sort_values("Mismatched BLs", ascending=False).head(6)
+            st.altair_chart(bar_chart(df, "Mismatched BLs", "Shipper", PALETTE["ink"]),
+                            width="stretch")
+            top = df.iloc[0]
+            insight(f"<b>{top['Shipper']}</b> has the most mismatched BLs "
+                    f"({top['Mismatched BLs']} of {top['BL checks']} checks, {top['Error rate']}).")
+        else:
+            st.write("No mismatches found yet.")
+
+    # 4. how documents were read
+    with right:
+        st.markdown('<p class="cc-section">How the documents were read</p>',
+                    unsafe_allow_html=True)
+        if len(methods):
+            order = ["Rules (no AI)", "AI (LLM)", "AI vision (scans)"]
+            df = pd.DataFrame({"Method": [m for m in order if m in methods],
+                               "Emails": [int(methods[m]) for m in order if m in methods]})
+            st.altair_chart(donut(df, "Method", "Emails",
+                                  [PALETTE["match"], PALETTE["ink"], PALETTE["review"]]),
+                            width="stretch")
+            insight(f"<b>{rules_share:.0%}</b> of documents were read by free, instant rules. "
+                    "The AI is only used where the rules can't cope, and scans always go "
+                    "to a person to confirm.")
+        else:
+            st.write("No documents read yet.")
 
 
 # --- Page: Inbox -------------------------------------------------------------
@@ -398,6 +583,8 @@ def email_detail(r):
         result_banner(r)
         if r["report"]["fields"]:
             comparison_table(r)
+        if r["status"] == "MISMATCH":
+            amendment_email_box(r, to=email.get("from", ""), subject=email.get("subject", ""))
     else:
         st.write("This type of email only needs sorting, not a document check.")
 
@@ -579,6 +766,8 @@ def page_check():
         result_banner(r)
         if r["report"]["fields"]:
             comparison_table(r)
+        if r["status"] == "MISMATCH":
+            amendment_email_box(r)
 
 
 # --- Page: Review queue ------------------------------------------------------
@@ -732,7 +921,9 @@ if not CLASSIFICATIONS_FILE.exists() and st.session_state.page != "Scores":
                "first, then refresh this page.")
 
 results = build_results()
-if st.session_state.page == "Inbox":
+if st.session_state.page == "Overview":
+    page_overview(results)
+elif st.session_state.page == "Inbox":
     page_inbox(results)
 elif st.session_state.page == "Check documents":
     page_check()

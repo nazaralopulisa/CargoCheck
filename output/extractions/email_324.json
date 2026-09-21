@@ -1,0 +1,37 @@
+{
+  "email_id": "email_324",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+      "consignee": "CLIFFORD PAPER INC",
+      "notify_party": "CLIFFORD PAPER INC",
+      "port_of_loading": "BUATAN, INDONESIA (IDBUA)",
+      "port_of_discharge": "NEW YORK, US (USNYC)",
+      "container_count": "3 x 40'HC",
+      "gross_weight_kg": "60,258 KG"
+    },
+    "source_file": "attachments/email_324_SI.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "CLIFFORD PAPER INC",
+      "notify_party": "CLIFFORD PAPER INC",
+      "port_of_loading": "BUATAN, INDONESIA (IDBUA)",
+      "port_of_discharge": "NEW YORK, US (USNYC)",
+      "container_count": "4 x 40'HC",
+      "gross_weight_kg": "60,258 KG"
+    },
+    "source_file": "attachments/email_324_BL.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "rules",
+  "needs_llm": false
+}

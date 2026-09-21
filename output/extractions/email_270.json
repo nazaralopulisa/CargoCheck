@@ -1,0 +1,37 @@
+{
+  "email_id": "email_270",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "KPP-ANTALIS (SINGAPORE) PTE. LTD.",
+      "notify_party": "3S PAPER PRODUCTS SDN BHD",
+      "port_of_loading": "SINGAPORE (SGSIN)",
+      "port_of_discharge": "MERSIN, TURKEY (TRMER)",
+      "container_count": "6 x 20'GP",
+      "gross_weight_kg": "139,536 KG"
+    },
+    "source_file": "attachments/email_270_SI.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "KPP-ANTALIS (SINGAPORE) PTE. LTD.",
+      "notify_party": "3S PAPER PRODUCTS SDN BHD",
+      "port_of_loading": "SINGAPORE (SGSIN)",
+      "port_of_discharge": "LONG BEACH, US (TRMER)",
+      "container_count": "6 x 20'GP",
+      "gross_weight_kg": "139,536 KG"
+    },
+    "source_file": "attachments/email_270_BL.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "rules",
+  "needs_llm": false
+}

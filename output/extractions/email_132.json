@@ -1,0 +1,33 @@
+{
+  "email_id": "email_132",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "AL GURG STATIONERY LLC",
+      "notify_party": "ROXCEL TRADING GMBH",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
+      "port_of_discharge": "CALLAO, PERU (PECLL)",
+      "container_count": 1,
+      "gross_weight_kg": 20262
+    },
+    "source_file": "attachments/email_132_SI.txt"
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "AL GURG STATIONERY LLC",
+      "notify_party": "ROXCEL TRADING GMBH",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
+      "port_of_discharge": "CALLAO, PERU (PECLL)",
+      "container_count": 1,
+      "gross_weight_kg": 20262
+    },
+    "source_file": "attachments/email_132_BL.txt"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "llm",
+  "needs_llm": false
+}

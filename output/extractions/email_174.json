@@ -1,0 +1,33 @@
+{
+  "email_id": "email_174",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+      "consignee": "TOAN LUC PAPER JOINT STOCK COMPANY",
+      "notify_party": "TOAN LUC PAPER JOINT STOCK COMPANY",
+      "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA (CNSHA)",
+      "port_of_discharge": "CONAKRY, GUINEA (GNCKY)",
+      "container_count": 1,
+      "gross_weight_kg": 20532
+    },
+    "source_file": "attachments/email_174_SI.txt"
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+      "consignee": "TOAN LUC PAPER JOINT STOCK COMPANY",
+      "notify_party": "MOORIM SP CO., LTD",
+      "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA (CNSHA)",
+      "port_of_discharge": "HOCHIMINH CITY, VIETNAM (GNCKY)",
+      "container_count": 1,
+      "gross_weight_kg": 20532
+    },
+    "source_file": "attachments/email_174_BL.txt"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "llm",
+  "needs_llm": false
+}

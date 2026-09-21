@@ -1,0 +1,37 @@
+{
+  "email_id": "email_364",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING",
+      "consignee": "VITAL SOLUTIONS PTE. LTD.",
+      "notify_party": "KTP CO., LTD",
+      "port_of_loading": "NANTONG, CHINA (CNNTG)",
+      "port_of_discharge": "KOPER, SLOVENIA (SIKOP)",
+      "container_count": "1 x 20'GP",
+      "gross_weight_kg": "21,895 KG"
+    },
+    "source_file": "attachments/email_364_SI.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING",
+      "consignee": "VITAL SOLUTIONS PTE. LTD.",
+      "notify_party": "KTP CO., LTD",
+      "port_of_loading": "NANTONG, CHINA (CNNTG)",
+      "port_of_discharge": "KOPER, SLOVENIA (SIKOP)",
+      "container_count": "1 x 20'GP",
+      "gross_weight_kg": "21,895 KG"
+    },
+    "source_file": "attachments/email_364_BL.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "rules",
+  "needs_llm": false
+}

@@ -1,0 +1,42 @@
+{
+  "email_id": "email_501",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+      "consignee": "KPP-ANTALIS (SINGAPORE) PTE. LTD.",
+      "notify_party": "KPP-ANTALIS (SINGAPORE) PTE. LTD.",
+      "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA (CNSHA)",
+      "port_of_discharge": "HOUSTON, US (USHOU)",
+      "container_count": "5 x 40'HC",
+      "gross_weight_kg": "100,225 KG"
+    },
+    "source_file": "attachments/email_501_SI.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "bl": null,
+  "other_documents": [
+    {
+      "doc_type_detected": "OTHER",
+      "fields": {
+        "shipper": null,
+        "consignee": null,
+        "notify_party": null,
+        "port_of_loading": null,
+        "port_of_discharge": null,
+        "container_count": null,
+        "gross_weight_kg": null
+      },
+      "source_file": "attachments/email_501_BL.txt",
+      "method": "rules",
+      "type_from_title": true
+    }
+  ],
+  "extraction_issues": [
+    "attachments/email_501_BL.txt was detected as OTHER, not a usable SI/BL",
+    "No BL found"
+  ],
+  "method": "rules",
+  "needs_llm": false
+}

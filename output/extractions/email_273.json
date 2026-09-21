@@ -1,0 +1,38 @@
+{
+  "email_id": "email_273",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": null,
+      "consignee": null,
+      "notify_party": null,
+      "port_of_loading": null,
+      "port_of_discharge": null,
+      "container_count": null,
+      "gross_weight_kg": null
+    },
+    "source_file": "attachments/email_273_SI.pdf"
+  },
+  "bl": null,
+  "other_documents": [
+    {
+      "doc_type_detected": "OTHER",
+      "fields": {
+        "shipper": null,
+        "consignee": null,
+        "notify_party": null,
+        "port_of_loading": null,
+        "port_of_discharge": null,
+        "container_count": null,
+        "gross_weight_kg": null
+      },
+      "source_file": "attachments/email_273_BL.pdf"
+    }
+  ],
+  "extraction_issues": [
+    "attachments/email_273_BL.pdf was detected as OTHER, not a usable SI/BL",
+    "No BL found"
+  ],
+  "method": "llm",
+  "needs_llm": false
+}

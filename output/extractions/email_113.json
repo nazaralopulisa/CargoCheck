@@ -1,0 +1,33 @@
+{
+  "email_id": "email_113",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "CERIEX",
+      "notify_party": "CERIEX",
+      "port_of_loading": "NHAVA SHEVA, INDIA (INNSA)",
+      "port_of_discharge": "BRISBANE, AUSTRALIA (AUBNE)",
+      "container_count": 2,
+      "gross_weight_kg": 45006
+    },
+    "source_file": "attachments/email_113_SI.txt"
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "CERIEX",
+      "notify_party": "CERIEX",
+      "port_of_loading": "NHAVA SHEVA, INDIA (INNSA)",
+      "port_of_discharge": "BRISBANE, AUSTRALIA (AUBNE)",
+      "container_count": 2,
+      "gross_weight_kg": 45006
+    },
+    "source_file": "attachments/email_113_BL.txt"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "llm",
+  "needs_llm": false
+}

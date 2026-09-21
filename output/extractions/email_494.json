@@ -1,0 +1,37 @@
+{
+  "email_id": "email_494",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+      "consignee": "BALL & DOGGETT AUSTRALIA PTY LTD",
+      "notify_party": "BALL & DOGGETT AUSTRALIA PTY LTD",
+      "port_of_loading": "NANTONG, CHINA (CNNTG)",
+      "port_of_discharge": "KLAIPEDA, LITHUANIA (LTKLJ)",
+      "container_count": "15 x 20'FCL",
+      "gross_weight_kg": "348,705 KG"
+    },
+    "source_file": "attachments/email_494_SI.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+      "consignee": "BALL & DOGGETT AUSTRALIA PTY LTD",
+      "notify_party": "BALL & DOGGETT AUSTRALIA PTY LTD",
+      "port_of_loading": "NANTONG, CHINA (CNNTG)",
+      "port_of_discharge": "KLAIPEDA, LITHUANIA (LTKLJ)",
+      "container_count": "15 x 20'FCL",
+      "gross_weight_kg": "348,705 KG"
+    },
+    "source_file": "attachments/email_494_BL.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "rules",
+  "needs_llm": false
+}

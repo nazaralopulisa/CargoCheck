@@ -1,0 +1,37 @@
+{
+  "email_id": "email_009",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+      "consignee": "PACIFIC OFFICE (M) SDN BHD",
+      "notify_party": "PACIFIC OFFICE (M) SDN BHD",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
+      "port_of_discharge": "MERSIN, TURKEY (TRMER)",
+      "container_count": "1 x 40'HC",
+      "gross_weight_kg": "20,381 KG"
+    },
+    "source_file": "attachments/email_009_SI.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+      "consignee": "PACIFIC OFFICE (M) SDN BHD",
+      "notify_party": "PACIFIC OFFICE (M) SDN BHD",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
+      "port_of_discharge": "MERSIN, TURKEY (TRMER)",
+      "container_count": "1 x 40'HC",
+      "gross_weight_kg": "20,381 KG"
+    },
+    "source_file": "attachments/email_009_BL.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "rules",
+  "needs_llm": false
+}

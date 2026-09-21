@@ -1,0 +1,33 @@
+{
+  "email_id": "email_197",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "CLIFFORD PAPER INC",
+      "notify_party": "CLIFFORD PAPER INC",
+      "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA (CNSHA)",
+      "port_of_discharge": "SAVANNAH, US (USSAV)",
+      "container_count": 1,
+      "gross_weight_kg": 20065
+    },
+    "source_file": "attachments/email_197_SI.txt"
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "CLIFFORD PAPER INC",
+      "notify_party": "CLIFFORD PAPER INC",
+      "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA (CNSHA)",
+      "port_of_discharge": "SAVANNAH, US (USSAV)",
+      "container_count": 1,
+      "gross_weight_kg": 20065
+    },
+    "source_file": "attachments/email_197_BL.txt"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "llm",
+  "needs_llm": false
+}

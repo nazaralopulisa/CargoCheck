@@ -1,0 +1,33 @@
+{
+  "email_id": "email_068",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING",
+      "consignee": "PACIFIC OFFICE (M) SDN BHD",
+      "notify_party": "PACIFIC OFFICE (M) SDN BHD",
+      "port_of_loading": "BUATAN, INDONESIA (IDBUA)",
+      "port_of_discharge": "YANGON, MYANMAR (MMRGN)",
+      "container_count": 4,
+      "gross_weight_kg": 81100
+    },
+    "source_file": "attachments/email_068_SI.txt"
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING",
+      "consignee": "PACIFIC OFFICE (M) SDN BHD",
+      "notify_party": "PACIFIC OFFICE (M) SDN BHD",
+      "port_of_loading": "BUATAN, INDONESIA (IDBUA)",
+      "port_of_discharge": "YANGON, MYANMAR (MMRGN)",
+      "container_count": 4,
+      "gross_weight_kg": 81100
+    },
+    "source_file": "attachments/email_068_BL.txt"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "llm",
+  "needs_llm": false
+}

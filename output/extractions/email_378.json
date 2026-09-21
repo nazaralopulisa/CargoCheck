@@ -1,0 +1,37 @@
+{
+  "email_id": "email_378",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "TOAN LUC PAPER JOINT STOCK COMPANY",
+      "notify_party": "EAST BRIGHT FZ-LLC",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
+      "port_of_discharge": "GDANSK, POLAND (PLGDN)",
+      "container_count": "12 x 40'HC",
+      "gross_weight_kg": "277,788 KG"
+    },
+    "source_file": "attachments/email_378_SI.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "TOAN LUC PAPER JOINT STOCK COMPANY",
+      "notify_party": "EAST BRIGHT FZ-LLC",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
+      "port_of_discharge": "GDANSK, POLAND (PLGDN)",
+      "container_count": "12 x 40'HC",
+      "gross_weight_kg": "277,788 KG"
+    },
+    "source_file": "attachments/email_378_BL.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "rules",
+  "needs_llm": false
+}

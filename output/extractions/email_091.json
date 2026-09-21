@@ -1,0 +1,33 @@
+{
+  "email_id": "email_091",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING",
+      "consignee": "ORIENT LINKS CO (LLC)",
+      "notify_party": "VITAL SOLUTIONS PTE. LTD.",
+      "port_of_loading": "NHAVA SHEVA, INDIA (INNSA)",
+      "port_of_discharge": "CALLAO, PERU (PECLL)",
+      "container_count": 3,
+      "gross_weight_kg": 67953
+    },
+    "source_file": "attachments/email_091_SI.txt"
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING",
+      "consignee": "ORIENT LINKS CO (LLC)",
+      "notify_party": "VITAL SOLUTIONS PTE. LTD.",
+      "port_of_loading": "NHAVA SHEVA, INDIA (INNSA)",
+      "port_of_discharge": "CALLAO, PERU (PECLL)",
+      "container_count": 2,
+      "gross_weight_kg": 67953
+    },
+    "source_file": "attachments/email_091_BL.txt"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "llm",
+  "needs_llm": false
+}

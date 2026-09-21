@@ -1,0 +1,37 @@
+{
+  "email_id": "email_082",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "SAFQA LIMITED",
+      "notify_party": "SAFQA LIMITED",
+      "port_of_loading": "NHAVA SHEVA, INDIA (INNSA)",
+      "port_of_discharge": "CALLAO, PERU (PECLL)",
+      "container_count": "3 x 40'HC",
+      "gross_weight_kg": "61,026 KG"
+    },
+    "source_file": "attachments/email_082_SI.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "SAFQA LIMITED",
+      "notify_party": "SAFQA LIMITED",
+      "port_of_loading": "NHAVA SHEVA, INDIA (INNSA)",
+      "port_of_discharge": "CALLAO, PERU (PECLL)",
+      "container_count": "3 x 40'HC",
+      "gross_weight_kg": "61,026 KG"
+    },
+    "source_file": "attachments/email_082_BL.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "rules",
+  "needs_llm": false
+}

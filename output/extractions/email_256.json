@@ -1,0 +1,33 @@
+{
+  "email_id": "email_256",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING",
+      "consignee": "SAFQA LIMITED",
+      "notify_party": "HABRAS INTERNATIONAL LIMITED",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
+      "port_of_discharge": "VALPARAISO, CHILE (CLVAP)",
+      "container_count": 12,
+      "gross_weight_kg": 262224
+    },
+    "source_file": "attachments/email_256_SI.txt"
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "SAFQA LIMITED",
+      "notify_party": "HABRAS INTERNATIONAL LIMITED",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
+      "port_of_discharge": "FREMANTLE, AUSTRALIA (CLVAP)",
+      "container_count": 12,
+      "gross_weight_kg": 262224
+    },
+    "source_file": "attachments/email_256_BL.txt"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "llm",
+  "needs_llm": false
+}

@@ -1,0 +1,37 @@
+{
+  "email_id": "email_377",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+      "consignee": "VITAL SOLUTIONS PTE. LTD.",
+      "notify_party": "VITAL SOLUTIONS PTE. LTD.",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
+      "port_of_discharge": "YANGON, MYANMAR (MMRGN)",
+      "container_count": "6 x 20'FCL",
+      "gross_weight_kg": "126,870 KG"
+    },
+    "source_file": "attachments/email_377_SI.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+      "consignee": "VITAL SOLUTIONS PTE. LTD.",
+      "notify_party": "VITAL SOLUTIONS PTE. LTD.",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
+      "port_of_discharge": "YANGON, MYANMAR (MMRGN)",
+      "container_count": "6 x 20'FCL",
+      "gross_weight_kg": "126,870 KG"
+    },
+    "source_file": "attachments/email_377_BL.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "rules",
+  "needs_llm": false
+}

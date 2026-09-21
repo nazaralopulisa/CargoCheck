@@ -1,0 +1,33 @@
+{
+  "email_id": "email_058",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING",
+      "consignee": "CLIFFORD PAPER INC",
+      "notify_party": "CLIFFORD PAPER INC",
+      "port_of_loading": "SINGAPORE (SGSIN)",
+      "port_of_discharge": "MERSIN, TURKEY (TRMER)",
+      "container_count": 4,
+      "gross_weight_kg": 81512
+    },
+    "source_file": "attachments/email_058_SI.txt"
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING",
+      "consignee": "CLIFFORD PAPER INC",
+      "notify_party": "CLIFFORD PAPER INC",
+      "port_of_loading": "SINGAPORE (SGSIN)",
+      "port_of_discharge": "MERSIN, TURKEY (TRMER)",
+      "container_count": 4,
+      "gross_weight_kg": 81512
+    },
+    "source_file": "attachments/email_058_BL.txt"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "llm",
+  "needs_llm": false
+}

@@ -1,0 +1,38 @@
+{
+  "email_id": "email_503",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "INTERNATIONAL FOREST PRODUCTS LLC",
+      "notify_party": "INTERNATIONAL FOREST PRODUCTS LLC",
+      "port_of_loading": "NHAVA SHEVA, INDIA (INNSA)",
+      "port_of_discharge": "HOCHIMINH CITY, VIETNAM (VNSGN)",
+      "container_count": 1,
+      "gross_weight_kg": 21772
+    },
+    "source_file": "attachments/email_503_SI.txt"
+  },
+  "bl": null,
+  "other_documents": [
+    {
+      "doc_type_detected": "OTHER",
+      "fields": {
+        "shipper": null,
+        "consignee": null,
+        "notify_party": null,
+        "port_of_loading": null,
+        "port_of_discharge": null,
+        "container_count": null,
+        "gross_weight_kg": null
+      },
+      "source_file": "attachments/email_503_BL.txt"
+    }
+  ],
+  "extraction_issues": [
+    "attachments/email_503_BL.txt was detected as OTHER, not a usable SI/BL",
+    "No BL found"
+  ],
+  "method": "llm",
+  "needs_llm": false
+}

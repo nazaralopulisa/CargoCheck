@@ -1,0 +1,33 @@
+{
+  "email_id": "email_361",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+      "consignee": "PACIFIC OFFICE (M) SDN BHD",
+      "notify_party": "ROXCEL TRADING GMBH",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
+      "port_of_discharge": "BRISBANE, AUSTRALIA (AUBNE)",
+      "container_count": 10,
+      "gross_weight_kg": 239590
+    },
+    "source_file": "attachments/email_361_SI.txt"
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+      "consignee": "PACIFIC OFFICE (M) SDN BHD",
+      "notify_party": "ROXCEL TRADING GMBH",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
+      "port_of_discharge": "MOMBASA, KENYA (AUBNE)",
+      "container_count": 10,
+      "gross_weight_kg": 238590
+    },
+    "source_file": "attachments/email_361_BL.txt"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "llm",
+  "needs_llm": false
+}

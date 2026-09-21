@@ -1,0 +1,37 @@
+{
+  "email_id": "email_334",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+      "consignee": "EAST BRIGHT FZ-LLC",
+      "notify_party": "EAST BRIGHT FZ-LLC",
+      "port_of_loading": "SINGAPORE (SGSIN)",
+      "port_of_discharge": "YANGON, MYANMAR (MMRGN)",
+      "container_count": "6 x 20'GP",
+      "gross_weight_kg": "127,692 KG"
+    },
+    "source_file": "attachments/email_334_SI.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING",
+      "consignee": "INTERNATIONAL FOREST PRODUCTS LLC",
+      "notify_party": "EAST BRIGHT FZ-LLC",
+      "port_of_loading": "SINGAPORE (SGSIN)",
+      "port_of_discharge": "YANGON, MYANMAR (MMRGN)",
+      "container_count": "6 x 20'GP",
+      "gross_weight_kg": "127,692 KG"
+    },
+    "source_file": "attachments/email_334_BL.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "rules",
+  "needs_llm": false
+}

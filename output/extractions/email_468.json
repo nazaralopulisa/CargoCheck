@@ -1,0 +1,33 @@
+{
+  "email_id": "email_468",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+      "consignee": "ROXCEL TRADING GMBH",
+      "notify_party": "ROXCEL TRADING GMBH",
+      "port_of_loading": "SINGAPORE (SGSIN)",
+      "port_of_discharge": "ASHDOD, ISRAEL (ILASH)",
+      "container_count": 1,
+      "gross_weight_kg": 20456
+    },
+    "source_file": "attachments/email_468_SI.txt"
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+      "consignee": "ROXCEL TRADING GMBH",
+      "notify_party": "ROXCEL TRADING GMBH",
+      "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA (SGSIN)",
+      "port_of_discharge": "ASHDOD, ISRAEL (ILASH)",
+      "container_count": 3,
+      "gross_weight_kg": 20456
+    },
+    "source_file": "attachments/email_468_BL.txt"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "llm",
+  "needs_llm": false
+}

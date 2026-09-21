@@ -1,0 +1,25 @@
+{
+  "email_id": "email_507",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "3S PAPER PRODUCTS SDN BHD",
+      "notify_party": "3S PAPER PRODUCTS SDN BHD",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
+      "port_of_discharge": "KOPER, SLOVENIA (SIKOP)",
+      "container_count": "1 x 40'HC",
+      "gross_weight_kg": "20,572 KG"
+    },
+    "source_file": "attachments/email_507_SI.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "bl": null,
+  "other_documents": [],
+  "extraction_issues": [
+    "No BL found"
+  ],
+  "method": "rules",
+  "needs_llm": false
+}

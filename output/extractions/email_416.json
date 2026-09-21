@@ -1,0 +1,37 @@
+{
+  "email_id": "email_416",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+      "consignee": "VITAL SOLUTIONS PTE. LTD.",
+      "notify_party": "VITAL SOLUTIONS PTE. LTD.",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
+      "port_of_discharge": "LONG BEACH, US (USLGB)",
+      "container_count": "5 x 40'HC",
+      "gross_weight_kg": "105,625 KG"
+    },
+    "source_file": "attachments/email_416_SI.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+      "consignee": "VITAL SOLUTIONS PTE. LTD.",
+      "notify_party": "VITAL SOLUTIONS PTE. LTD.",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
+      "port_of_discharge": "LONG BEACH, US (USLGB)",
+      "container_count": "5 x 40'HC",
+      "gross_weight_kg": "106,625 KG"
+    },
+    "source_file": "attachments/email_416_BL.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "rules",
+  "needs_llm": false
+}

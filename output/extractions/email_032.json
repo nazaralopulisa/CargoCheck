@@ -1,0 +1,33 @@
+{
+  "email_id": "email_032",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "TOPKOPY MIDDLE EAST FZE",
+      "notify_party": "TOPKOPY MIDDLE EAST FZE",
+      "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA (CNSHA)",
+      "port_of_discharge": "KARACHI, PAKISTAN (PKKHI)",
+      "container_count": 3,
+      "gross_weight_kg": 64092
+    },
+    "source_file": "attachments/email_032_SI.txt"
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "TOPKOPY MIDDLE EAST FZE",
+      "notify_party": "TOPKOPY MIDDLE EAST FZE",
+      "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA (CNSHA)",
+      "port_of_discharge": "KARACHI, PAKISTAN (PKKHI)",
+      "container_count": 3,
+      "gross_weight_kg": 64092
+    },
+    "source_file": "attachments/email_032_BL.txt"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "llm",
+  "needs_llm": false
+}

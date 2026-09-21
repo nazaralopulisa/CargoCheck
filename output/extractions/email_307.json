@@ -1,0 +1,33 @@
+{
+  "email_id": "email_307",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING",
+      "consignee": "BALL & DOGGETT AUSTRALIA PTY LTD",
+      "notify_party": "BALL & DOGGETT AUSTRALIA PTY LTD",
+      "port_of_loading": "NANTONG, CHINA (CNNTG)",
+      "port_of_discharge": "KOPER, SLOVENIA (SIKOP)",
+      "container_count": 1,
+      "gross_weight_kg": 23869
+    },
+    "source_file": "attachments/email_307_SI.txt"
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING",
+      "consignee": "BALL & DOGGETT AUSTRALIA PTY LTD",
+      "notify_party": "BALL & DOGGETT AUSTRALIA PTY LTD",
+      "port_of_loading": "NANTONG, CHINA (CNNTG)",
+      "port_of_discharge": "KOPER, SLOVENIA (SIKOP)",
+      "container_count": 1,
+      "gross_weight_kg": 23869
+    },
+    "source_file": "attachments/email_307_BL.txt"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "llm",
+  "needs_llm": false
+}

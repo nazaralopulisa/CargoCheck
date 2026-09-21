@@ -1,0 +1,37 @@
+{
+  "email_id": "email_025",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "CERIEX",
+      "notify_party": "ROXCEL TRADING GMBH",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
+      "port_of_discharge": "FREMANTLE, AUSTRALIA (AUFRE)",
+      "container_count": "6 x 20'GP",
+      "gross_weight_kg": "135,126 KG"
+    },
+    "source_file": "attachments/email_025_SI.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "CERIEX",
+      "notify_party": "ROXCEL TRADING GMBH",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
+      "port_of_discharge": "BUSAN, SOUTH KOREA (AUFRE)",
+      "container_count": "5 x 20'GP",
+      "gross_weight_kg": "135,126 KG"
+    },
+    "source_file": "attachments/email_025_BL.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "rules",
+  "needs_llm": false
+}

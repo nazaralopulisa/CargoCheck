@@ -1,0 +1,33 @@
+{
+  "email_id": "email_405",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING",
+      "consignee": "HABRAS INTERNATIONAL LIMITED",
+      "notify_party": "HABRAS INTERNATIONAL LIMITED",
+      "port_of_loading": "NHAVA SHEVA, INDIA (INNSA)",
+      "port_of_discharge": "LONG BEACH, US (USLGB)",
+      "container_count": 4,
+      "gross_weight_kg": 82932
+    },
+    "source_file": "attachments/email_405_SI.txt"
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING",
+      "consignee": "HABRAS INTERNATIONAL LIMITED",
+      "notify_party": "HABRAS INTERNATIONAL LIMITED",
+      "port_of_loading": "NHAVA SHEVA, INDIA (INNSA)",
+      "port_of_discharge": "LONG BEACH, US (USLGB)",
+      "container_count": 4,
+      "gross_weight_kg": 82932
+    },
+    "source_file": "attachments/email_405_BL.txt"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "llm",
+  "needs_llm": false
+}

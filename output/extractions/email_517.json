@@ -1,0 +1,33 @@
+{
+  "email_id": "email_517",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "BALL & DOGGETT AUSTRALIA PTY LTD",
+      "notify_party": "BALL & DOGGETT AUSTRALIA PTY LTD",
+      "port_of_loading": "____MT",
+      "port_of_discharge": "TBA",
+      "container_count": 15,
+      "gross_weight_kg": 340770
+    },
+    "source_file": "attachments/email_517_SI.txt"
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "BALL & DOGGETT AUSTRALIA PTY LTD",
+      "notify_party": "BALL & DOGGETT AUSTRALIA PTY LTD",
+      "port_of_loading": "SINGAPORE (SGSIN)",
+      "port_of_discharge": "CALLAO, PERU (PECLL)",
+      "container_count": 15,
+      "gross_weight_kg": 340770
+    },
+    "source_file": "attachments/email_517_BL.txt"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "llm",
+  "needs_llm": false
+}

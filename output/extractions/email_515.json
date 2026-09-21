@@ -1,0 +1,38 @@
+{
+  "email_id": "email_515",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING",
+      "consignee": "3S PAPER PRODUCTS SDN BHD",
+      "notify_party": "3S PAPER PRODUCTS SDN BHD",
+      "port_of_loading": "BUATAN, INDONESIA (IDBUA)",
+      "port_of_discharge": "AQABA, JORDAN (JOAQB)",
+      "container_count": 1,
+      "gross_weight_kg": 21949
+    },
+    "source_file": "attachments/email_515_SI.txt"
+  },
+  "bl": null,
+  "other_documents": [
+    {
+      "doc_type_detected": "OTHER",
+      "fields": {
+        "shipper": null,
+        "consignee": null,
+        "notify_party": null,
+        "port_of_loading": null,
+        "port_of_discharge": null,
+        "container_count": null,
+        "gross_weight_kg": null
+      },
+      "source_file": "attachments/email_515_BL.pdf"
+    }
+  ],
+  "extraction_issues": [
+    "attachments/email_515_BL.pdf was detected as OTHER, not a usable SI/BL",
+    "No BL found"
+  ],
+  "method": "llm",
+  "needs_llm": false
+}

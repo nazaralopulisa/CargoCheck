@@ -1,208 +1,378 @@
 """
-pipeline.py - runs every email through classify -> extract -> adapt,
-and saves extractions.json for make_submission.py.
+pipeline.py - runs the whole CargoCheck flow, builds submission.json and scores it.
 
-    python app/pipeline.py               # process everything not done yet
-    python app/pipeline.py --limit 20    # only the first 20 emails (testing)
-    python app/pipeline.py --only email_009  # just one email
+    classifications.json -> extract (BL_COMPARISON only) -> compare -> validate -> submit
 
-Nothing is paid for twice:
-  - classifications are shared with app/classifier.py (output/classifications.json),
-    so emails your partner already classified are reused, not re-sent to Gemini
-  - raw extractor results are saved in output/extraction_cache.json
-Progress is saved after every batch/email. Failed ones are retried on the next run.
+Extraction is RULES FIRST, LLM SECOND:
+    1. rule_extractor.py reads the SI and BL with plain code (free, instant)
+    2. only if the rules couldn't read everything confidently, the LLM is asked
+    3. if the LLM is unavailable (quota, account, network), the rules result is
+       kept and marked needs_llm, so a later run can finish it
+
+Usage (from the CargoCheck folder):
+    python app/pipeline.py                                  # full run, build files only
+    python app/pipeline.py --submit --note "what changed"   # full run + score + log
+    python app/pipeline.py --rules-only --submit --note ".." # never call the LLM
+    python app/pipeline.py --redo-rules --rules-only        # redo rule results after a rules fix
+    python app/pipeline.py --skip-extraction --submit       # classification-only baseline
+    python app/pipeline.py --only email_009                 # one email, for debugging
+
+Extraction results are cached in output/extractions/, so reruns only do emails
+not yet extracted, or rule results still waiting for the LLM. Every scored run
+is logged to output/score_log.csv with your note.
+
+Settings come from .env (never hardcode localhost):
+  DATA_DIR    default: data/sdoc-hackathon-bundle
+  SCORER_URL  default: http://localhost:8080
 """
-
 import argparse
+import csv
 import json
 import os
 import sys
+import threading
 import time
-from collections import Counter
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from datetime import datetime
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent.parent   # app/pipeline.py -> CargoCheck/
-DATA_DIR = Path(os.environ.get("DATA_DIR", BASE_DIR / "data" / "sdoc-hackathon-bundle"))
+from dotenv import load_dotenv
+
+load_dotenv()
+
+from comparer import compare_email, format_report  # noqa: E402
+from rule_extractor import extract_email as rule_extract_email, is_confident  # noqa: E402
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = os.environ.get("DATA_DIR", str(BASE_DIR / "data" / "sdoc-hackathon-bundle"))
+SCORER_URL = os.environ.get("SCORER_URL", "http://localhost:8080")
 OUTPUT_DIR = BASE_DIR / "output"
-EXTRACTION_CACHE = OUTPUT_DIR / "extraction_cache.json"
-EXTRACTIONS_FILE = BASE_DIR / "extractions.json"
-PAUSE_SECONDS = float(os.environ.get("PAUSE_SECONDS", "6"))
+CLASSIFICATIONS_FILE = OUTPUT_DIR / "classifications.json"
+EXTRACTIONS_DIR = OUTPUT_DIR / "extractions"
+SUBMISSION_FILE = OUTPUT_DIR / "submission.json"
+REPORTS_FILE = OUTPUT_DIR / "reports.json"
+SCORE_LOG = OUTPUT_DIR / "score_log.csv"
+LAST_SCORE_FILE = OUTPUT_DIR / "last_score.json"
 
-sys.path.insert(0, str(DATA_DIR))
-from loader import Inbox                                        # noqa: E402
-from classifier import (classify_batch, CATEGORIES, BATCH_SIZE,  # noqa: E402
-                            OUTPUT_FILE as CLASSIFICATIONS_FILE)
-from extractor import extract_email                         # noqa: E402
+sys.path.insert(0, DATA_DIR)  # so Python can find the organizers' loader.py
+from loader import Inbox  # noqa: E402
+
+CATEGORIES = {"BL_COMPARISON", "SI_REQUEST", "INVOICE_QUERY", "GENERAL", "SPAM"}
+STATUSES = {"OK", "MISMATCH", "NEEDS_REVIEW"}
+REVIEW_REASONS = {"wrong_doc_type", "missing_attachment", "unreadable", "missing_value"}
 
 
-class DailyQuotaReached(Exception):
-    pass
+# --- Step 1: extraction - rules first, LLM second, cached ---------------------
+
+class LLM:
+    """Loads the LLM extractor only when it's first needed, and switches it off
+    for the rest of the run if the daily quota / account access fails."""
+    lock = threading.Lock()
+    available = True
+    reason = None
+    _extract = None
+
+    @classmethod
+    def extract(cls, inbox, email):
+        with cls.lock:
+            if not cls.available:
+                raise RuntimeError(cls.reason)
+            if cls._extract is None:
+                try:
+                    from extractor import extract_email
+                    cls._extract = extract_email
+                except Exception as e:
+                    cls.switch_off(f"could not load the LLM extractor: {e}")
+                    raise
+        return cls._extract(inbox, email)
+
+    @classmethod
+    def switch_off(cls, reason):
+        with cls.lock:
+            if cls.available:
+                cls.available, cls.reason = False, reason
+                print(f"\n  LLM switched off for this run ({reason[:120]}). "
+                      "Continuing with rules only.\n")
 
 
-# --- Step 1: retry busy/rate-limited calls automatically ---------------------
+def is_permanent_llm_error(message):
+    """Errors that won't fix themselves by retrying in a few seconds."""
+    m = message.lower()
+    return any(s in m for s in ("per day", "perday", "being verified", "accessdenied",
+                                "access denied", "not authorized", "no api key",
+                                "invalid api key", "credentials"))
 
-def with_retries(fn, *args, attempts=4):
-    """Retry temporary errors (503 busy, 429 per-minute limit) with growing waits.
-    Stop immediately if the DAILY quota is used up."""
-    for attempt in range(1, attempts + 1):
+
+def cached_extraction(email_id, rules_only, redo_rules):
+    path = EXTRACTIONS_DIR / f"{email_id}.json"
+    if not path.exists():
+        return None
+    cached = json.loads(path.read_text())
+    if redo_rules and cached.get("method") != "llm":
+        return None                      # rules were improved: redo this one
+    if cached.get("needs_llm") and not rules_only and LLM.available:
+        return None                      # rules couldn't finish it: try the LLM now
+    return cached
+
+
+def save_extraction(email_id, result):
+    EXTRACTIONS_DIR.mkdir(parents=True, exist_ok=True)
+    (EXTRACTIONS_DIR / f"{email_id}.json").write_text(
+        json.dumps(result, indent=2, ensure_ascii=False))
+
+
+def run_extraction(inbox, email, rules_only, attempts=3):
+    """Rules first. LLM only if the rules weren't confident. Never loses the
+    rules result: if the LLM fails, the rules result is kept (needs_llm=True)."""
+    eid = email["email_id"]
+    try:
+        result = rule_extract_email(inbox, email)
+    except Exception as e:
+        return {"email_id": eid, "processing_error": f"rule extractor crashed: {e}"}
+
+    confident = is_confident(result)
+    result["needs_llm"] = not confident
+    if confident or rules_only or not LLM.available:
+        save_extraction(eid, result)
+        return result
+
+    error = None
+    for attempt in range(attempts):
         try:
-            return fn(*args)
+            llm_result = LLM.extract(inbox, email)
+            llm_result["method"], llm_result["needs_llm"] = "llm", False
+            save_extraction(eid, llm_result)
+            return llm_result
         except Exception as e:
-            message = str(e)
-            if "per day" in message.lower() or "perday" in message.lower():
-                raise DailyQuotaReached(message)
-            if attempt == attempts:
-                raise
-            wait = 20 * attempt
-            print(f"    attempt {attempt} failed ({message[:80]}...) - retrying in {wait}s")
-            time.sleep(wait)
+            error = str(e)
+            if is_permanent_llm_error(error) or not LLM.available:
+                LLM.switch_off(error)
+                break
+            time.sleep(5 * (attempt + 1))
+
+    result["llm_error"] = error          # keep the rules result, visibly marked
+    save_extraction(eid, result)
+    return result
 
 
-# --- Step 2: saving and loading ---------------------------------------------
+# --- Step 2: translate extractor output into comparer input -----------------
 
-def load_json(path):
-    return json.loads(path.read_text()) if path.exists() else {}
+def issue_codes(extraction):
+    """Turn the extractor's sentences into the comparer's review_reason codes.
 
-
-def save_json(path, data):
-    path.parent.mkdir(exist_ok=True)
-    path.write_text(json.dumps(data, indent=2, ensure_ascii=False))
-
-
-# --- Step 3: classification (batches, shared file with classifier.py) --------
-
-def classify_missing(emails, classifications):
-    todo = [e for e in emails
-            if classifications.get(e["email_id"], {}).get("category") not in CATEGORIES]
-    print(f"\nCLASSIFY: {len(emails) - len(todo)} already done, {len(todo)} to do")
-    for start in range(0, len(todo), BATCH_SIZE):
-        batch = todo[start:start + BATCH_SIZE]
-        ids = [e["email_id"] for e in batch]
-        try:
-            results = with_retries(classify_batch, batch)
-            classifications.update(results)
-            save_json(CLASSIFICATIONS_FILE, classifications)
-            done = [i for i in ids if i in results]
-            print(f"  {ids[0]}..{ids[-1]}: {len(done)}/{len(ids)} classified")
-        except DailyQuotaReached:
-            raise
-        except Exception as e:
-            print(f"  {ids[0]}..{ids[-1]}: FAILED - {str(e)[:120]} (will retry next run)")
-        time.sleep(PAUSE_SECONDS)
-
-
-# --- Step 4: extraction (only BL_COMPARISON emails) -------------------------
-
-def extract_missing(inbox, emails, classifications, cache):
-    todo = [e for e in emails
-            if classifications.get(e["email_id"], {}).get("category") == "BL_COMPARISON"
-            and e["email_id"] not in cache]
-    print(f"\nEXTRACT: {len(todo)} BL_COMPARISON emails to extract")
-    for i, email in enumerate(todo, 1):
-        eid = email["email_id"]
-        try:
-            cache[eid] = with_retries(extract_email, inbox, email)
-            save_json(EXTRACTION_CACHE, cache)
-            issues = cache[eid].get("extraction_issues") or []
-            print(f"  [{i}/{len(todo)}] {eid}: done" + (f"  ({issues[0]})" if issues else ""))
-        except DailyQuotaReached:
-            raise
-        except Exception as e:
-            print(f"  [{i}/{len(todo)}] {eid}: FAILED - {str(e)[:120]} (will retry next run)")
-        time.sleep(PAUSE_SECONDS)
-
-
-# --- Step 5: the adapter (partner's format -> comparer's format) -------------
-
-def issue_codes(email, extraction):
-    if not email.get("attachments"):
-        return ["missing_attachment"]
-    if extraction.get("si") is not None and extraction.get("bl") is not None:
+    Codes are only produced when the SI or BL is actually missing, so an email
+    with a valid SI, a valid BL and an extra invoice attached still gets compared.
+    """
+    if extraction.get("si") and extraction.get("bl"):
         return []
-    messages = " ".join(extraction.get("extraction_issues", [])).lower()
-    if extraction.get("other_documents"):
-        return ["wrong_doc_type"]
+
+    messages = " | ".join(extraction.get("extraction_issues", [])).lower()
+    if "no attachments" in messages:
+        return ["missing_attachment"]
     if "could not read" in messages or "empty or unreadable" in messages:
         return ["unreadable"]
+    if "was detected as" in messages:
+        return ["wrong_doc_type"]
     return ["missing_attachment"]
 
 
-def fields_of(doc):
-    return None if doc is None else (doc.get("fields") or {})
+def to_comparer_input(email_id, category, extraction):
+    def fields(doc):
+        return doc.get("fields") if doc else None
 
-
-def adapt(email, classification, extraction):
-    entry = {
-        "category": classification["category"],
-        "classifier_confidence": classification.get("confidence"),
-        "classifier_reason": classification.get("reason"),
-        "classifier_needs_review": classification.get("needs_review", False),
+    return {
+        "email_id": email_id,
+        "category": category,
+        "si": fields(extraction.get("si")),
+        "bl": fields(extraction.get("bl")),
+        "issues": issue_codes(extraction),
     }
-    if classification["category"] == "BL_COMPARISON":
-        if extraction is None and not email.get("attachments"):
-            extraction = {"si": None, "bl": None, "extraction_issues": ["No attachments"]}
-        if extraction is not None:
-            entry["si"] = fields_of(extraction.get("si"))
-            entry["bl"] = fields_of(extraction.get("bl"))
-            entry["issues"] = issue_codes(email, extraction)
-            entry["issue_notes"] = extraction.get("extraction_issues", [])
-    return entry
 
 
-def build_extractions(emails, classifications, cache):
-    out, not_ready = {}, []
-    for email in emails:
-        eid = email["email_id"]
-        c = classifications.get(eid, {})
-        if c.get("category") not in CATEGORIES:
-            not_ready.append(eid)
-            continue
-        entry = adapt(email, c, cache.get(eid))
-        if c["category"] == "BL_COMPARISON" and "si" not in entry:
-            not_ready.append(eid)          # classified but not extracted yet
-            continue
-        out[eid] = entry
-    return out, not_ready
+# --- Step 3: check the format before sending --------------------------------
+
+def validate(submission):
+    problems = []
+    for eid, e in submission.items():
+        if e["category"] not in CATEGORIES:
+            problems.append(f"{eid}: bad category {e['category']}")
+        if e["status"] not in STATUSES:
+            problems.append(f"{eid}: bad status {e['status']}")
+        if e["has_defect"] != (e["status"] == "MISMATCH"):
+            problems.append(f"{eid}: has_defect doesn't match status")
+        if e["status"] == "NEEDS_REVIEW" and e["review_reason"] not in REVIEW_REASONS:
+            problems.append(f"{eid}: NEEDS_REVIEW without a valid review_reason")
+    for p in problems[:10]:
+        print("  PROBLEM:", p)
+    return not problems
 
 
-# --- Step 6: run everything -------------------------------------------------
+# --- Step 4: summary a person can read --------------------------------------
+
+def print_summary(submission, reports, failed, extractions):
+    counts = {}
+    for e in submission.values():
+        key = f"{e['category']} / {e['status']}"
+        if e["review_reason"]:
+            key += f" ({e['review_reason']})"
+        counts[key] = counts.get(key, 0) + 1
+    print("\nResult counts:")
+    for key, n in sorted(counts.items()):
+        print(f"  {key:<48} {n}")
+
+
+    mismatches = [r for r in reports.values() if r["status"] == "MISMATCH"]
+    if mismatches:
+        print(f"\nFirst few mismatches (of {len(mismatches)}):")
+        for r in mismatches[:3]:
+            print(format_report(r))
+
+    if failed:
+        print(f"\nProcessing failed for {len(failed)} emails (rerun to retry): {failed}")
+
+
+# --- Step 5: submit and log the score ---------------------------------------
+
+def submit(submission, note):
+    print(f"\nSubmitting to {SCORER_URL} ...")
+    result = Inbox(SCORER_URL).submit(submission)
+    LAST_SCORE_FILE.write_text(json.dumps(result, indent=2))
+
+    s1 = result.get("stage1", {})
+    s3 = result.get("stage3", {})
+    e2e = result.get("end_to_end", {})
+    rel = result.get("reliability", {})
+    final = result.get("final_score")
+
+    if final is None:
+        print("Unexpected scoreboard format, saved raw result to", LAST_SCORE_FILE)
+        print(json.dumps(result, indent=2)[:2000])
+        return
+
+    print(f"  FINAL SCORE          {final:.4f}")
+    print(f"  classification F1    {s1.get('macro_f1', 0):.3f}")
+    print(f"  defect F1            {s3.get('defect_f1', 0):.3f}")
+    print(f"  end-to-end           {e2e.get('success')}/{e2e.get('total')}")
+    print(f"  escalation recall    {rel.get('escalation_recall', 0):.3f}")
+
+    # Keep a history of every run: evidence of how the system improved.
+    new_file = not SCORE_LOG.exists()
+    with SCORE_LOG.open("a", newline="") as f:
+        writer = csv.writer(f)
+        if new_file:
+            writer.writerow(["time", "final", "class_f1", "defect_f1",
+                             "e2e", "escalation_recall", "note"])
+        writer.writerow([datetime.now().strftime("%Y-%m-%d %H:%M"),
+                         f"{final:.4f}", f"{s1.get('macro_f1', 0):.3f}",
+                         f"{s3.get('defect_f1', 0):.3f}",
+                         f"{e2e.get('success')}/{e2e.get('total')}",
+                         f"{rel.get('escalation_recall', 0):.3f}", note])
+    print(f"  (logged to {SCORE_LOG})")
+
+
+# --- Step 6: run everything --------------------------------------------------
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--limit", type=int, help="only the first N emails")
-    parser.add_argument("--only", help="a single email_id")
+    parser.add_argument("--skip-extraction", action="store_true",
+                        help="classification-only baseline: every email is marked OK")
+    parser.add_argument("--rules-only", action="store_true",
+                        help="never call the LLM for extraction (free, no quota)")
+    parser.add_argument("--redo-rules", action="store_true",
+                        help="re-run the rule extractor on emails it already did")
+    parser.add_argument("--submit", action="store_true", help="send to the scorer")
+    parser.add_argument("--note", default="", help="what changed in this run")
+    parser.add_argument("--only", help="process a single email_id")
+    parser.add_argument("--workers", type=int, default=4,
+                        help="how many emails to extract at the same time")
     args = parser.parse_args()
 
-    inbox = Inbox(str(DATA_DIR))
-    emails = list(inbox)
+    classifications = json.loads(CLASSIFICATIONS_FILE.read_text())
+
+    inbox = Inbox(DATA_DIR)
+    emails = {e["email_id"]: e for e in inbox}
     if args.only:
-        emails = [e for e in emails if e["email_id"] == args.only]
-    if args.limit:
-        emails = emails[:args.limit]
+        emails = {args.only: emails[args.only]}
 
-    classifications = load_json(CLASSIFICATIONS_FILE)
-    cache = load_json(EXTRACTION_CACHE)
+    missing_class = [eid for eid in emails if eid not in classifications]
+    if missing_class:
+        print(f"WARNING: {len(missing_class)} emails have no classification, "
+              f"treated as GENERAL: {missing_class[:10]}")
 
-    try:
-        classify_missing(emails, classifications)
-        extract_missing(inbox, emails, classifications, cache)
-    except DailyQuotaReached:
-        print("\nDAILY QUOTA USED UP. Everything so far is saved - rerun after it resets.")
-    except KeyboardInterrupt:
-        print("\nStopped. Everything so far is saved - rerun to continue.")
+    def category_of(eid):
+        return classifications.get(eid, {}).get("category") or "GENERAL"
 
-    # Always write whatever is finished, even after a stop.
-    all_emails = list(inbox)
-    extractions, not_ready = build_extractions(all_emails, classifications, cache)
-    save_json(EXTRACTIONS_FILE, extractions)
+    # Extract BL_COMPARISON emails that are not cached yet
+    extractions = {}
+    to_compare = [eid for eid in emails if category_of(eid) == "BL_COMPARISON"]
 
-    print("\nSUMMARY")
-    print(f"  ready for comparison: {len(extractions)} / {len(all_emails)} emails")
-    print(f"  not finished yet:     {len(not_ready)} (placeholder used until done)")
-    print("  categories:", dict(Counter(e['category'] for e in extractions.values())))
-    review = [eid for eid, e in extractions.items() if e.get("issues")]
-    print(f"  documents needing review: {len(review)}")
-    print(f"\nSaved {EXTRACTIONS_FILE.name}. Next: python app/make_submission.py --submit")
+    if not args.skip_extraction:
+        todo = []
+        for eid in to_compare:
+            cached = cached_extraction(eid, args.rules_only, args.redo_rules)
+            if cached:
+                extractions[eid] = cached
+            else:
+                todo.append(eid)
+
+        mode = "rules only" if args.rules_only else "rules first, LLM when needed"
+        print(f"{len(to_compare)} comparison emails: {len(extractions)} cached, "
+              f"{len(todo)} to extract ({mode})\n")
+
+        with ThreadPoolExecutor(max_workers=args.workers) as pool:
+            futures = {pool.submit(run_extraction, inbox, emails[eid], args.rules_only): eid
+                       for eid in todo}
+            for i, future in enumerate(as_completed(futures), 1):
+                eid = futures[future]
+                x = extractions[eid] = future.result()
+                if "processing_error" in x:
+                    flag = "FAILED"
+                elif x.get("method") == "llm":
+                    flag = "llm"
+                else:
+                    flag = "rules, waiting for LLM" if x.get("needs_llm") else "rules"
+                print(f"[{i}/{len(todo)}] {eid}: {flag}")
+
+    # Compare and build the submission
+    submission, reports, failed = {}, {}, []
+    for eid in sorted(emails):
+        category = category_of(eid)
+
+        if category == "BL_COMPARISON" and args.skip_extraction:
+            entry, report = compare_email({"email_id": eid, "category": "GENERAL"})
+            entry["category"] = "BL_COMPARISON"
+        elif category == "BL_COMPARISON" and "processing_error" in extractions.get(eid, {}):
+            failed.append(eid)
+            entry = {"category": category, "status": "NEEDS_REVIEW",
+                     "review_reason": "unreadable", "has_defect": False, "defect_fields": []}
+            report = {"email_id": eid, "status": "PROCESSING_ERROR",
+                      "detail": extractions[eid]["processing_error"], "fields": []}
+        elif category == "BL_COMPARISON":
+            entry, report = compare_email(to_comparer_input(eid, category, extractions[eid]))
+        else:
+            entry, report = compare_email({"email_id": eid, "category": category})
+
+        report["classification_reason"] = classifications.get(eid, {}).get("reason")
+        submission[eid] = entry
+        reports[eid] = report
+
+    if not validate(submission):
+        sys.exit("Fix the problems above before submitting.")
+
+    OUTPUT_DIR.mkdir(exist_ok=True)
+    SUBMISSION_FILE.write_text(json.dumps(submission, indent=2))
+    REPORTS_FILE.write_text(json.dumps(reports, indent=2, ensure_ascii=False))
+    print(f"\nWrote {SUBMISSION_FILE} and {REPORTS_FILE}")
+    print_summary(submission, reports, failed, extractions)
+
+    if args.only:
+        print("\n" + format_report(reports[args.only]))
+
+    if args.submit:
+        if args.only:
+            print("\nNot submitting: --only builds a partial submission.")
+        else:
+            submit(submission, args.note)
 
 
 if __name__ == "__main__":

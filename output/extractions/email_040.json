@@ -1,0 +1,33 @@
+{
+  "email_id": "email_040",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+      "consignee": "TOPKOPY MIDDLE EAST FZE",
+      "notify_party": "SAFQA LIMITED",
+      "port_of_loading": "NHAVA SHEVA, INDIA (INNSA)",
+      "port_of_discharge": "CONAKRY, GUINEA (GNCKY)",
+      "container_count": 10,
+      "gross_weight_kg": 222690
+    },
+    "source_file": "attachments/email_040_SI.txt"
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+      "consignee": "TOPKOPY MIDDLE EAST FZE",
+      "notify_party": "SAFQA LIMITED",
+      "port_of_loading": "NHAVA SHEVA, INDIA (INNSA)",
+      "port_of_discharge": "CONAKRY, GUINEA (GNCKY)",
+      "container_count": 10,
+      "gross_weight_kg": 222690
+    },
+    "source_file": "attachments/email_040_BL.txt"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "llm",
+  "needs_llm": false
+}

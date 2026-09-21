@@ -1,0 +1,41 @@
+{
+  "email_id": "email_300",
+  "si": null,
+  "bl": null,
+  "other_documents": [
+    {
+      "doc_type_detected": "OTHER",
+      "fields": {
+        "shipper": null,
+        "consignee": null,
+        "notify_party": null,
+        "port_of_loading": null,
+        "port_of_discharge": null,
+        "container_count": null,
+        "gross_weight_kg": null
+      },
+      "source_file": "attachments/email_300_SI.xlsx"
+    },
+    {
+      "doc_type_detected": "OTHER",
+      "fields": {
+        "shipper": null,
+        "consignee": null,
+        "notify_party": null,
+        "port_of_loading": null,
+        "port_of_discharge": null,
+        "container_count": null,
+        "gross_weight_kg": null
+      },
+      "source_file": "attachments/email_300_BL.xlsx"
+    }
+  ],
+  "extraction_issues": [
+    "attachments/email_300_SI.xlsx was detected as OTHER, not a usable SI/BL",
+    "attachments/email_300_BL.xlsx was detected as OTHER, not a usable SI/BL",
+    "No SI found",
+    "No BL found"
+  ],
+  "method": "llm",
+  "needs_llm": false
+}

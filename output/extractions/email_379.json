@@ -1,0 +1,33 @@
+{
+  "email_id": "email_379",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "ROXCEL TRADING GMBH",
+      "notify_party": "ROXCEL TRADING GMBH",
+      "port_of_loading": "NANTONG, CHINA (CNNTG)",
+      "port_of_discharge": "HOUSTON, US (USHOU)",
+      "container_count": 12,
+      "gross_weight_kg": 272232
+    },
+    "source_file": "attachments/email_379_SI.txt"
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING",
+      "consignee": "ROXCEL TRADING GMBH",
+      "notify_party": "ROXCEL TRADING GMBH",
+      "port_of_loading": "NANTONG, CHINA (CNNTG)",
+      "port_of_discharge": "HOUSTON, US (USHOU)",
+      "container_count": 12,
+      "gross_weight_kg": 272232
+    },
+    "source_file": "attachments/email_379_BL.txt"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "llm",
+  "needs_llm": false
+}

@@ -1,0 +1,33 @@
+{
+  "email_id": "email_225",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+      "consignee": "ROXCEL TRADING GMBH",
+      "notify_party": "TOAN LUC PAPER JOINT STOCK COMPANY",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
+      "port_of_discharge": "GDANSK, POLAND (PLGDN)",
+      "container_count": 1,
+      "gross_weight_kg": 22596
+    },
+    "source_file": "attachments/email_225_SI.txt"
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+      "consignee": "AL GURG STATIONERY LLC",
+      "notify_party": "TOAN LUC PAPER JOINT STOCK COMPANY",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
+      "port_of_discharge": "GDANSK, POLAND (PLGDN)",
+      "container_count": 1,
+      "gross_weight_kg": 22596
+    },
+    "source_file": "attachments/email_225_BL.txt"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "llm",
+  "needs_llm": false
+}

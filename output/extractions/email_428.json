@@ -1,0 +1,37 @@
+{
+  "email_id": "email_428",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING",
+      "consignee": "HABRAS INTERNATIONAL LIMITED",
+      "notify_party": "HABRAS INTERNATIONAL LIMITED",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
+      "port_of_discharge": "FREMANTLE, AUSTRALIA (AUFRE)",
+      "container_count": "4 x 20'GP",
+      "gross_weight_kg": "88,308 KG"
+    },
+    "source_file": "attachments/email_428_SI.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING",
+      "consignee": "HABRAS INTERNATIONAL LIMITED",
+      "notify_party": "HABRAS INTERNATIONAL LIMITED",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
+      "port_of_discharge": "FREMANTLE, AUSTRALIA (AUFRE)",
+      "container_count": "4 x 20'GP",
+      "gross_weight_kg": "88,308 KG"
+    },
+    "source_file": "attachments/email_428_BL.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "rules",
+  "needs_llm": false
+}

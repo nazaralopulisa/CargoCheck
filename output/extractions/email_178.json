@@ -1,0 +1,33 @@
+{
+  "email_id": "email_178",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "ORIENT LINKS CO (LLC)",
+      "notify_party": "3S PAPER PRODUCTS SDN BHD",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
+      "port_of_discharge": "CALLAO, PERU (PECLL)",
+      "container_count": 6,
+      "gross_weight_kg": 132516
+    },
+    "source_file": "attachments/email_178_SI.txt"
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "ORIENT LINKS CO (LLC)",
+      "notify_party": "3S PAPER PRODUCTS SDN BHD",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
+      "port_of_discharge": "CALLAO, PERU (PECLL)",
+      "container_count": 7,
+      "gross_weight_kg": 132516
+    },
+    "source_file": "attachments/email_178_BL.txt"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "llm",
+  "needs_llm": false
+}

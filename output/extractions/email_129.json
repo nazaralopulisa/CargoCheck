@@ -1,0 +1,37 @@
+{
+  "email_id": "email_129",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING",
+      "consignee": "SAFQA LIMITED",
+      "notify_party": "SAFQA LIMITED",
+      "port_of_loading": "NHAVA SHEVA, INDIA (INNSA)",
+      "port_of_discharge": "ASHDOD, ISRAEL (ILASH)",
+      "container_count": "6 x 40'HC",
+      "gross_weight_kg": "124,188 KG"
+    },
+    "source_file": "attachments/email_129_SI.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING",
+      "consignee": "SAFQA LIMITED",
+      "notify_party": "SAFQA LIMITED",
+      "port_of_loading": "BUATAN, INDONESIA (INNSA)",
+      "port_of_discharge": "TUTICORIN, INDIA (ILASH)",
+      "container_count": "6 x 40'HC",
+      "gross_weight_kg": "124,188 KG"
+    },
+    "source_file": "attachments/email_129_BL.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "rules",
+  "needs_llm": false
+}

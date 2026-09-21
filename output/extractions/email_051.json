@@ -1,0 +1,33 @@
+{
+  "email_id": "email_051",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+      "consignee": "KPP-ANTALIS (SINGAPORE) PTE. LTD.",
+      "notify_party": "KPP-ANTALIS (SINGAPORE) PTE. LTD.",
+      "port_of_loading": "NHAVA SHEVA, INDIA (INNSA)",
+      "port_of_discharge": "SAVANNAH, US (USSAV)",
+      "container_count": 3,
+      "gross_weight_kg": 60645
+    },
+    "source_file": "attachments/email_051_SI.txt"
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+      "consignee": "KPP-ANTALIS (SINGAPORE) PTE. LTD.",
+      "notify_party": "KPP-ANTALIS (SINGAPORE) PTE. LTD.",
+      "port_of_loading": "NHAVA SHEVA, INDIA (INNSA)",
+      "port_of_discharge": "SAVANNAH, US (USSAV)",
+      "container_count": 3,
+      "gross_weight_kg": 60645
+    },
+    "source_file": "attachments/email_051_BL.txt"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "llm",
+  "needs_llm": false
+}

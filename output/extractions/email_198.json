@@ -1,0 +1,33 @@
+{
+  "email_id": "email_198",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+      "consignee": "UAB NOVAKOPA",
+      "notify_party": "UAB NOVAKOPA",
+      "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA (CNSHA)",
+      "port_of_discharge": "APAPA, NIGERIA (NGAPP)",
+      "container_count": 5,
+      "gross_weight_kg": 105675
+    },
+    "source_file": "attachments/email_198_SI.txt"
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+      "consignee": "UAB NOVAKOPA",
+      "notify_party": "UAB NOVAKOPA",
+      "port_of_loading": "RUGAO/NANTONG/SHANGHAI, CHINA (CNSHA)",
+      "port_of_discharge": "APAPA, NIGERIA (NGAPP)",
+      "container_count": 5,
+      "gross_weight_kg": 105675
+    },
+    "source_file": "attachments/email_198_BL.txt"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "llm",
+  "needs_llm": false
+}

@@ -1,0 +1,25 @@
+{
+  "email_id": "email_509",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+      "consignee": "INTERNATIONAL FOREST PRODUCTS LLC",
+      "notify_party": "INTERNATIONAL FOREST PRODUCTS LLC",
+      "port_of_loading": "BUATAN, INDONESIA (IDBUA)",
+      "port_of_discharge": "CALLAO, PERU (PECLL)",
+      "container_count": "6 x 20'FCL",
+      "gross_weight_kg": "123,060 KG"
+    },
+    "source_file": "attachments/email_509_SI.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "bl": null,
+  "other_documents": [],
+  "extraction_issues": [
+    "No BL found"
+  ],
+  "method": "rules",
+  "needs_llm": false
+}

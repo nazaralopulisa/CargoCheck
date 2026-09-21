@@ -1,0 +1,33 @@
+{
+  "email_id": "email_004",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "EAST BRIGHT FZ-LLC",
+      "notify_party": "EAST BRIGHT FZ-LLC",
+      "port_of_loading": "NANTONG, CHINA (CNNTG)",
+      "port_of_discharge": "KARACHI, PAKISTAN (PKKHI)",
+      "container_count": 6,
+      "gross_weight_kg": 131058
+    },
+    "source_file": "attachments/email_004_SI.txt"
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "UAB NOVAKOPA",
+      "notify_party": "UAB NOVAKOPA",
+      "port_of_loading": "NANTONG, CHINA (CNNTG)",
+      "port_of_discharge": "KARACHI, PAKISTAN (PKKHI)",
+      "container_count": 6,
+      "gross_weight_kg": 131058
+    },
+    "source_file": "attachments/email_004_BL.txt"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "llm",
+  "needs_llm": false
+}

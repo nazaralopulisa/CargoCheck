@@ -1,0 +1,33 @@
+{
+  "email_id": "email_096",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+      "consignee": "3S PAPER PRODUCTS SDN BHD",
+      "notify_party": "PACIFIC OFFICE (M) SDN BHD",
+      "port_of_loading": "BUATAN, INDONESIA (IDBUA)",
+      "port_of_discharge": "JEBEL ALI, UAE (AEJEA)",
+      "container_count": 15,
+      "gross_weight_kg": 310125
+    },
+    "source_file": "attachments/email_096_SI.txt"
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING",
+      "consignee": "3S PAPER PRODUCTS SDN BHD",
+      "notify_party": "PACIFIC OFFICE (M) SDN BHD",
+      "port_of_loading": "BUATAN, INDONESIA (IDBUA)",
+      "port_of_discharge": "JEBEL ALI, UAE (AEJEA)",
+      "container_count": 15,
+      "gross_weight_kg": 310125
+    },
+    "source_file": "attachments/email_096_BL.txt"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "llm",
+  "needs_llm": false
+}

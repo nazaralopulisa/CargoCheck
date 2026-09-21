@@ -1,0 +1,33 @@
+{
+  "email_id": "email_119",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+      "consignee": "CLIFFORD PAPER INC",
+      "notify_party": "CLIFFORD PAPER INC",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
+      "port_of_discharge": "SAVANNAH, US (USSAV)",
+      "container_count": 15,
+      "gross_weight_kg": 322590
+    },
+    "source_file": "attachments/email_119_SI.txt"
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING ON BEHALF OF VITAL SOLUTIONS PTE LTD",
+      "consignee": "CLIFFORD PAPER INC",
+      "notify_party": "CLIFFORD PAPER INC",
+      "port_of_loading": "SINGAPORE, SINGAPORE (MYPKG)",
+      "port_of_discharge": "SAVANNAH, US (USSAV)",
+      "container_count": 15,
+      "gross_weight_kg": 322590
+    },
+    "source_file": "attachments/email_119_BL.txt"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "llm",
+  "needs_llm": false
+}

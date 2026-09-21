@@ -1,0 +1,37 @@
+{
+  "email_id": "email_056",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "MOORIM SP CO., LTD",
+      "notify_party": "MOORIM SP CO., LTD",
+      "port_of_loading": "NANTONG, CHINA (CNNTG)",
+      "port_of_discharge": "KARACHI, PAKISTAN (PKKHI)",
+      "container_count": "1 x 20'GP",
+      "gross_weight_kg": "20,131 KG"
+    },
+    "source_file": "attachments/email_056_SI.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "MOORIM SP CO., LTD",
+      "notify_party": "MOORIM SP CO., LTD",
+      "port_of_loading": "NANTONG, CHINA (CNNTG)",
+      "port_of_discharge": "KARACHI, PAKISTAN (PKKHI)",
+      "container_count": "1 x 20'GP",
+      "gross_weight_kg": "20,131 KG"
+    },
+    "source_file": "attachments/email_056_BL.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "rules",
+  "needs_llm": false
+}

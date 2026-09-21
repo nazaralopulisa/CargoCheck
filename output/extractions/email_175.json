@@ -1,0 +1,37 @@
+{
+  "email_id": "email_175",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "KTP CO., LTD",
+      "notify_party": "KTP CO., LTD",
+      "port_of_loading": "NANTONG, CHINA (CNNTG)",
+      "port_of_discharge": "CALLAO, PERU (PECLL)",
+      "container_count": "10 x 20'GP",
+      "gross_weight_kg": "206,510 KG"
+    },
+    "source_file": "attachments/email_175_SI.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "KTP CO., LTD",
+      "notify_party": "KTP CO., LTD",
+      "port_of_loading": "NANTONG, CHINA (CNNTG)",
+      "port_of_discharge": "CALLAO, PERU (PECLL)",
+      "container_count": "10 x 20'GP",
+      "gross_weight_kg": "206,510 KG"
+    },
+    "source_file": "attachments/email_175_BL.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "rules",
+  "needs_llm": false
+}

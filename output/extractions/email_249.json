@@ -1,0 +1,37 @@
+{
+  "email_id": "email_249",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+      "consignee": "UAB NOVAKOPA",
+      "notify_party": "UAB NOVAKOPA",
+      "port_of_loading": "NANTONG, CHINA (CNNTG)",
+      "port_of_discharge": "GDANSK, POLAND (PLGDN)",
+      "container_count": "5 x 20'FCL",
+      "gross_weight_kg": "115,545 KG"
+    },
+    "source_file": "attachments/email_249_SI.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+      "consignee": "UAB NOVAKOPA",
+      "notify_party": "UAB NOVAKOPA",
+      "port_of_loading": "NANTONG, CHINA (CNNTG)",
+      "port_of_discharge": "GDANSK, POLAND (PLGDN)",
+      "container_count": "5 x 20'FCL",
+      "gross_weight_kg": "115,545 KG"
+    },
+    "source_file": "attachments/email_249_BL.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "rules",
+  "needs_llm": false
+}

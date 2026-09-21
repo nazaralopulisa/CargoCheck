@@ -1,0 +1,37 @@
+{
+  "email_id": "email_071",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "HABRAS INTERNATIONAL LIMITED",
+      "notify_party": "HABRAS INTERNATIONAL LIMITED",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
+      "port_of_discharge": "YANGON, MYANMAR (MMRGN)",
+      "container_count": "6 x 40'HC",
+      "gross_weight_kg": "132,006 KG"
+    },
+    "source_file": "attachments/email_071_SI.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "HABRAS INTERNATIONAL LIMITED",
+      "notify_party": "HABRAS INTERNATIONAL LIMITED",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
+      "port_of_discharge": "CEBU, PHILIPPINES (MMRGN)",
+      "container_count": "8 x 40'HC",
+      "gross_weight_kg": "132,006 KG"
+    },
+    "source_file": "attachments/email_071_BL.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "rules",
+  "needs_llm": false
+}

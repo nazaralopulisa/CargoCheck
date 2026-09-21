@@ -1,0 +1,37 @@
+{
+  "email_id": "email_031",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+      "consignee": "VITAL SOLUTIONS PTE. LTD.",
+      "notify_party": "VITAL SOLUTIONS PTE. LTD.",
+      "port_of_loading": "NHAVA SHEVA, INDIA (INNSA)",
+      "port_of_discharge": "MOMBASA, KENYA (KEMBA)",
+      "container_count": "1 x 20'GP",
+      "gross_weight_kg": "21,114 KG"
+    },
+    "source_file": "attachments/email_031_SI.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+      "consignee": "VITAL SOLUTIONS PTE. LTD.",
+      "notify_party": "VITAL SOLUTIONS PTE. LTD.",
+      "port_of_loading": "NHAVA SHEVA, INDIA (INNSA)",
+      "port_of_discharge": "MOMBASA, KENYA (KEMBA)",
+      "container_count": "3 x 20'GP",
+      "gross_weight_kg": "23,114 KG"
+    },
+    "source_file": "attachments/email_031_BL.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "rules",
+  "needs_llm": false
+}

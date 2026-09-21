@@ -1,0 +1,42 @@
+{
+  "email_id": "email_502",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+      "consignee": "ROXCEL TRADING GMBH",
+      "notify_party": "ROXCEL TRADING GMBH",
+      "port_of_loading": "SINGAPORE (SGSIN)",
+      "port_of_discharge": "ASHDOD, ISRAEL (ILASH)",
+      "container_count": "1 x 40'HC",
+      "gross_weight_kg": "22,318 KG"
+    },
+    "source_file": "attachments/email_502_SI.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "bl": null,
+  "other_documents": [
+    {
+      "doc_type_detected": "OTHER",
+      "fields": {
+        "shipper": "ASIA PACIFIC PAPERBOARD TRADING PTE LTD",
+        "consignee": "ROXCEL TRADING GMBH",
+        "notify_party": null,
+        "port_of_loading": null,
+        "port_of_discharge": null,
+        "container_count": null,
+        "gross_weight_kg": null
+      },
+      "source_file": "attachments/email_502_BL.txt",
+      "method": "rules",
+      "type_from_title": true
+    }
+  ],
+  "extraction_issues": [
+    "attachments/email_502_BL.txt was detected as OTHER, not a usable SI/BL",
+    "No BL found"
+  ],
+  "method": "rules",
+  "needs_llm": false
+}

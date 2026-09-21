@@ -1,0 +1,33 @@
+{
+  "email_id": "email_383",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "AL GURG STATIONERY LLC",
+      "notify_party": "AL GURG STATIONERY LLC",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
+      "port_of_discharge": "BALTIMORE, US (USBAL)",
+      "container_count": 10,
+      "gross_weight_kg": 229130
+    },
+    "source_file": "attachments/email_383_SI.txt"
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "AL GURG STATIONERY LLC",
+      "notify_party": "AL GURG STATIONERY LLC",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
+      "port_of_discharge": "BALTIMORE, US (USBAL)",
+      "container_count": 10,
+      "gross_weight_kg": 229130
+    },
+    "source_file": "attachments/email_383_BL.txt"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "llm",
+  "needs_llm": false
+}

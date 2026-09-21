@@ -1,0 +1,37 @@
+{
+  "email_id": "email_409",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "EAST BRIGHT FZ-LLC",
+      "notify_party": "EAST BRIGHT FZ-LLC",
+      "port_of_loading": "SINGAPORE (SGSIN)",
+      "port_of_discharge": "MERSIN, TURKEY (TRMER)",
+      "container_count": "12 x 20'GP",
+      "gross_weight_kg": "262,428 KG"
+    },
+    "source_file": "attachments/email_409_SI.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FAR EAST (M) SDN BHD",
+      "consignee": "EAST BRIGHT FZ-LLC",
+      "notify_party": "EAST BRIGHT FZ-LLC",
+      "port_of_loading": "SINGAPORE (SGSIN)",
+      "port_of_discharge": "MERSIN, TURKEY (TRMER)",
+      "container_count": "12 x 20'GP",
+      "gross_weight_kg": "262,428 KG"
+    },
+    "source_file": "attachments/email_409_BL.txt",
+    "method": "rules",
+    "type_from_title": true
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "rules",
+  "needs_llm": false
+}

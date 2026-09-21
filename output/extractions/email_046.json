@@ -1,0 +1,33 @@
+{
+  "email_id": "email_046",
+  "si": {
+    "doc_type_detected": "SI",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+      "consignee": "SAFQA LIMITED",
+      "notify_party": "TOPKOPY MIDDLE EAST FZE",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
+      "port_of_discharge": "SAVANNAH, US (USSAV)",
+      "container_count": 12,
+      "gross_weight_kg": 257340
+    },
+    "source_file": "attachments/email_046_SI.txt"
+  },
+  "bl": {
+    "doc_type_detected": "BL",
+    "fields": {
+      "shipper": "APRIL FINE PAPER TRADING (MIDDLE EAST) FZE",
+      "consignee": "SAFQA LIMITED",
+      "notify_party": "MOORIM SP CO., LTD",
+      "port_of_loading": "PORT KLANG (WESTPORT), MALAYSIA (MYPKG)",
+      "port_of_discharge": "SAVANNAH, US (USSAV)",
+      "container_count": 12,
+      "gross_weight_kg": 257340
+    },
+    "source_file": "attachments/email_046_BL.txt"
+  },
+  "other_documents": [],
+  "extraction_issues": [],
+  "method": "llm",
+  "needs_llm": false
+}

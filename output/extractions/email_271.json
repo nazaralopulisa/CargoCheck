@@ -1,0 +1,11 @@
+{
+  "email_id": "email_271",
+  "si": null,
+  "bl": null,
+  "other_documents": [],
+  "extraction_issues": [
+    "No attachments on this email"
+  ],
+  "method": "llm",
+  "needs_llm": false
+}

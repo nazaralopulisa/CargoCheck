@@ -546,8 +546,7 @@ def landing(results):
     """First screen: what CargoCheck does, in five seconds. Scroll down for the dashboard."""
     total = len(results)
     checks = sum(1 for r in results.values() if r["data"].get("category") == "BL_COMPARISON")
-    people = sum(1 for r in results.values()
-                 if r["data"].get("category") == "BL_COMPARISON" and r["status"] in OPEN_STATUSES)
+    people = len(inbox_groups(list(results.items()))["needs"])
     st.markdown(f"""
 <section class="cc-landing">
   <div class="cc-landing-text">
@@ -635,8 +634,9 @@ def page_overview(results):
     processed = [r for r in results.values() if r["status"] != "PENDING"]
     checks = [r for r in processed if r["data"].get("category") == "BL_COMPARISON"]
     compared = [r for r in checks if r["status"] not in ("NO_DOCUMENTS", "PROCESSING_ERROR")]
-    mismatches = [r for r in checks if r["status"] == "MISMATCH"]
-    waiting = [r for r in checks if r["status"] in OPEN_STATUSES]
+    groups = inbox_groups(list(results.items()))           # same counts as the Inbox
+    mismatches = [r for _, r in groups["mismatch"]]
+    waiting = [r for _, r in groups["needs"]]
 
     # how each compared email's documents were read
     def read_by(r):
@@ -798,6 +798,12 @@ INBOX_TABS = [
 ]
 URGENCY = {"PROCESSING_ERROR": 0, "NEEDS_REVIEW": 1, "PENDING": 2, "MISMATCH": 3}
 
+def inbox_groups(items):
+    """Split (email_id, result) pairs into the Inbox tabs. The cards, the ticker, the
+    tabs, the landing and the Overview all count from this, so their numbers agree."""
+    return {key: sorted((x for x in items if x[1]["status"] in statuses),
+                        key=lambda x: (URGENCY.get(x[1]["status"], 9), x[0]))
+            for key, _, statuses, _ in INBOX_TABS}
 
 def inbox_table(key, items, results):
     """One tab's table. Selecting a row shows that email's details underneath."""
@@ -824,27 +830,26 @@ def inbox_table(key, items, results):
 
 
 def page_inbox(results):
-    checks = [r for r in results.values() if r["data"].get("category") == "BL_COMPARISON"]
-    count = lambda s: sum(r["status"] == s for r in checks)                      # noqa: E731
-    others = sum(1 for r in results.values()
-                 if r["data"].get("category") not in (None, "BL_COMPARISON"))
+    totals = {k: len(v) for k, v in inbox_groups(list(results.items())).items()}
+    checks = sum(r["data"].get("category") == "BL_COMPARISON" for r in results.values())
+    resolved = sum(r["status"] == "RESOLVED" for r in results.values())
 
     page_heading("Inbox", 'Every BL, <em>checked</em> against its <span class="hl">SI</span>')
     how_it_works()
-    ticker([f"{len(results)} emails in", f"{len(checks)} <em>BL checks</em>",
-            f"{plural(count('MISMATCH'), 'mismatch').replace('mismatchs', 'mismatches')} caught",
-            f"{count('NEEDS_REVIEW') + count('PROCESSING_ERROR')} <em>waiting for a person</em>",
-            f"{count('RESOLVED')} resolved by a person",
-            f"{count('OK')} clean", "SI vs draft BL, field by field"])
+    ticker([f"{len(results)} emails in", f"{checks} <em>BL checks</em>",
+            f"{plural(totals['mismatch'], 'mismatch').replace('mismatchs', 'mismatches')} to fix",
+            f"{totals['needs']} <em>waiting for a person</em>",
+            f"{resolved} resolved by a person",
+            f"{totals['done']} clean or resolved", "SI vs draft BL, field by field"])
     st.markdown(f"""
 <div class="cc-stats">
-  <div class="cc-stat mismatch"><div class="num">{count('MISMATCH')}</div>
+  <div class="cc-stat mismatch"><div class="num">{totals['mismatch']}</div>
        <div class="lbl">BLs with <em>mismatches</em> to fix</div></div>
-  <div class="cc-stat review"><div class="num">{count('NEEDS_REVIEW') + count('PROCESSING_ERROR')}</div>
+  <div class="cc-stat review"><div class="num">{totals['needs']}</div>
        <div class="lbl">waiting for <em>a person</em></div></div>
-  <div class="cc-stat ok"><div class="num">{count('OK')}</div>
-       <div class="lbl">clean, <em>no mismatch</em></div></div>
-  <div class="cc-stat"><div class="num">{others}</div>
+  <div class="cc-stat ok"><div class="num">{totals['done']}</div>
+       <div class="lbl">clean, or <em>resolved by a person</em></div></div>
+  <div class="cc-stat"><div class="num">{totals['other']}</div>
        <div class="lbl">other emails, <em>sorted</em></div></div>
 </div>""", unsafe_allow_html=True)
 
@@ -852,11 +857,13 @@ def page_inbox(results):
                            label_visibility="collapsed")
     matching = [(eid, r) for eid, r in results.items()
                 if not search or search.lower() in (r["email"].get("subject", "") + eid).lower()]
+    groups = inbox_groups(matching)
 
-    groups = {key: sorted((x for x in matching if x[1]["status"] in statuses),
-                          key=lambda x: (URGENCY.get(x[1]["status"], 9), x[0]))
-              for key, _, statuses, _ in INBOX_TABS}
-    tabs = st.tabs([f"{label} ({len(groups[key])})" for key, label, _, _ in INBOX_TABS])
+    def tab_label(key, label):
+        n = len(groups[key])
+        return f"{label} ({n} of {totals[key]})" if search else f"{label} ({n})"
+
+    tabs = st.tabs([tab_label(key, label) for key, label, _, _ in INBOX_TABS])
     for tab, (key, label, _, hint) in zip(tabs, INBOX_TABS):
         with tab:
             st.caption(hint)
@@ -866,7 +873,6 @@ def page_inbox(results):
                 st.write("No emails in this tab match your search.")
             else:
                 st.write("Nothing here right now.")
-
 
 # --- Page: Check documents (live run) -----------------------------------------
 

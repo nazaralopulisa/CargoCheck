@@ -48,5 +48,15 @@
       "gross_weight_kg": "221170"
     },
     "reviewed_at": "2026-09-21 18:33"
+  },
+  "email_025": {
+    "decision": "corrected",
+    "note": "Made port of discharge Fremantle, Australia and container 6 x 20'GP",
+    "reviewed_by": "",
+    "bl": {
+      "port_of_discharge": "FREMANTLE, AUSTRALIA (AUFRE)",
+      "container_count": "6 x 20'GP"
+    },
+    "reviewed_at": "2026-09-22 10:13"
   }
 }

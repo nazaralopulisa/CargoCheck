@@ -308,6 +308,24 @@ h1, h2, h3 { color: var(--ink); letter-spacing: -0.01em; }
   .cc-paper.bl { top: 7.4rem; }
   .cc-stamp { top: 5.6rem; right: 0; font-size: .85rem; }
 }
+
+/* ---- Overview: four insight cards, each led by its takeaway ---- */
+.cc-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem;
+            margin: .4rem 0 1.6rem; }
+.cc-card { background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--ink);
+           padding: 1rem 1.25rem 1.15rem; min-width: 0; }
+.cc-card .cc-kicker { margin: 0 0 .3rem; }
+.cc-card-title { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 1.12rem;
+                 line-height: 1.3; letter-spacing: -0.01em; color: var(--ink); margin: 0 0 .95rem; }
+.cc-card .cc-bars { grid-template-columns: minmax(6rem, 38%) 1fr auto; margin: 0; row-gap: .45rem; }
+.cc-card .cc-bar-track { height: 1rem; }
+.cc-card-empty { color: var(--muted); margin: 0; }
+.cc-stack { display: flex; height: 1.1rem; border-radius: 3px; overflow: hidden; margin: .2rem 0 .9rem;
+            background: rgba(28,43,54,.06); }
+.cc-stack span { display: block; height: 100%; }
+.cc-card .cc-legend { flex: none; min-width: 0; }
+@media (max-width: 900px) { .cc-cards { grid-template-columns: 1fr; } }
+
 </style>
 """, unsafe_allow_html=True)
 
@@ -670,90 +688,137 @@ def section(title):
     st.markdown(f'<p class="cc-section">{title}</p>', unsafe_allow_html=True)
 
 
+SMALL_WORDS = {"OF", "AND", "THE", "FOR", "ON", "DE"}
+# company-type codes and abbreviations that should stay in capitals
+CODES = {"SDN", "BHD", "PTE", "LTD", "FZE", "FZCO", "FZ", "LLC", "GMBH", "INC", "CO", "PTY", "SA", "SP",
+         "KPP", "M", "UAB", "NV", "BV", "AG", "AB", "SAS", "SRL", "PLC", "JSC", "USA", "UK", "UAE"}
+ 
+ 
+def short_name(name):
+    """'APRIL FINE PAPER TRADING (MIDDLE EAST) FZE' -> 'April Fine Paper Trading (Middle East) FZE'.
+    Company codes stay in capitals; nothing is cut off, because the end of a name is often
+    what tells two companies apart."""
+    def fix(part):
+        core = part.strip("().,")
+        if not core:
+            return part
+        if core.upper() in CODES or any(ch.isdigit() for ch in core):
+            new = core.upper()
+        elif core.upper() in SMALL_WORDS:
+            new = core.lower()
+        else:
+            new = core.capitalize()
+        return part.replace(core, new, 1)
+    return " ".join("-".join(fix(p) for p in word.split("-")) for word in str(name).split())
+ 
+ 
+def bars_html(rows):
+    """Same look as bar_list, returned as HTML so it can sit inside a card."""
+    top = max((r["value"] for r in rows), default=0) or 1
+    return '<ul class="cc-bars">' + "".join(
+        f'<li class="cc-bar-row"><span class="cc-bar-label">{html.escape(str(r["label"]))}</span>'
+        f'<span class="cc-bar-track"><span class="cc-bar-fill" style="width:'
+        f'{max(r["value"] / top * 100, 1.5):.1f}%;background:{r["color"]}"></span></span>'
+        f'<span class="cc-bar-val">{r["value"]}'
+        f'{" <small>" + html.escape(r["note"]) + "</small>" if r.get("note") else ""}</span></li>'
+        for r in rows) + "</ul>"
+ 
+ 
+def stack_html(rows):
+    """One thin 100% bar split into parts, with a counted legend underneath."""
+    total = sum(r["value"] for r in rows) or 1
+    bar = "".join(f'<span style="width:{r["value"] / total * 100:.2f}%;background:{r["color"]}" '
+                  f'title="{html.escape(r["label"])}: {r["value"]}"></span>' for r in rows if r["value"])
+    legend = "".join(f'<li><i style="background:{r["color"]}"></i><span>{html.escape(r["label"])}</span>'
+                     f'<b>{r["value"]}</b><small>{r["value"] / total:.0%}</small></li>' for r in rows)
+    return f'<div class="cc-stack" role="img">{bar}</div><ul class="cc-legend">{legend}</ul>'
+ 
+ 
+def card(kicker, title, body):
+    return (f'<section class="cc-card"><p class="cc-kicker">{kicker}</p>'
+            f'<h3 class="cc-card-title">{title}</h3>{body}</section>')
+ 
+ 
 def page_overview(results):
     landing(results)
-    page_heading("Overview", 'Inbox <span class="hl"><em>insights</em> </span>')
-
+    page_heading("Overview", 'Inbox <span class="hl"><em>insights</em></span>')
+ 
     processed = [r for r in results.values() if r["status"] != "PENDING"]
     checks = [r for r in processed if r["data"].get("category") == "BL_COMPARISON"]
     compared = [r for r in checks if r["status"] not in ("NO_DOCUMENTS", "PROCESSING_ERROR")]
-    groups = inbox_groups(list(results.items()))           # same counts as the Inbox
-    mismatches = [r for _, r in groups["mismatch"]]
-    waiting = [r for _, r in groups["needs"]]
-
-    # how each compared email's documents were read
+    mismatches = [r for r in checks if r["status"] == "MISMATCH"]
+    strong, light = PALETTE["mismatch"], "#F2B8A0"            # top bar stands out, the rest recede
+    ink_light = "#A9B4BD"
+ 
+    # 1. which fields go wrong most often
+    field_counts = pd.Series([f for r in mismatches for f in r["entry"]["defect_fields"]],
+                             dtype="object").value_counts()
+    if len(field_counts):
+        top_f, top_n = FIELD_LABELS[field_counts.index[0]], int(field_counts.iloc[0])
+        c1 = card("Where BLs go wrong",
+                  f"{top_f} is the most common error: wrong on {top_n} of {len(mismatches)} mismatched BLs",
+                  bars_html([{"label": FIELD_LABELS[f], "value": int(n),
+                              "color": strong if i == 0 else light}
+                             for i, (f, n) in enumerate(field_counts.items())]))
+    else:
+        c1 = card("Where BLs go wrong", "No mismatches found yet",
+                  '<p class="cc-card-empty">Mismatched fields will be ranked here.</p>')
+ 
+    # 2. which shippers to follow up with
+    names, per_shipper = {}, {}
+    for r in compared:
+        raw = next((row["si"] for row in r["report"].get("fields", [])
+                    if row["field"] == "shipper" and row["si"]), None)
+        if not raw:
+            continue
+        key = normalize_party(raw)
+        names.setdefault(key, str(raw).split(" ON BEHALF OF")[0].strip())
+        total, bad = per_shipper.get(key, (0, 0))
+        per_shipper[key] = (total + 1, bad + (r["status"] == "MISMATCH"))
+    ranked = sorted(((names[k], bad, total) for k, (total, bad) in per_shipper.items() if bad),
+                    key=lambda x: (-x[1], x[0]))[:5]
+    if ranked:
+        name, bad, total = ranked[0]
+        c2 = card("Who to follow up with",
+                  f"{html.escape(short_name(name))} has the most errors: {bad} of {total} BLs",
+                  bars_html([{"label": short_name(n), "value": b, "note": f"of {t} · {b / t:.0%}",
+                              "color": PALETTE["ink"] if i == 0 else ink_light}
+                             for i, (n, b, t) in enumerate(ranked)]))
+    else:
+        c2 = card("Who to follow up with", "No shipper has a mismatched BL yet",
+                  '<p class="cc-card-empty">Shippers with errors will be ranked here.</p>')
+ 
+    # 3. the inbox, by email type
+    cats = pd.Series([r["data"].get("category") for r in processed], dtype="object").value_counts()
+    colors = {"BL_COMPARISON": PALETTE["ink"], "SI_REQUEST": PALETTE["match"],
+              "INVOICE_QUERY": "#F2B33D", "GENERAL": "#8FA3B3", "SPAM": "#D9DFE3"}
+    c3 = card("Your inbox",
+              f"{len(checks)} of {len(processed)} emails needed a BL check; the rest only needed sorting",
+              stack_html([{"label": CATEGORY_LABELS[c], "value": int(cats[c]), "color": colors[c]}
+                          for c in CATEGORIES if c in cats]))
+ 
+    # 4. how the documents were read
     def read_by(r):
         if scanned_files(r["email"]):
             return "AI vision (scans)"
         return "AI (LLM)" if r["data"].get("method") == "AI" else "Rules (no AI)"
     methods = pd.Series([read_by(r) for r in compared], dtype="object").value_counts()
-    rules_share = methods.get("Rules (no AI)", 0) / max(len(compared), 1)
-
-
-    # 1. hero: which fields go wrong most often
-    section("What goes wrong most often")
-    field_counts = pd.Series([f for r in mismatches for f in r["entry"]["defect_fields"]],
-                             dtype="object").value_counts()
-    if len(field_counts):
-        bar_list([{"label": FIELD_LABELS[f], "value": int(n), "color": PALETTE["mismatch"]}
-                  for f, n in field_counts.items()], hero=True)
-        top_field, top_n = FIELD_LABELS[field_counts.index[0]], int(field_counts.iloc[0])
-        insight(f"<b>{top_field}</b> is the most common error: wrong on {top_n} of "
-                f"{len(mismatches)} draft BLs with mismatches.")
+    share = methods.get("Rules (no AI)", 0) / max(len(compared), 1)
+    method_colors = {"Rules (no AI)": PALETTE["match"], "AI (LLM)": PALETTE["ink"],
+                     "AI vision (scans)": PALETTE["review"]}
+    if share == 1:
+        title = "Free rules read every document; no AI was needed"
+    elif share >= .5:
+        title = f"Free rules read {share:.0%} of documents; AI only handled the rest"
     else:
-        st.write("No mismatches found yet.")
-
-    left, right = st.columns([1.15, 1], gap="large")
-
-    # 2. which shippers' BLs have the most mismatches, 3. how documents were read
-    with left:
-        section("Shippers with the most mismatched BLs")
-        names, per_shipper = {}, {}
-        for r in compared:
-            raw = next((row["si"] for row in r["report"].get("fields", [])
-                        if row["field"] == "shipper" and row["si"]), None)
-            if not raw:
-                continue
-            key = normalize_party(raw)
-            names.setdefault(key, str(raw).split(" ON BEHALF OF")[0].strip())
-            total, bad = per_shipper.get(key, (0, 0))
-            per_shipper[key] = (total + 1, bad + (r["status"] == "MISMATCH"))
-        ranked = sorted(((names[k], bad, total) for k, (total, bad) in per_shipper.items() if bad),
-                        key=lambda x: (-x[1], x[0]))[:6]
-        if ranked:
-            bar_list([{"label": name, "value": bad, "color": PALETTE["ink"],
-                       "note": f"of {total} · {bad / total:.0%}"} for name, bad, total in ranked])
-            name, bad, total = ranked[0]
-            insight(f"<b>{html.escape(name)}</b> has the most mismatched BLs "
-                    f"({bad} of {total} checks).")
-        else:
-            st.write("No mismatches found yet.")
-
-        section("How the documents were read")
-        if len(methods):
-            colors = {"Rules (no AI)": PALETTE["match"], "AI (LLM)": PALETTE["ink"],
-                      "AI vision (scans)": PALETTE["review"]}
-            bar_list([{"label": m, "value": int(methods[m]), "color": colors[m]}
-                      for m in colors if m in methods])
-            insight(f"<b>{rules_share:.0%}</b> read by free, instant rules. AI only steps in "
-                    "where the rules can't, and scans always go to a person to confirm.")
-        else:
-            st.write("No documents read yet.")
-
-    # 4. inbox breakdown
-    with right:
-        section("Inbox at a glance")
-        cats = pd.Series([r["data"].get("category") for r in processed],
-                         dtype="object").value_counts()
-        if len(cats):
-            colors = {"BL_COMPARISON": PALETTE["ink"], "SI_REQUEST": PALETTE["match"],
-                      "INVOICE_QUERY": "#F2B33D", "GENERAL": "#8FA3B3", "SPAM": "#D9DFE3"}
-            order = [c for c in CATEGORIES if c in cats]
-            donut_html([{"label": CATEGORY_LABELS[c], "value": int(cats[c]), "color": colors[c]}
-                        for c in order], len(processed), "emails")
-            insight(f"<b>{len(checks)}</b> of {len(processed)} emails ask for a BL check; "
-                    "the rest only needed sorting.")
-
+        title = f"Rules read {share:.0%} for free; AI handled the rest, and scans went to a person"
+    c4 = card("How documents were read", title,
+              stack_html([{"label": m, "value": int(methods[m]), "color": method_colors[m]}
+                          for m in method_colors if m in methods])) if len(methods) else \
+        card("How documents were read", "No documents read yet", "")
+ 
+    st.markdown(f'<div class="cc-cards">{c1}{c2}{c3}{c4}</div>', unsafe_allow_html=True)
+ 
 # --- Page: Inbox -------------------------------------------------------------
 def report_missed(r):
     """Lets staff flag a field the system said matched but is actually wrong on the BL.

@@ -7,11 +7,9 @@ CargoCheck reads a shipping team's inbox, sorts every email, compares each draft
 
 Built for the **Averis Hackathon 2026**, shipping document verification challenge.
 
-|                        |                                                                                                                                     |
-| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| 🌐**Live demo**  | [nazaralopulisa-cargocheck-appdashboard-iincwc.streamlit.app](https://nazaralopulisa-cargocheck-appdashboard-iincwc.streamlit.app/)  |
-| 🎬**Demo video** | [ADD YOUTUBE LINK]                                                                                                                  |
-| 📊**Slides**     | [ADD SLIDES LINK]                                                                                                                   |
+|                       |                                                                                                                                     |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| 🌐**Live demo** | [nazaralopulisa-cargocheck-appdashboard-iincwc.streamlit.app](https://nazaralopulisa-cargocheck-appdashboard-iincwc.streamlit.app/)  |
 
 ---
 

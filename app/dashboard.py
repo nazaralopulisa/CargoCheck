@@ -40,7 +40,7 @@ from comparer import compare_email, FIELDS                              # noqa: 
 from reviews import load_reviews, save_review, delete_review, apply_review  # noqa: E402
 from pipeline import (to_comparer_input, CLASSIFICATIONS_FILE,          # noqa: E402
                       EXTRACTIONS_DIR, SCORE_LOG, categorize, decide_email,
-                      has_attachments, scanned_files)
+                      has_attachments, scanned_files, LAST_SCORE_FILE)
 from normalizer import normalize_party                                  # noqa: E402
 from doc_reader import SmartInbox                                       # noqa: E402
 from export import export_rows, export_csv, export_json, filename, confidence  # noqa: E402
@@ -64,7 +64,7 @@ REASON_LABELS = {"missing_attachment": "The SI or the BL is not attached.",
 FIELD_LABELS = {"shipper": "Shipper", "consignee": "Consignee", "notify_party": "Notify party",
                 "port_of_loading": "Port of loading", "port_of_discharge": "Port of discharge",
                 "container_count": "Containers", "gross_weight_kg": "Gross weight (kg)"}
-PAGES = ["Overview", "Inbox", "Check documents", "Review queue", "Scores"]
+PAGES = ["Overview", "Inbox", "Check documents", "Review queue", "Accuracy"]
 PALETTE = {"ink": "#1C2B36", "mismatch": "#D9480F", "match": "#2B7A6B", "review": "#B7791F",
            "muted": "#5B6B77", "line": "#D5DDE2", "yellow": "#F9C74F"}
 # Assumptions for the time-saved estimate (shown on the page, adjustable there)
@@ -375,16 +375,19 @@ def build_results():
             continue
 
         entry, report = decide_email(eid, email, category, extraction)   # same as submission.json
+        ai_status = report["status"]              # what the system decided, before any review
         data = base
         if review:
             data = apply_review(base, review)
             entry, report = reviewed_result(eid, email, data, review, category, extraction,
                                             entry, report)
+        entry, report = apply_missed(entry, report, review)
         status = report["status"]
         if review and status in OPEN_STATUSES:
             status = "RESOLVED"                   # a person has made the final call
         results[eid] = {"email": email, "data": data, "base": base, "entry": entry,
-                        "report": report, "status": status, "review": review}
+                        "report": report, "status": status, "review": review,
+                        "ai_status": ai_status}
     results.update(uploaded_results(reviews))
     return results
 
@@ -752,6 +755,43 @@ def page_overview(results):
                     "the rest only needed sorting.")
 
 # --- Page: Inbox -------------------------------------------------------------
+def report_missed(r):
+    """Lets staff flag a field the system said matched but is actually wrong on the BL.
+    The miss is saved with the review and counted on the Accuracy page."""
+    eid = r["email"]["email_id"]
+    matched = [row["field"] for row in (r["report"].get("fields") or [])
+               if row["result"] == "MATCH"]
+    if not matched:
+        return
+    with st.expander("⚑  Report a discrepancy CargoCheck missed"):
+        st.caption("Found a difference the system didn't flag? Tell us which field. The email "
+                   "becomes a mismatch, and the miss is counted on the Accuracy page.")
+        fields = st.multiselect("Which field is actually wrong on the draft BL?", matched,
+                                format_func=FIELD_LABELS.get, key=f"miss_{eid}")
+        note = st.text_input("What's wrong?", key=f"miss_note_{eid}",
+                             placeholder="e.g. BL shows 4 containers, SI says 3")
+        if st.button("Report missed discrepancy", disabled=not fields, key=f"miss_btn_{eid}"):
+            review = dict(r["review"] or {})                  # keep any earlier review
+            review.update({"decision": review.get("decision", "reported_miss"),
+                           "missed_fields": sorted(set(review.get("missed_fields", [])) | set(fields)),
+                           "miss_note": note,
+                           "reviewed_by": st.session_state.get("reviewer", "")})
+            save_review(eid, review)
+            st.rerun()
+ 
+ 
+def apply_missed(entry, report, review):
+    """Turn fields a person reported as missed into mismatches."""
+    missed = (review or {}).get("missed_fields") or []
+    if not missed or entry.get("category") != "BL_COMPARISON":
+        return entry, report
+    defects = list(dict.fromkeys((entry.get("defect_fields") or []) + missed))
+    entry = dict(entry, status="MISMATCH", has_defect=True, review_reason=None,
+                 defect_fields=defects)
+    report = dict(report, status="MISMATCH", fields=[
+        dict(row, result="MISMATCH") if row["field"] in missed else row
+        for row in report.get("fields") or []])
+    return entry, report
 
 def email_detail(r):
     email, data = r["email"], r["data"]
@@ -781,6 +821,7 @@ def email_detail(r):
             comparison_table(r)
         if r["status"] == "MISMATCH":
             amendment_email_box(r, to=email.get("from", ""), subject=email.get("subject", ""))
+        report_missed(r)
     else:
         st.write("This type of email only needs sorting, not a document check.")
 
@@ -1363,21 +1404,125 @@ def page_review(results):
 
 # --- Page: Scores ------------------------------------------------------------
 
-def page_scores():
-    page_heading("Scores", 'How the system <em>got better</em>, run by run')
-    if not SCORE_LOG.exists():
-        st.write("No scores yet. Run `python app/pipeline.py --submit` to score a submission.")
-        return
-    log = pd.read_csv(SCORE_LOG)
-    if len(log) > 1:
-        chart = log.reset_index().rename(columns={"index": "run"})
-        chart["run"] += 1
-        st.line_chart(chart, x="run", y="final", height=260)
-    st.dataframe(log.sort_values(by="time", ascending=False).rename(columns={
-        "time": "When", "final": "Final score", "class_f1": "Sorting F1",
-        "defect_f1": "Mismatch F1", "e2e": "Caught end to end",
-        "escalation_recall": "Escalated correctly", "note": "What changed"}),
-        hide_index=True, width="stretch")
+def staff_feedback(results):
+    """Live accuracy, measured from what staff did with the system's results."""
+    reviewed = [r for r in results.values() if r["review"]]
+    missed = [r for r in reviewed if r["review"].get("missed_fields")]
+    corrected = [r for r in reviewed if r not in missed and r["review"].get("decision") == "corrected"
+                 and (r["review"].get("si") or r["review"].get("bl") or r["review"].get("category"))]
+    confirmed = [r for r in reviewed if r not in missed and r not in corrected]
+    by_field = {}
+    for r in reviewed:
+        rv = r["review"]
+        for f in set(rv.get("si") or {}) | set(rv.get("bl") or {}) | set(rv.get("missed_fields") or []):
+            by_field[f] = by_field.get(f, 0) + 1
+    compared = [r for r in results.values()
+                if r["data"].get("category") == "BL_COMPARISON"
+                and r["status"] not in ("NO_DOCUMENTS", "PENDING")]
+    needed = [r for r in compared if r.get("ai_status", r["status"]) in OPEN_STATUSES]
+    return dict(reviewed=reviewed, confirmed=confirmed, corrected=corrected, missed=missed,
+                by_field=by_field, compared=compared, needed=needed)
+ 
+ 
+def latest_evaluation():
+    if LAST_SCORE_FILE.exists():
+        try:
+            return json.loads(LAST_SCORE_FILE.read_text())
+        except Exception:
+            pass
+    return None
+ 
+ 
+def page_accuracy(results):
+    page_heading("Accuracy", 'Can you <em>trust</em> the <span class="hl">results</span>?')
+    fb = staff_feedback(results)
+    n = len(fb["reviewed"])
+    agree = f'{len(fb["confirmed"]) / n:.0%}' if n else "–"
+    need_share = f'{len(fb["needed"]) / len(fb["compared"]):.0%}' if fb["compared"] else "–"
+ 
+    # ---- 1. live: what staff found on their own emails ----
+    st.markdown('<p class="cc-lede">Measured from your team\'s own checks. Every time someone '
+                'confirms, corrects or reports a missed discrepancy, these numbers update.</p>',
+                unsafe_allow_html=True)
+    st.markdown(f"""
+<div class="cc-stats">
+  <div class="cc-stat ok"><div class="num">{agree}</div>
+       <div class="lbl">of checked results staff <em>agreed</em> with</div></div>
+  <div class="cc-stat"><div class="num">{n}</div>
+       <div class="lbl">results <em>checked</em> by staff so far</div></div>
+  <div class="cc-stat mismatch"><div class="num">{len(fb["missed"])}</div>
+       <div class="lbl">discrepancies CargoCheck <em>missed</em>, reported by staff</div></div>
+  <div class="cc-stat review"><div class="num">{need_share}</div>
+       <div class="lbl">of BL checks <em>needed a person</em></div></div>
+</div>""", unsafe_allow_html=True)
+ 
+    if n:
+        left, right = st.columns(2, gap="large")
+        with left:
+            section("What staff did with the results")
+            bar_list([{"label": "Confirmed as is", "value": len(fb["confirmed"]), "color": PALETTE["match"]},
+                      {"label": "Corrected a value or type", "value": len(fb["corrected"]),
+                       "color": PALETTE["review"]},
+                      {"label": "Reported a missed discrepancy", "value": len(fb["missed"]),
+                       "color": PALETTE["mismatch"]}])
+        with right:
+            section("Where people corrected CargoCheck")
+            if fb["by_field"]:
+                ranked = sorted(fb["by_field"].items(), key=lambda x: -x[1])
+                bar_list([{"label": FIELD_LABELS.get(f, f), "value": c, "color": PALETTE["ink"]}
+                          for f, c in ranked])
+                insight(f"<b>{FIELD_LABELS.get(ranked[0][0], ranked[0][0])}</b> is corrected most "
+                        "often: the first place to improve the system.")
+            else:
+                st.write("No field corrections yet: every checked result was confirmed as is.")
+    else:
+        st.info("No results checked by staff yet. Confirm, correct or report a missed discrepancy "
+                "on a few emails, and this page shows how often CargoCheck was right.")
+ 
+    # ---- 2. tested before launch (the evaluation set) ----
+    ev = latest_evaluation()
+    if ev:
+        s1, s3, e2e, rel = ev["stage1"], ev["stage3"], ev["end_to_end"], ev["reliability"]
+        total = ev.get("n_emails", 520)
+        caught = sum(v["caught"] for v in rel["per_reason"].values())
+        needs = sum(v["total"] for v in rel["per_reason"].values())
+        section("Tested before launch")
+        st.markdown(
+            f'<div class="cc-banner ok"><strong>Validated on the organizers\' evaluation set of '
+            f'{total} real shipping emails</strong>{round(s1["accuracy"] * total)} of {total} sorted '
+            f'correctly · {e2e["success"]} of {e2e["total"]} BL discrepancies caught · '
+            f'{"no" if s3["defect_precision"] == 1 else f"{1 - s3["defect_precision"]:.0%}"} false alarms · '
+            f'{caught} of {needs} unclear cases sent to a person</div>', unsafe_allow_html=True)
+ 
+        with st.expander("How we tested it: breakdowns and every change, scored"):
+            left, right = st.columns(2, gap="large")
+            with left:
+                section("Sorted correctly, by email type")
+                bar_list([{"label": CATEGORY_LABELS[c], "value": s1["per"][c]["tp"],
+                           "color": PALETTE["match"],
+                           "note": f'of {s1["per"][c]["tp"] + s1["per"][c]["fn"]}'}
+                          for c in CATEGORIES if c in s1["per"]])
+            with right:
+                section("Unclear cases caught, by reason")
+                bar_list([{"label": REASON_LABELS.get(k, k).rstrip("."), "value": v["caught"],
+                           "color": PALETTE["review"], "note": f'of {v["total"]}'}
+                          for k, v in rel["per_reason"].items()])
+            if SCORE_LOG.exists():
+                log = pd.read_csv(SCORE_LOG)
+                log = log[log["final"] > 0.5].reset_index(drop=True)
+                st.caption("Each change was scored on the organizers' server (30% sorting, "
+                           "20% discrepancy detection, 50% discrepancies caught end to end).")
+                if len(log) > 1:
+                    st.line_chart(log.assign(run=range(1, len(log) + 1)), x="run", y="final",
+                                  height=220)
+                st.dataframe(log.iloc[::-1].rename(columns={
+                    "time": "When", "final": "Final score", "class_f1": "Sorting F1",
+                    "defect_f1": "Discrepancy F1", "e2e": "Caught end to end",
+                    "escalation_recall": "Escalated correctly", "note": "What changed"}),
+                    hide_index=True, width="stretch")
+ 
+ 
+ 
 
 
 # --- Layout ------------------------------------------------------------------
@@ -1388,7 +1533,7 @@ with st.sidebar:
     st.text_input("Your name", key="reviewer", placeholder="Shown on your reviews")
     st.radio("Go to", PAGES, key="page", label_visibility="collapsed")
 
-if not CLASSIFICATIONS_FILE.exists() and st.session_state.page != "Scores":
+if not CLASSIFICATIONS_FILE.exists() and st.session_state.page != "Accuracy":
     st.warning("No results yet. Run `python app/classifier.py` and `python app/pipeline.py` "
                "first, then refresh this page.")
 
@@ -1402,4 +1547,4 @@ elif st.session_state.page == "Check documents":
 elif st.session_state.page == "Review queue":
     page_review(results)
 else:
-    page_scores()
+    page_accuracy(results)
